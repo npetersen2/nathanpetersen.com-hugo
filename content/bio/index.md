@@ -18,6 +18,8 @@ To achieve high performance control of electric machines, cross-domain knowledge
 
 ## Experience
 
+{{< expand tag="h3" text="Graduate" expanded="true" >}}
+
 {{< experience 
     name="Severson Research Group"
     image="images/wempec-logo.jpg"
@@ -28,6 +30,15 @@ To achieve high performance control of electric machines, cross-domain knowledge
 >}}
 
 {{< experience 
+    name="Tesla"
+    image="images/tesla-logo.png"
+    website_text="tesla.com"
+    website_url="https://www.tesla.com/"
+    date="Summer 2022"
+    desc="Worked on motor controls team."
+>}}
+
+{{< experience 
     name="BETA Technologies"
     image="images/beta-logo.svg"
     website_text="beta.team"
@@ -35,6 +46,10 @@ To achieve high performance control of electric machines, cross-domain knowledge
     date="February — December 2019"
     desc="Developed high performance embedded hardware and firmware for inverter running electric aircraft propulsion unit. Implemented both traditional and sensorless control techniques for novel PMSM."
 >}}
+
+{{< /expand >}}
+
+{{< expand tag="h3" text="Undergraduate" expanded="false" >}}
 
 {{< experience 
     name="Silicon Labs"
@@ -63,3 +78,4 @@ To achieve high performance control of electric machines, cross-domain knowledge
     desc="Automated testing of mobile performance tool, developed Android app to visualize device metrics and created Qt GUI for Pintool interaction."
 >}}
 
+{{< /expand >}}
