@@ -23,7 +23,11 @@ header .logo {
 }
 
 div.footer-line a {
-    color: rgb(0, 0, 155);
+    color: $global-link-hover-color;
+}
+
+[theme=dark] div.footer-line a {
+    color: $global-link-hover-color-dark;
 }
 
 div.footer-line > i.fa-copyright {
@@ -40,8 +44,12 @@ div.footer-line span.license {
 div.footer-line span.google-analytics-tracking-info {
     display: block;
     font-size: 0.7rem;
-    color: #333;
+    color: $global-link-color;
     line-height: 1.1em;
+}
+
+[theme=dark] div.footer-line span.google-analytics-tracking-info {
+    color: $global-link-color-dark;
 }
 
 div.img-float-right {

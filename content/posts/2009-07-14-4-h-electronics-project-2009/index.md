@@ -5,6 +5,7 @@ tags: ["4-h", "game", "hardware", "electronics"]
 categories: ["Projects"]
 description: "Two player game which tests visual reaction time."
 date: 2009-07-14 00:00:00
+cover: "images/cover/p4.jpg"
 ---
 
 {{< image 

@@ -5,6 +5,7 @@ tags: ["4-h", "hardware", "electronics"]
 categories: ["Projects"]
 description: "Demonstration showing relationship between capacitance and oscillating frequency."
 date: 2007-07-10 00:00:00
+cover: "images/cover/p2.jpg"
 math:
   enable: true
 ---

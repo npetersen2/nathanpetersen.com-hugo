@@ -5,6 +5,7 @@ tags: ["4-h", "hardware", "speaker", "amplifier"]
 categories: ["Projects"]
 descriptiom: "Simple stereo audio amplifier for powering bookshelf speakers."
 date: 2011-07-12 00:00:00
+cover: "images/cover/p6.jpg"
 ---
 
 {{< image 

@@ -5,6 +5,7 @@ tags: ["4-h", "hardware", "sound", "flash", "photography", "electronics"]
 categories: ["Projects"]
 description: "High speed sound trigger for firing photography flashes following loud noises."
 date: 2010-07-06 00:00:00
+cover: "images/cover/p5.jpg"
 ---
 
 {{< image 

@@ -5,6 +5,7 @@ tags: ["4-h", "game", "hardware", "electronics"]
 categories: ["Projects"]
 description: "Simple game where one moves an arm up and down to position balls which turn on LEDs."
 date: 2006-07-11 00:00:00
+cover: "images/cover/p1.jpg"
 ---
 
 {{< image 

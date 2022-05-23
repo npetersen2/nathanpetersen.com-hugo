@@ -5,6 +5,7 @@ tags: ["4-h", "hardware", "speaker", "sound", "electronics", "555-timer"]
 categories: ["Projects"]
 description: "Simple tone generator controllable via skin impedance."
 date: 2008-07-08 00:00:00
+cover: "images/cover/p3.jpg"
 math:
     enable: true
 ---
