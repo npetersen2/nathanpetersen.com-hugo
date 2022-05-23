@@ -22,9 +22,26 @@ header .logo {
     height: 1.2em;
 }
 
+div.footer-line a {
+    color: rgb(0, 0, 155);
+}
+
 div.footer-line > i.fa-copyright {
     font-size: 0.8rem;
     padding-right: 0.25em;
+}
+
+div.footer-line span.license {
+    display: block;
+    font-size: 0.7rem;
+    line-height: 1.1em;
+}
+
+div.footer-line span.google-analytics-tracking-info {
+    display: block;
+    font-size: 0.7rem;
+    color: #333;
+    line-height: 1.1em;
 }
 
 div.img-float-right {

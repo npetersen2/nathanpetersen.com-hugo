@@ -6,7 +6,7 @@ custom_css = ["css/custom.css"]
 theme = "LoveIt"
 
 # website title
-title = "Blog of Nathan Petersen"
+title = "Nathan Petersen"
 
 languageCode = "en-us"
 languageName = "English"
@@ -18,7 +18,7 @@ languageName = "English"
   link = "https://nathanpetersen.com/"
 
 [permalinks]
-  posts = '/:year/:month/:title/'
+  posts = '/:year/:month/:day/:title/'
 
 # Menu config
 [menu]
@@ -54,6 +54,12 @@ languageName = "English"
   # site default theme ["auto", "light", "dark"]
   defaultTheme = "light"
 
+  dateformat = "January 2, 2006"
+
+  [params.math]
+    enable = true
+    copyTex = true
+
   # Header config
   [params.header]
     [params.header.title]
@@ -84,6 +90,16 @@ languageName = "English"
     # Home page posts
     [params.home.posts]
       enable = false
+
+  [params.section]
+    paginate = 20
+    dateFormat = "Jan 2"
+    rss = 10
+
+  [params.list]
+    paginate = 20
+    dateFormat = "Jan 2"
+    rss = 10
 
   # Social config about the author
   [params.social]
