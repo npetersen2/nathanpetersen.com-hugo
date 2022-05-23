@@ -42,6 +42,11 @@ languageName = "English"
     identifier = "tags"
     name = "Tags"
     url = "/tags/"
+  [[menu.main]]
+    weight = 5
+    identifier = "photography"
+    name = "Photography"
+    url = "/photography/"
 
 # Markup related configuration in Hugo
 [markup]
