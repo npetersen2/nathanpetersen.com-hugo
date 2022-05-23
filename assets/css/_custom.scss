@@ -79,7 +79,6 @@ div.star-ranking span.text {
     color: #aaa;
 }
 
-
 section.bio {
     display: block;
     clear: both;
@@ -125,4 +124,9 @@ span.bio-desc {
     display: block;
     font-size: 75%;
     line-height: 1.2rem;
+}
+
+div.categories-card {
+    margin-top: 0 !important;
+    align-items: flex-start !important;
 }
