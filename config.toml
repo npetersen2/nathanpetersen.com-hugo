@@ -3,7 +3,7 @@ baseURL = "https://nathanpetersen.com"
 custom_css = ["css/custom.css"]
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+theme = "myLoveIt"
 
 # website title
 title = "Nathan Petersen"
