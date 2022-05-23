@@ -1,0 +1,9 @@
+<section class="bio">
+    <div class="bio-img image-link">
+      <img src='{{ .Get "image" }}' />
+    </div>
+  
+    <span class="bio-group">{{.Get "name"}} · <a href='{{.Get "website_url"}}' target="_blank">{{.Get "website_text"}}</a></span>
+    <span class="bio-date">{{.Get "date"}}</span>
+    <span class="bio-desc">{{.Get "desc"}}</span>
+  </section>

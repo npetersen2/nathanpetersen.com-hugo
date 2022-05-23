@@ -1,0 +1,20 @@
+<div class="star-ranking">
+
+{{ $stars := .Get 0 }}
+{{ $total_stars := .Get 1 }}
+
+{{ range $i, $sequence :=  (seq $total_stars) }}
+    {{ if gt $stars $i }}
+        {{ if gt $stars (add $i 0.5) }}
+            <i class="fa-solid fa-star"></i>
+        {{ else }}
+            <i class="fa-regular fa-star-half-stroke"></i>
+        {{ end }}
+    {{ else }}
+        <i class="fa-regular fa-star"></i>
+    {{ end }}
+{{ end }}
+
+<span class="text">({{ .Get 0 }}/{{ .Get 1 }})</span>
+
+</div>

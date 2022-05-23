@@ -1,0 +1,103 @@
+h1 > a.header-mark,
+h2 > a.header-mark,
+h3 > a.header-mark,
+h4 > a.header-mark,
+h5 > a.header-mark,
+h5 > a.header-mark {
+    display: none;
+}
+
+h1:hover > a.header-mark,
+h2:hover > a.header-mark,
+h3:hover > a.header-mark,
+h4:hover > a.header-mark,
+h5:hover > a.header-mark,
+h5:hover > a.header-mark {
+    display: inline;
+}
+
+header .logo {
+    padding-right: 0.5rem;
+    min-height: 1.2em;
+    height: 1.2em;
+}
+
+div.footer-line > i.fa-copyright {
+    font-size: 0.8rem;
+    padding-right: 0.25em;
+}
+
+div.img-float-right {
+    float: right;
+}
+
+h1.single-title,
+h2.single-title,
+h3.single-title,
+h4.single-title,
+h5.single-title,
+h6.single-title {
+    text-align: left !important;
+}
+
+
+div.star-ranking {
+    margin: 1em 0;
+}
+
+div.star-ranking i.fa {
+    font-size: 150%;
+}
+
+div.star-ranking span.text {
+    font-size: 75%;
+    color: #aaa;
+}
+
+
+section.bio {
+    display: block;
+    clear: both;
+    overflow: hidden;
+    margin: 0 0 1em 0;
+}
+
+div.bio-img {
+    width: 8em;
+    height: 8em;
+    float: left;
+    margin: 0 1em 1em 0;
+    overflow: hidden;
+}
+
+div.bio-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+span.bio-date {
+    display: block;
+    font-style: italic;
+    font-size: 75%;
+}
+
+span.bio-group {
+    display: block;
+    font-weight: bold;
+}
+
+span.bio-group a {
+    font-weight: normal;
+    text-decoration: none;
+    color: #999;
+}
+
+span.bio-group a:hover {
+    color: #333;
+}
+
+span.bio-desc {
+    display: block;
+    font-size: 75%;
+    line-height: 1.2rem;
+}
