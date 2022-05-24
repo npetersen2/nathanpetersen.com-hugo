@@ -22,7 +22,7 @@ To achieve high performance control of electric machines, cross-domain knowledge
 
 {{< experience 
     name="Severson Research Group"
-    image="images/wempec-logo.jpg"
+    image="images/wempec-logo.png"
     website_text="severson.wempec.wisc.edu"
     website_url="https://severson.wempec.wisc.edu/"
     date="January 2018 — Present"
