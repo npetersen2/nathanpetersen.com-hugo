@@ -13,12 +13,18 @@ Operating systems form the backbone of modern processing environments. Millions 
 
 User applications must interact with the operating system to effectively use the machine's resources. This interaction is realized using a set of well-defined interfaces (APIs) which programs can call to instruct the operating system to perform required actions. Modern systems export hundreds of *system calls* to the user application which each have very specific actions they perform. There are five categories of system calls: process control, file manipulation, device manipulation, information maintenance and communication. By combining and mixing the usage of these various system calls, user applications can accomplish a wide variety of tasks on a given machine, but  cannot take over control of the hardware or steal data from other programs.
 
-![Typical system design with kernel (operating system) managing the device resources](/assets/images/locks/kernel.png)
+{{< image
+    src="images/kernel.png"
+    caption="Typical system design with kernel (operating system) managing the device resources"
+>}}
 
 Process control refers to the operating systems ability to run programs at various times while maintaining each program's illusion that full machine capabilities are available. The operating system will tend to swap out tasks
 to provide fair usage of the physical processing resources. Modern hardware systems often have multiple physical processing cores which can be used to run different programs in parallel, or can be exploited by a single program for increased processing throughput. When a single program creates multiple threads of execution, careful thought must be placed on how these threads interact and share common data to ensure program correctness while simultaneously realizing the potential performance gains. The operating system provides various synchronization primitives which the application can use to maintain data consistency and algorithmic correctness.
 
-![Battle of the locks: smart locks (mutexes) vs. spinlocks](/assets/images/locks/locks.jpg)
+{{< image
+    src="images/locks.jpg"
+    caption="Battle of the locks: smart locks (mutexes) vs. spinlocks"
+>}}
 
 ### Problems
 
@@ -41,15 +47,8 @@ While many different primitives exist to help applications manage concurrency, l
 
 The performance of the locking mechanisms depends on multiple factors. In this analysis, attention is given to the time spent in the critical section of code, as well as the number of threads attempting to acquire the lock. A simple workload is constructed which creates an array of threads to do work. This work consists of 100 accesses of the critical section.
 
-<style>
-.table td {
-  border-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-</style>
+{{< highlight cpp >}}
 
-```c++
 pthread_t threads[NUM]
 lock_t lock
 
@@ -65,8 +64,8 @@ void *work(void *arg)
 {
   count = 1
   while count <= 100:
-    critical()
-    count++
+      critical()
+      count++
 }
 
 main()
@@ -87,22 +86,26 @@ main()
       
   // PROFILE END
 }
-```
-<p style="text-align:center;">*Listing 2: Workload implementation for spinlock vs. mutex comparison.*</p>
+{{< /highlight >}}
 
-At run time, a parameter is passed to the program to set the duration a thread spends in the critical section. By sweeping both the number of threads and the duration of time spent in the critical section, interesting results emerge. See Listing 2 for implementation details.
+*Listing 1: Workload implementation for spinlock vs. mutex comparison.*
+
+At run time, a parameter is passed to the program to set the duration a thread spends in the critical section. By sweeping both the number of threads and the duration of time spent in the critical section, interesting results emerge. See Listing 1 for implementation details.
 
 #### Results
 
-Figure 5 shows a plot of relative performance of the spinlock to the mutex. Each cell in the plot contains a value which is the ratio of performance. A value of 1.0 indicates both the spinlock and mutex have identical performance, while a value of 2.0 indicates the spinlock version of the workload completed its task twice as fast as the mutex version (normalized by total number of threads). A wide range of time spent in the critical section was evaluated, with number of critical cycles varying widely in magnitude (1 to 1M). For each of these values, a range of thread counts were evaluated, ranging from one to 100 threads.
+Figure 3 shows a plot of relative performance of the spinlock to the mutex. Each cell in the plot contains a value which is the ratio of performance. A value of 1.0 indicates both the spinlock and mutex have identical performance, while a value of 2.0 indicates the spinlock version of the workload completed its task twice as fast as the mutex version (normalized by total number of threads). A wide range of time spent in the critical section was evaluated, with number of critical cycles varying widely in magnitude (1 to 1M). For each of these values, a range of thread counts were evaluated, ranging from one to 100 threads.
 
-The wide range of thread count and critical instruction count leads to interesting data which can help inform the decision of when to use spinlocks versus mutexes. General notions are that spinlocks are inefficient and waste CPU time, while mutexes allow efficient allocation of processing time. Figure 5 clearly shows that there is much more nuance relating to which lock type performs better.
+The wide range of thread count and critical instruction count leads to interesting data which can help inform the decision of when to use spinlocks versus mutexes. General notions are that spinlocks are inefficient and waste CPU time, while mutexes allow efficient allocation of processing time. Figure 3 clearly shows that there is much more nuance relating to which lock type performs better.
 
 Coloring is given to the plot to show areas of general performance:
 - Green indicates values greater than one (spinlocks perform better)
 - Red indicates values less than one (mutexes perform better)
 
-![Figure 5: Spinlock vs. mutex relative performance. For example, value of 2.0 means overall throughput using spinlock is 2x higher than mutex.<br/><small><i>Values are averaged over multiple runs.</i></small>](/assets/images/locks/plot.png)
+{{< image
+    src="images/plot.png"
+    caption="Figure 3: Spinlock vs. mutex relative performance. For example, value of 2.0 means overall throughput using spinlock is 2x higher than mutex. _Values are averaged over multiple runs._"
+>}}
 
 #### Evaluation
 
@@ -119,11 +122,12 @@ Finally, it can be seen that for workloads with more than eight threads but less
 
 Careful study of various workloads for thread synchronization is performed. Both spinlocks and mutexes are tested in a wide range of combinations of thread count and critical section instructions. It is shown that for workloads with less than or equal number of threads than the physical hardware allows, using spinlocks can lead to higher performance (up to 2x). However, when critical section instruction count increases to above five thousand instructions and thread count rises above hardware supported amount, mutexes will perform better, as threads are put to sleep to make way for other threads to effectively use the CPU. Users must take into consideration the number of cycles in an application's critical section to determine appropriate lock type.
 
-{% alert info %}
 
-This analysis was performed during Spring 2019 for UW-Madison course COMP SCI 736: Advanced Operating Systems. <a href="/assets/pdf/locks/CS736MiniProjectNathanPetersen.pdf" class="alert-link" target="_blank">Read the full paper...</a>.
+{{< admonition type=info title="Class Project" open=true >}}
+This analysis was performed during Spring 2019 for University of Wisconsin-Madison course COMP SCI 736: Advanced Operating Systems.
 
-{% endalert %}
+[Read the full paper...](pdfs/CS736MiniProjectNathanPetersen.pdf)
+{{< /admonition >}}
 
 ---
 
@@ -131,4 +135,4 @@ This analysis was performed during Spring 2019 for UW-Madison course COMP SCI 73
 
 If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.
 
-{% mailchimpform %}
+{{< mailchimpform >}}

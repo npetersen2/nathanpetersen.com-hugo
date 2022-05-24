@@ -7,7 +7,10 @@ description: "Delicious french toast that can satisfy any sweet tooth."
 date: 2019-04-17 17:00:00
 ---
 
-![Banana foster french toast from Bassett Street Brunch Club][img5]
+{{< image
+    src="images/img5.jpg"
+    caption="Banana foster french toast from Bassett Street Brunch Club"
+>}}
 
 #### Delicious french toast that can satisfy any sweet tooth.
 
@@ -17,13 +20,20 @@ Bassett Street Brunch Club ([brunchclubmadison.com](https://brunchclubmadison.co
 
 Each weekend, hundreds of hungry students flock to this yummy brunch club to meet up with friends and cure their hangovers from the night before. There is usually a line for brunch on Saturday and Sunday -- expect to wait up to an hour or so.
 
+{{< rawhtml >}}
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.5240254054497!2d-89.39572324855412!3d43.072477279043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88065336983f9343%3A0xf6141790659238bb!2sBassett+Street+Brunch+Club!5e0!3m2!1sen!2sus!4v1555555617449!5m2!1sen!2sus" width="800" height="400" frameborder="0" style="border:0; max-width:100%;" allowfullscreen></iframe>
+{{< /rawhtml >}}
+
 
 ## French Toast
 
 While BSBC serves a variety of entrees, they are most known for their brunch options. They offer various choices, such as breakfast sandwiches and burritos, oatmeal, hashes, and both savory and sweet french toast. There are two choices for sweet french toast: A banana variant as well as a coconut variant. I am not terribly fond of coconut flavors, so I always opt for the Banana Foster French Toast.
 
-![Closeup view of the banana and pecan toppings on the french toast][img2]
+{{< image
+    src="images/img2.jpg"
+    caption="Closeup view of the banana and pecan toppings on the french toast"
+>}}
+
 
 ### Description
 
@@ -33,7 +43,7 @@ The sweet french toast meal, Banana Foster French Toast, is a wonderful blend of
 
 ### Review
 
-{% rating 4.5 5 %}
+{{< rating 4.5 5 >}}
 
 Overall, this french toast receives a 4.5/5. The taste and flavor are splendid, the amount of food is perfect -- not too little, but not too much.
 
@@ -57,14 +67,17 @@ The only thing to complain about is the lack of crunch in the dish. The pecans p
 
 ## More Pictures
 
-![Banana slices make up the dish's top layer][img3]
-![Detail showing thick slices of bread][img4]
-![Menu listing for the Banana Foster French Toast dish][img6]
+{{< image
+    src="images/img3.jpg"
+    caption="Banana slices make up the dish's top layer"
+>}}
 
+{{< image
+    src="images/img4.jpg"
+    caption="Detail showing thick slices of bread"
+>}}
 
-[img1]: /assets/images/frenchtoast/wi-madison/bassett-street-brunch-club/img1.jpg
-[img2]: /assets/images/frenchtoast/wi-madison/bassett-street-brunch-club/img2.jpg
-[img3]: /assets/images/frenchtoast/wi-madison/bassett-street-brunch-club/img3.jpg
-[img4]: /assets/images/frenchtoast/wi-madison/bassett-street-brunch-club/img4.jpg
-[img5]: /assets/images/frenchtoast/wi-madison/bassett-street-brunch-club/img5.jpg
-[img6]: /assets/images/frenchtoast/wi-madison/bassett-street-brunch-club/img6.jpg
+{{< image
+    src="images/img6.jpg"
+    caption="Menu listing for the Banana Foster French Toast dish"
+>}}
