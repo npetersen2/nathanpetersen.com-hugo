@@ -15,7 +15,19 @@ My involvement in this project, the *Advanced Motor Drive Controller (AMDC)*, ha
 
 Eric Severson is a professor at UW-Madison and leads the [Severson Research Group](https://severson.wempec.wisc.edu/). His research group is a part of the Wisconsin Electric Machines & Power Electronics Consortium ([WEMPEC](https://wempec.wisc.edu)).
 
-![WEMPEC logo][wempec-logo]
+{{< rawhtml >}}
+<div style="width:200px;">
+{{< /rawhtml >}}
+
+{{< image
+    src="images/WEMPEC-logo-LG-red.jpg"
+    caption="WEMPEC logo"
+    width="200"
+>}}
+
+{{< rawhtml >}}
+</div>
+{{< /rawhtml >}}
 
 When I started the semester-long project, I had very little previous experience doing what was required of me; I had only done one previous [related project](/2018/05/15/razzler-pov-led-top/). While this previous project taught me a lot, I still had very little experience. Eric informed me that he expected a few iterations of the board design before arriving at the final product.
 
@@ -34,9 +46,9 @@ The provided interfaces include:
  - 24 general purpose I/O
  - Quadrature encoder input
  
-The hardware design for AMDC is completely open-source, with all design files and analysis available on GitHub: [Checkout the repository...](https://github.com/WEMPEC/AMDC-Hardware)
+The hardware design for AMDC is completely open-source, with all design files and analysis available on GitHub: [Checkout the repository...](https://github.com/Severson-Group/AMDC-Hardware)
 
-I created a PDF report about the project as well: [Read the report...](/assets/pdf/amdc/AMDC_Report.pdf)
+I created a PDF report about the project as well: [Read the report...](pdfs/AMDC_Report.pdf)
 
 ## Project Development
 
@@ -44,7 +56,7 @@ Prior to this Independent Study, I had no experience designing analog systems, n
 
 Throughout the semester, I worked with Eric and others to create the schematics that would become AMDC. After finalizing the schematic design, I designed the first PCB version for manufacturing. Outlined below are the general steps to the design process that I followed.
 
-[Download PDF of entire AMDC schematics...](https://github.com/WEMPEC/AMDC-Hardware/raw/master/REV20180525A/AMDC_sch.pdf)
+[Download PDF of entire AMDC schematics...](https://github.com/Severson-Group/AMDC-Hardware/raw/develop/REV20180525A/AMDC_sch.pdf)
 
 ### Circuit Schematic
 
@@ -68,7 +80,7 @@ After drawing up generic schematics, I transitioned to modeling real components 
 
 Now, I had a full schematic that was ready to approve. This was the nitty-gritty part of the design; we needed to make sure every aspect of the schematic checked out before starting PCB layout. I didn't want to do the layout just to realize the schematic was wrong and have to start over!
 
-In the [Schematic Analysis](#Schematic-Analysis) portion of this article, I discuss the final schematic in detail.
+In the [Schematic Analysis](#schematic-analysis) portion of this article, I discuss the final schematic in detail.
   
 ### Board Layout
 
@@ -89,7 +101,7 @@ With over 25 pages of schematics and hundreds of components to place and route, 
 
 All in all, I designed the whole PCB in just 14 days, spending about 6 hours a day on it for a total of around ~60 hours. I don't recommend doing it in such a short time frame. :(
 
-[Download PDF of board layout...](https://github.com/WEMPEC/AMDC-Hardware/raw/master/REV20180525A/AMDC_brd.pdf)
+[Download PDF of board layout...](https://github.com/Severson-Group/AMDC-Hardware/raw/develop/REV20180525A/AMDC_brd.pdf)
 
 
 ## Schematic Analysis
@@ -108,7 +120,10 @@ The PicoZed System-on-Module (SoM) is a SoM developed around Xilinx's Zynq-7000 
 >
 > **&mdash; [Xilinx website](https://www.xilinx.com/products/silicon-devices/soc/zynq-7000.html)**
 
-![Zynq-7000 internal block diagram][zynq-7000-block-diagram]
+{{< image
+    src="images/zynq-7000-block-diagram.png"
+    caption="Zynq-7000 internal block diagram"
+>}}
 
 While this SoC is very powerful and capable, it is not easy to integrate into "consumer" projects. It uses a BGA package, which makes soldering difficult, and it requires high-speed routing for memory interfaces. For these and other reasons, the PicoZed exists!
 
@@ -116,17 +131,26 @@ While this SoC is very powerful and capable, it is not easy to integrate into "c
 >
 > **&mdash; [PicoZed website](http://zedboard.org/product/picozed)**
 
-![PicoZed block diagram][picozed-block-diagram]
+{{< image
+    src="images/picozed-block-diagram.png"
+    caption="PicoZed block diagram"
+>}}
 
 To use the PicoZed, one must design a carrier card to interface with the SoM. PicoZed has great documentation about carrier card design, schematics for reference carrier cards, etc.
 
 ### PicoZed Interface
 
-![AMDC block diagram showing different modules][AMDC.SchDoc]
+{{< image
+    src="images/AMDC-001.jpg"
+    caption="AMDC block diagram showing different modules"
+>}}
 
 Since this is a carrier card, there are many signals needing to flow in to and out of the PicoZed SoM. This makes for a lot of signal connections (~300!):
 
-![Actual signal connections going into PicoZed from system blocks][PicoZed.SchDoc]
+{{< image
+    src="images/AMDC-002.jpg"
+    caption="Actual signal connections going into PicoZed from system blocks"
+>}}
 
 ### Board I/O
 
@@ -139,19 +163,28 @@ Almost every processing system needs a few things to function:
 - 1 general push button
 - ESTOP button for disabling drive output
 
-![Generic board I/O circuitry related to buttons, plugs, connectors, etc][BoardIO.SchDoc]
+{{< image
+    src="images/AMDC-003.jpg"
+    caption="Generic board I/O circuitry related to buttons, plugs, connectors, etc"
+>}}
 
 ### JTAG
 
 To support easy programming and debugging, a Digilent JTAG-SMT2 module is used. This converts micro USB into JTAG signals for the processor. The board also includes standard 2x7 headers for using an external JTAG programmer.
 
-![JTAG programming interface enables either regular pin header connections or micro USB connection using JTAG-SMT2][JTAG.SchDoc]
+{{< image
+    src="images/AMDC-007.jpg"
+    caption="JTAG programming interface enables either regular pin header connections or micro USB connection using JTAG-SMT2"
+>}}
 
 ### Ethernet
 
 PicoZed has an Ethernet PHY onboard the SoM, so it exposes data signals that go directly to a connector. All that's required on the carrier card is routing them to a RJ45 receptacle.
 
-![Gigabit Ethernet support circuitry; i.e. just an isolated RJ45 receptacle][GbEthernet.SchDoc]
+{{< image
+    src="images/AMDC-004.jpg"
+    caption="Gigabit Ethernet support circuitry; i.e. just an isolated RJ45 receptacle"
+>}}
 
 ### USB OTG
 
@@ -159,13 +192,19 @@ PicoZed also has a USB On-The-Go (OTG) PHY on the SoM, so again, the carrier car
 
 AMDC includes extra circuitry for USB protection. This prevents external devices from drawing too much current, adds ESD protection, and adds the ability to select between Device / Host modes.
 
-![USB OTG support circuitry][USB_OTG.SchDoc]
+{{< image
+    src="images/AMDC-005.jpg"
+    caption="USB OTG support circuitry"
+>}}
 
 ### USB UART
 
 For serial communication with the ARM core onboard (i.e. communicating with terminal running on embedded Linux OS), a micro USB port is provided which interfaces directly with a UART port. This uses a Silicon Labs UART to USB device for simplicity.
 
-![USB UART support circuitry][USB_UART.SchDoc]
+{{< image
+    src="images/AMDC-006.jpg"
+    caption="USB UART support circuitry"
+>}}
 
 ### GPIO
 
@@ -177,19 +216,29 @@ Each bank has 12 channels:
  - 8 channels have a hardware pin selectable direction
  - 2 x 2 channels have a software selectable direction
 
-![GPIO support circuitry][GPIO.SchDoc]
+{{< image
+    src="images/AMDC-009.jpg"
+    caption="GPIO support circuitry"
+>}}
+
 
 ### Analog Inputs
 
 AMDC has unique constraints for analog signal inputs (+/- 10V fully differential). To support this wide range of voltage, analog conditioning circuitry must be used.
 
-![Schematic showing overall flow of analog signals from inputs to ADCs][AnalogInterface.SchDoc]
+{{< image
+    src="images/AMDC-016.jpg"
+    caption="Schematic showing overall flow of analog signals from inputs to ADCs"
+>}}
 
 #### Analog Connectors
 
 Starting at the analog input connectors, there are 16 channels which appear as a stacked 2x4 RJ45 receptacle box.
 
-![Stacked 2x4 RJ45 connectors for analog signal input][AnalogConnectors.SchDoc]
+{{< image
+    src="images/AMDC-017.jpg"
+    caption="Stacked 2x4 RJ45 connectors for analog signal input"
+>}}
 
 #### Analog Signal Conditioning
 
@@ -197,7 +246,10 @@ The analog signal inputs from the connectors then go through a signal conditioni
 
 Two different signal conditioning blocks are used to evaluate different conditioning topologies.
 
-![Schematic shows split for different conditioning approaches][AnalogConditioning.SchDoc]
+{{< image
+    src="images/AMDC-018.jpg"
+    caption="Schematic shows split for different conditioning approaches"
+>}}
 
 ##### Signal Conditioning Approach #1:
 
@@ -205,25 +257,37 @@ This approach is used for channels 1 to 8. It uses discrete quad op-amp packages
 
 Unfortunately, the performance of this topology depends on the tolerance of the resistors used. We must precisely match resistor values otherwise there is poor common-mode voltage rejection.
 
-![Analog signal conditioning approach #1 circuitry][AnalogSigCond1.SchDoc]
+{{< image
+    src="images/AMDC-019.jpg"
+    caption="Analog signal conditioning approach #1 circuitry"
+>}}
 
 ##### Signal Conditioning Approach #2:
 
 This approach is used for channels 9 to 16. It uses integrated in-amp devices which have laser-trimmed resistors. Because of this, there is *very* high common mode voltage rejection, but at a fixed 0.1x gain, this is not ideal for +/- 10V signals.
 
-![Analog signal conditioning approach #2 circuitry][AnalogSigCond2.SchDoc]
+{{< image
+    src="images/AMDC-020.jpg"
+    caption="Analog signal conditioning approach #2 circuitry"
+>}}
 
 #### Analog ADCs
 
 After signal conditioning, two 1.5 MSPS 8-channel ADCs are used. These provide a partially parallel digital interface to the PicoZed for sample data.
 
-![Support circuitry for ADCs][AnalogADCs.SchDoc]
+{{< image
+    src="images/AMDC-021.jpg"
+    caption="Support circuitry for ADCs"
+>}}
 
 ### Drive Outputs
 
 AMDC can control eight full inverters at one time via eight DB15 connectors. The design targets controlling Wolfspeed modules (each 15 pin connector controls one module). There are six PWM gate signals, and four status lines.
 
-![Drive output interface showing low-voltage data from PicoZed to high-voltage outputs][DriveInterface.SchDoc]
+{{< image
+    src="images/AMDC-010.jpg"
+    caption="Drive output interface showing low-voltage data from PicoZed to high-voltage outputs"
+>}}
 
 #### Drive Voltage Translation
 
@@ -231,23 +295,43 @@ For the PWM gate signals, PicoZed outputs digital signals at 1.8V. Voltage trans
 
 There are hardware selectable status voltages to/from inverter modules to allow interfacing with a broader range of modules.
 
-![Voltage translation blocks for various aspects of inverter control][InverterTranslation.SchDoc]
+{{< image
+    src="images/AMDC-011.jpg"
+    caption="Voltage translation blocks for various aspects of inverter control"
+>}}
 
-![8-channel low-voltage to high-voltage auto-direction translation][LVHV8ChanTranslation.SchDoc]
-![2-channel directional voltage translation][TranslationDir2Chan.SchDoc]
+{{< image
+    src="images/AMDC-012.jpg"
+    caption="8-channel low-voltage to high-voltage auto-direction translation"
+>}}
+
+{{< image
+    src="images/AMDC-013.jpg"
+    caption="2-channel directional voltage translation"
+>}}
 
 #### Drive Output Connectors
 
 Each inverter uses one DB15 connector. To save board space, these are stacked to form four stacks of two DB15 connections each.
 
-![Four stacked dual inverter connectors][InverterConnectors.SchDoc]
-![DB15 dual stacked connector][InverterConnector.SchDoc]
+{{< image
+    src="images/AMDC-014.jpg"
+    caption="Four stacked dual inverter connectors"
+>}}
+
+{{< image
+    src="images/AMDC-015.jpg"
+    caption="DB15 dual stacked connector"
+>}}
 
 ### Encoder
 
 AMDC supports connecting one RS-422 standard quadrature encoder through a DB9 connector.
 
-![Encoder support circuitry][Encoder.SchDoc]
+{{< image
+    src="images/AMDC-008.jpg"
+    caption="Encoder support circuitry"
+>}}
 
 ### Power
 
@@ -255,19 +339,44 @@ AMDC has two main power inputs: the main board power (~24V) and the PWM drive ou
 
 The main board power goes into two DC/DC converter modules which efficiently convert the 24V to 5.5V main power and +/- 16V for the analog systems. These secondary stage voltages are considered "dirty" due to the switching converter design, so many local LDOs provide "clean" device power throughout the board (5V, 3.3V, 1.8V, 2.5V, +15V, and -15V).
 
-![Power distribution and regulation circuitry][Power.SchDoc]
+{{< image
+    src="images/AMDC-022.jpg"
+    caption="Power distribution and regulation circuitry"
+>}}
 
 #### LDOs
 
 Because of the large number of subsystems, six different LDOs are used to target various voltage levels.
 
-![15V LDO circuitry][Power_LDO_15V.SchDoc]
-![5V LDO circuitry][Power_LDO_5V.SchDoc]
-![3.3V LDO circuitry][Power_LDO_3V3.SchDoc]
-![2.5V LDO circuitry][Power_LDO_2V5.SchDoc]
-![1.8V LDO circuitry][Power_LDO_1V8.SchDoc]
-![2.5V reference circuitry][Power_REF_2V5.SchDoc]
+{{< image
+    src="images/AMDC-023.jpg"
+    caption="15V LDO circuitry"
+>}}
 
+{{< image
+    src="images/AMDC-024.jpg"
+    caption="5V LDO circuitry"
+>}}
+
+{{< image
+    src="images/AMDC-025.jpg"
+    caption="3.3V LDO circuitry"
+>}}
+
+{{< image
+    src="images/AMDC-026.jpg"
+    caption="2.5V LDO circuitry"
+>}}
+
+{{< image
+    src="images/AMDC-027.jpg"
+    caption="1.8V LDO circuitry"
+>}}
+
+{{< image
+    src="images/AMDC-028.jpg"
+    caption="2.5V reference circuitry"
+>}}
 
 
 ## PCB Analysis
@@ -302,38 +411,4 @@ I look forward to returning to Eric's research group this fall to work on the em
 
 If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.
 
-{% mailchimpform %}
-
-[AMDC.SchDoc]: /assets/images/amdc/AMDC-001.jpg
-[PicoZed.SchDoc]: /assets/images/amdc/AMDC-002.jpg
-[BoardIO.SchDoc]: /assets/images/amdc/AMDC-003.jpg
-[GbEthernet.SchDoc]: /assets/images/amdc/AMDC-004.jpg
-[USB_OTG.SchDoc]: /assets/images/amdc/AMDC-005.jpg
-[USB_UART.SchDoc]: /assets/images/amdc/AMDC-006.jpg
-[JTAG.SchDoc]: /assets/images/amdc/AMDC-007.jpg
-[Encoder.SchDoc]: /assets/images/amdc/AMDC-008.jpg
-[GPIO.SchDoc]: /assets/images/amdc/AMDC-009.jpg
-[DriveInterface.SchDoc]: /assets/images/amdc/AMDC-010.jpg
-[InverterTranslation.SchDoc]: /assets/images/amdc/AMDC-011.jpg
-[LVHV8ChanTranslation.SchDoc]: /assets/images/amdc/AMDC-012.jpg
-[TranslationDir2Chan.SchDoc]: /assets/images/amdc/AMDC-013.jpg
-[InverterConnectors.SchDoc]: /assets/images/amdc/AMDC-014.jpg
-[InverterConnector.SchDoc]: /assets/images/amdc/AMDC-015.jpg
-[AnalogInterface.SchDoc]: /assets/images/amdc/AMDC-016.jpg
-[AnalogConnectors.SchDoc]: /assets/images/amdc/AMDC-017.jpg
-[AnalogConditioning.SchDoc]: /assets/images/amdc/AMDC-018.jpg
-[AnalogSigCond1.SchDoc]: /assets/images/amdc/AMDC-019.jpg
-[AnalogSigCond2.SchDoc]: /assets/images/amdc/AMDC-020.jpg
-[AnalogADCs.SchDoc]: /assets/images/amdc/AMDC-021.jpg
-[Power.SchDoc]: /assets/images/amdc/AMDC-022.jpg
-[Power_LDO_15V.SchDoc]: /assets/images/amdc/AMDC-023.jpg
-[Power_LDO_5V.SchDoc]: /assets/images/amdc/AMDC-024.jpg
-[Power_LDO_3V3.SchDoc]: /assets/images/amdc/AMDC-025.jpg
-[Power_LDO_2V5.SchDoc]: /assets/images/amdc/AMDC-026.jpg
-[Power_LDO_1V8.SchDoc]: /assets/images/amdc/AMDC-027.jpg
-[Power_REF_2V5.SchDoc]: /assets/images/amdc/AMDC-028.jpg
-
-[picozed-block-diagram]: /assets/images/amdc/picozed-block-diagram.png
-[zynq-7000-block-diagram]: /assets/images/amdc/zynq-7000-block-diagram.png
-
-[wempec-logo]: /assets/images/amdc/WEMPEC-logo-LG-red.jpg
+{{< mailchimpform >}}

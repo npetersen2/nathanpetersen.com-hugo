@@ -11,7 +11,10 @@ aliases:
 
 *Did you see!?* Seeed Studio ([seeedstudio.com](https://www.seeedstudio.com/)) is offering for a limited time three (3) copies of a PCB design (up to 10cm x 10cm) **for only $1!**
 
-![Great deal from Seeed Studio! $1 for three copies of PCB!!!](/assets/images/seeed-1pcb/banner.png)
+{{< image
+    src="images/banner.png"
+    caption="Great deal from Seeed Studio! $1 for three copies of PCB!!!"
+>}}
 
 ## New Project, New PCBs!
 
@@ -58,4 +61,7 @@ According to their website, the offer ends September 21st, 2018, so you don't ha
 
 [Order boards for $1!](https://www.seeedstudio.com/1-usd-for-3-pcbs.html)
 
-![Standard ordering screen for getting the deal](/assets/images/seeed-1pcb/order-website.png)
+{{< image
+    src="images/order-website.png"
+    caption="Standard ordering screen for getting the deal"
+>}}

@@ -11,13 +11,14 @@ date: 2018-12-24 19:00:00
 
 You might be wondering: why did I do this, how could I afford it, did I get fat, if I am tired of pasta, or even if I am crazy? Keep reading for the answers as I attempt to explain my experience with the [Olive Garden Pasta Pass](https://www.olivegarden.com/specials/never-ending-pasta-pass).
 
-![The prized Olive Garden Pasta Pass in its ostentatious box][pic-25]
+{{< image
+    src="images/IMG_20181121_204023.jpg"
+    caption="The prized Olive Garden Pasta Pass in its ostentatious box"
+>}}
 
-{% alert info %}
-
-This post is not sponsored by <a href="https://www.olivegarden.com/home" class="alert-link">Olive Garden</a>, although that'd be nice. These are my ideas and don't reflect Darden Concepts, Inc. as a company.
-
-{% endalert %}
+{{< admonition type=info title="Not Sponsored" open=true >}}
+This post is not sponsored by [Olive Garden](https://www.olivegarden.com/home), although that'd be nice. These are my ideas and don't reflect Darden Concepts, Inc. as a company.
+{{< /admonition >}}
 
 ## What Is It?
 
@@ -25,7 +26,10 @@ This post is not sponsored by <a href="https://www.olivegarden.com/home" class="
 
 This year, Olive Garden sold 24,000 Pasta Passes: 23,000 valid for eight weeks costing $100 and 1,000 valid for a full year costing $300. While the pass is valid, one can go to Olive Garden as many times as desired and order the Never Ending Pasta Bowl for free!
 
-![#pastapass][pic-23]
+{{< image
+    src="images/IMG_20181121_203956.jpg"
+    caption="#pastapass"
+>}}
 
 Last summer, I happened to stumble across a news article about the deal a day before the passes went on sale. After some quick math, it became obvious that it was a great offer, assuming I went more than ~6 times. *Six times in eight weeks?* Ha, I could go six times in **ONE** week!
 
@@ -33,7 +37,10 @@ Last summer, I happened to stumble across a news article about the deal a day be
 
 The Pasta Pass is good for one thing and one thing only: one order of the Never Ending Pasta Bowl.
 
-![Menu for the Never Ending Pasta Bowl][pic-06]
+{{< image
+    src="images/IMG_20181118_151815.jpg"
+    caption="Menu for the Never Ending Pasta Bowl"
+>}}
 
 As you can see, this entree costs $10.99 and includes unlimited breadsticks, unlimited soup or salad, and unlimited pasta. 252 total possible combinations exist that combine the different pasta types, sauces, and toppings. While the pasta and sauce are included in the $10.99, getting a topping will cost extra.
 
@@ -46,17 +53,26 @@ While my pass was valid, from 9/24/18 to 11/18/2018, I was a student at UW-Madis
 
 I typically went in the evening, riding my moped across town for nearly 20 minutes until arriving at the restaurant. Even when the temperature dropped below 20&deg;F, I still made the trek.
 
-![After 20 brutal minutes in the cold wind, bundled up me arrives at the promise land][pic-04]
+{{< image
+    src="images/IMG_20181118_150900.jpg"
+    caption="After 20 brutal minutes in the cold wind, bundled up me arrives at the promise land"
+>}}
 
 After I took off all my gear from the moped journey, I went inside and asked for a table for one. At first, asking for a table for one felt pretty strange, but as the eight weeks progressed, I discovered that I didn't really mind it. Plus, the staff started to recognize me and say "oh you again, just one tonight?". It was like coming home!
 
 Going nearly everyday really let me get a sense of the day-to-day trends at Olive Garden. For example, I saw which days were popular and which days no one ate there. I also started to notice who worked which days, and even made friends with a few of the servers.
 
-![Arriving just before sunset on a cold winter evening][pic-16]
+{{< image
+    src="images/IMG_20181118_155548.jpg"
+    caption="Arriving just before sunset on a cold winter evening"
+>}}
 
 When it was my turn to be served, a staff member walked me back to my table and sat me down. The server soon arrived and introduced themselves, asking for my beverage order. I always ordered at this time since I always knew what I wanted.
 
-![Me eating my free pasta at Olive Garden][pic-09]
+{{< image
+    src="images/IMG_20181118_152915.jpg"
+    caption="Me eating my free pasta at Olive Garden"
+>}}
 
 ### My Typical Order
 
@@ -79,13 +95,19 @@ Olive Garden excels at cooking pasta. While pasta is fairly easy to make, Olive 
 
 The breadsticks seem much more buttery and unhealthy than they used to be, back in the day. At 140 calories a stick, the fatness really seems to start adding up after eating five or six... But boy are they good. After a few meals, I concluded that waiting until the salad came to start in on the breadsticks made the most sense as to not stuff myself before even starting.
 
-![Lovely breadsticks... <3][pic-07]
+{{< image
+    src="images/IMG_20181118_152117.jpg"
+    caption="Lovely breadsticks... <3"
+>}}
 
 ### Salad
 
 I usually ordered the unlimited house salad, which was always very tasty. My only complaint is that the lettuce wasn't always uniform with respect to piece shape and size. Sometimes, huge chunks of thick lettuce stalks were in the salad bowl, which clearly didn't seem right.
 
-![Soon after ordering, my salad and breadsticks were delivered to my table][pic-08]
+{{< image
+    src="images/IMG_20181118_152239.jpg"
+    caption="Soon after ordering, my salad and breadsticks were delivered to my table"
+>}}
 
 One time, a few friends from the rowing team came to eat with me. One guy decided to take a big bite out of a banana pepper from the salad. It ended up exploding when he bit down, spraying pepper juices all over the table and on me. I smelled like peppers the rest of the night, but I'm still glad he came with.
 
@@ -97,13 +119,19 @@ Rarely did I stray from the classic Olive Garden salad, but when I did, I ordere
 
 Finally, we come to the pasta. This part of the meal never disappointed me. My angel hair pasta noodles, with meat sauce and fried shrimp were always wonderful! The first serving of pasta is always huge, making it hard to finish after eating salad and breadsticks.
 
-![An order of angel hair pasta, with meat sauce and fried chicken strips][pic-10]
+{{< image
+    src="images/IMG_20181118_153041.jpg"
+    caption="An order of angel hair pasta, with meat sauce and fried chicken strips"
+>}}
 
 At first, I tried to get the most value out of the Pasta Pass as I could, so I ate all of the first round of pasta, then ordered a free refill. The refill wasn't as big as the initial round, but still decent sized. All this food usually left me feeling like I had eaten too much. But, I was getting my money's worth!!
 
 After maybe half a dozen meals, I decided that I didn't need to over eat and stuff myself. From this point forward, I usually never ordered seconds, and if I did, I got them to go for later meals.
 
-![After eating the first round, a smaller second round was sometimes ordered][pic-13]
+{{< image
+    src="images/IMG_20181118_154109.jpg"
+    caption="After eating the first round, a smaller second round was sometimes ordered"
+>}}
 
 
 ## Money Saved
@@ -123,7 +151,10 @@ I think people naturally ask about the first one, but perhaps the more appropria
 
 *In the following sections I will investigate the two questions and show that, indeed, I came out on top in both.*
 
-![My mouthwatering pasta meal ready to be devoured][pic-12]
+{{< image
+    src="images/IMG_20181118_153208.jpg"
+    caption="My mouthwatering pasta meal ready to be devoured"
+>}}
 
 #### Base Numbers
 
@@ -209,7 +240,10 @@ So, the question is: can I buy all the ingredients and cook the equivalent meal 
 
 **In summary, buying the Pasta Pass and eating at Olive Garden instead of going to the grocery store for eight weeks saved me more than $50.**
 
-![An empty Olive Garden][pic-14]
+{{< image
+    src="images/IMG_20181118_155509.jpg"
+    caption="An empty Olive Garden"
+>}}
 
 ## Summary
 
@@ -221,7 +255,10 @@ For 25 trips, the total time cost is about 1,000 minutes or almost 17 hours. To 
 
 In terms of gas cost, my moped is pretty efficient, averaging almost 50 miles per gallon. For the 25 trips, I traveled a total of 300 miles and burned about 6 gallons of gas. At $3 per gallon, this is almost $20 of gas!
 
-![Heading home at night from Olive Garden after a filling meal][pic-03]
+{{< image
+    src="images/IMG_20181023_185546.jpg"
+    caption="Heading home at night from Olive Garden after a filling meal"
+>}}
 
 ### Worth It?
 
@@ -235,7 +272,10 @@ But, I must say, I'm done with Olive Garden for a while. I simply don't think my
 
 We'll have to see if I buy the Pasta Pass again next year. Until then, I think I'll stay away from Olive Garden. I'm all pastaed out. :)
 
-![Thanks, Olive Garden, for the memories!][pic-05]
+{{< image
+    src="images/IMG_20181118_151004.jpg"
+    caption="Thanks, Olive Garden, for the memories!"
+>}}
 
 ---
 
@@ -243,32 +283,4 @@ We'll have to see if I buy the Pasta Pass again next year. Until then, I think I
 
 If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.
 
-{% mailchimpform %}
-
-[pic-01]: /assets/images/pastapass/IMG_20180823_133353.jpg
-[pic-02]: /assets/images/pastapass/IMG_20180924_114524.jpg
-[pic-03]: /assets/images/pastapass/IMG_20181023_185546.jpg
-[pic-04]: /assets/images/pastapass/IMG_20181118_150900.jpg
-[pic-05]: /assets/images/pastapass/IMG_20181118_151004.jpg
-[pic-06]: /assets/images/pastapass/IMG_20181118_151815.jpg
-[pic-07]: /assets/images/pastapass/IMG_20181118_152117.jpg
-[pic-08]: /assets/images/pastapass/IMG_20181118_152239.jpg
-[pic-09]: /assets/images/pastapass/IMG_20181118_152915.jpg
-[pic-10]: /assets/images/pastapass/IMG_20181118_153041.jpg
-[pic-11]: /assets/images/pastapass/IMG_20181118_153201.jpg
-[pic-12]: /assets/images/pastapass/IMG_20181118_153208.jpg
-[pic-13]: /assets/images/pastapass/IMG_20181118_154109.jpg
-[pic-14]: /assets/images/pastapass/IMG_20181118_155509.jpg
-[pic-15]: /assets/images/pastapass/IMG_20181118_155520.jpg
-[pic-16]: /assets/images/pastapass/IMG_20181118_155548.jpg
-[pic-17]: /assets/images/pastapass/IMG_20181121_203806.jpg
-[pic-18]: /assets/images/pastapass/IMG_20181121_203820.jpg
-[pic-19]: /assets/images/pastapass/IMG_20181121_203842.jpg
-[pic-20]: /assets/images/pastapass/IMG_20181121_203848.jpg
-[pic-21]: /assets/images/pastapass/IMG_20181121_203858.jpg
-[pic-22]: /assets/images/pastapass/IMG_20181121_203933.jpg
-[pic-23]: /assets/images/pastapass/IMG_20181121_203956.jpg
-[pic-24]: /assets/images/pastapass/IMG_20181121_204004.jpg
-[pic-25]: /assets/images/pastapass/IMG_20181121_204023.jpg
-[pic-26]: /assets/images/pastapass/IMG_20181121_204054.jpg
-[pic-27]: /assets/images/pastapass/IMG_20181121_204054_01.jpg
+{{< mailchimpform >}}
