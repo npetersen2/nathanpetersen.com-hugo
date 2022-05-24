@@ -5,6 +5,8 @@ categories: ["Reviews"]
 cover: "images/cover.jpg"
 description: "Great deal on 10cm x 10cm two layer PCBs"
 date: 2018-09-05 06:30:00
+aliases:
+    - /2018/09/05/1-dollar-pcbs-from-seeed-studio/
 ---
 
 *Did you see!?* Seeed Studio ([seeedstudio.com](https://www.seeedstudio.com/)) is offering for a limited time three (3) copies of a PCB design (up to 10cm x 10cm) **for only $1!**

@@ -5,6 +5,8 @@ categories: ["Projects"]
 description: "Custom electronics and firmware for controlling bang-bang furnaces."
 cover: "images/cover.jpg"
 date: 2020-12-31 15:00:00
+aliases:
+    - /2020/12/31/open-thermo-customizable-thermostat-for-furnace-control/
 ---
 
 **Replace the old thermostat in your living space with a new fully customizable version that allows you to tweak the control algorithms used to keep the temperature comfortable.**

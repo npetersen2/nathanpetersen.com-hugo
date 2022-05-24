@@ -5,6 +5,8 @@ tags: ["internship", "silabs", "summer", "firmware", "digradio", "radio", "austi
 description: "Summary of time spent in ATX interning."
 cover: images/cover.jpg
 date: 2017-09-02 00:00:00
+aliases:
+    - /2017/09/02/interning-at-silicon-labs/
 ---
 
 Well, thus concludes my summer at Silicon Labs, and boy was it great. From learning about digital radio technology, to learning about bootloaders and embedded system design, to working with a dynamic group of developers, to going to the CEO's house for dinner, to multiple company dinners at fabulous restaurants in downtown Austin, I really enjoyed the experience and learned a lot. I am writing this post to document my memories, plus to shed some light on interning at Silicon Labs for future college students that might be applying there.

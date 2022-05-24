@@ -1,5 +1,5 @@
 ---
-title: "Optimizing for Workloads: Linux Spinlocks vs. Mutexes"
+title: "Optimizing for Workloads: Linux Spinlocks vs Mutexes"
 tags: ["data", "school", "programming", "analysis", "linux", "systems", "operating-systems", "synchronization", "locks", "spinlock", "mutex"]
 description: "Analysis of synchronization primitive implementation for high performance applications."
 categories: ["Projects"]

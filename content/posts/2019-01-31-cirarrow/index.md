@@ -5,6 +5,8 @@ categories: ["Projects"]
 description: "Tool which calculates points for defining circular arrows."
 cover: "images/cover.jpg"
 date: 2019-01-31 14:18:00
+aliases:
+  - /2019/01/31/cirarrow/
 ---
 
 {{< rawhtml >}}

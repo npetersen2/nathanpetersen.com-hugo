@@ -5,6 +5,8 @@ categories: ["Tutorials"]
 summary: "Tutorial covering embedded system layers and firmware design (FPGA + DSP) for driving LEDs."
 cover: "images/cover.jpg"
 date: 2020-07-17 15:00:00
+aliases:
+    - /2020/07/17/designing-firmware-driver-for-serially-addressable-leds-xilinx-zynq-7000/
 ---
 
 **Ever wondered how to control serially-addressable LEDs using the Xilinx Zynq-7000 system-on-chip? Well, this tutorial is for you!**

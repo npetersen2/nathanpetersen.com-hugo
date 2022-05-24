@@ -5,6 +5,8 @@ categories: ["Food"]
 cover: "images/cover.jpg"
 description: "Giant stuffed french toast which will satisfy anyone."
 date: 2019-04-27 17:00:00
+aliases:
+    - /2019/04/27/stuffed-challah-french-toast-sabrinas-cafe-phil-pa/
 ---
 
 ![Stuffed challah french toast from Sabrina's Cafe][img3]
