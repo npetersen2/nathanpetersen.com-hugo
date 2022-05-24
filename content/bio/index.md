@@ -18,7 +18,7 @@ To achieve high performance control of electric machines, cross-domain knowledge
 
 ## Experience
 
-{{< expand tag="h3" text="Graduate" expanded="true" >}}
+{{< expand tag="h3" text="Graduate" expanded=true >}}
 
 {{< experience 
     name="Severson Research Group"
@@ -49,7 +49,7 @@ To achieve high performance control of electric machines, cross-domain knowledge
 
 {{< /expand >}}
 
-{{< expand tag="h3" text="Undergraduate" expanded="false" >}}
+{{< expand tag="h3" text="Undergraduate" expanded=false >}}
 
 {{< experience 
     name="Silicon Labs"

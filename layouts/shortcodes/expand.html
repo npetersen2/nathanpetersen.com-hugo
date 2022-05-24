@@ -1,27 +1,83 @@
 <div class="expand">
     <div class="expand-label" style="cursor: pointer;" onclick="
         var hIcon = this.children[0].children[0];
+        var hInstructionExpand = this.children[0].children[1];
+        var hInstructionHide = this.children[0].children[2];
+        var hIcon = this.children[0].children[0];
         var hContent = this.nextElementSibling;
 
         if (hContent.style.display === 'none') {
             hContent.style.display = 'block';
+            hInstructionExpand.style.display = 'none';
+            hInstructionHide.style.display = 'inline';
             hIcon.classList.add('fa-chevron-down');
             hIcon.classList.remove('fa-chevron-right');
         } else {
             hContent.style.display = 'none';
+            hInstructionExpand.style.display = 'inline';
+            hInstructionHide.style.display = 'none';
             hIcon.classList.remove('fa-chevron-down');
             hIcon.classList.add('fa-chevron-right');
         }
         ">
-        {{ if eq (.Get "tag") "h1" }}<h1><i {{ if eq (.Get "expanded") "false" }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>{{ .Get "text" }}</h1>{{ end }}
-        {{ if eq (.Get "tag") "h2" }}<h2><i {{ if eq (.Get "expanded") "false" }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>{{ .Get "text" }}</h2>{{ end }}
-        {{ if eq (.Get "tag") "h3" }}<h3><i {{ if eq (.Get "expanded") "false" }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>{{ .Get "text" }}</h3>{{ end }}
-        {{ if eq (.Get "tag") "h4" }}<h4><i {{ if eq (.Get "expanded") "false" }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>{{ .Get "text" }}</h4>{{ end }}
-        {{ if eq (.Get "tag") "h5" }}<h5><i {{ if eq (.Get "expanded") "false" }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>{{ .Get "text" }}</h5>{{ end }}
-        {{ if eq (.Get "tag") "h6" }}<h6><i {{ if eq (.Get "expanded") "false" }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>{{ .Get "text" }}</h6>{{ end }}
+
+        {{ if eq (.Get "tag") "h1" }}
+            <h1>
+                <i {{ if eq (.Get "expanded") false }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>
+                {{ .Get "text" }}
+                <span class="instructions" {{ if eq (.Get "expanded") false }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to expand section)</span>
+                <span class="instructions" {{ if eq (.Get "expanded") true }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to hide section)</span>
+            </h1>
+        {{ end }}
+
+        {{ if eq (.Get "tag") "h2" }}
+            <h2>
+                <i {{ if eq (.Get "expanded") false }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>
+                {{ .Get "text" }}
+                <span class="instructions" {{ if eq (.Get "expanded") false }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to expand section)</span>
+                <span class="instructions" {{ if eq (.Get "expanded") true }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to hide section)</span>
+            </h2>
+        {{ end }}
+
+        {{ if eq (.Get "tag") "h3" }}
+            <h3>
+                <i {{ if eq (.Get "expanded") false }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>
+                {{ .Get "text" }}
+                <span class="instructions" {{ if eq (.Get "expanded") false }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to expand section)</span>
+                <span class="instructions" {{ if eq (.Get "expanded") true }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to hide section)</span>
+            </h3>
+        {{ end }}
+
+        {{ if eq (.Get "tag") "h4" }}
+            <h4>
+                <i {{ if eq (.Get "expanded") false }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>
+                {{ .Get "text" }}
+                <span class="instructions" {{ if eq (.Get "expanded") false }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to expand section)</span>
+                <span class="instructions" {{ if eq (.Get "expanded") true }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to hide section)</span>
+            </h4>
+        {{ end }}
+
+        {{ if eq (.Get "tag") "h5" }}
+            <h5>
+                <i {{ if eq (.Get "expanded") false }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>
+                {{ .Get "text" }}
+                <span class="instructions" {{ if eq (.Get "expanded") false }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to expand section)</span>
+                <span class="instructions" {{ if eq (.Get "expanded") true }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to hide section)</span>
+            </h5>
+        {{ end }}
+
+        {{ if eq (.Get "tag") "h6" }}
+            <h6>
+                <i {{ if eq (.Get "expanded") false }}class="fas fa-chevron-right"{{else}}class="fas fa-chevron-down"{{end}} style="padding-right:0.5em;"></i>
+                {{ .Get "text" }}
+                <span class="instructions" {{ if eq (.Get "expanded") false }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to expand section)</span>
+                <span class="instructions" {{ if eq (.Get "expanded") true }}style="display:inline;"{{else}}style="display:none;"{{end}}>(click to hide section)</span>
+            </h6>
+        {{ end }}
+
     </div>
 
-    {{ if eq (.Get "expanded") "false" }}
+    {{ if eq (.Get "expanded") false }}
     <div class="expand-content" style="display: none;">
     {{else}}
     <div class="expand-content" style="display: block;">
