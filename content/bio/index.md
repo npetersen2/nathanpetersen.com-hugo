@@ -6,7 +6,7 @@ math:
 
 {{< img-float-right src="/images/nathan.jpg" width="190px" padding-left="1em" padding-bottom="0" padding-top="0.75em" >}}
 
-Nathan is a graduate student at the University of Wisconsin — Madison, pursuing a PhD in Electrical Engineering as part of WEMPEC. His PhD research focuses on control of electric machines, specifically targetting magnetically levitated motor systems such as bearingless motors.
+Nathan is a graduate student at the University of Wisconsin–Madison, pursuing a PhD in Electrical Engineering as part of WEMPEC. His PhD research focuses on control of electric machines, specifically targetting magnetically levitated motor systems such as bearingless motors.
 
 For his MS research project, Nathan designed and built the Advanced Motor Drive Controller (AMDC) Platform, which is a collection of open-source hardware and software for controlling advanced electric machines. Check it out at [amdc.dev](https://amdc.dev/) or read the docs at [docs.amdc.dev](https://docs.amdc.dev/).
 
@@ -35,7 +35,7 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
     image="images/wempec-logo.png"
     website_text="severson.wempec.wisc.edu"
     website_url="https://severson.wempec.wisc.edu/"
-    date="January 2020 — Present"
+    date="January 2020 – Present"
     desc="Research focuses on advanced high-performance control of maglev motor systems. Specific interests include control applied to bearingless motors: current regulation, state observers, self-sensing control techniques to estimate rotor eccentricity."
 />}}
 
@@ -53,7 +53,7 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
     image="images/beta-logo.svg"
     website_text="beta.team"
     website_url="https://beta.team/"
-    date="February — December 2019"
+    date="February – December 2019"
     desc="Developed high performance embedded hardware and firmware for inverter running electric aircraft propulsion unit. Implemented both traditional and sensorless control techniques for novel PMSM."
 />}}
 
@@ -64,7 +64,7 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
     image="images/wempec-logo.png"
     website_text="severson.wempec.wisc.edu"
     website_url="https://severson.wempec.wisc.edu/"
-    date="January 2018 — July 2019"
+    date="January 2018 – July 2019"
     desc="Designed and developed open-source source hardware / firmware for academic research motor drives. Worked on team to develop electric machine modeling framework for machine design and optimization."
 />}}
 
@@ -82,7 +82,7 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
     image="images/wisc-logo.png"
     website_text="csl.cs.wisc.edu"
     website_url="https://csl.cs.wisc.edu/"
-    date="March 2016 — September 2018"
+    date="March 2016 – September 2018"
     desc="Worked with other students and full-time staff to create modern web apps for internal and external use. Led initial CSL usage of modern JavaScript frameworks (e.g. EmberJS) to allow modular design and easy extensibility."
 />}}
 

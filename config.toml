@@ -95,7 +95,7 @@ languageName = "English"
       subtitle = "Research of control methods for magnetically levitated motors."
       typeit = false
       social = true
-      disclaimer = "Nathan is currently pursuing a PhD at the <a href='https://www.wisc.edu/'>University of Wisconsin-Madison</a> studying <a href='https://engineering.wisc.edu/departments/electrical-computer-engineering/'>Electrical Engineering</a> with emphasis on control of electric machines. He is a student member of the <a href='https://wempec.wisc.edu/'>Wisconsin Electric Machines and Power Electronics Consortium (WEMPEC)</a>."
+      disclaimer = "Nathan is currently pursuing a PhD at the <a href='https://www.wisc.edu/'>University of Wisconsin–Madison</a> studying <a href='https://engineering.wisc.edu/departments/electrical-computer-engineering/'>Electrical Engineering</a> with emphasis on control of electric machines. He is a student member of the <a href='https://wempec.wisc.edu/'>Wisconsin Electric Machines and Power Electronics Consortium (WEMPEC)</a>."
     
     # Home page posts
     [params.home.posts]
