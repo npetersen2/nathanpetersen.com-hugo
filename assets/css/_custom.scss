@@ -26,6 +26,15 @@ header .logo {
     height: 1.2em;
 }
 
+footer {
+    height: auto;
+    padding: 0;
+}
+
+div.footer-line {
+    padding: 0.5em 0;
+}
+
 div.footer-line a {
     color: $global-link-color;
 }
