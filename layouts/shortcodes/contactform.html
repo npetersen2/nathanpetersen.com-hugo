@@ -1,0 +1,144 @@
+<!-- This contact form can only be included ONCE per page! -->
+
+<style>
+
+div.contact-form input,
+div.contact-form textarea {
+    display: block;
+    width: 100%;
+    line-height: 1.5;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+}
+
+</style>
+
+<div class='contact-form'>
+
+<div class='form-group'>
+<label for='contact-email'>Your email address</label>
+<input type='email' class='form-control' id='contact-email' placeholder='Enter email...' />
+</div>
+  
+<div class='form-group'>
+<label for='contact-subject'>Subject</label>
+<input class='form-control' id='contact-subject' placeholder='Enter subject...' />
+</div>
+
+<div class='form-group'>
+<label for='contact-message'>Message</label>
+<textarea class='form-control' id='contact-message' placeholder='Enter message...' rows='6'></textarea>
+</div>
+  
+<p><button id='contact-submit' class='btn btn-primary'>Send Email</button></p>
+  
+<div id='contact-alert' class=''></div>
+  
+</div>
+
+<!-- Website only uses jQuery for this code below... Nathan was too lazy to rewrite in vanilla JS when upgrading the site :) -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+(function($){
+
+// Serverless contact form
+// backed by AWS
+$("button#contact-submit").on("click", function(e) {
+  e.stopPropagation();
+
+  console.log("hello");
+
+  var elEmail = $("input#contact-email");
+  var elSubject = $("input#contact-subject");
+  var elMessage = $("textarea#contact-message");
+  var elButton = $("button#contact-submit");
+
+  // Disable form
+  elEmail.attr("disabled", true);
+  elSubject.attr("disabled", true);
+  elMessage.attr("disabled", true);
+  elButton.attr("disabled", true);
+
+  // Clear alert area
+  $("div#contact-alert").html("");
+  $("div#contact-alert").removeClass();
+
+
+  // Get data from form
+  var formEmail = elEmail.val();
+  var formSubject = elSubject.val();
+  var formMessage = elMessage.val();
+
+  var opt = {
+    email: formEmail,
+    subject: formSubject,
+    message: formMessage
+  };
+
+  var endpoint = "https://g6q09gq3o6.execute-api.us-west-2.amazonaws.com/default/ContactFormLambda";
+
+  // Instantiate our Request
+  var lambdaRequest = new Request(endpoint, {
+    method: 'POST',
+    body: JSON.stringify(opt),
+    mode: 'cors',
+    headers: {
+      'Content-Type' : 'application/json'
+    }
+  });
+
+  // Call the Fetch API to make our request
+  fetch(lambdaRequest)
+    .then(function(response) {
+      // Sucessful submission...
+
+//        console.log(response);
+
+      var t = "";
+      var c = "alert";
+      var needEnable = false;
+
+
+      switch (response.status) {
+        case 500:
+          c += " alert-danger";
+          t = "<strong>Error sending email.</strong><p>Please make sure you entered a valid email and filled out all input fields...</p>";
+          needEnable = true;
+          break;
+
+        case 200:
+          c += " alert-success";
+          t = "<strong>Nathan has successfully received your email!</strong>";
+          break;
+
+      }
+
+
+      if (needEnable) {
+        // Enable form
+        elEmail.attr("disabled", false);
+        elSubject.attr("disabled", false);
+        elMessage.attr("disabled", false);
+        elButton.attr("disabled", false);
+      }
+
+
+      $("div#contact-alert").html(t);
+      $("div#contact-alert").removeClass();
+      $("div#contact-alert").addClass(c);
+    })
+    .catch(function(err) {
+      // Error! Failure on server...
+
+      $("div#contact-alert").html("<strong>Unexpected error!</strong> Please try again later...");
+      $("div#contact-alert").removeClass();
+      $("div#contact-alert").addClass("alert alert-danger");
+    });
+});
+
+})(jQuery);
+
+</script>
