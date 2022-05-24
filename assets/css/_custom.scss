@@ -84,6 +84,7 @@ h4.single-title,
 h5.single-title,
 h6.single-title {
     text-align: left !important;
+    line-height: 1.2;
 }
 
 div.expand span.instructions {
@@ -156,9 +157,22 @@ div.categories-card {
     align-items: flex-start !important;
 }
 
-.card-item {
+.categories-card .card-item {
     margin-top: 0 !important;
     margin-bottom: 2rem !important;
     padding: 0 !important;
     width: 48% !important;
+}
+
+.archive .archive-item {
+    margin-left: 0 !important;
+}
+
+.archive .archive-item-date {
+    min-width: 4em !important;
+    width: auto !important;
+}
+
+.archive .tag-cloud-tags a {
+    margin: 0 10px 10px 0 !important;
 }
