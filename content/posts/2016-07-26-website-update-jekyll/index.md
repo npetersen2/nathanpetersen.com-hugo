@@ -1,6 +1,6 @@
 ---
 title: 'Website Update: Jekyll'
-categories: ["Projects"]
+categories: ["Experiences"]
 tags: ["design", "web", "html", "static-site", "jekyll", "github"]
 description: "Switching from ProcessWire to Jekyll as back-end that runs this website."
 cover: /images/cover.jpg

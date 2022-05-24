@@ -62,7 +62,7 @@ languageName = "English"
 
 [params]
   # site default theme ["auto", "light", "dark"]
-  defaultTheme = "light"
+  defaultTheme = "auto"
 
   dateformat = "January 2, 2006"
 
