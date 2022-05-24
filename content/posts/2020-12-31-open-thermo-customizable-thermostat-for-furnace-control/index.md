@@ -7,15 +7,23 @@ cover: "images/cover.jpg"
 date: 2020-12-31 15:00:00
 aliases:
     - /2020/12/31/open-thermo-customizable-thermostat-for-furnace-control/
+math:
+    enable: true
 ---
 
 **Replace the old thermostat in your living space with a new fully customizable version that allows you to tweak the control algorithms used to keep the temperature comfortable.**
 
 This article details the design of a custom thermostat device for use in simple on/off furnace systems. It is called "OpenThermo" since it has been released as an open-source project (see the [official GitHub project](https://github.com/npetersen2/OpenThermo)).
 
-![OpenThermo fully assembled circuit board.][img01]
+{{< image
+    src="images/img-01.jpg"
+    caption="OpenThermo fully assembled circuit board."
+>}}
 
-![OpenThermo installed on wall in home.][img08]
+{{< image
+    src="images/img-08.jpg"
+    caption="OpenThermo installed on wall in home."
+>}}
 
 ## Introduction
 
@@ -33,7 +41,10 @@ In the case of mechanical thermostats, this rotary motion is used to connect and
 
 It should be noted that bimetallic strips form the backbone of many thermal control systems, not just home thermostats. For example, low-cost ovens rely on this technology to keep the temperature just right for the perfect bake.
 
-![Example mechanical thermostat using the bimetallic strip coil.][mechanical-thermostat]
+{{< image
+    src="images/mechanical-thermostat.jpg"
+    caption="Example mechanical thermostat using the bimetallic strip coil."
+>}}
 
 These mechanical thermostats work well (and use no batteries!), but have several drawbacks:
 
@@ -49,7 +60,10 @@ To overcome the drawbacks of the venerable mechanical thermostat, a digital vers
 
 In the case of my house's mechanical thermostat, the following commercially available alternatives offer equivalent _functionality_: single stage, heat only, non-programmable, digital display thermostats.
 
-![Alternative thermostats which can be purchased.][alternatives]
+{{< image
+    src="images/alternatives.png"
+    caption="Alternative thermostats which can be purchased."
+>}}
 
 - $17.25 -- [Emerson NP110 Thermostat](https://www.amazon.com/Emerson-NP110-Non-Programmable-Single-Thermostat/dp/B016KKDSSE/)
 - $17.50 -- [Global Industrial Thermostat](https://www.globalindustrial.com/p/hvac/controls/thermostats/non-programmable-thermostat-24v-heat-or-cool-only)
@@ -76,7 +90,10 @@ All the circuitry was custom designed in Altium Designer on a Saturday afternoon
 
 ### Circuit Design
 
-![Core of the schematic diagram for OpenThermo showing the core MCU and I/O.][sch01]
+{{< image
+    src="images/sch01.png"
+    caption="Core of the schematic diagram for OpenThermo showing the core MCU and I/O."
+>}}
 
 #### Microcontroller
 
@@ -96,7 +113,10 @@ The circuitry to do this is simple: an [optoisolator (or optocoupler)](https://e
 
 The user interface was kept minimal. Three [7-segment LED modules](https://www.vishay.com/docs/84196/vdmx10x0.pdf) are used to show the current temperature, as well as the set-point and the percentage time the heat has been on. A potentiometer slider is used as the main interface for setting the temperature set-point. Finally, a single LED illuminates when the heat is on to visually show the device functionality.
 
-![7-segment LED modules with daisy-chain constant-current drivers.][sch02]
+{{< image
+    src="images/sch02.png"
+    caption="7-segment LED modules with daisy-chain constant-current drivers."
+>}}
 
 Each 7-segment LED module is operated using the [STP08DP05](https://www.st.com/resource/en/datasheet/stp08dp05.pdf), an eight-channel constant-current LED driver. These devices appear as a SPI-like device and can be daisy-chained to work like one big shift register. The 24 bits of output LED state are loaded into the devices using a serial interface composed of one clock and one data signal. Then, the latch signal is asserted so that the output mirrors the internal data. The LED drivers have an output enable pin which is used to control the brightness of the 7-segment modules using pulse-width modulation (PWM). Using this approach, all 24 LED segments (plus brightness) are controlled using four MCU pins.
 
@@ -104,7 +124,10 @@ The user adjusts the input slider to set the desired temperature. Fundamentally,
 
 #### Power Supply
 
-![AA batteries connected in series with LDO to form 3.3V voltage rail.][sch03]
+{{< image
+    src="images/sch03.png"
+    caption="AA batteries connected in series with LDO to form 3.3V voltage rail."
+>}}
 
 The device is powered via four AA batteries to form a 6V DC supply. The direct sum battery voltage is used by the LED drivers to power the 7-segment LED modules. A 3.3V low-dropout (LDO) regulator is used to power the MCU and temperature sensor. A scaled version of the battery voltage is provided to the MCU ADC for monitoring the batteries' state of charge.
 
@@ -114,8 +137,15 @@ The OpenThermo PCB design was made to be the same footprint as the built-in mech
 
 [See the complete Bill of Materials (BOM) for the OpenThermo...](https://github.com/npetersen2/OpenThermo/blob/main/hardware/REV20201004A/BOM.csv)
 
-![CAD rendering of front side of OpenThermo PCB.][pcb-rendering-front]
-![CAD rendering of back side of OpenThermo PCB.][pcb-rendering-back]
+{{< image
+    src="images/PCB_3D_top.png"
+    caption="CAD rendering of front side of OpenThermo PCB."
+>}}
+
+{{< image
+    src="images/PCB_3D_bottom.png"
+    caption="CAD rendering of back side of OpenThermo PCB."
+>}}
 
 #### PCB Assembly
 
@@ -123,8 +153,15 @@ After completing the hardware design, I ordered the board blanks from [PCBWay.co
 
 After everything arrived, I used my hot air rework station to put together the surface mount components and soldering iron to add the through hole devices. This went without issue as all footprints were the correct size.
 
-![Assembled top side of board.][img06]
-![AA batteries mounted on rear of board.][img04]
+{{< image
+    src="images/img-06.jpg"
+    caption="Assembled top side of board."
+>}}
+
+{{< image
+    src="images/img-04.jpg"
+    caption="AA batteries mounted on rear of board."
+>}}
 
 ## Firmware
 
@@ -155,7 +192,10 @@ In the case of the thermostat, this is typically defined as a hysteresis band: e
 
 ### UI Management
 
-![OpenThermo in action showing ambient temperature of 70.4 degrees.][img07]
+{{< image
+    src="images/img-07.jpg"
+    caption="OpenThermo in action showing ambient temperature of 70.4 degrees."
+>}}
 
 The UI has three states:
 1. Boot -- Displays the welcome screen while the system initializes
@@ -178,29 +218,33 @@ The firmware uses low-pass filters (LPF) on nearly all signals, all of which are
 
 All filters in the code implement simple, first-order [infinite impulse response (IIR)](https://en.wikipedia.org/wiki/Infinite_impulse_response) low-pass filters (LPF). The difference equation for the filter is given by
 
-{% math %}
-
+$$
 y[k] = A y[k-1] + x[k] (1-A)
+$$
 
-{% endmath %}
-
-where {% math %} A = \exp(-2 \pi f_b T) {% endmath %}, {% math %}T{% endmath %} is the sample rate, and {% math %}f_b{% endmath %} is the desired bandwidth in Hz. Intuition tells us that this difference equation makes sense: for each output time step, this takes a portion of the previous output and (1-portion) of the current input. Thus, the closer to 1.0 the constant {% math %}A{% endmath %} becomes, the slower the response.
+where $ A = \exp(-2 \pi f_b T) $, $T$ is the sample rate, and $f_b$ is the desired bandwidth in Hz. Intuition tells us that this difference equation makes sense: for each output time step, this takes a portion of the previous output and (1-portion) of the current input. Thus, the closer to 1.0 the constant $A$ becomes, the slower the response.
 
 Converting the difference equation to the z-domain results in the following transfer function
 
-{% math %}
-
+$$
 \frac{Y(z)}{X(z)} = \frac{1-A}{1-Az^{-1}}.
+$$
 
-{% endmath %}
+When the sample time $T = 1$ second and $1/f_b = 4$ hours, then $A = 0.9996$ and the following is the filter step response to unit step input.
 
-When the sample time {% math %}T = 1{% endmath %} second and {% math %}1/f_b = 4{% endmath %} hours, then {% math %}A = 0.9996{% endmath %} and the following is the filter step response to unit step input.
-
-![Filter step response to unit step input.][plot2]
+{{< figure
+    src="images/plot2.svg"
+    caption="Filter step response to unit step input."
+    class="image"
+>}}
 
 This same filter is used to convert the pulse-width modulated furnace on signal into the percent of heat on time. In the firmware, the on signal is a simple step function between 0 and 100. This is filtered using the above difference equation and tuning. The resulting waveforms are shown below when the furnace cycle time is 15 minutes and the duty ratio is 35%.
 
-![Filtered percent heat on resulting from low-pass filter.][plot3]
+{{< figure
+    src="images/plot3.svg"
+    caption="Filtered percent heat on resulting from low-pass filter."
+    class="image"
+>}}
 
 Notice that in steady-state, the output fluctuation is about +/- 5%. Furthermore, it takes the filter about 2 hours to stabilize the output to the given input.
 
@@ -219,7 +263,11 @@ After using OpenThermo for a while, I found that the percentage of heat on time 
 
 Obviously, the percentage of heat on time is related to the insulation efficiency of the home. I noticed that small changes in set-point resulted in large changes in percent heat on. This prompted me to run an experiment to try and characterize the home insulation effectiveness. In this experiment, I initially cooled off the house. Then, the heat turned on full blast and I recorded the temperature for 45 minutes. The resulting plot is shown below. Interestingly, saturation occurred around 70°F. This helps inform smart thermostat usage by putting the set-point in an efficient zone: at or below 70°F.
 
-![45 minutes of continuous heat on. Outdoor weather: 31°F, 3 mph winds.][plot1]
+{{< figure
+    src="images/plot1.svg"
+    caption="45 minutes of continuous heat on. Outdoor weather: 31°F, 3 mph winds."
+    class="image"
+>}}
 
 ### Updates After Winter
 
@@ -240,7 +288,11 @@ Note that the above findings are outside the scope of OpenThermo; any responsive
 
 Since the outdoor temperature seemed to have the most significant impact on the heat on percentage, I decided to collect data to observe the trend in more detail. For many months throughout the winter, each morning, I wrote down the outdoor temperature and the heat on percentage. The set-point was always at 70F. I only recorded data on the "normal" days when the oven hadn't been on and the sun hadn't been up for too long. Ideally, I recorded the data at 7am to 8am after just waking up. Since the heat on percentage bounces around due to the low-pass filtering (see above section), I always recorded the **maximum** value, right after the heat turned off. Below is the final plot of the data:
 
-<img style="width:100%" alt="Daily data relating outdoor temperature to heat on percentage. Linear curve fit and 95% prediction interval are shown." src="/assets/images/openthermo_v1/plot_temp_vs_heat_on.svg" />
+{{< figure
+    src="images/plot_temp_vs_heat_on.svg"
+    caption="Daily data relating outdoor temperature to heat on percentage. Linear curve fit and 95% prediction interval are shown."
+    class="image"
+>}}
 
 An interesting trends emerges! The data effectively trends linearly (R² value is close to 1), meaning that there is a direct relation between outdoor temperature and heat on percent. At 0% heat on, the expected outdoor temperature is between 55F and 70F -- this agrees fairly well to the set-point of 70F. At 100% heat on, the outdoor temperature is between -20F and -40F -- this means that the furnace would not be able to heat the house if it got colder than this range. Overall, it is clear that the percent heat on acts as a fairly good proxy for the outdoor temperature: for example, when it reads 50%, we can expect temperatures between 10F and 30F.
 
@@ -268,9 +320,20 @@ I plan on designing v2 of the OpenThermo hardware and firmware. Here's the poten
 
 ## Pictures
 
-![Assembled front view of OpenThermo][img02]
-![PCB after assembly.][img03]
-![OpenThermo v1 assembled PCB.][img05]
+{{< image
+    src="images/img-02.jpg"
+    caption="Assembled front view of OpenThermo"
+>}}
+
+{{< image
+    src="images/img-03.jpg"
+    caption="PCB after assembly."
+>}}
+
+{{< image
+    src="images/img-05.jpg"
+    caption="OpenThermo v1 assembled PCB."
+>}}
 
 ---
 
@@ -278,29 +341,4 @@ I plan on designing v2 of the OpenThermo hardware and firmware. Here's the poten
 
 If you read this far, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.
 
-{% mailchimpform %}
-
-
-[img01]: /assets/images/openthermo_v1/img-01.jpg
-[img02]: /assets/images/openthermo_v1/img-02.jpg
-[img03]: /assets/images/openthermo_v1/img-03.jpg
-[img04]: /assets/images/openthermo_v1/img-04.jpg
-[img05]: /assets/images/openthermo_v1/img-05.jpg
-[img06]: /assets/images/openthermo_v1/img-06.jpg
-[img07]: /assets/images/openthermo_v1/img-07.jpg
-[img08]: /assets/images/openthermo_v1/img-08.jpg
-
-[sch01]: /assets/images/openthermo_v1/sch01.png
-[sch02]: /assets/images/openthermo_v1/sch02.png
-[sch03]: /assets/images/openthermo_v1/sch03.png
-
-[pcb-rendering-front]: /assets/images/openthermo_v1/PCB_3D_top.png
-[pcb-rendering-back]: /assets/images/openthermo_v1/PCB_3D_bottom.png
-
-[plot1]: /assets/images/openthermo_v1/plot1.svg
-[plot2]: /assets/images/openthermo_v1/plot2.svg
-[plot3]: /assets/images/openthermo_v1/plot3.svg
-[plot_temp_vs_heat_on]: /assets/images/openthermo_v1/plot_temp_vs_heat_on.svg
-
-[alternatives]: /assets/images/openthermo_v1/alternatives.png
-[mechanical-thermostat]: /assets/images/openthermo_v1/mechanical-thermostat.jpg
+{{< mailchimpform >}}

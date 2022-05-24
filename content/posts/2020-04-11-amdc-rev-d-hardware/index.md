@@ -7,7 +7,10 @@ cover: "images/cover.jpg"
 date: 2020-04-11 14:25:00
 ---
 
-![Advanced Motor Drive Controller, Revision D fully assembled][img1]
+{{< image
+    src="images/amdc-001.jpg"
+    caption="Advanced Motor Drive Controller, Revision D fully assembled"
+>}}
 
 _The fourth hardware design revision (REV D) of the Advanced Motor Drive Controller (AMDC) from the [Severson Research Group](https://severson.wempec.wisc.edu/) marks a huge step improvement in quality of design, physical size reduction, and functionality compared to previous designs._
 
@@ -41,7 +44,7 @@ However, the AMDC is not designed for simple control applications... It is desig
 
 The entire AMDC platform has been open-source since its conception, with all hardware design files and software publicly available on GitHub for free usage.
 
-Because of the amount of schematics for this design, I won't go through them on this blog post, but instead, refer the reader to browse through them themselves — [download them here](https://github.com/Severson-Group/AMDC-Hardware/raw/develop/REV20200129D/AMDC_v4_sch.pdf).
+Because of the amount of schematics for this design, I won't go through them on this blog post, but instead, refer the reader to browse through them themselves — [download them here](https://github.com/Severson-Group/AMDC-Hardware/raw/v1.0.0/REV20200129D/AMDC_v4_sch.pdf).
 
 ### GitHub Repositories
 
@@ -49,21 +52,34 @@ Hardware: [https://github.com/Severson-Group/AMDC-Hardware/](https://github.com/
 
 Firmware: [https://github.com/Severson-Group/AMDC-Firmware/](https://github.com/Severson-Group/AMDC-Firmware)
 
-![6-layer, 6" x 6.75" PCB design (no polygon pours shown)][img7]
+{{< image
+    src="images/amdc-pcb.jpg"
+    caption="6-layer, 6in x 6.75in PCB design (no polygon pours shown)"
+>}}
 
 ## Pictures
 
-![Top view of AMDC REV D][img2]
-![Bottom view of AMDC REV D][img3]
-![Side view of AMDC REV D][img4]
-![Detailed view of AMDC REV D][img5]
-![Detailed view of AMDC REV D][img6]
+{{< image
+    src="images/amdc-002.jpg"
+    caption="Top view of AMDC REV D"
+>}}
 
+{{< image
+    src="images/amdc-003.jpg"
+    caption="Bottom view of AMDC REV D"
+>}}
 
-[img1]: /assets/images/amdc-rev-d/amdc-001.jpg
-[img2]: /assets/images/amdc-rev-d/amdc-002.jpg
-[img3]: /assets/images/amdc-rev-d/amdc-003.jpg
-[img4]: /assets/images/amdc-rev-d/amdc-004.jpg
-[img5]: /assets/images/amdc-rev-d/amdc-005.jpg
-[img6]: /assets/images/amdc-rev-d/amdc-006.jpg
-[img7]: /assets/images/amdc-rev-d/amdc-pcb.jpg
+{{< image
+    src="images/amdc-004.jpg"
+    caption="Side view of AMDC REV D"
+>}}
+
+{{< image
+    src="images/amdc-005.jpg"
+    caption="Detailed view of AMDC REV D"
+>}}
+
+{{< image
+    src="images/amdc-006.jpg"
+    caption="Detailed view of AMDC REV D"
+>}}

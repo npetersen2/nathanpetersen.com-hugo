@@ -15,7 +15,7 @@ This tutorial discusses the various embedded system layers which exist within th
 
 ## Introduction
 
-Over the past few years, I have been developing an open-source control platform (both [hardware](https://github.com/Severson-Group/AMDC-Hardware) and [firmware](https://github.com/Severson-Group/AMDC-Firmware)) for research motor drives at the University of Wisconsin -- Madison. I have written about the hardware a [few](https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/) [times](https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/) on this blog, but never the firmware. That is, until now.
+Over the past few years, I have been developing an open-source control platform (both [hardware](https://github.com/Severson-Group/AMDC-Hardware) and [firmware](https://github.com/Severson-Group/AMDC-Firmware)) for research motor drives at the University of Wisconsin -- Madison. I have written about the hardware a [few](/2020/04/11/amdc-rev-d-hardware/) [times](/2018/09/05/amdc-advanced-motor-drive-controller/) on this blog, but never the firmware. That is, until now.
 
 The control platform's latest hardware design includes a set of four RGB LEDs. The purpose of these LEDs is to give the user the ability to easily show status information from their motor control algorithms in real-time (e.g. solid green means working, flashing red means warning, etc). During the hardware design, the specific LED type needed to be identified; serially-addressable LEDs were chosen due to the benefits described in the next section.
 
@@ -23,11 +23,17 @@ The control platform's latest hardware design includes a set of four RGB LEDs. T
 
 Serially-addressable LEDs, sometimes referred to as *individually*-addressable LEDs, are smart. This means that they are not simple discrete parts which illuminate when voltage is applied to them, like normal LEDs. Serially-addressable LEDs consist of both a processor and the discrete LED technology (typically contain three LEDs: red, green, and blue (RGB)). To control the color, the user must toggle the input data pin in such a way that encodes the desired RGB output. The internal processor reads this serial stream of bits and adjusts the LED color outputs accordingly.
 
-![Single WS2811 discrete serially-addressable RGB LED (5mm x 5mm size).][ws2811-diagram]
+{{< image
+    src="images/ws2811-diagram.jpg"
+    caption="Single WS2811 discrete serially-addressable RGB LED (5mm x 5mm size)."
+>}}
 
 While each device consists of both the processor and discrete RGB LEDs, I will commonly refer to the whole unit as a single LED for simplicity. Adafruit coined the term ["NeoPixel"](https://www.adafruit.com/category/168) as a general term for serially-addressable LEDs. However, there are many versions of the venerable device: `WS2811`, `WS2812`, `WS2812B`, `SK6812`, etc. These are commonly sold as strips, but also come as discrete devices; Digi-Key lists [14 different](https://www.digikey.com/short/zmmvpv) discrete devices! The motor drive controller hardware uses the [`IN-PI556FCH`](https://www.digikey.com/product-detail/en/inolux/IN-PI556FCH/1830-1107-1-ND/7604648) serially-addressable LED, but they are all pretty much the same (maybe some  minor timing differences).
 
-![Hundreds of LEDs soldered to flexible PCB to form series strip for single-pin control.][neopixel-strip]
+{{< image
+    src="images/neopixel-strip.jpg"
+    caption="Hundreds of LEDs soldered to flexible PCB to form series strip for single-pin control."
+>}}
 
 The benefit of these "smart" LEDs is that they can be wired together to form long chains by connecting the data output of one LED to the data input of the next. This minimizes the required processor pins needed and allows single-pin control of an arbitrary number of LEDs. For example, the motor drive controller has four RGB LEDs wired in series.
 
@@ -37,7 +43,11 @@ The motor drive controller uses the [Xilinx Zynq-7000](https://www.xilinx.com/pr
 
 What is the Xilinx Zynq-7000 SoC? It is a high-performance device which tightly integrates digital logic fabric (FPGA) with dual-core digital signal processors (DSP). Although it is physically [one device](https://www.digikey.com/short/zbmhmm), it should be considered two devices: FPGA + DSP. These two devices just happen to be within the same physical package -- this is the magic of the _system on chip_. The DSP runs C code while the FPGA implements custom digital circuitry. As seen in the diagram below, interfacing the DSP with the FPGA requires the use of AXI ports. This interface will be discussed in detail below.
 
-![Simplified view of the Zynq-7000 SoC architecture.][zynq-7000-arch]
+{{< figure
+    src="images/zynq-7000-arch.svg"
+    caption="Simplified view of the Zynq-7000 SoC architecture."
+    class="image"
+>}}
 
 
 ## System Layers
@@ -50,7 +60,11 @@ At the lowest level is the physical hardware. Hardware design is typically done 
 
 When designing at the hardware level, consideration must be made to ensure all devices interact correctly with each other. For a reasonably slow (less than 10 MHz) digital interface consisting of a stream of bits, there is only one major concern: the voltage level must match the requirement from each device. The `IN-PI556FCH` serially-addressable LED requires 5V digital logic, so the 1.8V output from the Zynq-7000 FPGA pin must be level shifted to 5V. In addition, a power supply decoupling capacitor is used at each LED. The general hardware block diagram is shown below.
 
-![Block diagram of hardware required for interfacing FPGA to serially-addressable LEDs. Notice the simplicity -- only one FPGA pin is used to control all four LEDs.][hardware-diagram]
+{{< figure
+    src="images/hardware-diagram.svg"
+    caption="Block diagram of hardware required for interfacing FPGA to serially-addressable LEDs. Notice the simplicity -- only one FPGA pin is used to control all four LEDs."
+    class="image"
+>}}
 
 ### FPGA
 
@@ -62,7 +76,12 @@ The FPGA resources can be combined into _blocks / modules_ which can implement c
 
 In order to use this interconnect, FPGA logic blocks must be encapsulated within an *IP block*. [IP](https://www.xilinx.com/products/intellectual-property.html), or Intellectual Property, is the term used to describe libraries of digital circuit design used in the FPGA fabric (note that "IP" is an [industry term](https://en.wikipedia.org/wiki/Semiconductor_intellectual_property_core), not a Xilinx term). These libraries are generally low-level interfaces to high-performance hardware (i.e. Ethernet, DDR4 memory, PCIe, etc) which communicate with the main system processor (DSP) via the AXI interconnect.
 
-![IP blocks interface with the main DSP using the AXI interconnect.][ip-blocks]
+{{< figure
+    src="images/ip-blocks.svg"
+    caption="IP blocks interface with the main DSP using the AXI interconnect."
+    class="image"
+>}}
+
 
 There exist [entire](https://www.zipcores.com/) [companies](https://opencores.org/projects) who design complex IP blocks which users can buy to enhance their applications. Typically, the hardware descriptive language (HDL) which defines their inner workings is closed-source and proprietary. Xilinx also provides a library of IP that is available from within the Vivado integrated design environment (IDE).
 
@@ -120,7 +139,12 @@ led_set_color(0, RED);
 
 The design of the firmware driver will follow the diagram shown below. We only have to create the **red** and **green** blocks (C code driver and FPGA IP block). The user C code and physical hardware are out of the scope of this discussion.
 
-![Full driver block diagram showing flow from user C code to hardware.][driver-design]
+{{< figure
+    src="images/driver-design.svg"
+    caption="Full driver block diagram showing flow from user C code to hardware."
+    class="image"
+>}}
+
 
 #### Steps Per LED Update
 
@@ -141,8 +165,10 @@ Based on these steps, the following sections will go through and design each par
 
 Since this is a tutorial on firmware design, the hardware design is out of scope. However, for completeness, an example of the hardware schematics is shown below. This simply involves connecting the serially-addressable LEDs in series to a pin on the Xilinx Zynq-7000 SoC.
 
-![Schematics from example hardware design showing connection of LEDs.][rgb-leds-sch]
-
+{{< image
+    src="images/rgb-leds-sch.png"
+    caption="Schematics from example hardware design showing connection of LEDs."
+>}}
 
 ### FPGA Design
 
@@ -156,7 +182,10 @@ The AXI interface for the IP block implements a fairly complex synchronous data 
 
 To help the reader grasp the AXI protocol, a comparison is made to the standard [SPI protocol](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface). In the simple SPI protocol, there is a clock line (`SCLK`), data line (`MOSI` and/or `MISO`), and handshaking line (`CS`). The AXI protocol implements these same basic ideas. However, the advantage of the AXI interconnect is that the *width* of the data line is much larger, which allows full 32-bit words to be transferred in one clock cycle -- there are 32 physical wires between each IP block that connect to the AXI bus. Another major difference between SPI and AXI is that AXI includes address lines. This allows multiple IP blocks to share the same physical bus since the master can transmit a specific address to communicate with each IP block individually.
 
-![General AXI bus diagram with multiple masters and slaves. For the Xilinx Zynq-7000 SoC, each slave represents one IP block and each master maps to one DSP.][axi-network-diagram]
+{{< image
+    src="images/axi-network-diagram.png"
+    caption="General AXI bus diagram with multiple masters and slaves. For the Xilinx Zynq-7000 SoC, each slave represents one IP block and each master maps to one DSP."
+>}}
 
 Each IP block must implement the required HDL for implying the digital logic of the AXI transceiver. Since this digital logic is mainly the same between all IP blocks, the Xilinx Vivado IDE includes a graphical wizard which aids the user in building a generic IP block (access this from `Tools` > `Create and Package New IP...`).
 
@@ -164,13 +193,20 @@ Each IP block must implement the required HDL for implying the digital logic of 
 
 Depending on the application, a different variant of the AXI protocol can be used: AXI4-Lite, AXI4-Full, or AXI4-Stream. This tutorial will focus on AXI4-Lite which implements a simple register-based data transfer scheme. In the C code, the user writes / reads from a specific memory address which maps to the IP block. In the HDL, the writes update slave registers within the IP block which can then be accessed for the custom digital logic functionality. The C code can also read from the memory address which sends the IP block slave register values back to the DSP.
 
-![Vivado wizard creating AXI4-Lite IP block with 4 slave registers.][vivado-ip-block-gen]
+{{< image
+    src="images/vivado-ip-block-gen.png"
+    caption="Vivado wizard creating AXI4-Lite IP block with 4 slave registers."
+>}}
 
 Upon generating the IP block, the user must add it to the block diagram in Vivado. The IDE will then offer to automatically connect the new IP block to the AXI bus and DSP. Once this is complete, the IP block is ready for customization.
 
 The following image shows the new IP block in the block diagram. Notice that the left side of the block contains the interface for the AXI bus -- the visible black signals are the common AXI clock and reset lines. The thick blue signal, `S00_AXI`, holds all the data, address, and handshaking lines which compose the physical AXI bus. Finally, notice that there are no other I/Os from this block. At this point, the new IP block is simply a collection of four 32-bit registers that are accessible from the DSP. The next section will address how to customize the IP block with the required LED driver functionality.
 
-![New IP block as seen in Vivado block diagram after connection to AXI interconnect.][vivado-ip-block1]
+{{< image
+    src="images/vivado-ip-block1.png"
+    caption="New IP block as seen in Vivado block diagram after connection to AXI interconnect."
+>}}
+
 
 #### Custom LED Driver Design
 
@@ -180,11 +216,17 @@ According to the [LED datasheet](http://www.inolux-corp.com/datasheet/SMDLED/Add
 
 Since the LEDs communicate using a single data wire (no clock line), specific physical bit patterns are used to encode a logical color data bit (1 or 0). The physical patterns use varying bit widths so that the LEDs can determine the data bit value. All serially-addressable LEDs work like this, but the exact timing varies between manufacturers. The following datasheet excerpt explains how to send a single bit of data to the LEDs.
 
-![LED bit timing diagram with required bit width specifications.][led-bit-timing-diagram]
+{{< image
+    src="images/led-bit-timing-diagram.png"
+    caption="LED bit timing diagram with required bit width specifications."
+>}}
 
 The above diagram shows how to send a single bit to the LEDs. However, the color data is 24 bits long. To send all the color data bits, the FPGA driver should iterate over each bit from the slave registers and create the correct bit pattern, following the above diagrams. The order of the color data bits is presented in the datasheet, with the relevant excerpt shown below.
 
-![LED RGB data format specification.][led-rgb-data-diagram]
+{{< image
+    src="images/led-rgb-data-diagram.png"
+    caption="LED RGB data format specification."
+>}}
 
 Data is transmitted MSB first and in the following order: green then red then blue. After all the color data bits are sent for a single LED, the `RESET` pattern is sent which causes the LED to latch in the bits. From then on, the LED will forward new data bits to the next LED in the sequence.
 
@@ -204,7 +246,7 @@ Once both the AXI bus interface is written (or generated) and the custom HDL mod
 
 The firmware driver is designed such that the C code **does not** have to manually trigger the update event to the LEDs. The driver is "smart" -- when the IP slave registers are updated, this triggers the transmission automatically. The AXI signal `slv_reg_wren` is used to detect the update event.
 
-The full integration code can be read [here](https://github.com/Severson-Group/AMDC-Firmware/blob/develop/ip_repo/amdc_leds_1.0/hdl/amdc_leds_v1_0_S00_AXI.v#L400). Note that the first half of the file contains the AXI transceiver implementation and the second half integrates the AXI slave registers with the custom HDL blocks.
+The full integration code can be read [here](https://github.com/Severson-Group/AMDC-Firmware/blob/v1.0.0/ip_repo/amdc_leds_1.0/hdl/amdc_leds_v1_0_S00_AXI.v#L400). Note that the first half of the file contains the AXI transceiver implementation and the second half integrates the AXI slave registers with the custom HDL blocks.
 
 ### DSP Design
 
@@ -253,9 +295,15 @@ led_set_color(2, BLUE);
 led_set_color(3, WHITE);
 ```
 
-![Static red, green, blue, and white color outputs.][rgb-led-on1]
+{{< image
+    src="images/rgb-led-on1.jpg"
+    caption="Static red, green, blue, and white color outputs."
+>}}
 
-![Combining red, green, and blue to form new colors.][rgb-led-on2]
+{{< image
+    src="images/rgb-led-on2.jpg"
+    caption="Combining red, green, and blue to form new colors."
+>}}
 
 #### Real-Time Animation
 
@@ -280,8 +328,10 @@ void example_callback(void)
 }
 ```
 
-![Toggling RGB LEDs through animation to exercise firmware driver.][rgb-leds-animation]
-
+{{< image
+    src="images/rgb-leds-animation.gif"
+    caption="Toggling RGB LEDs through animation to exercise firmware driver."
+>}}
 
 ## Summary
 
@@ -289,7 +339,7 @@ This tutorial described the different layers of embedded systems, specifically r
 
 #### Working Firmware Links
 
-The code in this tutorial is fairly piecemeal, i.e. the reader cannot directly compile and run it. However, the complete **working** [hardware](https://github.com/Severson-Group/AMDC-Hardware) and [firmware](https://github.com/Severson-Group/AMDC-Firmware) design for this example driver is open-source and available on GitHub. The hardware schematics are available [here](https://github.com/Severson-Group/AMDC-Hardware/blob/develop/REV20200129D/AMDC_v4_sch.pdf) (see page 11 for RGB LEDs). The IP block design can be found [here](https://github.com/Severson-Group/AMDC-Firmware/tree/develop/ip_repo/amdc_leds_1.0) with the custom FPGA HDL blocks located [here](https://github.com/Severson-Group/AMDC-Firmware/tree/develop/ip_repo/amdc_leds_1.0/src). The C driver code for this IP block is located [here](https://github.com/Severson-Group/AMDC-Firmware/blob/develop/sdk/bare/common/drv/led.c).
+The code in this tutorial is fairly piecemeal, i.e. the reader cannot directly compile and run it. However, the complete **working** [hardware](https://github.com/Severson-Group/AMDC-Hardware) and [firmware](https://github.com/Severson-Group/AMDC-Firmware) design for this example driver is open-source and available on GitHub. The hardware schematics are available [here](https://github.com/Severson-Group/AMDC-Hardware/blob/develop/REV20200129D/AMDC_v4_sch.pdf) (see page 11 for RGB LEDs). The IP block design can be found [here](https://github.com/Severson-Group/AMDC-Firmware/tree/v1.0.0/ip_repo/amdc_leds_1.0) with the custom FPGA HDL blocks located [here](https://github.com/Severson-Group/AMDC-Firmware/tree/v1.0.0/ip_repo/amdc_leds_1.0/src). The C driver code for this IP block is located [here](https://github.com/Severson-Group/AMDC-Firmware/blob/v1.0.0/sdk/app_cpu1/common/drv/led.c).
 
 ---
 
@@ -297,24 +347,4 @@ The code in this tutorial is fairly piecemeal, i.e. the reader cannot directly c
 
 If you read this far, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.
 
-{% mailchimpform %}
-
-
-[ws2811-diagram]: /assets/images/ser-led/ws2811-diagram.jpg
-[neopixel-strip]: /assets/images/ser-led/neopixel-strip.jpg
-[amdc-leds-schematic]: /assets/images/ser-led/amdc-leds-schematic.png
-[hardware-diagram]: /assets/images/ser-led/hardware-diagram.svg
-[zynq-7000-arch]: /assets/images/ser-led/zynq-7000-arch.svg
-[ip-blocks]: /assets/images/ser-led/ip-blocks.svg
-[driver-design]: /assets/images/ser-led/driver-design.svg
-[rgb-leds-sch]: /assets/images/ser-led/rgb-leds-sch.png
-[rgb-leds-animation]: /assets/images/ser-led/rgb-leds-animation.gif
-[rgb-led-on1]: /assets/images/ser-led/rgb-led-on1.jpg
-[rgb-led-on2]: /assets/images/ser-led/rgb-led-on2.jpg
-
-[axi-network-diagram]: /assets/images/ser-led/axi-network-diagram.png
-[vivado-ip-block-gen]: /assets/images/ser-led/vivado-ip-block-gen.png
-[vivado-ip-block1]: /assets/images/ser-led/vivado-ip-block1.png
-
-[led-bit-timing-diagram]: /assets/images/ser-led/led-bit-timing-diagram.png
-[led-rgb-data-diagram]: /assets/images/ser-led/led-rgb-data-diagram.png
+{{< mailchimpform >}}
