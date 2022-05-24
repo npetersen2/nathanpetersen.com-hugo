@@ -176,3 +176,42 @@ div.categories-card {
 .archive .tag-cloud-tags a {
     margin: 0 10px 10px 0 !important;
 }
+
+
+
+
+section.education {
+    display: block;
+    clear: both;
+    overflow: hidden;
+    margin: 0 0 1em 0;
+}
+
+section.education div.edu-img {
+    height: 6em;
+    margin-bottom: 1em;
+}
+
+section.education div.edu-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+section.education div.university {
+    display: block;
+    font-size: 140%;
+    margin-bottom: 0.5em;
+}
+
+section.education div.degree {
+}
+
+section.education div.degree div.title {
+}
+
+section.education div.degree div.desc,
+section.education div.degree div.date {
+    font-size: 75%;
+    line-height: 1.8;
+    padding-left: 2em;
+}

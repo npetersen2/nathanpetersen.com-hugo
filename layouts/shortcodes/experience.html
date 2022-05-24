@@ -3,7 +3,21 @@
       <img src='{{ .Get "image" }}' />
     </div>
   
-    <span class="bio-group">{{.Get "name"}} · <a href='{{.Get "website_url"}}' target="_blank">{{.Get "website_text"}}</a></span>
+    <span class="bio-group">
+      {{.Get "name"}}
+      {{if isset .Params "website_text"}} · <a href='{{.Get "website_url"}}' target="_blank">{{.Get "website_text"}}</a>{{ end }}
+    </span>
+
+    {{if isset .Params "subname"}} 
+    <span class="bio-subgroup">{{.Get "subname"}}</span>
+    {{end}}
     <span class="bio-date">{{.Get "date"}}</span>
-    <span class="bio-desc">{{.Get "desc"}}</span>
+
+    {{with .Inner}}
+      <span class="bio-desc">{{. | markdownify}}</span>
+    {{else}}
+      {{if isset .Params "desc"}}
+        <span class="bio-desc">{{.Get "desc"}}</span>
+      {{end}}
+    {{end}}
   </section>
