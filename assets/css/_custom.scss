@@ -77,6 +77,25 @@ div.img-float-right {
     float: right;
 }
 
+
+[theme=dark] .header-title .logo-light {
+    display: none !important;
+}
+
+[theme=dark] .header-title .logo-dark {
+    display: inline !important;
+}
+
+[theme=light] .header-title .logo-light {
+    display: inline !important;
+}
+
+[theme=light] .header-title .logo-dark {
+    display: none !important;
+}
+
+
+
 h1.single-title,
 h2.single-title,
 h3.single-title,

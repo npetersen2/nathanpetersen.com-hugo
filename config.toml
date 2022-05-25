@@ -73,7 +73,8 @@ languageName = "English"
   # Header config
   [params.header]
     [params.header.title]
-      logo = "/images/n.png"
+      logo = "/images/n.svg"
+      logoDark = "/images/n-dark.svg"
       name = "Nathan Petersen"
 
   # Footer config
