@@ -11,6 +11,8 @@ title = "Nathan Petersen"
 languageCode = "en-us"
 languageName = "English"
 
+enableEmoji = true
+
 # Author config
 [author]
   name = "Nathan Petersen"
