@@ -10,7 +10,7 @@ cover: "images/cover/p1.jpg"
 
 {{< image 
     caption="A simple game of illuminating LEDs"
-    src_s="images/xsm/pic-01.jpg"
+    src="images/xsm/pic-01.jpg"
     src_l="images/lg/pic-01.jpg"
 >}}
 
@@ -47,60 +47,60 @@ _The text written below is directly from Nathan's report given with this project
 
 {{< image 
     caption="View of game from user perspective"
-    src_s="images/xsm/pic-02.jpg"
+    src="images/xsm/pic-02.jpg"
     src_l="images/lg/pic-02.jpg"
 >}}
 
 {{< image 
     caption="Hinged handle used to move balls down channel"
-    src_s="images/xsm/pic-03.jpg"
+    src="images/xsm/pic-03.jpg"
     src_l="images/lg/pic-03.jpg"
 >}}
 
 {{< image 
     caption="Red LED illuminated due to ball contact with nails"
-    src_s="images/xsm/pic-04.jpg"
+    src="images/xsm/pic-04.jpg"
     src_l="images/lg/pic-04.jpg"
 >}}
 
 {{< image 
     caption="Multiple balls can be used to turn on more than one LED at a time"
-    src_s="images/xsm/pic-05.jpg"
+    src="images/xsm/pic-05.jpg"
     src_l="images/lg/pic-05.jpg"
 >}}
 
 {{< image 
     caption="The circuit soldered to nails on the display board"
-    src_s="images/xsm/pic-06.jpg"
+    src="images/xsm/pic-06.jpg"
     src_l="images/lg/pic-06.jpg"
 >}}
 
 {{< image 
     caption="LEDs for indication of game status"
-    src_s="images/xsm/pic-07.jpg"
+    src="images/xsm/pic-07.jpg"
     src_l="images/lg/pic-07.jpg"
 >}}
 
 {{< image 
     caption="LEDs soldered to nails"
-    src_s="images/xsm/pic-08.jpg"
+    src="images/xsm/pic-08.jpg"
     src_l="images/lg/pic-08.jpg"
 >}}
 
 {{< image 
     caption="Two nails and a metal ball create switches per LED"
-    src_s="images/xsm/pic-09.jpg"
+    src="images/xsm/pic-09.jpg"
     src_l="images/lg/pic-09.jpg"
 >}}
 
 {{< image 
     caption="Custom switch for playing game"
-    src_s="images/xsm/pic-10.jpg"
+    src="images/xsm/pic-10.jpg"
     src_l="images/lg/pic-10.jpg"
 >}}
 
 {{< image 
     caption="A leather strap neatly holds a 9V battery"
-    src_s="images/xsm/pic-11.jpg"
+    src="images/xsm/pic-11.jpg"
     src_l="images/lg/pic-11.jpg"
 >}}
