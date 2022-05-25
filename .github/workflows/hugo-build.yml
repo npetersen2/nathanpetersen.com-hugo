@@ -7,12 +7,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
       with:
         # Number of commits to fetch. 0 indicates all history for all branches and tags.
         fetch-depth: '0'
+        submodules: 'recursive'
         
     - name: Install Hugo packages
       run: |
