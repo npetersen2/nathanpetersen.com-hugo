@@ -13,3 +13,15 @@ jobs:
       with:
         # Number of commits to fetch. 0 indicates all history for all branches and tags.
         fetch-depth: '0'
+        
+    - name: Install Hugo packages
+      run: |
+        sudo apt-get update
+        sudo apt-get upgrade -Y
+        sudo apt-get install hugo
+    
+    - name: Check hugo version
+      run: hugo version
+
+    - name: Build website
+      run: hugo
