@@ -33,3 +33,9 @@ Nathan implemented the following to rewrite the site:
 
 8. When done, build `public/` output of HTML files by simply running:
 > `hugo`
+
+## Autobuild
+
+The GitHub repo is set up to automatically rebuild and publish the website on push to the `main` branch. The rebuild process takes about two minutes due to installing `hugo`.
+
+The website it published from the `gh-pages` branch and is served from the `docs/` folder.
