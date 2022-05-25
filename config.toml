@@ -82,7 +82,7 @@ languageName = "English"
     hugo = false
     copyright = true
     author = true
-    since = 2006
+    since = 2016
     license = 'Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated'
 
   # Home page config
