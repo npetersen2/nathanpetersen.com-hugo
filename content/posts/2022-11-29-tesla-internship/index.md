@@ -4,7 +4,7 @@ categories: ["Experiences"]
 tags: ["internship", "job", "summer", "palo-alto-ca", "motor", "motor-control", "simulation", "firmware"]
 description: "Thoughts on being an intern on the Tesla motor controls team."
 cover: /images/cover.jpg
-date: 2022-11-25 00:00:00
+date: 2022-11-29 00:00:00
 math:
     enable: true
 ---
