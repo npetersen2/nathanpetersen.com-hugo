@@ -6,7 +6,7 @@ description: "Thoughts on being an intern on the Tesla motor controls team."
 cover: /images/cover.jpg
 date: 2022-11-29 00:00:00
 math:
-    enable: true
+    enable: false
 ---
 
 {{< image
