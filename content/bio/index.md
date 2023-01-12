@@ -6,7 +6,7 @@ math:
 
 {{< img-float-right src="/images/nathan.jpg" width="190px" padding-left="1em" padding-bottom="0" padding-top="0.75em" >}}
 
-Nathan is a graduate student at the University of Wisconsin–Madison, pursuing a PhD in Electrical Engineering as part of WEMPEC. His PhD research focuses on control of electric machines, specifically targetting magnetically levitated motor systems such as bearingless motors.
+Nathan is a graduate student at the University of Wisconsin–Madison, pursuing a PhD in Electrical Engineering as part of WEMPEC. His PhD research focuses on control of electric machines, specifically targeting magnetically levitated motor systems such as bearingless motors.
 
 For his MS research project, Nathan designed and built the Advanced Motor Drive Controller (AMDC) Platform, which is a collection of open-source hardware and software for controlling advanced electric machines. Check it out at [amdc.dev](https://amdc.dev/) or read the docs at [docs.amdc.dev](https://docs.amdc.dev/).
 
