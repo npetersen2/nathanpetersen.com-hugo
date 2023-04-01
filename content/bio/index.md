@@ -47,7 +47,7 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
     website_text="tesla.com"
     website_url="https://www.tesla.com/"
     date="Summer 2022"
-    desc="Worked on motor controls team."
+    desc="Worked on sensorless field-oriented control algorithms for small PM motors with ultra-low-cost drivers implemented using fixed-point math; SIL testing; NVH reduction techniques; hardware testing and validation."
 />}}
 
 {{< experience 
@@ -56,7 +56,7 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
     website_text="beta.team"
     website_url="https://beta.team/"
     date="February – December 2019"
-    desc="Developed high performance embedded hardware and firmware for inverter running electric aircraft propulsion unit. Implemented both traditional and sensorless control techniques for novel PMSM."
+    desc="Developed high-performance embedded hardware and firmware for inverter running electric aircraft propulsion unit. Implemented both traditional and sensorless control techniques for novel PMSM."
 />}}
 
 {{< expand tag="h3" text="Undergraduate" expanded=false >}}

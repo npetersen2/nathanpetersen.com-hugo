@@ -1,6 +1,6 @@
 ---
 title: "Privacy Policy"
-draft: true
+draft: false
 ---
 
 At Nathan Petersen's Blog, accessible from [https://nathanpetersen.com/](https://nathanpetersen.com/), one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Nathan Petersen's Blog and how we use it.
