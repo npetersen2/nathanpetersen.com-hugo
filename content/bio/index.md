@@ -12,7 +12,7 @@ For his MS research project, Nathan designed and built the Advanced Motor Drive 
 
 When Nathan is not in the research lab collecting data (using the AMDC) or writing his latest paper (and learning the joys of $\LaTeX$), he enjoys building things, tinkering, and writing about it. His blog archieves his projects over the years, ranging from website design to embedded systems to brunch reviews.
 
-Nathan's CV is available [here](/CV_NathanPetersen_updated_2022_03.pdf).
+Nathan's CV is available [here](/CV_NathanPetersen_updated_2023_05.pdf).
 
 <!--
 He believes that technologies are most disruptive when a passionate individual spans their entire lifetime — starting with initial research, to concept conception, through design and prototyping, to entrepreneurial roll out. Through his studies, he strives to change the world using this process.
