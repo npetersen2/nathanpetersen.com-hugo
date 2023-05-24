@@ -9,6 +9,13 @@ aliases:
     - /2017/09/02/interning-at-silicon-labs/
 ---
 
+{{< admonition type=warning title="Update April 2021" open=true >}}
+Silicon Labs has [sold their I&A Business](https://news.silabs.com/2021-04-22-Silicon-Labs-Announces-Agreement-to-Divest-Infrastructure-and-Automotive-Business).
+
+My entire expereince at Silicon Labs, as discussed below, was in the I&A division. Therefore, everything I say below is outdated, since the business/products no longer exist from Silicon Labs.
+Most links in this article to `silabs.com` are now invalid, but I will keep them intact for posterity.
+{{< /admonition >}}
+
 Well, thus concludes my summer at Silicon Labs, and boy was it great. From learning about digital radio technology, to learning about bootloaders and embedded system design, to working with a dynamic group of developers, to going to the CEO's house for dinner, to multiple company dinners at fabulous restaurants in downtown Austin, I really enjoyed the experience and learned a lot. I am writing this post to document my memories, plus to shed some light on interning at Silicon Labs for future college students that might be applying there.
 
 {{< image 

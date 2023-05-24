@@ -7,6 +7,13 @@ cover: "images/cover.jpg"
 date: 2018-09-09 15:00:00
 ---
 
+{{< admonition type=warning title="Update April 2021" open=true >}}
+Silicon Labs has [sold their I&A Business](https://news.silabs.com/2021-04-22-Silicon-Labs-Announces-Agreement-to-Divest-Infrastructure-and-Automotive-Business).
+
+My entire expereince at Silicon Labs, as discussed below, was in the I&A division. Therefore, everything I say below is outdated, since the business/products no longer exist from Silicon Labs.
+Most links in this article to `silabs.com` are now invalid, but I will keep them intact for posterity.
+{{< /admonition >}}
+
 NOTE: Make sure you read this post *after* reading about my [previous internship experience at Silicon Labs](/2017/09/02/interning-at-silicon-labs/).
 
 {{< image
