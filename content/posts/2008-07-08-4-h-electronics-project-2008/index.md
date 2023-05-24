@@ -12,8 +12,7 @@ math:
 
 {{< image 
     caption="A simple tone generator controllable via skin impedance"
-    src_s="images/xsm/pic-01.jpg"
-    src_l="images/lg/pic-01.jpg"
+    src="images/lg/pic-01.jpg"
 >}}
 
 > This post is one of a six part series documenting and archiving Nathan's electronic projects created during his years participating in 4-H. To be clear, this project was done many years ago. During the winter months of 2017-2018, Nathan decided to archive his past projects as a way to remember and share them, hoping to inspire other beginning electronic hobbyists.
@@ -88,37 +87,31 @@ _The text written below is directly from Nathan's report given with this project
 
 {{< image 
     caption="Display board used to present circuit"
-    src_s="images/xsm/pic-02.jpg"
-    src_l="images/lg/pic-02.jpg"
+    src="images/lg/pic-02.jpg"
 >}}
 
 {{< image 
     caption="Touch contacts are main interface for interaction with circuit"
-    src_s="images/xsm/pic-03.jpg"
-    src_l="images/lg/pic-03.jpg"
+    src="images/lg/pic-03.jpg"
 >}}
 
 {{< image 
     caption="Skin contact creates audio tones dependent on resistance"
-    src_s="images/xsm/pic-04.jpg"
-    src_l="images/lg/pic-04.jpg"
+    src="images/lg/pic-04.jpg"
 >}}
 
 {{< image 
     caption="Circuit neatly attached to display board"
-    src_s="images/xsm/pic-05.jpg"
-    src_l="images/lg/pic-05.jpg"
+    src="images/lg/pic-05.jpg"
 >}}
 
 {{< image 
     caption="Close up of circuit implementation"
-    src_s="images/xsm/pic-06.jpg"
-    src_l="images/lg/pic-06.jpg"
+    src="images/lg/pic-06.jpg"
 >}}
 
 {{< image 
     caption="Foreign coins used as touch contact points"
-    src_s="images/xsm/pic-07.jpg"
-    src_l="images/lg/pic-07.jpg"
+    src="images/lg/pic-07.jpg"
 >}}
 

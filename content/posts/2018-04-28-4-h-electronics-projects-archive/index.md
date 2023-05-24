@@ -28,8 +28,7 @@ After six years, coming to college, and rediscovering my love for electronics, I
 My first electronics project: a simple game of illuminating LEDs.
 
 {{< image
-    src_s="images/xsm/p1.jpg"
-    src_l="images/lg/p1.jpg"
+    src="images/lg/p1.jpg"
     caption="2006 project display board"
 >}}
 
@@ -38,8 +37,7 @@ My first electronics project: a simple game of illuminating LEDs.
 My second electronics project: demonstrating how capacitor charging time depends on capacitance.
 
 {{< image
-    src_s="images/xsm/p2.jpg"
-    src_l="images/lg/p2.jpg"
+    src="images/lg/p2.jpg"
     caption="2007 project display board"
 >}}
 
@@ -48,8 +46,7 @@ My second electronics project: demonstrating how capacitor charging time depends
 My third electronics project: generating tones dependent on skin impedance.
 
 {{< image
-    src_s="images/xsm/p3.jpg"
-    src_l="images/lg/p3.jpg"
+    src="images/lg/p3.jpg"
     caption="2008 project display board"
 >}}
 
@@ -58,8 +55,7 @@ My third electronics project: generating tones dependent on skin impedance.
 My forth electronics project: a game to test human reaction time.
 
 {{< image
-    src_s="images/xsm/p4.jpg"
-    src_l="images/lg/p4.jpg"
+    src="images/lg/p4.jpg"
     caption="2009 project display board"
 >}}
 
@@ -68,8 +64,7 @@ My forth electronics project: a game to test human reaction time.
 My fifth electronics project: triggers photography flashes in response to loud noises.
 
 {{< image
-    src_s="images/xsm/p5.jpg"
-    src_l="images/lg/p5.jpg"
+    src="images/lg/p5.jpg"
     caption="2010 project display board"
 >}}
 
@@ -78,8 +73,7 @@ My fifth electronics project: triggers photography flashes in response to loud n
 My sixth electronics project: a simple stereo amplifier.
 
 {{< image
-    src_s="images/xsm/p6.jpg"
-    src_l="images/lg/p6.jpg"
+    src="images/lg/p6.jpg"
     caption="2011 project display board"
 >}}
 

@@ -10,8 +10,7 @@ cover: "images/cover/p6.jpg"
 
 {{< image 
     caption="A stereo audio amplifier for powering bookshelf speakers"
-    src_s="images/xsm/pic-01.jpg"
-    src_l="images/lg/pic-01.jpg"
+    src="images/lg/pic-01.jpg"
 >}}
 
 > This post is one of a six part series documenting and archiving Nathan's electronic projects created during his years participating in 4-H. To be clear, this project was done many years ago. During the winter months of 2017-2018, Nathan decided to archive his past projects as a way to remember and share them, hoping to inspire other beginning electronic hobbyists.
@@ -67,24 +66,20 @@ _The text written below is directly from Nathan's report given with this project
 
 {{< image 
     caption="Circuit implementation attached to display board"
-    src_s="images/xsm/pic-02.jpg"
-    src_l="images/lg/pic-02.jpg"
+    src="images/lg/pic-02.jpg"
 >}}
 
 {{< image 
     caption="Perfboards attached to display board"
-    src_s="images/xsm/pic-03.jpg"
-    src_l="images/lg/pic-03.jpg"
+    src="images/lg/pic-03.jpg"
 >}}
 
 {{< image 
     caption="Speaker RCA connections"
-    src_s="images/xsm/pic-04.jpg"
-    src_l="images/lg/pic-04.jpg"
+    src="images/lg/pic-04.jpg"
 >}}
 
 {{< image 
     caption="Close up of circuit soldered to perfboard"
-    src_s="images/xsm/pic-05.jpg"
-    src_l="images/lg/pic-05.jpg"
+    src="images/lg/pic-05.jpg"
 >}}

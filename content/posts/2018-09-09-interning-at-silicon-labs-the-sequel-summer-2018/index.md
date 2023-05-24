@@ -17,8 +17,7 @@ Most links in this article to `silabs.com` are now invalid, but I will keep them
 NOTE: Make sure you read this post *after* reading about my [previous internship experience at Silicon Labs](/2017/09/02/interning-at-silicon-labs/).
 
 {{< image
-    src_l="images/lg/nathan-silabs-sign.jpg"
-    src_s="images/xsm/nathan-silabs-sign.jpg"
+    src="images/lg/nathan-silabs-sign.jpg"
     caption="Me standing outside of Silicon Labs HQ in Austin, TX"
 >}}
 
@@ -70,8 +69,7 @@ If you're interested in learning more about Silicon Labs, I suggest giving their
 ## Why'd You Go Back?
 
 {{< image
-    src_l="images/lg/intern-welcome.jpg"
-    src_s="images/xsm/intern-welcome.jpg"
+    src="images/lg/intern-welcome.jpg"
     caption="Summer intern welcoming signage"
 >}}
 
@@ -96,8 +94,7 @@ This new product was a DRM receiver application to run on existing hardware, bas
 - The engineers are the people actually building the product, but don't have a huge say about project scope; they are assigned tasks by managers and they do the tasks. It's up to the managers to make sure they are getting the work done. *I don't have anything to work on; what should I do!?*
 
 {{< image
-    src_l="images/lg/org-chart.jpg"
-    src_s="images/xsm/org-chart.jpg"
+    src="images/lg/org-chart.jpg"
     caption="Three-tier management structure"
 >}}
 
@@ -151,8 +148,7 @@ First of all, it's important to notice the difference between analog and digital
 *Now back to HD Radio:* FM HD Radio defines an extension to simple analog transmission (specifically an [IBOC](https://en.wikipedia.org/wiki/In-band_on-channel) extension), augmenting the signal with digital data. The standard is defined to be backwards compatible, meaning analog-only receivers still work. See the plot below which illustrates the added frequency content for HD Radio digital streams.
 
 {{< image
-    src_l="images/lg/hd-radio-spectrum.jpg"
-    src_s="images/xsm/hd-radio-spectrum.jpg"
+    src="images/lg/hd-radio-spectrum.jpg"
     caption="HD Radio spectrum plot showing frequency bands for both analog and digital content"
 >}}
 
@@ -161,8 +157,7 @@ Car radios are a common place to receive HD Radio. The radio might initially rec
 #### DRM
 
 {{< image
-    src_l="images/lg/drm-logo.png"
-    src_s="images/xsm/drm-logo.png"
+    src="images/lg/drm-logo.png"
     caption="DRM radio logo"
 >}}
 
@@ -171,22 +166,19 @@ Car radios are a common place to receive HD Radio. The radio might initially rec
 DRM is designed to be very configurable so that broadcasters can tailor their transmission to adapt to constraints within their target reception area. For example, physical channel impairments like [Doppler effect](https://en.wikipedia.org/wiki/Doppler_effect) and [multipath interference](https://en.wikipedia.org/wiki/Multipath_interference) can vary from region to region. DRM broadcasters can increase data robustness to account for these impairments. Some geographical regions also have very crowded spectral bands. DRM can transmit in as little as 4.5kHz bandwidth, but can also be configured to use larger bandwidth for more data throughput.
 
 {{< image
-    src_l="images/lg/drm-mode-a.png"
-    src_s="images/xsm/drm-mode-a.jpg"
+    src="images/lg/drm-mode-a.png"
     caption="Diagram showing Robustness Mode A (not very robust)"
 >}}
 
 {{< image
-    src_l="images/lg/drm-mode-d.png"
-    src_s="images/xsm/drm-mode-d.jpg"
+    src="images/lg/drm-mode-d.png"
     caption="Diagram showing Robustness Mode D (much more 'metadata')"
 >}}
 
 For comparison, another digital radio standard popular in Europe among many other areas, [Digital Audio Broadcast (DAB)](https://en.wikipedia.org/wiki/Digital_audio_broadcasting), has a spectral occupancy of about 1.5 MHz, over 300x the spectral occupancy of DRM! While this isn't necessarily a fair comparison to DRM (DAB supports many more streams per slot than DRM), it does show that DRM has a very small spectral footprint!
 
 {{< image
-    src_l="images/lg/drm-vs-am-signal.jpg"
-    src_s="images/xsm/drm-vs-am-signal.jpg"
+    src="images/lg/drm-vs-am-signal.jpg"
     caption="DRM vs AM signal frequency plot showing very different spectral footprints"
 >}}
 
@@ -199,8 +191,7 @@ My internship happened to occur when Silicon Labs was starting work on a new DRM
 I cobbled together different components to build such a system:
 
 {{< image
-    src_l="images/lg/drm-end-to-end.png"
-    src_s="images/xsm/drm-end-to-end.jpg"
+    src="images/lg/drm-end-to-end.png"
     caption="Block diagram of DRM signal path for PC-based development"
 >}}
 
@@ -227,8 +218,7 @@ To aid in rapid development, I looked through the DReaM source code and put toge
 My second project area involved the Monitoring Module, which I started last summer and got a working implementation for team use. Unfortunately, the tracing part was difficult to use, so it sat untouched by the team. This summer, my job was to *"productize"* the module and give a presentation about using it to teach the team.
 
 {{< image
-    src_l="images/lg/mm-trace.png"
-    src_s="images/xsm/mm-trace.jpg"
+    src="images/lg/mm-trace.png"
     caption="Plot showing thread context switches during ~400ms of device operation"
 >}}
 
@@ -245,8 +235,7 @@ At the end of my testing and improvements, the MM was ready for use. During a te
 For this project, I was tasked to design a minimally-sized PCB to be used as a SPI bridge between a host PC and SPI devices (namely Silicon Labs' automotive audio portfolio). I used the Silicon Labs CP2130 device for the brains of the operation. This board design was basically a shrink of the CP2130 evaluation kit; it did much of the same things.
 
 {{< image
-    src_l="images/lg/cp2130-diagram.png"
-    src_s="images/xsm/cp2130-diagram.jpg"
+    src="images/lg/cp2130-diagram.png"
     caption="CP2130 SPI-USB bridge typical system diagram"
 >}}
 
@@ -259,8 +248,7 @@ This board was to serve multiple purposes: be mounted on an evaluation board for
 Throughout the project, I had quite a few design reviews for both the schematic and board layout. These helped me improve the design to arrive at a robust final implementation.
 
 {{< image
-    src_l="images/lg/spi-bridge-assembled.jpg"
-    src_s="images/xsm/spi-bridge-assembled.jpg"
+    src="images/lg/spi-bridge-assembled.jpg"
     caption="Final board after PCB manufacturing and assembly"
 >}}
 
@@ -271,8 +259,7 @@ This project was very different from firmware (i.e. it's not firmware, it's hard
 Before this, I had designed a few boards on my own, but never to a "standard"; they were all just for personal hobby use. I wanted to see industry standards, have design reviews, see corporate part libraries, use different software tools, etc. During the design process, I made sure to have multiple design reviews and many different opinions to build my knowledge of what to look for in good designs.
 
 {{< image
-    src_l="images/lg/spi-bridge-front.jpg"
-    src_s="images/xsm/spi-bridge-front.jpg"
+    src="images/lg/spi-bridge-front.jpg"
     caption="Blank PCB needing my approval for assembly"
 >}}
 
@@ -290,8 +277,7 @@ Overall, I am very pleased with my experience on this project. Even though it wa
 After returning and interning at Silicon Labs for my second summer, I can safely say that I still love the company. As I said in my previous article, the company values are great, and it feels small enough that each individual employee has a real impact.
 
 {{< image
-    src_l="images/lg/nathan-ceo-party.jpg"
-    src_s="images/xsm/nathan-ceo-party.jpg"
+    src="images/lg/nathan-ceo-party.jpg"
     caption="Hanging out at the CEOs house for the intern party"
 >}}
 
@@ -302,8 +288,7 @@ As a company, Silicon Labs really seems to care about their employees getting sm
 As a college student and future new employee in the workforce, having a system that enables continued learning is very important to me. Silicon Labs provides that by helping their employees grow along with their careers.
 
 {{< image
-    src_l="images/lg/nathan-vp-tech.jpg"
-    src_s="images/xsm/nathan-vp-tech.jpg"
+    src="images/lg/nathan-vp-tech.jpg"
     caption="Me chatting with the VP of Technology at Silicon Labs after a technical presentation"
 >}}
 
@@ -324,8 +309,7 @@ All these presentations and talks are recorded and put online for future referen
 Like the main Technical Symposium, the company holds an "Intern Symposium" at the end of the summer for interns to partake in the company-wide knowledge sharing. This is very similar to the "real" technical symposium; interns make posters and present about their summer projects.
 
 {{< image
-    src_l="images/lg/nathan-poster.jpg"
-    src_s="images/sxm/nathan-poster.jpg"
+    src="images/lg/nathan-poster.jpg"
     caption="Me presenting at the intern symposium"
 >}}
 
@@ -339,8 +323,7 @@ Along with the Technical Symposium recorded talks, other videos are available on
 Silicon Labs' "daily grind" seems normal; there are regular meetings to keep people on target, as well as ample time to get individual work done.
 
 {{< image
-    src_l="images/lg/hallway.jpg"
-    src_s="images/xsm/hallway.jpg"
+    src="images/lg/hallway.jpg"
     caption="Typical hallway of offices in Silicon Labs"
 >}}
 
@@ -357,8 +340,7 @@ Biweekly was a "sprint" planning meeting. This was to allocate tasks to team mem
 Silicon Labs has an employee gym located in the office building which anyone can sign up and use at any time. I needed to stay in shape over the summer, so I used it many times...
 
 {{< image
-    src_l="images/lg/gym.jpg"
-    src_s="images/xsm/gym.jpg"
+    src="images/lg/gym.jpg"
     caption="Me after working out in the company gym"
 >}}
 
@@ -376,14 +358,12 @@ Not everything this summer was work! I got the chance to explore Austin, and ate
 One of the lesser known things about Austin relates to the bats that live there. **Millions** of bats live under the Congress Ave bridge downtown and each night at sunset, they come out and go hunting for food. Because there are so many, the whole ordeal has become quite an attraction for people to come and see:
 
 {{< image
-    src_l="images/lg/bat-watching.jpg"
-    src_s="images/xsm/bat-watching.jpg"
+    src="images/lg/bat-watching.jpg"
     caption="People gathered on the bridge and water to watch the bats"
 >}}
 
 {{< image
-    src_l="images/lg/nathan-bat-watching.jpg"
-    src_s="images/xsm/nathan-bat-watching.jpg"
+    src="images/lg/nathan-bat-watching.jpg"
     caption="Me after watching the bats one night during the summer"
 >}}
 
@@ -391,8 +371,7 @@ One of the lesser known things about Austin relates to the bats that live there.
 ## Future
 
 {{< image
-    src_l="images/lg/silabs-hq.jpg"
-    src_s="images/xsm/silabs-hq.jpg"
+    src="images/lg/silabs-hq.jpg"
     caption="Silicon Labs' office building located in downtown Austin, TX"
 >}}
 
@@ -416,8 +395,7 @@ Overall, yes, this was a great summer. I enjoyed the work, enjoyed the environme
 **I'm excited to see what the future holds!**
 
 {{< image
-    src_l="images/lg/intern-meal.jpg"
-    src_s="images/xsm/intern-meal.jpg"
+    src="images/lg/intern-meal.jpg"
     caption="Interns eating BBQ at end of internship"
 >}}
 
