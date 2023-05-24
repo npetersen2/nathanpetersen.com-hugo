@@ -178,7 +178,7 @@ The goal for this section of firmware design is to craft a complete IP block whi
 
 #### AXI Interface Design
 
-The AXI interface for the IP block implements a fairly complex synchronous data transfer protocol. This means that a clock signal is used to align the data transfers between the user IP block and the main AXI bus master. The specification for this protocol is [publicly available](https://static.docs.arm.com/ihi0022/g/IHI0022G_amba_axi_protocol_spec.pdf), however it is a monster to understand (the AMBA AXI spec itself is 470 pages).
+The AXI interface for the IP block implements a fairly complex synchronous data transfer protocol. This means that a clock signal is used to align the data transfers between the user IP block and the main AXI bus master. The specification for this protocol is [publicly available](https://developer.arm.com/documentation/ihi0022/latest/), however it is a monster to understand (the AMBA AXI spec is 273 pages long).
 
 To help the reader grasp the AXI protocol, a comparison is made to the standard [SPI protocol](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface). In the simple SPI protocol, there is a clock line (`SCLK`), data line (`MOSI` and/or `MISO`), and handshaking line (`CS`). The AXI protocol implements these same basic ideas. However, the advantage of the AXI interconnect is that the *width* of the data line is much larger, which allows full 32-bit words to be transferred in one clock cycle -- there are 32 physical wires between each IP block that connect to the AXI bus. Another major difference between SPI and AXI is that AXI includes address lines. This allows multiple IP blocks to share the same physical bus since the master can transmit a specific address to communicate with each IP block individually.
 
@@ -276,8 +276,8 @@ The example C code driver for the RGB LEDs provides some higher-level functional
 
 Source code for the C code driver interface is freely available:
 
-- [`drv/led.h`](https://github.com/Severson-Group/AMDC-Firmware/blob/develop/sdk/bare/common/drv/led.h)
-- [`drv/led.c`](https://github.com/Severson-Group/AMDC-Firmware/blob/develop/sdk/bare/common/drv/led.c)
+- [`drv/led.h`](https://github.com/Severson-Group/AMDC-Firmware/blob/develop/sdk/app_cpu1/common/drv/led.h)
+- [`drv/led.c`](https://github.com/Severson-Group/AMDC-Firmware/blob/develop/sdk/app_cpu1/common/drv/led.c)
 
 
 ## Results

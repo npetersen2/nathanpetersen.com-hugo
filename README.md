@@ -34,8 +34,25 @@ Nathan implemented the following to rewrite the site:
 8. When done, build `public/` output of HTML files by simply running:
 > `hugo`
 
+## HTML Check
+
+Unfortunately, the generated HTML is not validated for things like dead links, etc.
+
+You can do this by using the nice `htmltest` tool (https://github.com/wjdp/htmltest):
+
+1. Build the HTML output using `hugo`
+
+2. Download the `htmltest` tool (puts it in the `./bin` folder)
+> `curl https://htmltest.wjdp.uk | bash`
+
+3. Delete the `tmp/` folder output (if you already ran `htmltest`)
+
+3. Run the tool:
+> `./bin/htmltest -c .htmltest.yml`
+
+
 ## Autobuild
 
-The GitHub repo is set up to automatically rebuild and publish the website on push to the `main` branch. The rebuild process takes about two minutes due to installing `hugo`.
+The GitHub repo is set up to automatically rebuild and publish the website on push to the `main` branch. The rebuild process takes several minutes due to installing `hugo`.
 
 The website it published from the `gh-pages` branch and is served from the `docs/` folder.

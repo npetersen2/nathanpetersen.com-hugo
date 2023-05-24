@@ -44,7 +44,7 @@ However, the AMDC is not designed for simple control applications... It is desig
 
 The entire AMDC platform has been open-source since its conception, with all hardware design files and software publicly available on GitHub for free usage.
 
-Because of the amount of schematics for this design, I won't go through them on this blog post, but instead, refer the reader to browse through them themselves — [download them here](https://github.com/Severson-Group/AMDC-Hardware/raw/v1.0.0/REV20200129D/AMDC_v4_sch.pdf).
+Because of the amount of schematics for this design, I won't go through them on this blog post, but instead, refer the reader to browse through them themselves — [download them here](https://github.com/Severson-Group/AMDC-Hardware/blob/develop/REV20200129D/AMDC_v4_sch.pdf).
 
 ### GitHub Repositories
 

@@ -31,7 +31,7 @@ Each year of school at [UW-Madison](https://www.wisc.edu/) (after freshman year)
 
 When the Wisconsin weather started getting chilly, we turned on the house's heat. As the outdoor temperature fell day by day, we became increasingly aware of the lack of accurate indoor temperature control the wall thermostat provided. The heat definitely worked, but the wild hot/cold swings annoyed us. Eventually, we hit the breaking point. We took apart the built-in thermostat to figure out what was going on.
 
-What we found inside surprised us: the thermostat was completely mechanical--no batteries or electronics at all. After some research, the unit is a [Lux T10-1141SA Heating Only Thermostat](https://shop.luxproducts.com/collections/mechanical/products/t10-1141sa?variant=44639082901), see [datasheet](https://pro.luxproducts.com/wp-content/uploads/2017/09/30.pdf). Reviews online indicate the thermostat is a reliable mechanical device with the main benefit of being battery-free. The device even has an "anticipator" (described later). Total cost of the unit from Amazon? $18.61.
+What we found inside surprised us: the thermostat was completely mechanical--no batteries or electronics at all. After some research, the unit is a `Lux T10-1141SA Heating Only Thermostat`, see [datasheet](https://www.luxproducts.com/wp-content/uploads/2017/07/t10-1141sa_manual_en.pdf). Reviews online indicate the thermostat is a reliable mechanical device with the main benefit of being battery-free. The device even has an "anticipator" (described later). Total cost of the unit from Amazon? $18.61.
 
 ## Mechanical Thermostats
 

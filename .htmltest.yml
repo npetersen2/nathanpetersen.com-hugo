@@ -1,0 +1,8 @@
+DirectoryPath: "public"
+EnforceHTTPS: false
+IgnoreAltMissing: true
+IgnoreInternalEmptyHash: true
+ExternalTimeout: 30
+TestFilesConcurrently: true
+IgnoreURLs:
+- "silabs.com"
