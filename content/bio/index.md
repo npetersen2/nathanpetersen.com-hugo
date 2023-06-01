@@ -4,13 +4,13 @@ math:
     enable: true
 ---
 
-{{< img-float-right src="/images/nathan.jpg" width="190px" padding-left="1em" padding-bottom="0" padding-top="0.75em" >}}
+{{< img-float-right src="/images/nathan-suit.png" width="200px" padding-left="0.5em" padding-bottom="0" padding-top="0" >}}
 
-Nathan is a graduate student at the University of Wisconsin–Madison, pursuing a PhD in Electrical Engineering as part of WEMPEC. His PhD research focuses on control of electric machines, specifically targeting magnetically levitated motor systems such as bearingless motors.
+Nathan is a PhD candidate at the University of Wisconsin–Madison in Electrical Engineering as part of WEMPEC. His PhD research focuses on control of electric machines, specifically targeting magnetically levitated motor systems such as bearingless motors.
 
-For his MS research project, Nathan designed and built the Advanced Motor Drive Controller (AMDC) Platform, which is a collection of open-source hardware and software for controlling advanced electric machines. Check it out at [amdc.dev](https://amdc.dev/) or read the docs at [docs.amdc.dev](https://docs.amdc.dev/).
+For his MS research project, Nathan designed and built the Advanced Motor Drive Controller (AMDC) platform, which is a collection of open-source hardware and software for controlling advanced electric machines. Check it out at [amdc.dev](https://amdc.dev/) or read the docs at [docs.amdc.dev](https://docs.amdc.dev/).
 
-When Nathan is not in the research lab collecting data (using the AMDC) or writing his latest paper (and learning the joys of $\LaTeX$), he enjoys building things, tinkering, and writing about it. His blog archieves his projects over the years, ranging from website design to embedded systems to brunch reviews.
+When Nathan is not in the research lab collecting data (using the AMDC) or writing his latest paper (appreciating $\LaTeX$), he enjoys building things, tinkering, and writing about it. His blog archives his ideas/projects/experiences over the years, ranging from website design to embedded systems to brunch reviews.
 
 Nathan's CV is available [here](/CV_NathanPetersen_updated_2023_05.pdf).
 
@@ -20,15 +20,21 @@ He believes that technologies are most disruptive when a passionate individual s
 To achieve high performance control of electric machines, cross-domain knowledge is required. The underlying physics must be understood, control theory must be applied, and high performance embedded systems must be used for implementation. Nathan thrives in multi-disciplinary environments, where his research and experience gives him the tools to succeed.
 -->
 
+-------
+
 ## Publications
 
 Browse Nathan's publications on his [Google Scholar page](https://scholar.google.com/citations?oan5hE4AAAAJ).
 
-Find something you want to read? Email Nathan and he will gladly send you a copy!
+Find something you want to read? [Email Nathan](/contact/) and he will gladly send you a copy!
+
+-------
 
 ## Education
 
 {{< education >}} 
+
+-------
 
 ## Experience
 
@@ -38,7 +44,7 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
     website_text="severson.wempec.wisc.edu"
     website_url="https://severson.wempec.wisc.edu/"
     date="January 2020 – Present"
-    desc="Research focuses on advanced high-performance control of maglev motor systems. Specific interests include control applied to bearingless motors: current regulation, state observers, self-sensing control techniques to estimate rotor eccentricity."
+    desc="Research focuses on advanced high-performance control of electric motor systems. Specific interests include control applied to bearingless motors: current regulation, state observers, self-sensing control techniques to estimate rotor eccentricity. Co-design of electric motor for improved self-sensing control performance."
 />}}
 
 {{< experience 
@@ -52,12 +58,14 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
 
 {{< experience 
     name="BETA Technologies"
-    image="images/beta-logo.svg"
+    image="images/beta-logo.png"
     website_text="beta.team"
     website_url="https://beta.team/"
     date="February – December 2019"
-    desc="Developed high-performance embedded hardware and firmware for inverter running electric aircraft propulsion unit. Implemented both traditional and sensorless control techniques for novel PMSM."
+    desc="Developed inverter embedded hardware and firmware for aircraft electric propulsion unit. Hardware device selection; design review; board assembly and testing; firmware driver development; control algorithm design and implementation; motor dyno testing to >100 kW. Implemented PMSM field-oriented control using both encoder and self-sensing techniques."
 />}}
+
+<!--
 
 {{< expand tag="h3" text="Undergraduate" expanded=false >}}
 
@@ -99,7 +107,18 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
 
 {{< /expand >}}
 
+-->
+
+-------
+
 ## Awards
+
+{{< experience 
+    name="Grainger Power Engineering Graduate Award"
+    image="images/grainger-logo.png"
+    date="Received April 2023"
+    desc="Recognition of scholarly achievements in the field of power engineering. 1 of 3 graduate awardees at UW-Madison."
+/>}}
 
 {{< experience 
     name="Wisconsin Distinguished Graduate Fellowship"
@@ -107,6 +126,8 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
     date="Received Spring 2020"
     desc="Direct support of graduate studies provided by the UW-Madison Graduate School. Awarded to about 200 graduate students at UW-Madison each year."
 />}}
+
+<!--
 
 {{< expand tag="h3" text="Undergraduate" expanded=false >}}
 
@@ -132,3 +153,23 @@ Find something you want to read? Email Nathan and he will gladly send you a copy
 />}}
 
 {{< /expand >}}
+
+-->
+
+-------
+
+## Grants & Funding
+
+{{< experience 
+    name="NSF Innovation Corps (I-Corps) Program"
+    image="images/nsf-i-corps-logo.png"
+    date="Spring 2023"
+    desc="$50k awarded for entrepreneurial training program that facilitates the transformation of invention to impact. Learn about entrepreneurship, explore commercialization of research, perform 100+ customer discovery interviews."
+/>}}
+
+{{< experience 
+    name="WARF Accelerator Electrification Challenge Grant"
+    image="images/warf-logo.png"
+    date="2022-2023"
+    desc="$25k awarded to further research into cost- and weight-saving design to sense rotor displacement in electric machines."
+/>}}
