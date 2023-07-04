@@ -1,6 +1,6 @@
 ---
 title: "OpenThermo: Customizable Thermostat for Furnace Control"
-tags: ["hardware", "electronics", "design", "temperature", "firmware", "pcb", "mcu", "altium", "programming", "stm32", "control"]
+tags: ["thermostat", "hardware", "electronics", "design", "temperature", "firmware", "pcb", "mcu", "altium", "programming", "stm32", "control"]
 categories: ["Projects"]
 description: "Custom electronics and firmware for controlling bang-bang furnaces."
 cover: "images/cover.jpg"
