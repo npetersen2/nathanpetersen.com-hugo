@@ -95,7 +95,7 @@ enableEmoji = true
       enable = true
       avatarURL = "/images/nathan.jpg"
       title = "Nathan Petersen"
-      subtitle = "Electric motor drive systems. Embedded platforms. Control theory. Data-driven modeling. Interdisciplinary co-design. Simulation."
+      subtitle = "Electric motor drive systems. Embedded systems. Control theory. Data-driven modeling. Interdisciplinary co-design. Simulation."
       typeit = false
       social = true
       disclaimer = "Nathan is pursuing a PhD at the <a href='https://www.wisc.edu/'>University of Wisconsin–Madison</a> studying <a href='https://engineering.wisc.edu/departments/electrical-computer-engineering/'>Electrical & Computer Engineering</a> with emphasis on control of electric machines. He is a student in the <a href='https://wempec.wisc.edu/'>Wisconsin Electric Machines and Power Electronics Consortium (WEMPEC)</a>.<br/><br/>PhD Topic: Sensorless Bearingless Motors: Modeling and Control Methods."
