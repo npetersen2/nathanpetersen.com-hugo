@@ -4,7 +4,7 @@ categories: ["Food"]
 tags: [restaurant", "food", "brunch", "frenchtoast", "boston-ma"]
 cover: "images/cover.jpg"
 description: ""
-date: 2023-07-04 09:00:00
+date: 2023-07-05 09:00:00
 ---
 
 {{< image
@@ -18,7 +18,7 @@ date: 2023-07-04 09:00:00
 
 North Street Grille ([bestbrunchboston.com](https://bestbrunchboston.com/)), located on the charming downtown streets of Boston, MA, is an inconspicuous establishment which has gained significant popularity with the locals. Opened in 2004, it features brunch delights all day, every day, in a cheerful neighborhood spot.
 
-During my latest visit to Boston, I discovered this gem---it was so great that I ended up going back for a second round before heading home!
+During my latest visit to Boston, I discovered this gem---it was so great that I ended up going back for a second round before heading home! Even though it was quite the walk from my [hotel](https://capitaloneshopping.com/s/marriott.com/coupon) near MIT's campus, it was well worth it.
 
 > Robin and her team bring customers unique, high-quality, and delicious meals with their innovative and robust menu. This dedication brings customers back, time and again.
 >
