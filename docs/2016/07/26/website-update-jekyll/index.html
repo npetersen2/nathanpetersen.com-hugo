@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Website Update: Jekyll - Nathan Petersen</title><meta name="Description" content="Switching from ProcessWire to Jekyll as back-end that runs this website."><meta property="og:title" content="Website Update: Jekyll" />
+<meta property="og:description" content="Switching from ProcessWire to Jekyll as back-end that runs this website." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2016/07/26/website-update-jekyll/" />
+<meta property="article:published_time" content="2016-07-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-07-26T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Website Update: Jekyll"/>
+<meta name="twitter:description" content="Switching from ProcessWire to Jekyll as back-end that runs this website."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2016/07/26/website-update-jekyll/" /><link rel="prev" href="https://nathanpetersen.com/2016/06/20/zmr250-quadcopter/" /><link rel="next" href="https://nathanpetersen.com/2017/05/07/layered-strawberry-crepe-cake/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Website Update: Jekyll",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2016\/07\/26\/website-update-jekyll\/"
+        },"genre": "posts","keywords": "design, web, html, static-site, jekyll, github","wordcount":  914 ,
+        "url": "https:\/\/nathanpetersen.com\/2016\/07\/26\/website-update-jekyll\/","datePublished": "2016-07-26T00:00:00+00:00","dateModified": "2016-07-26T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Switching from ProcessWire to Jekyll as back-end that runs this website."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Website Update: Jekyll</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="July 26, 2016">July 26, 2016</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;914 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/experiences/"></i>Experiences</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/design/">design</a>, <a href="/tags/web/">web</a>, <a href="/tags/html/">html</a>, <a href="/tags/static-site/">static-site</a>, <a href="/tags/jekyll/">jekyll</a>, <a href="/tags/github/">github</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#processwire">ProcessWire</a></li>
+    <li><a href="#jekyll">Jekyll</a></li>
+    <li><a href="#old-vs-new">Old vs. New</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="background">Background</h2>
+<p>I get bored, but I really love learning. This combination leads me to regularly experiment with new technology and tools to see how they stack up with what I am currently using. My personal website, <a href="http://nathanpetersen.com" target="_blank" rel="noopener noreffer">nathanpetersen.com</a> tends to be the guinea pig for such experiments.</p>
+<p>When I first obtained the nathanpetersen.com domain, I wasn&rsquo;t sure what I wanted to do with it, so I resisted the temptation to install a CMS (i.e., Drupal, Wordpress, ProcessWire, etc.). For a while, I used the site to host little projects for school or play, but the site just wasn&rsquo;t being used for anything productive. There was no reason anyone would ever want to come to it, besides me. Moreover, there was no index of the projects on it &ndash; just type in the magic path. This worked for me, but I wanted better.</p>
+<p>The first goal was to create a website on which I could publish writeups about projects I made or musings from my head about life. On top of that, I wanted an environment where I could continue to hack around and make little projects. So basically, I wanted a blog with a section for freeform pages.</p>
+<p>Enter <a href="http://processwire.com" target="_blank" rel="noopener noreffer">ProcessWire</a>.</p>
+<h2 id="processwire">ProcessWire</h2>
+<p>I have used ProcessWire for a couple other projects, with the most prominent being <a href="http://team4096.org" target="_blank" rel="noopener noreffer">team4096.org</a>. I have dabbled with Drupal, but all my experiences with it have been really bad. There is a definitely a sour taste is my mouth from Drupal. ProcessWire was designed to be more developer friendly. I really like the design of it, plus it could satisfy my requirements for the site.</p>
+<p>I installed PW and built a simple blog on top of it. Not too bad &ndash; it seemed to work just how I wanted. Everything was going fine until I got bored.</p>
+<p>While nothing was really <em>wrong</em> with ProcessWire, it just seemed like a rather heavy solution for a simple blogging site with a couple extra custom pages. Page load times weren&rsquo;t exactly snappy and it required a lot of database queries and server side code just to spit out a simple text document. Why use a solution that wasn&rsquo;t optimal?</p>
+<p>On top of all of that, paying for hosting a blog seemed silly. There are a lot of solutions out there that hosts content without any charges (Medium, Tumblr, GitHub Pages, etc). As I looked into different tools and technologies, I really started looking into Amazon Web Services for hosting. I setup a simple LAMP stack on a free EC2 instance and installed my ProcessWire blog setup onto it. It worked, but it got me thinking.</p>
+<p><strong>Why pay to run an EC2 instance continuously if the content rarely changes (and probably isn&rsquo;t accessed that much)?</strong></p>
+<p>Enter <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreffer">Jekyll</a>.</p>
+<h2 id="jekyll">Jekyll</h2>
+<p>What exactly is Jekyll? A CMS? A publishing platform? According to Jekyll&rsquo;s website:</p>
+<blockquote>
+<p>Jekyll is a simple, blog-aware, static site generator. It takes a template directory containing raw text files in various formats, runs it through a converter (like <a href="https://daringfireball.net/projects/markdown/" target="_blank" rel="noopener noreffer">Markdown</a>) and our <a href="https://github.com/Shopify/liquid/wiki" target="_blank" rel="noopener noreffer">Liquid</a> renderer, and spits out a complete, ready-to-publish static website suitable for serving with your favorite web server. Jekyll also happens to be the engine behind <a href="https://pages.github.com/" target="_blank" rel="noopener noreffer">GitHub Pages</a>, which means you can use Jekyll to host your project’s page, blog, or website from GitHub’s servers <strong>for free</strong>.</p>
+</blockquote>
+<p>Wow! Free, easy, no hosting, static, GitHub, Markdown &ndash; I&rsquo;m ready to try it!</p>
+<p>I rebuilt the same UI from my ProcessWire blog using Liquid and converted all my projects into Markdown for Jekyll to use. This wasn&rsquo;t super easy, but since I only had a few posts it wasn&rsquo;t that bad. Plus, a few online tools helped the process: <a href="http://fuckyeahmarkdown.com/" target="_blank" rel="noopener noreffer">converting whole pages to Markdown</a>, <a href="http://www.tablesgenerator.com/markdown_tables" target="_blank" rel="noopener noreffer">easily making Markdown tables</a>.</p>
+<h2 id="old-vs-new">Old vs. New</h2>
+<p>Using Jekyll eliminates the hosting concern by using GitHub Pages. It also makes it trivial to update and maintain version control of the blog. GitHub&rsquo;s online interface can be used to update the website, plus it&rsquo;s easy as pie to make a new post from the command line.</p>
+<pre><code>cd github-project
+vim _posts/yyyy-mm-dd-post-title.markdown
+git add .
+git commit -m &quot;new post&quot;
+git push
+</code></pre><p>The only other concern was page load time. Hopefully, serving static HTML files from GitHub&rsquo;s CDN would be faster than PHP rendered HTML from some random shared hosting server. Time to see if it actually is faster with a quick comparison.</p>
+<p>I ran both the ProcessWire site and the Jekyll powered site through <a href="https://tools.pingdom.com/" target="_blank" rel="noopener noreffer">Pingdom Tools</a> and gathered the following load times:</p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>ProcessWire</th>
+<th>Jekyll</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>1.68 s</td>
+<td>222 ms</td>
+<td>7.6 x</td>
+</tr>
+<tr>
+<td>/contact/</td>
+<td>488 ms</td>
+<td>243 ms</td>
+<td>2.0 x</td>
+</tr>
+<tr>
+<td>BCLD project</td>
+<td>1.46 s</td>
+<td>440 ms</td>
+<td>3.3 x</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>/</code> page changed slightly, but isn&rsquo;t really a fair comparison between the two systems. The <code>/contact/</code> page is a great comparison &ndash;  a completely static page that was loaded twice as fast in the new system. A project example, the BCLD project page, improved 3.3x!</p>
+<p>While my tests weren&rsquo;t exactly scientific, I think this shows that using Jekyll and GitHub Pages definitely speeds up page load time for nathanpetersen.com.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Updating my personal blog to use Jekyll and GitHub Pages was an easy transition that definitely felt refreshing. While I do like server-side coding and it absolutely has it&rsquo;s place, it feels good to get rid of it from my workflow and worry solely about content creation and site styling.</p>
+<p>Give Jekyll a try the next time you have a simple project that fits its demographic. Your time and energy invested in it will go a long ways.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2016/07/26/website-update-jekyll/" data-title="Website Update: Jekyll" data-hashtags="design,web,html,static-site,jekyll,github"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2016/07/26/website-update-jekyll/" data-hashtag="design"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2016/07/26/website-update-jekyll/" data-title="Website Update: Jekyll"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2016/07/26/website-update-jekyll/" data-title="Website Update: Jekyll"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2016/07/26/website-update-jekyll/" data-title="Website Update: Jekyll"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/design/">design</a>, <a href="/tags/web/">web</a>, <a href="/tags/html/">html</a>, <a href="/tags/static-site/">static-site</a>, <a href="/tags/jekyll/">jekyll</a>, <a href="/tags/github/">github</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2016/06/20/zmr250-quadcopter/" class="prev" rel="prev" title="ZMR250 Quadcopter"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>ZMR250 Quadcopter</a>
+            <a href="/2017/05/07/layered-strawberry-crepe-cake/" class="next" rel="next" title="Layered Strawberry Crepe Cake">Layered Strawberry Crepe Cake<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

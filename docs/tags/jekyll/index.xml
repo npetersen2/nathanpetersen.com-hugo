@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>jekyll - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/jekyll/</link>
+        <description>jekyll - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 26 Jul 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/jekyll/" rel="self" type="application/rss+xml" /><item>
+    <title>Website Update: Jekyll</title>
+    <link>https://nathanpetersen.com/2016/07/26/website-update-jekyll/</link>
+    <pubDate>Tue, 26 Jul 2016 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2016/07/26/website-update-jekyll/</guid>
+    <description><![CDATA[Background I get bored, but I really love learning. This combination leads me to regularly experiment with new technology and tools to see how they stack up with what I am currently using. My personal website, nathanpetersen.com tends to be the guinea pig for such experiments.
+When I first obtained the nathanpetersen.com domain, I wasn&rsquo;t sure what I wanted to do with it, so I resisted the temptation to install a CMS (i.]]></description>
+</item>
+</channel>
+</rss>

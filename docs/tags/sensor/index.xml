@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>sensor - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/sensor/</link>
+        <description>sensor - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 15 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/sensor/" rel="self" type="application/rss+xml" /><item>
+    <title>Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591</title>
+    <link>https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/</link>
+    <pubDate>Thu, 15 Dec 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/</guid>
+    <description><![CDATA[My custom light sensor installed in its window to read outdoor light levels" My custom light sensor installed in its window to read outdoor light levels  In a few quick evenings, I built a custom light sensor for my smart home to measure outdoor light levels through my window. In this post, I&rsquo;ll explain how I did it. We&rsquo;ll go over the electronic components and wiring, enclosure, software configuration, Home Assistant integration, and a few example plots of the illuminance levels.]]></description>
+</item>
+</channel>
+</rss>

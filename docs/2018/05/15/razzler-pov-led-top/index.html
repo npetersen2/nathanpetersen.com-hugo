@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Razzler: POV LED Top - Nathan Petersen</title><meta name="Description" content="Custom designed persistence of vision toy top to display animations while spinning."><meta property="og:title" content="Razzler: POV LED Top" />
+<meta property="og:description" content="Custom designed persistence of vision toy top to display animations while spinning." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/" />
+<meta property="article:published_time" content="2018-05-15T15:29:00+00:00" />
+<meta property="article:modified_time" content="2018-05-15T15:29:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Razzler: POV LED Top"/>
+<meta name="twitter:description" content="Custom designed persistence of vision toy top to display animations while spinning."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/" /><link rel="prev" href="https://nathanpetersen.com/2018/04/28/4-h-electronics-projects-archive/" /><link rel="next" href="https://nathanpetersen.com/2018/09/05/1-pcbs-from-seeed-studio/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Razzler: POV LED Top",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2018\/05\/15\/razzler-pov-led-top\/"
+        },"genre": "posts","keywords": "hardware, electronics, design, firmware, leds, display, animations, pcb, mcu, eagle, stm32, pov, imu, mpu-6050, rtos, cnc","wordcount":  3562 ,
+        "url": "https:\/\/nathanpetersen.com\/2018\/05\/15\/razzler-pov-led-top\/","datePublished": "2018-05-15T15:29:00+00:00","dateModified": "2018-05-15T15:29:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Custom designed persistence of vision toy top to display animations while spinning."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Razzler: POV LED Top</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="May 15, 2018">May 15, 2018</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3562 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hardware/">hardware</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/design/">design</a>, <a href="/tags/firmware/">firmware</a>, <a href="/tags/leds/">leds</a>, <a href="/tags/display/">display</a>, <a href="/tags/animations/">animations</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/mcu/">mcu</a>, <a href="/tags/eagle/">eagle</a>, <a href="/tags/stm32/">stm32</a>, <a href="/tags/pov/">pov</a>, <a href="/tags/imu/">imu</a>, <a href="/tags/mpu-6050/">mpu-6050</a>, <a href="/tags/rtos/">rtos</a>, <a href="/tags/cnc/">cnc</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a>
+      <ul>
+        <li><a href="#timeline">Timeline</a></li>
+      </ul>
+    </li>
+    <li><a href="#hardware">Hardware</a>
+      <ul>
+        <li><a href="#using-eagle-eda">Using Eagle EDA</a></li>
+        <li><a href="#schematic-design">Schematic Design</a></li>
+        <li><a href="#pcb-layout">PCB Layout</a></li>
+        <li><a href="#pcb-assembly">PCB Assembly</a></li>
+        <li><a href="#wooden-frame-creation">Wooden Frame Creation</a></li>
+      </ul>
+    </li>
+    <li><a href="#firmware">Firmware</a>
+      <ul>
+        <li><a href="#system-architecture">System Architecture</a></li>
+        <li><a href="#general-operation">General Operation</a></li>
+      </ul>
+    </li>
+    <li><a href="#mistakes">Mistakes</a>
+      <ul>
+        <li><a href="#avoidable-errors">Avoidable Errors</a></li>
+        <li><a href="#design-flaws">Design Flaws</a></li>
+      </ul>
+    </li>
+    <li><a href="#razzler-v2">Razzler v2</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#picture-gallery">Picture Gallery</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="background">Background</h2>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-09.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-09.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-09.jpg" data-sub-html="<h2>Razzler: the Persistence of Vision LED Top</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-09.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-09.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-09.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-09.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-09.jpg" width="1500" height="1500" />
+    </a><figcaption class="image-caption">Razzler: the Persistence of Vision LED Top</figcaption>
+    </figure>
+<p>During the summer of 2017, I started working on my first real electronics project. This project marks the first time I have ever seen an electronics project all the way through, from start to finish: initial idea, schematic design, PCB layout, manufacturing, board assembly, testing, device driver development, and full firmware creation.</p>
+<p>I love LEDs and interactive toys, so I decided that I wanted to build a top that people could spin to entertain themselves. The PCB would be circular and consist of a single row of LEDs, LED driver, accelerometer / gyroscope and microcontroller (MCU). Having these components would enable the MCU to detect angular velocity while spinning to display persistence of vision (POV) animations on the LED row. I decided to name the project Razzler because blinky LEDs always seem to razzle dazzle. ;)</p>
+<p>Since I started this project in the summer of 2017, I figured I&rsquo;d have working devices by Christmas to give to family and friends as gifts. Little did I know how tall the mountain was that I needed to climb to complete the project&hellip; Read on to learn about my journey!</p>
+<h3 id="timeline">Timeline</h3>
+<p><strong>When I started, I remember thinking that there was an unknown number of unknowns.</strong> I really had no idea the questions to ask, or even the problems that I needed to solve. Little by little, I progressed forward until completion! It only took me seven months&hellip;</p>
+<ul>
+<li>2017 Jul: Idea conception</li>
+<li>2017 Aug: Schematic design started</li>
+<li>2017 Nov: PCB v1 ordered</li>
+<li>2017 Dec: Device driver firmware working</li>
+<li>2018 Jan: &ldquo;Final&rdquo; firmware finished</li>
+</ul>
+<h2 id="hardware">Hardware</h2>
+<h3 id="using-eagle-eda">Using Eagle EDA</h3>
+<p>To design and draw the device schematic, I needed an EDA. Eagle is a common hobbyist/student EDA that has a rich history with many examples and tutorials. The software had recently been acquired by Autodesk, so it was regularly receiving major updates (SPICE / Fusion 360 integration, etc). I chose Eagle for these compelling reasons.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/eagle.png" title="/2018/05/15/razzler-pov-led-top/images/eagle.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/eagle.png" data-sub-html="<h2>Autodesk Eagle EDA</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/eagle.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/eagle.png, /2018/05/15/razzler-pov-led-top/images/eagle.png 1.5x, /2018/05/15/razzler-pov-led-top/images/eagle.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/eagle.png" width="1173" height="247" />
+    </a><figcaption class="image-caption">Autodesk Eagle EDA</figcaption>
+    </figure>
+<p>When first starting out, a big hurdle of electronics design is choosing parts and modeling them in your EDA. As a board designer, one should be able to use any part simply by looking at its datasheet. This means creating a symbol for schematic usage and associated footprint for PCB layout. This process only needs to be done once; future projects can use the same library.</p>
+<p>Vendors like <a href="https://www.digikey.com/" target="_blank" rel="noopener noreffer">DigiKey</a> reduce part cost when purchased in high quantities (1000+). For small quantities, I quickly realized that buying parts from online Chinese stores (like <a href="https://www.aliexpress.com/" target="_blank" rel="noopener noreffer">AliExpress</a>) was <em>much</em> more economical since they buy in bulk, but had long ship times and limited component selection. I placed many orders for seemly random parts that might be useful for projects: batteries, battery holders, MCUs, LEDs, resistors, capacitors, common ICs, etc.</p>
+<p>Weeks after placing these orders, packages started arriving. Upon delivery, I modeled the component in Eagle for later use. Since packages arrive on different dates, this made component entry very manageable. I now have a library of solely parts that I own, so I know I can use any of them in a future project without issue.</p>
+<h3 id="schematic-design">Schematic Design</h3>
+<p>Creating a circuit schematic can prove to be a challenging part of design because one must be aware of how parts interact. It can be very frustrating to get PCBs back just to discover excess power supply noise or misconnected device pins. Before a part is used and a support circuit is proven to work, one never really knows if a circuit will work; simulation and analysis only go so far.</p>
+<p>As a beginner, I didn&rsquo;t know much. I struggled with determining correct decoupling capacitor requirements, what to do with no-connect (NC) pins, and reading datasheets. I also didn&rsquo;t know how many components could actually fit on my desired PCB size; this eventually determined between RGB LEDs and single-colored LEDs. I designed the original schematic using RGB, but after attempting to layout the PCB, I switched to single-color LEDs.</p>
+<p>I think the biggest lesson learned at this step is to look online for examples of component use. Many device datasheets have application circuits that can be used. Also, make sure schematic design is finalized before PCB layout. Altering trivial things on the circuit schematic can undo hours of previous PCB layout work.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/sch/full.png" title="/2018/05/15/razzler-pov-led-top/images/sch/full.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/sch/full.png" data-sub-html="<h2>Finalized schematic for Razzler project</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/sch/full.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/sch/full.png, /2018/05/15/razzler-pov-led-top/images/sch/full.png 1.5x, /2018/05/15/razzler-pov-led-top/images/sch/full.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/sch/full.png" width="1946" height="1518" />
+    </a><figcaption class="image-caption">Finalized schematic for Razzler project</figcaption>
+    </figure>
+<p>View PDF version of schematic: <a href="/2018/05/15/razzler-pov-led-top/pdfs/razzler-REV20171104A.pdf" rel="">click here</a>.</p>
+<h4 id="circuit-modules">Circuit Modules</h4>
+<h5 id="microcontroller">Microcontroller</h5>
+<p>The STM32 line of MCUs was chosen for this project; specifically the <a href="http://www.st.com/en/microcontrollers/stm32f030k6.html" target="_blank" rel="noopener noreffer">STM32F030K6</a>. This is basically the cheapest, lowest performance 32-bit MCU ST makes. Since the Razzler&rsquo;s firmware doesn&rsquo;t need to do much, this choice made sense.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/sch/mcu.png" title="/2018/05/15/razzler-pov-led-top/images/sch/mcu.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/sch/mcu.png" data-sub-html="<h2>Microcontroller circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/sch/mcu.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/sch/mcu.png, /2018/05/15/razzler-pov-led-top/images/sch/mcu.png 1.5x, /2018/05/15/razzler-pov-led-top/images/sch/mcu.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/sch/mcu.png" width="1530" height="1014" />
+    </a><figcaption class="image-caption">Microcontroller circuitry</figcaption>
+    </figure>
+<p>To interface with the MCU, a simple four pin header is provided which provides access to the SWD debugging signals. An external module is then needed to do the programming.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/sch/debug.png" title="/2018/05/15/razzler-pov-led-top/images/sch/debug.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/sch/debug.png" data-sub-html="<h2>Simple SWD debugging interface</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/sch/debug.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/sch/debug.png, /2018/05/15/razzler-pov-led-top/images/sch/debug.png 1.5x, /2018/05/15/razzler-pov-led-top/images/sch/debug.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/sch/debug.png" width="1500" height="438" />
+    </a><figcaption class="image-caption">Simple SWD debugging interface</figcaption>
+    </figure>
+<h5 id="led-driver--leds">LED Driver / LEDs</h5>
+<p>To control 16 LEDs with minimal GPIO pins, a 16-channel constant current LED driver was chosen for this project; specifically the <a href="http://belchip.by/sitedocs/00006155.pdf" target="_blank" rel="noopener noreffer">MBI5024</a>. This is a Chinese clone (even pin compatible) of TI&rsquo;s LED driver that was found on AliExpress. To control it, the MCU sends a simple serial data stream that encodes which LED outputs are on / off.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/sch/mbi5024.png" title="/2018/05/15/razzler-pov-led-top/images/sch/mbi5024.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/sch/mbi5024.png" data-sub-html="<h2>16-channel constant current LED driver</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/sch/mbi5024.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/sch/mbi5024.png, /2018/05/15/razzler-pov-led-top/images/sch/mbi5024.png 1.5x, /2018/05/15/razzler-pov-led-top/images/sch/mbi5024.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/sch/mbi5024.png" width="1500" height="1193" />
+    </a><figcaption class="image-caption">16-channel constant current LED driver</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/sch/leds.png" title="/2018/05/15/razzler-pov-led-top/images/sch/leds.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/sch/leds.png" data-sub-html="<h2>16 LEDs</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/sch/leds.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/sch/leds.png, /2018/05/15/razzler-pov-led-top/images/sch/leds.png 1.5x, /2018/05/15/razzler-pov-led-top/images/sch/leds.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/sch/leds.png" width="1500" height="1246" />
+    </a><figcaption class="image-caption">16 LEDs</figcaption>
+    </figure>
+<h5 id="accelerometer--gyroscope">Accelerometer / Gyroscope</h5>
+<p>Motion is detected via the <a href="https://www.invensense.com/products/motion-tracking/6-axis/mpu-6050/" target="_blank" rel="noopener noreffer">MPU-6050</a> accelerometer / gyroscope IC. Since this IC is fairly old, it is easy to find from distributors in China. It records linear and angular accelerations in the X, Y, and Z directions. These samples can be queued in its 1024 byte FIFO, and later drained by the host controller. The MPU-6050 communicates via the I2C protocol.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/sch/mpu6050.png" title="/2018/05/15/razzler-pov-led-top/images/sch/mpu6050.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/sch/mpu6050.png" data-sub-html="<h2>Accelerometer / gyroscope motion sensor</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/sch/mpu6050.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/sch/mpu6050.png, /2018/05/15/razzler-pov-led-top/images/sch/mpu6050.png 1.5x, /2018/05/15/razzler-pov-led-top/images/sch/mpu6050.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/sch/mpu6050.png" width="1793" height="1209" />
+    </a><figcaption class="image-caption">Accelerometer / gyroscope motion sensor</figcaption>
+    </figure>
+<h5 id="power">Power</h5>
+<p>To keep the PCB balanced for appropriate spinning, two CR2032 batteries are used. A master power switch allows batteries to be permanently installed and a main power LED indicates when the device is switched on.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/sch/power.png" title="/2018/05/15/razzler-pov-led-top/images/sch/power.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/sch/power.png" data-sub-html="<h2>Battery and switch for master power</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/sch/power.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/sch/power.png, /2018/05/15/razzler-pov-led-top/images/sch/power.png 1.5x, /2018/05/15/razzler-pov-led-top/images/sch/power.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/sch/power.png" width="2276" height="1433" />
+    </a><figcaption class="image-caption">Battery and switch for master power</figcaption>
+    </figure>
+<hr>
+<h3 id="pcb-layout">PCB Layout</h3>
+<p>After schematic design completion, I moved onto PCB layout. Since I included footprints when I modeled my components, I just needed to arrange the parts and route traces to implement the schematic.</p>
+<p>I didn&rsquo;t know what to set for layer stack-up or design rules. Turns out, these are answerable questions after selecting a board manufacturer. Research pointed me to low-cost Chinese fabs; I chose Seeed Studio (<a href="/2018/02/14/pcbs-from-seeed-studio/" rel="">read my review of their service</a>). To qualify for their cheapest service, I used a two layer stack-up with 6/6 mil clearances.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/seeed/package.jpg" title="/2018/05/15/razzler-pov-led-top/images/seeed/package.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/seeed/package.jpg" data-sub-html="<h2>10x PCBs from Seeed Studio arrive neatly packaged</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/seeed/package.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/seeed/package.jpg, /2018/05/15/razzler-pov-led-top/images/seeed/package.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/seeed/package.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/seeed/package.jpg" width="1500" height="1125" />
+    </a><figcaption class="image-caption">10x PCBs from Seeed Studio arrive neatly packaged</figcaption>
+    </figure>
+<p>Since this board was going to be spun as a top, it needed to be balanced. This affected component placement. For example, two batteries were used to keep the center of gravity about the center point. The row of LEDs was offset slightly so that they meshed together every 180 degrees. Little concern was placed on accel/gyro placement in terms of radius from center (turned out to be a big mistake).</p>
+<p>Laying out the PCB was a very time consuming task. It wasn&rsquo;t that hard, but with a practically unlimited number of choices, it was easy to spend countless nights perfecting everything. I wanted the routing to be pretty, so I aligned every trace to optimize space utilization.</p>
+<p>To speed up layout, it&rsquo;s best to start with important interface component placement. For this project, that meant locking in the positions of LEDs, batteries, mounting holes, switches, buttons, and programming headers. Next, look at the rats nest of wires and place other parts to optimize routing traces. Plan the power signals (ground/power planes, etc). Route sensitive signals first, then route power signals. The whole process is very iterative; just keep chugging and eventually the layout will pass the design rule check (DRC) and be ready for production.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/brd/pcb-top.png" title="/2018/05/15/razzler-pov-led-top/images/brd/pcb-top.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/brd/pcb-top.png" data-sub-html="<h2>PCB top view</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/brd/pcb-top.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/brd/pcb-top.png, /2018/05/15/razzler-pov-led-top/images/brd/pcb-top.png 1.5x, /2018/05/15/razzler-pov-led-top/images/brd/pcb-top.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/brd/pcb-top.png" width="1536" height="1536" />
+    </a><figcaption class="image-caption">PCB top view</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/brd/pcb-bot.png" title="/2018/05/15/razzler-pov-led-top/images/brd/pcb-bot.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/brd/pcb-bot.png" data-sub-html="<h2>PCB bottom view</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/brd/pcb-bot.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/brd/pcb-bot.png, /2018/05/15/razzler-pov-led-top/images/brd/pcb-bot.png 1.5x, /2018/05/15/razzler-pov-led-top/images/brd/pcb-bot.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/brd/pcb-bot.png" width="1536" height="1536" />
+    </a><figcaption class="image-caption">PCB bottom view</figcaption>
+    </figure>
+<h3 id="pcb-assembly">PCB Assembly</h3>
+<p>I uploaded the gerber files to Seeed Studio and submitted my order. Once a few weeks passed, a pack of 10 boards showed up and were ready to assemble.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/seeed/shrinkwrap.jpg" title="/2018/05/15/razzler-pov-led-top/images/seeed/shrinkwrap.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/seeed/shrinkwrap.jpg" data-sub-html="<h2>Shrink wrapped pack of boards delivered from China</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/seeed/shrinkwrap.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/seeed/shrinkwrap.jpg, /2018/05/15/razzler-pov-led-top/images/seeed/shrinkwrap.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/seeed/shrinkwrap.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/seeed/shrinkwrap.jpg" width="1500" height="1125" />
+    </a><figcaption class="image-caption">Shrink wrapped pack of boards delivered from China</figcaption>
+    </figure>
+<p>To assemble the boards, I manually apply solder paste from a tube and then place all the SMD parts using tweezers. 0603 packages were prevalent in the design but proved to be fairly easy to solder. Since I haven&rsquo;t built/bought a DIY reflow oven, I used a hot air reflow station to manually attach each component separately.</p>
+<p>From start to finish, the board took about one hour to assemble.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/assem/workspace.jpg" title="/2018/05/15/razzler-pov-led-top/images/assem/workspace.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/assem/workspace.jpg" data-sub-html="<h2>Workspace in which board was assembled</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/assem/workspace.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/assem/workspace.jpg, /2018/05/15/razzler-pov-led-top/images/assem/workspace.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/assem/workspace.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/assem/workspace.jpg" width="1500" height="1125" />
+    </a><figcaption class="image-caption">Workspace in which board was assembled</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/assem/clamp.jpg" title="/2018/05/15/razzler-pov-led-top/images/assem/clamp.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/assem/clamp.jpg" data-sub-html="<h2>Final assembled PCB right off the assembly line :)</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/assem/clamp.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/assem/clamp.jpg, /2018/05/15/razzler-pov-led-top/images/assem/clamp.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/assem/clamp.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/assem/clamp.jpg" width="1500" height="1125" />
+    </a><figcaption class="image-caption">Final assembled PCB right off the assembly line :)</figcaption>
+    </figure>
+<h4 id="seeed-studio-pcb-assembly">Seeed Studio PCB Assembly</h4>
+<p>While I manually assembled my board for this project, Seeed Studio offers a great <a href="https://www.seeedstudio.com/prototype-pcb-assembly.html" target="_blank" rel="noopener noreffer">PCB assembly service</a>. They also offer a nice free library of parts (<a href="https://www.seeedstudio.com/opl.html" target="_blank" rel="noopener noreffer">Open Parts Library</a>) which supports Eagle directly. If you design with this library and have them assemble your boards, many of the OPL parts are actually free! This can be a great option for batch board runs.</p>
+<p>I currently have a project in the works to take advantage of Seeed Studio&rsquo;s PCBA service using their OPL. Check back later for an article about my experience!</p>
+<h3 id="wooden-frame-creation">Wooden Frame Creation</h3>
+<p>The goal of the project was to create a spinning top based around a PCB. I wanted a simple, yet attractive frame around the PCB to add the structure of the top. My father has a CNC machine at home in the garage, so I worked with him to design a simple two-part assembly on which to affix the PCB.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/wood/cnc.jpg" title="/2018/05/15/razzler-pov-led-top/images/wood/cnc.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/wood/cnc.jpg" data-sub-html="<h2>CNC machine setup and ready to cut out the bottom piece of the assembly</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/wood/cnc.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/wood/cnc.jpg, /2018/05/15/razzler-pov-led-top/images/wood/cnc.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/wood/cnc.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/wood/cnc.jpg" width="1500" height="1125" />
+    </a><figcaption class="image-caption">CNC machine setup and ready to cut out the bottom piece of the assembly</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-08.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-08.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-08.jpg" data-sub-html="<h2>Top (right) and bottom (left) pieces, after sanding</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-08.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-08.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-08.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-08.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-08.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Top (right) and bottom (left) pieces, after sanding</figcaption>
+    </figure>
+<h2 id="firmware">Firmware</h2>
+<p>When programming simple hobby embedded devices, typically little thought is given to overall system design. Many times, Arduino-like semantics are employed (setup and loop routines). The problem with this architecture is lack of fine-grained control for real-time events. For example, if many distinct tasks need to run at different rates on the MCU, a loop approach can become cumbersome.</p>
+<p>Implementing a very basic scheduler can make firmware much more modular and easier to extend with new functionality. Certain system designs guarantee properties that may be important for specific applications, like deterministic execution or exact update frequency.</p>
+<h3 id="system-architecture">System Architecture</h3>
+<p>Razzler&rsquo;s firmware is <strong>task based</strong>, with a fixed time slice duration (10ms) that the duration of all module tasks together must fit within. Modules register their tasks with the scheduler during start-up and then are called at their requested frequency (up to 100Hz per task). This allows many tasks to run &ldquo;concurrently,&rdquo; at independent intervals.</p>
+<p>Modular use of the accelerometer / gyroscope data is accomplished using the Digital Motion Processor (DMP) module. This module registers itself with the main scheduler, but also allows other modules to register DMP tasks with it. A <strong>DMP task</strong> is sample rate dependent, as opposed to real time dependent. DMP tasks can be evaluated using bursts of samples from a buffer, given that the samples stored in the buffer were taken at the requested sample rate. Razzler supports a maximum sample rate of 200Hz from the accelerometer / gyroscope.</p>
+<p>Since the constant current LED driver simply turns each LED on/off, the illusion of variable LED brightnesses requires pulse-width modulating (PWM) each LED&rsquo;s on-time. To prevent visible flickering, this modulating needs to happen at a high frequency (60Hz or more) and without interruptions. While this could be accomplished via the main scheduler, the Razzler uses a dedicated hardware timer interrupt to perform LED updates completely asynchronously. This naturally pauses other system activity, but the interrupt is very short so no noticeable delay is introduced.</p>
+<h3 id="general-operation">General Operation</h3>
+<p>Razzler&rsquo;s firmware is constantly running multiple independent modules to realize device functionality. Independent module operation is described below, as well as how modules interact with each other.</p>
+<h4 id="mbi5024-module"><code>MBI5024</code> Module</h4>
+<p>Completely asynchronous to all tasks, the <code>MBI5024</code> module sends virtual LED brightness levels (off, low, medium, high, on) to the MBI5024 IC via a serial data stream, which creates the variable brightness levels.</p>
+<h4 id="animator-module"><code>Animator</code> Module</h4>
+<p>Registered to run at 50Hz, the <code>Animator</code> module calculates each LED&rsquo;s brightness level according to predefined animation patterns. It then updates the LED output buffer virtual brightnesses in the <code>MBI5024</code> module. The <code>Animator</code> module also queries the <code>Motion</code> module to determine if the device is spinning or not. If it&rsquo;s spinning, it plays spinning animations, otherwise it plays static animations (spinning animations don&rsquo;t use PWM, static animations do). The <code>Animator</code> module also exposes an API to other modules to disable/enable animation updates.</p>
+<h4 id="digital-motion-processing-dmp-module"><code>Digital Motion Processing (DMP)</code> Module</h4>
+<p>Registered to run at 100Hz, the <code>DMP</code> module interacts with the MPU-6050 accelerometer / gyroscope. The MPU-6050 is configured to record samples at 200Hz and store them in its internal buffer. The <code>DMP</code> module then drains the buffer every 100Hz, which ends up pulling two sets of samples (a sample is six 16-bit numbers: linear / angular acceleration in X / Y / Z directions) per run. For each sample, the <code>DMP</code> module checks to see if any registered child DMP tasks needs to run. If so, it passes off the sample for processing.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/mpu-6050-diagram.png" title="/2018/05/15/razzler-pov-led-top/images/mpu-6050-diagram.png" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/mpu-6050-diagram.png" data-sub-html="<h2>MPU-6050 internal block diagram</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/mpu-6050-diagram.png"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/mpu-6050-diagram.png, /2018/05/15/razzler-pov-led-top/images/mpu-6050-diagram.png 1.5x, /2018/05/15/razzler-pov-led-top/images/mpu-6050-diagram.png 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/mpu-6050-diagram.png" width="2374" height="1434" />
+    </a><figcaption class="image-caption">MPU-6050 internal block diagram</figcaption>
+    </figure>
+<h4 id="motion-module"><code>Motion</code> Module</h4>
+<p>The <code>Motion</code> module is responsible for two things: knowing if the device is spinning, and recording how long the device is motionless. It uses one real-time dependent task and two sample rate dependent DMP tasks to realize this functionality.</p>
+<p>The DMP task for spinning recognition is registered at 200 samples per second (SPS), while the stillness recognition DMP task is registered at 10 SPS. The high sample rate for the spinning DMP task is necessary because the <code>Animator</code> module must switch from static to spinning animations with very little latency when the top starts spinning.</p>
+<p>During each DMP task execution, the supplied sample is simply copied to a local buffer for later reference. This means that the main DMP task registered with the main scheduler runs very quickly.</p>
+<p>For counting time that the device is still, a real-time task is run at 10Hz which looks at the local sample buffer and calculates maximum deltas across acceleration samples. If these maximum deltas are less than some threshold, it knows the device has been still for the past 100ms.</p>
+<p>When another module wants to know if the device is spinning, they run a <code>Motion</code> module API which compares the past few samples&rsquo; centripetal accelerations to some threshold. If they are all over that threshold, the device is spinning. This means that the actual determination of spinning is done within the caller&rsquo;s context.</p>
+<h4 id="power-module"><code>Power</code> Module</h4>
+<p>Registered to run at 10Hz, this module checks if the total still time is over some threshold (120 seconds). If so, it disables animations and puts the device into a low power state. It then waits until the <code>Motion</code> module reports that the device is spinning, to which it responds by restoring normal operation.</p>
+<h2 id="mistakes">Mistakes</h2>
+<p><strong>There&rsquo;s always room for improvement</strong></p>
+<p>Growing up, I remember my dad saying something along the lines of <strong>&ldquo;success can always be achieved if you redefine what it means to be successful.&quot;</strong> I feel that this describes my relationship with this project. I set out to do one thing, but ended up doing another very similar thing that I still classify as success. While my first attempt at a POV spinning top was mostly a success, a couple things didn&rsquo;t quite go to plan.</p>
+<h3 id="avoidable-errors">Avoidable Errors</h3>
+<p>The first issue should have been easily avoidable: <em>I wired the I2C interface for the MPU-6050 to GPIO pins that didn&rsquo;t support hardware I2C</em>. The firmware could still control these pins as regular GPIO, but I needed to implement the I2C protocol in software. After much studying of the protocol and some sample code, I managed to communicate with the inertial sensor. Since the processor is directly doing the bit banging (as opposed to using the DMA engine), there is less time for other tasks in the system. Overall, this issue was fairly easy to overcome.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/osc/clk.jpg" title="/2018/05/15/razzler-pov-led-top/images/osc/clk.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/osc/clk.jpg" data-sub-html="<h2>Debugging serial interface problems; clk signal looks good</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/osc/clk.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/osc/clk.jpg, /2018/05/15/razzler-pov-led-top/images/osc/clk.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/osc/clk.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/osc/clk.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Debugging serial interface problems; clk signal looks good</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/osc/clk-edge.jpg" title="/2018/05/15/razzler-pov-led-top/images/osc/clk-edge.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/osc/clk-edge.jpg" data-sub-html="<h2>Adjusting slew rate of GPIO pins to meet requirements for serial interface</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/osc/clk-edge.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/osc/clk-edge.jpg, /2018/05/15/razzler-pov-led-top/images/osc/clk-edge.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/osc/clk-edge.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/osc/clk-edge.jpg" width="1500" height="1125" />
+    </a><figcaption class="image-caption">Adjusting slew rate of GPIO pins to meet requirements for serial interface</figcaption>
+    </figure>
+<h3 id="design-flaws">Design Flaws</h3>
+<p>The other issue was a more fundamental design flaw: <em>I never did any physics to calculate if the inertial sensor was capable of sensing the high angular rate at which the top would spin.</em> I originally intended to use the data from the accelerometer / gyroscope to determine how fast the top was spinning. If the display algorithm knew the precise angular velocity, it could lock the POV animations to the spinning rate, creating a still image.</p>
+<p>After I created the top, I took some short exposure pictures of it spinning to try to get an estimate of peak angular velocity. On the computer, I measured the angle that it rotated while the shutter was open, which I then extrapolated to estimate a peak angular velocity of slightly less than 1,500 rotations per minute (RPM). If the inertial sensor could measure 1,500 RPM, my initial plan would work.</p>
+<h4 id="angular-velocity-from-gyroscope">Angular Velocity from Gyroscope</h4>
+<p>Gyroscopes are designed to directly measure angular velocity. A little unit conversion reveals that 1,500 RPM is 9,000 degrees per second (dps). The spec for the MPU-6050 states that the gyroscope can detect a maximum angular rate of 250 dps. 9,000 is much much bigger than 250&hellip;</p>
+<p><strong>Conclusion: the gyroscope cannot determine how fast the top spins.</strong></p>
+<p>After a little research, it seems that there is a <em>very</em> limited selection of sensors that can detect +/- 9,000 dps. Analog Devices&rsquo; <a href="http://www.analog.com/media/en/technical-documentation/data-sheets/ADXRS649.pdf" target="_blank" rel="noopener noreffer">ADXRS649</a> would fit the bill, but at a unit cost of ~$92, this sensor must be plated in gold. Not reasonable for my project.</p>
+<h4 id="angular-velocity-from-accelerometer">Angular Velocity from Accelerometer</h4>
+<p>As a last resort, I turned to the accelerometer data. Turns out that the circular motion unit from physics class in high school actually is useful for something! The x-axis of the MPU-6050 is directly inline with the PCB center, so conveniently measures centripetal acceleration while spinning. Simply plug and chug into the standard circular motion equation:</p>
+<p>$$
+a_c = R \cdot \omega^2
+$$</p>
+<p>Letting $R = 22.86mm$ and $\omega_{max} = 1500 rpm$, then $a_{c, max} = 564 m/s^2$ or $57.5g$. The MPU-6050&rsquo;s accelerometer only supports +/- 16g&hellip;</p>
+<p><strong>Conclusion: the accelerometer cannot determine how fast the top spins.</strong></p>
+<p>Fortunately, when the acceleration is above the MPU-6050&rsquo;s limit, the sensor saturates and reports a full scale value (probably to indicate an overflow). The firmware then recognizes this to create a boolean spinning indicator.</p>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-12.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-12.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-12.jpg" data-sub-html="<h2>Longer exposure picture of spinning top to show light trails from LED line</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-12.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-12.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-12.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-12.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-12.jpg" width="1000" height="1500" />
+    </a><figcaption class="image-caption">Longer exposure picture of spinning top to show light trails from LED line</figcaption>
+    </figure>
+<h4 id="spin-direction-from-accelerometer">Spin Direction from Accelerometer</h4>
+<p>Since using the gyroscope is out of the picture due to high RPMs, I was curious if there was a simple way to determine spin direction (CW / CCW) from the accelerometer data. When the top is initially spun, it must accelerate from rest to its peak angular velocity. The y-axis of the MPU-6050 should be able to measure this; if the acceleration is positive, the top was spun clockwise, if negative then counter-clockwise. If we assume that the spin-up acceleration is constant:</p>
+<p>$$
+a_{tan} = \frac{d}{dt} (R \omega) = R \frac{\Delta \omega}{\Delta t}
+$$</p>
+<p>Letting $R = 22.86mm$, $\Delta \omega_{max} = 1500rpm$, $\Delta t_{min} = 200 ms$, then $a_{tan, max} = 1.6g$. This is well within the limit of the MPU-6050, so this method can be used to determine spin direction.</p>
+<h2 id="razzler-v2">Razzler v2</h2>
+<p>For version two, I intend on changing a handful of things:</p>
+<ul>
+<li>Programming headers (through-hole to surface mount)</li>
+<li>I2C pin connections (enable hardware I2C support)</li>
+<li>MPU-6050 placement (reduce radius so max centripetal acceleration is in sensor range)</li>
+</ul>
+<p>Check back later for a new article about my experience creating version two!</p>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<h2 id="picture-gallery">Picture Gallery</h2>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-01.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-01.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-01.jpg" data-sub-html="<h2>Top side of assembled board</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-01.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-01.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-01.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-01.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-01.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Top side of assembled board</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-02.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-02.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-02.jpg" data-sub-html="<h2>Bottom side of assembled board</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-02.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-02.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-02.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-02.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-02.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Bottom side of assembled board</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-03.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-03.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-03.jpg" data-sub-html="<h2>Board components follow symmetrical design</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-03.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-03.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-03.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-03.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-03.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Board components follow symmetrical design</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-04.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-04.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-04.jpg" data-sub-html="<h2>Seeed Studio sends a minimum of 10 boards</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-04.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-04.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-04.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-04.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-04.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Seeed Studio sends a minimum of 10 boards</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-05.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-05.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-05.jpg" data-sub-html="<h2>Assembled board with top and bottom blank boards</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-05.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-05.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-05.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-05.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-05.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Assembled board with top and bottom blank boards</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-06.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-06.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-06.jpg" data-sub-html="<h2>Blank boards</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-06.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-06.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-06.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-06.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-06.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Blank boards</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-07.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-07.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-07.jpg" data-sub-html="<h2>Close-up of top side</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-07.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-07.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-07.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-07.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-07.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Close-up of top side</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-10.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-10.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-10.jpg" data-sub-html="<h2>Wood frame around board to create top structure</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-10.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-10.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-10.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-10.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-10.jpg" width="1500" height="1000" />
+    </a><figcaption class="image-caption">Wood frame around board to create top structure</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/05/15/razzler-pov-led-top/images/done/pic-11.jpg" title="/2018/05/15/razzler-pov-led-top/images/done/pic-11.jpg" data-thumbnail="/2018/05/15/razzler-pov-led-top/images/done/pic-11.jpg" data-sub-html="<h2>Side view of top with wooden frame</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/05/15/razzler-pov-led-top/images/done/pic-11.jpg"
+            data-srcset="/2018/05/15/razzler-pov-led-top/images/done/pic-11.jpg, /2018/05/15/razzler-pov-led-top/images/done/pic-11.jpg 1.5x, /2018/05/15/razzler-pov-led-top/images/done/pic-11.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/05/15/razzler-pov-led-top/images/done/pic-11.jpg" width="1000" height="1500" />
+    </a><figcaption class="image-caption">Side view of top with wooden frame</figcaption>
+    </figure>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/" data-title="Razzler: POV LED Top" data-hashtags="hardware,electronics,design,firmware,leds,display,animations,pcb,mcu,eagle,stm32,pov,imu,mpu-6050,rtos,cnc"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/" data-hashtag="hardware"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/" data-title="Razzler: POV LED Top"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/" data-title="Razzler: POV LED Top"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/" data-title="Razzler: POV LED Top"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hardware/">hardware</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/design/">design</a>, <a href="/tags/firmware/">firmware</a>, <a href="/tags/leds/">leds</a>, <a href="/tags/display/">display</a>, <a href="/tags/animations/">animations</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/mcu/">mcu</a>, <a href="/tags/eagle/">eagle</a>, <a href="/tags/stm32/">stm32</a>, <a href="/tags/pov/">pov</a>, <a href="/tags/imu/">imu</a>, <a href="/tags/mpu-6050/">mpu-6050</a>, <a href="/tags/rtos/">rtos</a>, <a href="/tags/cnc/">cnc</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2018/04/28/4-h-electronics-projects-archive/" class="prev" rel="prev" title="4-H Electronics Projects Archive"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>4-H Electronics Projects Archive</a>
+            <a href="/2018/09/05/1-pcbs-from-seeed-studio/" class="next" rel="next" title="$1 PCBs from Seeed Studio!">$1 PCBs from Seeed Studio!<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

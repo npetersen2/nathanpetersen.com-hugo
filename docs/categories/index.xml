@@ -1,0 +1,55 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - Category - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/categories/</link>
+        <description>Categories - Category - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 06 Nov 2023 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Food</title>
+    <link>https://nathanpetersen.com/categories/food/</link>
+    <pubDate>Mon, 06 Nov 2023 09:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/categories/food/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Projects</title>
+    <link>https://nathanpetersen.com/categories/projects/</link>
+    <pubDate>Thu, 15 Dec 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/categories/projects/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Experiences</title>
+    <link>https://nathanpetersen.com/categories/experiences/</link>
+    <pubDate>Tue, 29 Nov 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/categories/experiences/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Thoughts</title>
+    <link>https://nathanpetersen.com/categories/thoughts/</link>
+    <pubDate>Wed, 08 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/categories/thoughts/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Tutorials</title>
+    <link>https://nathanpetersen.com/categories/tutorials/</link>
+    <pubDate>Fri, 17 Jul 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/categories/tutorials/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Reviews</title>
+    <link>https://nathanpetersen.com/categories/reviews/</link>
+    <pubDate>Fri, 03 Jan 2020 10:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/categories/reviews/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Gradled Mini: Prototype Modular Discrete LED Display - Nathan Petersen</title><meta name="Description" content="Circuit and PCB design for tileable LED matrix."><meta property="og:title" content="Gradled Mini: Prototype Modular Discrete LED Display" />
+<meta property="og:description" content="Circuit and PCB design for tileable LED matrix." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" />
+<meta property="article:published_time" content="2018-11-11T11:11:00+00:00" />
+<meta property="article:modified_time" content="2018-11-11T11:11:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gradled Mini: Prototype Modular Discrete LED Display"/>
+<meta name="twitter:description" content="Circuit and PCB design for tileable LED matrix."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" /><link rel="prev" href="https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" /><link rel="next" href="https://nathanpetersen.com/2018/12/24/olive-garden-pasta-pass/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Gradled Mini: Prototype Modular Discrete LED Display",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2018\/11\/11\/gradled-mini-prototype-modular-discrete-led-display\/"
+        },"genre": "posts","keywords": "hardware, electronics, design, firmware, leds, display, matrix, animations, silabs, pcb, usb, mcu, eagle, efm32, prototype, multiplex","wordcount":  3527 ,
+        "url": "https:\/\/nathanpetersen.com\/2018\/11\/11\/gradled-mini-prototype-modular-discrete-led-display\/","datePublished": "2018-11-11T11:11:00+00:00","dateModified": "2018-11-11T11:11:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Circuit and PCB design for tileable LED matrix."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Gradled Mini: Prototype Modular Discrete LED Display</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="November 11, 2018">November 11, 2018</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3527 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hardware/">hardware</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/design/">design</a>, <a href="/tags/firmware/">firmware</a>, <a href="/tags/leds/">leds</a>, <a href="/tags/display/">display</a>, <a href="/tags/matrix/">matrix</a>, <a href="/tags/animations/">animations</a>, <a href="/tags/silabs/">silabs</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/usb/">usb</a>, <a href="/tags/mcu/">mcu</a>, <a href="/tags/eagle/">eagle</a>, <a href="/tags/efm32/">efm32</a>, <a href="/tags/prototype/">prototype</a>, <a href="/tags/multiplex/">multiplex</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#project-requirements">Project Requirements</a></li>
+    <li><a href="#design">Design</a>
+      <ul>
+        <li><a href="#led-technology">LED Technology</a></li>
+      </ul>
+    </li>
+    <li><a href="#schematics">Schematics</a>
+      <ul>
+        <li><a href="#usb-power">USB Power</a></li>
+        <li><a href="#usb-uart">USB-UART</a></li>
+        <li><a href="#microcontroller">Microcontroller</a></li>
+        <li><a href="#row-driver">Row Driver</a></li>
+        <li><a href="#column-driver">Column Driver</a></li>
+        <li><a href="#led-matrix">LED Matrix</a></li>
+      </ul>
+    </li>
+    <li><a href="#hardware">Hardware</a>
+      <ul>
+        <li><a href="#led-pitch">LED Pitch</a></li>
+        <li><a href="#pcb">PCB</a></li>
+      </ul>
+    </li>
+    <li><a href="#firmware">Firmware</a>
+      <ul>
+        <li><a href="#saleae-logic-analyzer">Saleae Logic Analyzer</a></li>
+        <li><a href="#column--row-drivers">Column / Row Drivers</a></li>
+      </ul>
+    </li>
+    <li><a href="#testing">Testing</a>
+      <ul>
+        <li><a href="#led-current-consumption">LED Current Consumption</a></li>
+        <li><a href="#animation-timing">Animation Timing</a></li>
+      </ul>
+    </li>
+    <li><a href="#mistakes">Mistakes</a></li>
+    <li><a href="#future">Future</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#picture-gallery">Picture Gallery</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-07.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-07.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-07.jpg" data-sub-html="<h2>Gradled Mini after design, manufacturing, and assembly</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-07.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-07.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-07.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-07.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-07.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Gradled Mini after design, manufacturing, and assembly</figcaption>
+    </figure>
+<h2 id="background">Background</h2>
+<p>This project came into being during my senior year of college at UW-Madison as a personal side venture. In May 2019, I complete my undergraduate schooling. It is not uncommon for students to decorate their graduation &ldquo;hats&rdquo; to personalize them and make them stand out in the crowd of graduates during the commencement ceremony. Typically, people create artwork related to the university they attended (i.e. UW-Madison) and use markers, glitter, little stickers, etc to create the decoration.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/grad-hat-art.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/grad-hat-art.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/grad-hat-art.jpg" data-sub-html="<h2>Typical UW-Madison graduation &lsquo;hat&rsquo; decorations</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/grad-hat-art.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/grad-hat-art.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/grad-hat-art.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/grad-hat-art.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/grad-hat-art.jpg" width="800" height="480" />
+    </a><figcaption class="image-caption">Typical UW-Madison graduation &lsquo;hat&rsquo; decorations</figcaption>
+    </figure>
+<p>When it is my turn to partake in commencement, I also want to continue the hat-decorating tradition, but with a special twist: I want my hat to light-up and be able to show arbitrary artwork. Basically, I want to put an LED display on my head. I want a graduation LED hat. Thus, my Gradled project was born. <em>(Pronounced: grad - led)</em></p>
+<h2 id="project-requirements">Project Requirements</h2>
+<p>After brainstorming what I wanted the end result to look like, I came up with a list of requirements for the project design phase:</p>
+<ul>
+<li>Cheap as possible (I didn&rsquo;t want to shell out ~$100s just for my hat customization)</li>
+<li>Extendable to more than just graduation hat toppers (maybe wall art)</li>
+</ul>
+<p>These generic requirements became specific requirements after more research:</p>
+<ul>
+<li>Single color, discrete LED matrix</li>
+<li>Tileable for arbitrary rectangular display configuration</li>
+<li>One PCB design that can be populated / configured for various paneling arrangements</li>
+<li>Low power consumption (i.e. powered from coin cell battery)</li>
+</ul>
+<h2 id="design">Design</h2>
+<h3 id="led-technology">LED Technology</h3>
+<p>The first step in designing this project was selecting the LED technology. There were basically two options to consider: <em>discrete</em> or <em>serially addressable</em> LEDs.</p>
+<p><em>Discrete LEDs</em> refer to &ldquo;normal&rdquo; LEDs; you apply a voltage across their terminals to light them up. These come in two flavors: single color or multicolor, with the multicolor ones essentially being multiple single color LEDs in the same package.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/discrete-led-comp.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/discrete-led-comp.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/discrete-led-comp.jpg" data-sub-html="<h2>Discrete single color vs. multicolor LEDs</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/discrete-led-comp.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/discrete-led-comp.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/discrete-led-comp.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/discrete-led-comp.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/discrete-led-comp.jpg" width="1000" height="500" />
+    </a><figcaption class="image-caption">Discrete single color vs. multicolor LEDs</figcaption>
+    </figure>
+<p><em>Serially addressable LEDs</em> are &ldquo;smart&rdquo;; to control them, an MCU sends a serial stream of bits to their single <code>DIN</code> pin which tells them what color they should show. They are normally RGB. Importantly, they are chainable, meaning to control a chain of arbitrary length LEDs, the MCU only needs to interface with the first one. That LED then passes data along to the second, which passes data to the third, and so on.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-circuit.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-circuit.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-circuit.jpg" data-sub-html="<h2>Typical circuit for serially addressable LEDs</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-circuit.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-circuit.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-circuit.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-circuit.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-circuit.jpg" width="421" height="464" />
+    </a><figcaption class="image-caption">Typical circuit for serially addressable LEDs</figcaption>
+    </figure>
+<h4 id="serially-addressable-leds">Serially Addressable LEDs</h4>
+<p>Both LED technologies can be used to create an LED matrix, with both having pros and cons. Using serially addressable LEDs to create a matrix is more intuitive: simply arrange a long chain of LEDs into a zig-zag pattern (see picture below).</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-matrix.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-matrix.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-matrix.jpg" data-sub-html="<h2>Serially addressable LEDs configured as matrix</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-matrix.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-matrix.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-matrix.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-matrix.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/serial-matrix.jpg" width="1000" height="913" />
+    </a><figcaption class="image-caption">Serially addressable LEDs configured as matrix</figcaption>
+    </figure>
+<p>Pros of serially addressable LED matrix:</p>
+<ul>
+<li>Easy to understand</li>
+<li>Easy layout on circuit board (only one signal trace goes from LED to LED)</li>
+<li>Final matrix size can be arbitrary at design time: only constraint is where the &ldquo;fold&rdquo; of the chain occurs</li>
+<li>Connecting multiple PCBs together to form a larger display only requires one data pin to cross the PCB boundary</li>
+</ul>
+<p>Cons of serially addressable LED matrix:</p>
+<ul>
+<li>Each LED is expensive compared to simple discrete LEDs</li>
+<li>High maximum power consumption as all LEDs can be on at once</li>
+<li>Limited refresh rate because data flows through <em>all</em> LEDs at fixed rate</li>
+</ul>
+<h4 id="discrete-leds">Discrete LEDs</h4>
+<p>Using discrete LEDs instead of serially addressable LEDs is also an option. For this to work, the LEDs are connected via rows and columns, as shown in the circuit diagram below. To display patterns, each column is time multiplexed, meaning that only one column of LEDs is active at any given time. Due to persistence of vision, our eyes perceive the whole panel as active. This design requires row and column driving circuitry to enable the desired LEDs.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/led-matrix-circuit.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/led-matrix-circuit.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/led-matrix-circuit.png" data-sub-html="<h2>Discrete LEDs configured as matrix</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/led-matrix-circuit.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/led-matrix-circuit.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/led-matrix-circuit.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/led-matrix-circuit.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led/led-matrix-circuit.png" width="569" height="506" />
+    </a><figcaption class="image-caption">Discrete LEDs configured as matrix</figcaption>
+    </figure>
+<p>Pros of discrete LED matrix:</p>
+<ul>
+<li>Very cheap (each LED is a order of magnitude cheaper than serially addressable variant)</li>
+<li>Low maximum power consumption due to column multiplexing</li>
+<li>Faster refresh rate</li>
+</ul>
+<p>Cons of discrete LED matrix:</p>
+<ul>
+<li>Not as intuitive; more complex firmware</li>
+<li>Requires constant control to maintain whole display pattern</li>
+<li>Many more traces to route on PCB</li>
+<li>Many more signals need to cross between PCBs to form larger displays</li>
+</ul>
+<p>As described, the pros of one technology are the cons of the other, and vise versa. The biggest limiting factor, which ended up making the decision between the two, is the sheer cost difference between the two choices: For 1,000 LEDs, discrete LEDs cost ~$6 total, while serially addressable LEDs cost ~$60 total. Because of this, I went with discrete LEDs. (Not really a fair comparison: 0603 red LEDs versus 5050 WS2811B RGB LEDs&hellip;)</p>
+<h2 id="schematics">Schematics</h2>
+<p>Since the whole purpose of Gradled Mini is to prove the design for the final Gradled project, the schematics need to be as close as possible to final implementation. This means that the LED driving circuitry needs to be the same as the final PCB.</p>
+<p><a href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/pdfs/gradled-mini-design.pdf" rel="">Download schematics&hellip;</a></p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-1.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-1.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-1.jpg" data-sub-html="<h2>Page one of schematics</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-1.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-1.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-1.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-1.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-1.jpg" width="1994" height="1548" />
+    </a><figcaption class="image-caption">Page one of schematics</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-2.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-2.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-2.jpg" data-sub-html="<h2>Page two of schematics</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-2.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-2.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-2.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-2.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/pdf-page-2.jpg" width="1998" height="1548" />
+    </a><figcaption class="image-caption">Page two of schematics</figcaption>
+    </figure>
+<h3 id="usb-power">USB Power</h3>
+<p>This test board is powered from a micro USB port. The 5V bus voltage is filtered and then brought down to 3.3V using an LDO.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb.png" data-sub-html="<h2>Micro USB input and filtering</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb.png" width="523" height="182" />
+    </a><figcaption class="image-caption">Micro USB input and filtering</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/ldo.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/ldo.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/ldo.png" data-sub-html="<h2>5V to 3.3V LDO</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/ldo.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/ldo.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/ldo.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/ldo.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/ldo.png" width="1000" height="322" />
+    </a><figcaption class="image-caption">5V to 3.3V LDO</figcaption>
+    </figure>
+<h3 id="usb-uart">USB-UART</h3>
+<p>In an attempt to use the factory-programmed bootloader on the Silicon Labs MCU, a USB-UART IC was included to provide a serial interface with the MCU.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb-uart.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb-uart.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb-uart.png" data-sub-html="<h2>USB-UART interface for development purposes</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb-uart.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb-uart.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb-uart.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb-uart.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/usb-uart.png" width="606" height="355" />
+    </a><figcaption class="image-caption">USB-UART interface for development purposes</figcaption>
+    </figure>
+<h3 id="microcontroller">Microcontroller</h3>
+<p>Since I interned with Silicon Labs for <a href="/2017/09/02/interning-at-silicon-labs/" rel="">two</a> <a href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" rel="">summers</a>, I really wanted to use one of their MCUs for this project. I decided on a small and simple Tiny Gecko (<a href="https://www.silabs.com/products/mcu/32-bit/efm32-tiny-gecko/device.efm32tg110f32-qfn24" target="_blank" rel="noopener noreffer">EFM32TG110F32</a>), which has an ARM Cortex-M3 core inside.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/mcu.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/mcu.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/mcu.png" data-sub-html="<h2>Silicon Labs MCU</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/mcu.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/mcu.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/mcu.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/mcu.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/mcu.png" width="656" height="469" />
+    </a><figcaption class="image-caption">Silicon Labs MCU</figcaption>
+    </figure>
+<h3 id="row-driver">Row Driver</h3>
+<p>The row driver needs to sink a constant amount of current per channel. This controls LED brightness. I have used a MBI5024 before, which is a 16-bit clone of other common LED driver IC&rsquo;s, such as ST&rsquo;s <a href="https://www.st.com/resource/en/datasheet/stp08dp05.pdf" target="_blank" rel="noopener noreffer">STP08DP05</a>. The resistance between pin 15 (R-EXT) and ground determines how much current can flow per channel, thus controlling LED brightness.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/row-driver.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/row-driver.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/row-driver.png" data-sub-html="<h2>Constant current sink LED driver</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/row-driver.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/row-driver.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/row-driver.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/row-driver.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/row-driver.png" width="432" height="237" />
+    </a><figcaption class="image-caption">Constant current sink LED driver</figcaption>
+    </figure>
+<h3 id="column-driver">Column Driver</h3>
+<p>The column driver is effectively a high-side switch, meaning it can connect devices directly to power or not. A P-channel MOSFET is used to do this switching (sourcing up to ~100mA each), and a shift register is used to create the serial interface for the MCU.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-driver.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-driver.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-driver.png" data-sub-html="<h2>Shift register to create serial interface for MCU</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-driver.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-driver.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-driver.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-driver.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-driver.png" width="413" height="211" />
+    </a><figcaption class="image-caption">Shift register to create serial interface for MCU</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-switches.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-switches.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-switches.png" data-sub-html="<h2>P-channel MOSFETs do the actual power switching</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-switches.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-switches.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-switches.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-switches.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/column-switches.png" width="553" height="398" />
+    </a><figcaption class="image-caption">P-channel MOSFETs do the actual power switching</figcaption>
+    </figure>
+<h3 id="led-matrix">LED Matrix</h3>
+<p>As described earlier, a matrix of discrete LEDs is used. For each column, all LED anodes are connected together, and for each row, all LED cathodes are connected together.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/led-matrix.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/led-matrix.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/led-matrix.png" data-sub-html="<h2>8x8 discrete LED matrix</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/led-matrix.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/led-matrix.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/led-matrix.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/led-matrix.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/sch/led-matrix.png" width="721" height="450" />
+    </a><figcaption class="image-caption">8x8 discrete LED matrix</figcaption>
+    </figure>
+<h2 id="hardware">Hardware</h2>
+<p>The physical design of this PCB wasn&rsquo;t critical since it was a test board for proving the design worked. However, the LED pitch was chosen to match the final version PCB LED pitch.</p>
+<h3 id="led-pitch">LED Pitch</h3>
+<p>To support each individual PCB panel being tiled to create a larger display, the LED pitch needs to be carefully considered to prevent obvious discontinuities between panels.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led-pitch.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led-pitch.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led-pitch.jpg" data-sub-html="<h2>Diagram of parameters for LED pitch design</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led-pitch.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led-pitch.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led-pitch.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led-pitch.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/diagram/led-pitch.jpg" width="2000" height="1319" />
+    </a><figcaption class="image-caption">Diagram of parameters for LED pitch design</figcaption>
+    </figure>
+<p>The following two equations govern the LED pitch $p$ and distance from edge of board $s$, given the PCB width $W$, panel spacing $r$, and number of LEDs per row $N$. The first relates panel spacing to pitch, and the second accounts for all distance across two panels.</p>
+<p>$$
+p = r + 2s
+$$</p>
+<p>$$
+2W + r = r + 4s + 2(N-1)p
+$$</p>
+<p>Solving for pitch $p$ and distance from edge of board $s$:</p>
+<p>$$
+p = r + \frac{W}{N} - \frac{r(N-1)}{N}
+$$</p>
+<p>$$
+s = \frac{W}{2N} - \frac{r(N-1)}{2N}
+$$</p>
+<p>This means that for a 10cm by 10cm PCB with 2mm panel spacing and 16x16 LEDs per panel, the LED pitch and distance from edge of board is the following.</p>
+<p>Let $W = 100mm$, $r = 2mm$, and $N = 16$.</p>
+<p>Then $p = 6.375mm$ and $s = 2.1875mm$.</p>
+<p>For a fixed size PCB and panel spacing, varying the number of LEDs changes the LED pitch and distance from edge of board (<em>r</em>, <em>W</em>, <em>p</em>, <em>s</em> in mm; N is # of LEDs per side):</p>
+<table>
+<thead>
+<tr>
+<th align="center">r</th>
+<th align="center">N</th>
+<th align="center">W</th>
+<th align="center">p</th>
+<th align="center">s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">2</td>
+<td align="center">16</td>
+<td align="center">100</td>
+<td align="center">6.375</td>
+<td align="center">2.1875</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">18</td>
+<td align="center">100</td>
+<td align="center">5.667</td>
+<td align="center">1.8333</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">20</td>
+<td align="center">100</td>
+<td align="center">5.100</td>
+<td align="center">1.5500</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">22</td>
+<td align="center">100</td>
+<td align="center">4.636</td>
+<td align="center">1.3182</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">24</td>
+<td align="center">100</td>
+<td align="center">4.250</td>
+<td align="center">1.1250</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">25</td>
+<td align="center">100</td>
+<td align="center">4.080</td>
+<td align="center">1.0400</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">30</td>
+<td align="center">100</td>
+<td align="center">3.400</td>
+<td align="center">0.7000</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">32</td>
+<td align="center">100</td>
+<td align="center">3.188</td>
+<td align="center">0.5938</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pcb">PCB</h3>
+<p>The PCB was designed for easy manufacturing anywhere, so design rules used 6/6mil spacing and 0.3mm minimum drills in a 10cm x 10cm board.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-top.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-top.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-top.jpg" data-sub-html="<h2>Top of PCB design</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-top.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-top.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-top.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-top.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-top.jpg" width="2200" height="1700" />
+    </a><figcaption class="image-caption">Top of PCB design</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-bottom.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-bottom.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-bottom.jpg" data-sub-html="<h2>Bottom of PCB design</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-bottom.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-bottom.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-bottom.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-bottom.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/brd/brd-bottom.jpg" width="2200" height="1700" />
+    </a><figcaption class="image-caption">Bottom of PCB design</figcaption>
+    </figure>
+<h4 id="seeed-studio">Seeed Studio</h4>
+<p>Seeed Studio (<a href="https://www.seeedstudio.com/" target="_blank" rel="noopener noreffer">www.seeedstudio.com</a>) manufactured the PCB using their <a href="https://www.seeedstudio.com/fusion_pcb.html" target="_blank" rel="noopener noreffer">Fusion PCB</a> service. The returned boards worked just as expected, with no issues. Read my previous posts about them <a href="/2018/09/05/1-dollar-pcbs-from-seeed-studio/" rel="">here</a> and <a href="/2018/02/14/pcbs-from-seeed-studio/" rel="">here</a>.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-08.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-08.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-08.jpg" data-sub-html="<h2>Physical PCB received from fab house</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-08.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-08.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-08.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-08.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-08.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Physical PCB received from fab house</figcaption>
+    </figure>
+<h2 id="firmware">Firmware</h2>
+<p>Normally, getting the first board off the ground and doing good things is a time-consuming, frustrating process. For all the past projects I&rsquo;ve made, I didn&rsquo;t own any debugging tools, like logic analyzers or an oscilloscope. I got pretty good at using the status LED on my board to debug all the problems that arose.</p>
+<p>For this project, two serial data buses are used to communicate with the column driver and row driver. The MCU rotates through the columns and displays each column separately. The high refresh rate, combined with the persistence of vision effect, makes it look like all the columns are on at once.</p>
+<p>This multi-bus interface, operating in synchronization with each other and with tight timing requirements, could have been quite the challenge to get working.</p>
+<h3 id="saleae-logic-analyzer">Saleae Logic Analyzer</h3>
+<p>I decided to take the plunge and buy a Saleae Logic Analyzer (<a href="https://www.saleae.com/" target="_blank" rel="noopener noreffer">www.saleae.com</a>) to help me debug projects and improve time for initial hardware bring up. This has proved to be practically <em>invaluable</em> for helping solve issues such as clock frequency configuration, timer configuration, etc.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-03.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-03.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-03.jpg" data-sub-html="<h2>New Saleae Logic Analyzer in town!</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-03.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-03.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-03.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-03.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-03.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">New Saleae Logic Analyzer in town!</figcaption>
+    </figure>
+<p>With test equipment, I can write some code, flash the MCU, and immediately see if the code works. This is huge. Embedded systems are very picky about details being correct, so any error can bring down the entire system. The most frustrating problems can easily be identified and fixed by simply having the ability to see the waveforms.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-01.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-01.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-01.jpg" data-sub-html="<h2>Using Saleae Logic Analyzer to debug firmware</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-01.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-01.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-01.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-01.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-01.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Using Saleae Logic Analyzer to debug firmware</figcaption>
+    </figure>
+<h3 id="column--row-drivers">Column / Row Drivers</h3>
+<p>To control this multiplexed LED display, the firmware needs to turn on each column of LEDs individually. By cycling through the columns at a high enough rate, a <a href="https://en.wikipedia.org/wiki/Persistence_of_vision" target="_blank" rel="noopener noreffer">persistence of vision (POV)</a> effect is achieved, making the display look static.</p>
+<p>Since the column drivers source current and the row drivers sink current, we can treat them like simple switches. To turn on any arbitrary LED, the firmware must close the column driver switch of that LED, which connects its anode to the power source. Then, the firmware needs to close the row driver switch for the LED, which connects its cathode to ground, allowing current to flow and illuminating the LED.</p>
+<p>By design, both column and row drivers have a similar interface to the MCU: a SPI-like bus. The MCU needs to generate the appropriate waveforms on the clock, data, latch and output enable pins to set up the drivers. First, the column driver is configured, followed by the row driver, as seen in the image below.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-one-column.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-one-column.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-one-column.png" data-sub-html="<h2>MCU configuring column driver then row driver</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-one-column.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-one-column.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-one-column.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-one-column.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-one-column.png" width="1337" height="354" />
+    </a><figcaption class="image-caption">MCU configuring column driver then row driver</figcaption>
+    </figure>
+<p>The data bits are shifted out of the MCU at approximately 2MHz, as seen below.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-column-sck-freq.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-column-sck-freq.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-column-sck-freq.png" data-sub-html="<h2>Clock frequency for shifting data bits out of MCU</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-column-sck-freq.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-column-sck-freq.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-column-sck-freq.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-column-sck-freq.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-column-sck-freq.png" width="792" height="177" />
+    </a><figcaption class="image-caption">Clock frequency for shifting data bits out of MCU</figcaption>
+    </figure>
+<h2 id="testing">Testing</h2>
+<p>The point of making this prototype board was to see if LED driving technology worked like it was supposed to work. Basically, to prove current consumption is low.</p>
+<h3 id="led-current-consumption">LED Current Consumption</h3>
+<p>I made a simple animation for testing the display that looks like the GIF below. It starts with all LEDs off, then makes a square of LEDs on the display&rsquo;s perimeter. It then makes progressively smaller squares around the perimeter of the display, turning more and more LEDs on per frame. After all LEDs are on, it starts over.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/gradled-mini-animation.gif" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/gradled-mini-animation.gif" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/gradled-mini-animation.gif" data-sub-html="<h2>Simple display animation for testing</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/gradled-mini-animation.gif"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/gradled-mini-animation.gif, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/gradled-mini-animation.gif 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/gradled-mini-animation.gif 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/gradled-mini-animation.gif" width="800" height="738" />
+    </a><figcaption class="image-caption">Simple display animation for testing</figcaption>
+    </figure>
+<p>I then put a current sense resistor $R_{sense} = 10.2\Omega$ inline with the board power supply so I could measure current consumption. I used an oscilloscope to record voltage across the resistor during an animation cycle. From the data, I know precisely how much current is consumed.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy7.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy7.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy7.jpg" data-sub-html="<h2>Current consumption over full animation cycle</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy7.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy7.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy7.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy7.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy7.jpg" width="1024" height="335" />
+    </a><figcaption class="image-caption">Current consumption over full animation cycle</figcaption>
+    </figure>
+<h4 id="maximum-current">Maximum Current</h4>
+<p>Looking at the display, it appears like all the LEDs can be on at once, thus maximum current is current through each LED x total number of LEDs. But, the whole reason for designing this time-multiplexed matrix topology was to reduce current consumption. Therefore, we expect the maximum current at any time to be the current through one column, or 8 x each LED&rsquo;s current.</p>
+<h4 id="current-per-led">Current Per LED</h4>
+<p>We investigate current per LED using two approaches: from measurements on oscilloscope during animations, and via theoretical equations from LED driver datasheet. If these agree, we can be confident that overall system performance matches expectations.</p>
+<h5 id="via-oscilloscope">Via Oscilloscope</h5>
+<p>During the animation cycle when all LEDs are on, LED current is the difference between total current and steady state current (MCU, etc), see equation below. Thus, to find each LED&rsquo;s consumption, we need to measure steady state current consumption when no LEDs are on, and total current when all LEDs are on.</p>
+<p>$$
+I_{LEDs} = I_{total} - I_{ss}
+$$</p>
+<h6 id="total-current">Total Current</h6>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy25.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy25.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy25.jpg" data-sub-html="<h2>Total current when all LEDs on</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy25.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy25.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy25.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy25.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy25.jpg" width="1024" height="547" />
+    </a><figcaption class="image-caption">Total current when all LEDs on</figcaption>
+    </figure>
+<p>$$
+I_{total} = \frac{854mV}{R_{sense}} = 83.73mA
+$$</p>
+<h6 id="steady-state-current">Steady State Current</h6>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy21.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy21.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy21.jpg" data-sub-html="<h2>Steady state system current when no LEDs on</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy21.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy21.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy21.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy21.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/LeCroy21.jpg" width="1024" height="547" />
+    </a><figcaption class="image-caption">Steady state system current when no LEDs on</figcaption>
+    </figure>
+<p>$$
+I_{ss} = \frac{150mV}{R_{sense}} = 14.71mA
+$$</p>
+<h6 id="per-led-current">Per LED Current</h6>
+<p>Because there are 8 LEDs per column, we can calculate current per LED:</p>
+<p>$$
+I_{LED} = \frac{1}{8} (I_{total} - I_{ss})
+$$</p>
+<p>$$
+I_{LED} = 8.63mA
+$$</p>
+<h5 id="via-led-driver-datasheet">Via LED Driver Datasheet</h5>
+<p>The LED driver we are using is a constant current sink LED driver. Its datasheet doesn&rsquo;t give an equation relating current sink vs. external resistance, but other clones do. For example, the <a href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/pdfs/datasheet-mbi5024.pdf" rel="">MBI5024</a> provides our equation of interest. By setting one external resistor $R_{ext}$, we can control the current on all LED channels.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/mbi5024-r-vs-i.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/mbi5024-r-vs-i.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/mbi5024-r-vs-i.png" data-sub-html="<h2>MBI5024 LED constant current driver R vs I</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/mbi5024-r-vs-i.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/mbi5024-r-vs-i.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/mbi5024-r-vs-i.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/mbi5024-r-vs-i.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/mbi5024-r-vs-i.png" width="1059" height="652" />
+    </a><figcaption class="image-caption">MBI5024 LED constant current driver R vs I</figcaption>
+    </figure>
+<p>The datasheet provides an equation to convert this resistance, $R_{ext}$, to a current, $I_{channel}$ (see page 12 of <a href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/pdfs/datasheet-mbi5024.pdf" rel="">datasheet</a>).</p>
+<p>$$
+I_{channel} = 1.24V * \frac{1}{R_{ext}}*15
+$$</p>
+<p>We measure $R_{ext} = 2.177k\Omega$, and calculate $I_{channel} = 8.544mA$.</p>
+<h5 id="analysis">Analysis</h5>
+<p>Both methods for determining current per LED result in very close answers, only differing by about 1%. In summary, we can confidently say that the maximum current is the sum of steady state current and current for one column:</p>
+<p>$$
+I_{max} = I_{ss} + I_{column}
+$$</p>
+<p>$$
+I_{max} = 14.71mA + (8 * 8.63mA)
+$$</p>
+<p>$$
+I_{max} = 83.73mA
+$$</p>
+<p>With a CR2032 coin cell battery (rated at 225mAh) as the power source, this display can run for at least $\frac{225mAh}{83.73mA} = 2.7 hours$.</p>
+<h3 id="animation-timing">Animation Timing</h3>
+<p>The test animation, as described in detail above, is configured to add a new square three times per second, thus each animation frame lasts 333ms. To perform the column multiplexing, the firmware is configured to cycle through updating each column at a rate such that individually, each column is updated at 60Hz to prevent flickering.</p>
+<p>We can verify these constraints by looking at two things:</p>
+<ol>
+<li>Saleae Logic Analyzer data for serial interface to column / row drivers</li>
+<li>Oscilloscope current waveform data</li>
+</ol>
+<h4 id="serial-interface-observations">Serial Interface Observations</h4>
+<p>Since the column and row drivers need to be updated for each column update, we can measure their update frequency. This value should be 8 x 60Hz, if each column is refreshed individually at 60Hz. The plot below confirms this: the OE (output enable) pin is toggled at 480Hz, which precisely matches our expectations.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-many-columns.png" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-many-columns.png" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-many-columns.png" data-sub-html="<h2>Column updates happening at 480Hz, meaning each column refreshed at 60Hz</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-many-columns.png"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-many-columns.png, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-many-columns.png 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-many-columns.png 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/logic-many-columns.png" width="1334" height="348" />
+    </a><figcaption class="image-caption">Column updates happening at 480Hz, meaning each column refreshed at 60Hz</figcaption>
+    </figure>
+<h4 id="current-waveform-observations">Current Waveform Observations</h4>
+<p>By looking at the board current consumption waveform, we can deduce the timing realized by the firmware.</p>
+<h5 id="animation-frame-update-rate">Animation Frame Update Rate</h5>
+<p>The floor of the current waveform increases throughout the animation, which makes sense because more and more LEDs remain on.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/current-floors.gif" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/current-floors.gif" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/current-floors.gif" data-sub-html="<h2>Current consumption floor increases throughout animation</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/current-floors.gif"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/current-floors.gif, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/current-floors.gif 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/current-floors.gif 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/current-floors.gif" width="1024" height="547" />
+    </a><figcaption class="image-caption">Current consumption floor increases throughout animation</figcaption>
+    </figure>
+<p>Each time the floor increases, a new animation frame is displayed. This means that we can calculate the animation update rate as the time between floor increases. In the animation below, this is measured to be precisely 333ms, as expected.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/animation-frames.gif" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/animation-frames.gif" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/animation-frames.gif" data-sub-html="<h2>Animation frame duration remains constant throughout animation cycle</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/animation-frames.gif"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/animation-frames.gif, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/animation-frames.gif 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/animation-frames.gif 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/animation-frames.gif" width="1024" height="335" />
+    </a><figcaption class="image-caption">Animation frame duration remains constant throughout animation cycle</figcaption>
+    </figure>
+<h5 id="column-update-rate">Column Update Rate</h5>
+<p>If we focus on the first animation frame when only the outer LEDs are illuminated, we can reason that the current should be maximum for 1/4 of the total time since there are eight columns and only two are on. This is exactly what the animation below shows. The period of the waveform is 16.6ms resulting in our expected 60Hz update rate per column. The current maximum lasts for 4ms, which also matches our expectation of being one quarter of the period.</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/column-updates.gif" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/column-updates.gif" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/column-updates.gif" data-sub-html="<h2>Column updates happen at 60Hz, as expected</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/column-updates.gif"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/column-updates.gif, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/column-updates.gif 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/column-updates.gif 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/scope/column-updates.gif" width="1024" height="335" />
+    </a><figcaption class="image-caption">Column updates happen at 60Hz, as expected</figcaption>
+    </figure>
+<h2 id="mistakes">Mistakes</h2>
+<p>The goal of this project was to prove that the design worked, giving confidence that the first go around at the final Gradled board would work. This was mostly a success, although a few minor issues arose.</p>
+<p>My 3.3V LDO footprint was wrong. Turns out the heat sink tab is connected to $V_{out}$, not ground.</p>
+<p>I also never figured out how to use the factory-burned bootloader on the MCU to load in new program images. The USB-UART IC worked a treat: its status LEDs worked just as expected. When I plugged it into my computer, it came out of suspension and was ready for communication. Unfortunately, I never could flash the MCU using UART.</p>
+<p>Lastly, the routing for the column driver can be improved. I swapped pins to ease trace routing, and figured that I could simply correct for the change in firmware. While I did get this to work, if the pins were in order, I could simply toggle the clock line to activate the next column over. Currently, I must send out all new data for each column. This creates a slight overhead during the ISR which updates the display.</p>
+<h2 id="future">Future</h2>
+<p>Obviously the next step is to design and build the full version! I graduate in May 2019, so I have a full semester to get it up and running. Since I took the time to build this prototype, it should be fairly easy to get it working. Fingers crossed.</p>
+<p>Also, I would like to extend this idea to discrete RGB LEDs. Basically, this means that each LED becomes three (in the same package). This should be a natural extension of this design. Perhaps I will get around to this after graduation.</p>
+<p>Finally, it would be very nice to be able to control the display using Bluetooth from a phone. This doesn&rsquo;t change the display itself, but just adds another subsystem and makes the firmware more complex. Should be doable.</p>
+<h2 id="summary">Summary</h2>
+<p>This project went about as planned. I proved that my circuitry for driving an LED matrix works as expected, and built up preliminary firmware for future displays. I also learned how to use the Saleae Logic Analyzer to aid in firmware development, and calculated a lower bound on the time this display can run off of a given battery.</p>
+<h2 id="picture-gallery">Picture Gallery</h2>
+<p>Extra pictures of Gradled Mini for your browsing pleasure. :)</p>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-02.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-02.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-02.jpg" data-sub-html="<h2>Probing signals using Saleae</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-02.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-02.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-02.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-02.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-02.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Probing signals using Saleae</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-04.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-04.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-04.jpg" data-sub-html="<h2>Top of board up close</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-04.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-04.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-04.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-04.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-04.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Top of board up close</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-05.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-05.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-05.jpg" data-sub-html="<h2>Discrete LED matrix</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-05.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-05.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-05.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-05.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-05.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Discrete LED matrix</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-06.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-06.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-06.jpg" data-sub-html="<h2>Row driver and traces going to each row</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-06.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-06.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-06.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-06.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-06.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Row driver and traces going to each row</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-09.jpg" title="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-09.jpg" data-thumbnail="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-09.jpg" data-sub-html="<h2>All LEDs illuminated</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-09.jpg"
+            data-srcset="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-09.jpg, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-09.jpg 1.5x, /2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-09.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/images/pics/pic-09.jpg" width="1500" height="2000" />
+    </a><figcaption class="image-caption">All LEDs illuminated</figcaption>
+    </figure>
+<hr>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" data-title="Gradled Mini: Prototype Modular Discrete LED Display" data-hashtags="hardware,electronics,design,firmware,leds,display,matrix,animations,silabs,pcb,usb,mcu,eagle,efm32,prototype,multiplex"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" data-hashtag="hardware"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" data-title="Gradled Mini: Prototype Modular Discrete LED Display"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" data-title="Gradled Mini: Prototype Modular Discrete LED Display"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" data-title="Gradled Mini: Prototype Modular Discrete LED Display"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hardware/">hardware</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/design/">design</a>, <a href="/tags/firmware/">firmware</a>, <a href="/tags/leds/">leds</a>, <a href="/tags/display/">display</a>, <a href="/tags/matrix/">matrix</a>, <a href="/tags/animations/">animations</a>, <a href="/tags/silabs/">silabs</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/usb/">usb</a>, <a href="/tags/mcu/">mcu</a>, <a href="/tags/eagle/">eagle</a>, <a href="/tags/efm32/">efm32</a>, <a href="/tags/prototype/">prototype</a>, <a href="/tags/multiplex/">multiplex</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" class="prev" rel="prev" title="Interning at Silicon Labs, the Sequel - Summer 2018"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Interning at Silicon Labs, the Sequel - Summer 2018</a>
+            <a href="/2018/12/24/olive-garden-pasta-pass/" class="next" rel="next" title="Olive Garden Pasta Pass">Olive Garden Pasta Pass<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

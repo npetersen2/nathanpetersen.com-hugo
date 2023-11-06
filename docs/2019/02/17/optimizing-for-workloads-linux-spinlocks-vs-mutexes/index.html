@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Optimizing for Workloads: Linux Spinlocks vs Mutexes - Nathan Petersen</title><meta name="Description" content="Analysis of synchronization primitive implementation for high performance applications."><meta property="og:title" content="Optimizing for Workloads: Linux Spinlocks vs Mutexes" />
+<meta property="og:description" content="Analysis of synchronization primitive implementation for high performance applications." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/" />
+<meta property="article:published_time" content="2019-02-17T11:45:00+00:00" />
+<meta property="article:modified_time" content="2019-02-17T11:45:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Optimizing for Workloads: Linux Spinlocks vs Mutexes"/>
+<meta name="twitter:description" content="Analysis of synchronization primitive implementation for high performance applications."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/" /><link rel="prev" href="https://nathanpetersen.com/2019/01/31/cirarrow-circular-arrow-tool/" /><link rel="next" href="https://nathanpetersen.com/2019/04/17/banana-foster-french-toast-bassett-street-brunch-club-madison-wi/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Optimizing for Workloads: Linux Spinlocks vs Mutexes",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2019\/02\/17\/optimizing-for-workloads-linux-spinlocks-vs-mutexes\/"
+        },"genre": "posts","keywords": "data, school, programming, analysis, linux, systems, operating-systems, synchronization, locks, spinlock, mutex","wordcount":  1561 ,
+        "url": "https:\/\/nathanpetersen.com\/2019\/02\/17\/optimizing-for-workloads-linux-spinlocks-vs-mutexes\/","datePublished": "2019-02-17T11:45:00+00:00","dateModified": "2019-02-17T11:45:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Analysis of synchronization primitive implementation for high performance applications."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Optimizing for Workloads: Linux Spinlocks vs Mutexes</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="February 17, 2019">February 17, 2019</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1561 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/data/">data</a>, <a href="/tags/school/">school</a>, <a href="/tags/programming/">programming</a>, <a href="/tags/analysis/">analysis</a>, <a href="/tags/linux/">linux</a>, <a href="/tags/systems/">systems</a>, <a href="/tags/operating-systems/">operating-systems</a>, <a href="/tags/synchronization/">synchronization</a>, <a href="/tags/locks/">locks</a>, <a href="/tags/spinlock/">spinlock</a>, <a href="/tags/mutex/">mutex</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#problems">Problems</a></li>
+        <li><a href="#approach">Approach</a></li>
+      </ul>
+    </li>
+    <li><a href="#experiments">Experiments</a>
+      <ul>
+        <li><a href="#concurrency">Concurrency</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="introduction">Introduction</h2>
+<p>Operating systems form the backbone of modern processing environments. Millions of lines of code are responsible for enabling programs to easily execute on a given machine. These programs must share the machine&rsquo;s resources, such as processor cores, volatile memory, peripheral devices, and persistent media. Virtualization and resource management is accomplished by the underlying operating system, which ensures the system operates correctly and in an efficient manner. Machine resources should be largely devoted to the user applications which mandates careful system design and implementation.</p>
+<p>User applications must interact with the operating system to effectively use the machine&rsquo;s resources. This interaction is realized using a set of well-defined interfaces (APIs) which programs can call to instruct the operating system to perform required actions. Modern systems export hundreds of <em>system calls</em> to the user application which each have very specific actions they perform. There are five categories of system calls: process control, file manipulation, device manipulation, information maintenance and communication. By combining and mixing the usage of these various system calls, user applications can accomplish a wide variety of tasks on a given machine, but  cannot take over control of the hardware or steal data from other programs.</p>
+<figure><a class="lightgallery" href="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/kernel.png" title="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/kernel.png" data-thumbnail="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/kernel.png" data-sub-html="<h2>Typical system design with kernel (operating system) managing the device resources</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/kernel.png"
+            data-srcset="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/kernel.png, /2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/kernel.png 1.5x, /2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/kernel.png 2x"
+            data-sizes="auto"
+            alt="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/kernel.png" width="1200" height="947" />
+    </a><figcaption class="image-caption">Typical system design with kernel (operating system) managing the device resources</figcaption>
+    </figure>
+<p>Process control refers to the operating systems ability to run programs at various times while maintaining each program&rsquo;s illusion that full machine capabilities are available. The operating system will tend to swap out tasks
+to provide fair usage of the physical processing resources. Modern hardware systems often have multiple physical processing cores which can be used to run different programs in parallel, or can be exploited by a single program for increased processing throughput. When a single program creates multiple threads of execution, careful thought must be placed on how these threads interact and share common data to ensure program correctness while simultaneously realizing the potential performance gains. The operating system provides various synchronization primitives which the application can use to maintain data consistency and algorithmic correctness.</p>
+<figure><a class="lightgallery" href="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/locks.jpg" title="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/locks.jpg" data-thumbnail="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/locks.jpg" data-sub-html="<h2>Battle of the locks: smart locks (mutexes) vs. spinlocks</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/locks.jpg"
+            data-srcset="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/locks.jpg, /2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/locks.jpg 1.5x, /2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/locks.jpg 2x"
+            data-sizes="auto"
+            alt="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/locks.jpg" width="700" height="500" />
+    </a><figcaption class="image-caption">Battle of the locks: smart locks (mutexes) vs. spinlocks</figcaption>
+    </figure>
+<h3 id="problems">Problems</h3>
+<p>Maximum processing throughput naturally demands concurrency and full utilization of the available processing resources. Critical sections of code, where only a single thread can execute at a time, are common in high performance concurrent applications. Modern operating systems provide simple locking primitives to enforce the single thread constraint. Two common lock types are the spin lock and mutex. Each lock type creates a barrier to critical sections, thus maintaining program correctness. However, spin locks and mutexes are internally implemented very differently, leading to significant performance differences in various common workloads. The following sections explore this further.</p>
+<h3 id="approach">Approach</h3>
+<p>Multiple workloads are designed to exhibit the differing performance observed between spinlocks and mutexes. These workloads are benchmarked on a typical user system and performance metrics are collected for analysis. Care is given to ensure the resulting data and conclusions are repeatable. When possible, workloads are designed to represent a wide range of use cases so more widely encompassing conclusions can be made. The rest of this article describes the various experiments performed as well as the results. Conclusions are made which highlight the major observations which can be utilized when developing user applications.</p>
+<h2 id="experiments">Experiments</h2>
+<p>All experiments are performed on a consumer desktop PC running Linux 4.4.8. The PC has a quad-core Intel i7-2600K processor with hyper-threading to enable eight hardware threads of execution. System memory available is 24GB. The persistent media is a 1TB hard disk drive (HDD) from Western Digital with 7200 RPM rotational speed and 32MB cache. The filesystem is ext4.</p>
+<h3 id="concurrency">Concurrency</h3>
+<p>While many different primitives exist to help applications manage concurrency, locks remain an easy-to-use solution. When one thread &ldquo;holds&rdquo; a lock, other threads are prevented from also holding the lock. Spinlocks are implemented such that the thread that fails to acquire the lock continually retries to get it. This wastes CPU time, but can result in better performance. Mutexes behave similarly to spinlocks at first, but after a few failed acquisitions, the thread is put to sleep until the lock is available. This allows the CPU to be used by other threads.</p>
+<h4 id="workload">Workload</h4>
+<p>The performance of the locking mechanisms depends on multiple factors. In this analysis, attention is given to the time spent in the critical section of code, as well as the number of threads attempting to acquire the lock. A simple workload is constructed which creates an array of threads to do work. This work consists of 100 accesses of the critical section.</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">pthread_t</span> <span class="n">threads</span><span class="p">[</span><span class="n">NUM</span><span class="p">]</span>
+<span class="n">lock_t</span> <span class="n">lock</span>
+
+<span class="n">critical</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">)</span>
+  <span class="k">for</span> <span class="mi">1</span> <span class="n">to</span> <span class="nl">WORK</span><span class="p">:</span> <span class="n">NOP</span>
+  <span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">work</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">while</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="o">:</span>
+      <span class="n">critical</span><span class="p">()</span>
+      <span class="n">count</span><span class="o">++</span>
+<span class="p">}</span>
+
+<span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">init_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">)</span>
+  
+  <span class="c1">// PROFILE START
+</span><span class="c1"></span>  
+  <span class="k">for</span> <span class="n">i</span> <span class="mi">1</span> <span class="n">to</span> <span class="nl">NUM</span><span class="p">:</span>
+    <span class="n">pthread_create</span><span class="p">(</span>
+      <span class="o">&amp;</span><span class="n">threads</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+      <span class="nb">NULL</span><span class="p">,</span> <span class="n">work</span><span class="p">)</span>
+      
+  <span class="k">for</span> <span class="n">i</span> <span class="mi">1</span> <span class="n">to</span> <span class="nl">NUM</span><span class="p">:</span>
+    <span class="n">pthread_join</span><span class="p">(</span>
+      <span class="n">threads</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+      <span class="nb">NULL</span><span class="p">)</span>
+      
+  <span class="c1">// PROFILE END
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div>
+<p><em>Listing 1: Workload implementation for spinlock vs. mutex comparison.</em></p>
+<p>At run time, a parameter is passed to the program to set the duration a thread spends in the critical section. By sweeping both the number of threads and the duration of time spent in the critical section, interesting results emerge. See Listing 1 for implementation details.</p>
+<h4 id="results">Results</h4>
+<p>Figure 3 shows a plot of relative performance of the spinlock to the mutex. Each cell in the plot contains a value which is the ratio of performance. A value of 1.0 indicates both the spinlock and mutex have identical performance, while a value of 2.0 indicates the spinlock version of the workload completed its task twice as fast as the mutex version (normalized by total number of threads). A wide range of time spent in the critical section was evaluated, with number of critical cycles varying widely in magnitude (1 to 1M). For each of these values, a range of thread counts were evaluated, ranging from one to 100 threads.</p>
+<p>The wide range of thread count and critical instruction count leads to interesting data which can help inform the decision of when to use spinlocks versus mutexes. General notions are that spinlocks are inefficient and waste CPU time, while mutexes allow efficient allocation of processing time. Figure 3 clearly shows that there is much more nuance relating to which lock type performs better.</p>
+<p>Coloring is given to the plot to show areas of general performance:</p>
+<ul>
+<li>Green indicates values greater than one (spinlocks perform better)</li>
+<li>Red indicates values less than one (mutexes perform better)</li>
+</ul>
+<figure><a class="lightgallery" href="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/plot.png" title="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/plot.png" data-thumbnail="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/plot.png" data-sub-html="<h2>Figure 3: Spinlock vs. mutex relative performance. For example, value of 2.0 means overall throughput using spinlock is 2x higher than mutex. Values are averaged over multiple runs.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/plot.png"
+            data-srcset="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/plot.png, /2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/plot.png 1.5x, /2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/plot.png 2x"
+            data-sizes="auto"
+            alt="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/images/plot.png" width="1043" height="916" />
+    </a><figcaption class="image-caption">Figure 3: Spinlock vs. mutex relative performance. For example, value of 2.0 means overall throughput using spinlock is 2x higher than mutex. <em>Values are averaged over multiple runs.</em></figcaption>
+    </figure>
+<h4 id="evaluation">Evaluation</h4>
+<p><strong>For program thread counts less than or equal to the number of threads available on the given machine, spin locks always perform as well or better than mutexes, in some cases up to twice as well.</strong></p>
+<p>This can be explained because mutexes must put a thread to sleep and then later reawaken it, which is a very expensive process. As long as there are not starved threads which require the CPU, having a thread spin on a lock and simply wait for it to become free leads to significantly higher performance.</p>
+<p>Naturally, as the number of threads is increased to more than the physical hardware supports, the threads must share the CPU. Programs that have critical sections with more than 1k instructions and more than the hardware allowed number of threads show that mutexes allow much higher performance. This is because the blocked thread is put to sleep, which enables another thread to do work.</p>
+<p>Finally, it can be seen that for workloads with more than eight threads but less than 1k critical section instructions, spinlocks perform very well. This could suggest that the operating system must run approximately 1k instructions to put a thread to sleep and wake it up. Therefore, just keeping the thread awake and spinning is better for performance.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Careful study of various workloads for thread synchronization is performed. Both spinlocks and mutexes are tested in a wide range of combinations of thread count and critical section instructions. It is shown that for workloads with less than or equal number of threads than the physical hardware allows, using spinlocks can lead to higher performance (up to 2x). However, when critical section instruction count increases to above five thousand instructions and thread count rises above hardware supported amount, mutexes will perform better, as threads are put to sleep to make way for other threads to effectively use the CPU. Users must take into consideration the number of cycles in an application&rsquo;s critical section to determine appropriate lock type.</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Class Project<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>This analysis was performed during Spring 2019 for University of Wisconsin-Madison course COMP SCI 736: Advanced Operating Systems.</p>
+<p><a href="/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/pdfs/CS736MiniProjectNathanPetersen.pdf" rel="">Read the full paper&hellip;</a></p>
+</div>
+        </div>
+    </div>
+<hr>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/" data-title="Optimizing for Workloads: Linux Spinlocks vs Mutexes" data-hashtags="data,school,programming,analysis,linux,systems,operating-systems,synchronization,locks,spinlock,mutex"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/" data-hashtag="data"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/" data-title="Optimizing for Workloads: Linux Spinlocks vs Mutexes"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/" data-title="Optimizing for Workloads: Linux Spinlocks vs Mutexes"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/" data-title="Optimizing for Workloads: Linux Spinlocks vs Mutexes"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/data/">data</a>, <a href="/tags/school/">school</a>, <a href="/tags/programming/">programming</a>, <a href="/tags/analysis/">analysis</a>, <a href="/tags/linux/">linux</a>, <a href="/tags/systems/">systems</a>, <a href="/tags/operating-systems/">operating-systems</a>, <a href="/tags/synchronization/">synchronization</a>, <a href="/tags/locks/">locks</a>, <a href="/tags/spinlock/">spinlock</a>, <a href="/tags/mutex/">mutex</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2019/01/31/cirarrow-circular-arrow-tool/" class="prev" rel="prev" title="CirArrow: Circular Arrow Tool"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CirArrow: Circular Arrow Tool</a>
+            <a href="/2019/04/17/banana-foster-french-toast-bassett-street-brunch-club-madison-wi/" class="next" rel="next" title="Banana Foster French Toast - Bassett Street Brunch Club - Madison, WI">Banana Foster French Toast - Bassett Street Brunch Club - Madison, WI<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

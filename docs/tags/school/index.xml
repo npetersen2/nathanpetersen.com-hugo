@@ -1,0 +1,41 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>school - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/school/</link>
+        <description>school - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 08 May 2020 08:52:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/school/" rel="self" type="application/rss+xml" /><item>
+    <title>Simulation of Voltage Source Inverter Induction Motor Drive</title>
+    <link>https://nathanpetersen.com/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/</link>
+    <pubDate>Fri, 08 May 2020 08:52:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/</guid>
+    <description><![CDATA[Background The induction machine is one of the oldest AC electro-mechanical power conversion devices [1]. In the late 19th century, engineers pioneered the first single-phase induction motor, followed soon by the three-phase variant. Compared with other popular motor types (e.g. DC or synchronous), the induction motor is typically lower cost and has higher reliability. This has pushed the technology to become the dominant player in industrial applications. See Fig. 1a for an example induction motor.]]></description>
+</item>
+<item>
+    <title>AMDC REV D Hardware</title>
+    <link>https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/</link>
+    <pubDate>Sat, 11 Apr 2020 14:25:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/</guid>
+    <description><![CDATA[Advanced Motor Drive Controller, Revision D fully assembled" Advanced Motor Drive Controller, Revision D fully assembled  The fourth hardware design revision (REV D) of the Advanced Motor Drive Controller (AMDC) from the Severson Research Group marks a huge step improvement in quality of design, physical size reduction, and functionality compared to previous designs.
+Background About 2.5 years ago, I begin work on the Advanced Motor Drive Controller (AMDC), an open-source project designed for academic research in motor drives.]]></description>
+</item>
+<item>
+    <title>Optimizing for Workloads: Linux Spinlocks vs Mutexes</title>
+    <link>https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/</link>
+    <pubDate>Sun, 17 Feb 2019 11:45:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/</guid>
+    <description><![CDATA[Introduction Operating systems form the backbone of modern processing environments. Millions of lines of code are responsible for enabling programs to easily execute on a given machine. These programs must share the machine&rsquo;s resources, such as processor cores, volatile memory, peripheral devices, and persistent media. Virtualization and resource management is accomplished by the underlying operating system, which ensures the system operates correctly and in an efficient manner. Machine resources should be largely devoted to the user applications which mandates careful system design and implementation.]]></description>
+</item>
+<item>
+    <title>AMDC: Advanced Motor Drive Controller</title>
+    <link>https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/</link>
+    <pubDate>Wed, 05 Sep 2018 09:45:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/</guid>
+    <description><![CDATA[Background My involvement in this project, the Advanced Motor Drive Controller (AMDC), happened because of my undergraduate Independent Study project done at UW-Madison during Spring 2018, advised by Prof. Eric Severson and affiliated with WEMPEC.
+How did I get this opportunity? Eric, a relatively new professor, was looking for interested students to work on his projects. My name was recommended to him by other professors, so he reached out to me and I accepted the offer.]]></description>
+</item>
+</channel>
+</rss>

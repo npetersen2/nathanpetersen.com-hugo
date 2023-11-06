@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Interning at Silicon Labs, the Sequel - Summer 2018 - Nathan Petersen</title><meta name="Description" content="Experiences going back for another summer internship."><meta property="og:title" content="Interning at Silicon Labs, the Sequel - Summer 2018" />
+<meta property="og:description" content="Experiences going back for another summer internship." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" />
+<meta property="article:published_time" content="2018-09-09T15:00:00+00:00" />
+<meta property="article:modified_time" content="2018-09-09T15:00:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Interning at Silicon Labs, the Sequel - Summer 2018"/>
+<meta name="twitter:description" content="Experiences going back for another summer internship."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" /><link rel="prev" href="https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/" /><link rel="next" href="https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Interning at Silicon Labs, the Sequel - Summer 2018",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2018\/09\/09\/interning-at-silicon-labs-the-sequel-summer-2018\/"
+        },"genre": "posts","keywords": "electronics, internship, silabs, summer, digradio, austin-tx, job, pcb, drm-radio","wordcount":  4397 ,
+        "url": "https:\/\/nathanpetersen.com\/2018\/09\/09\/interning-at-silicon-labs-the-sequel-summer-2018\/","datePublished": "2018-09-09T15:00:00+00:00","dateModified": "2018-09-09T15:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Experiences going back for another summer internship."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Interning at Silicon Labs, the Sequel - Summer 2018</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="September 9, 2018">September 9, 2018</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4397 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;21 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/experiences/"></i>Experiences</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/electronics/">electronics</a>, <a href="/tags/internship/">internship</a>, <a href="/tags/silabs/">silabs</a>, <a href="/tags/summer/">summer</a>, <a href="/tags/digradio/">digradio</a>, <a href="/tags/austin-tx/">austin-tx</a>, <a href="/tags/job/">job</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/drm-radio/">drm-radio</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#about-silicon-labs">About Silicon Labs</a>
+      <ul>
+        <li><a href="#personal-interest">Personal Interest</a></li>
+        <li><a href="#more-on-silicon-labs">More on Silicon Labs</a></li>
+      </ul>
+    </li>
+    <li><a href="#whyd-you-go-back">Why&rsquo;d You Go Back?</a></li>
+    <li><a href="#differences-from-previous-internship">Differences from Previous Internship</a></li>
+    <li><a href="#summer-projects">Summer Projects</a>
+      <ul>
+        <li><a href="#drm-radio-research">DRM Radio Research</a></li>
+        <li><a href="#monitoring-module">Monitoring Module</a></li>
+        <li><a href="#automotive-spi-bridge-pcb">Automotive SPI Bridge PCB</a></li>
+      </ul>
+    </li>
+    <li><a href="#thoughts">Thoughts</a>
+      <ul>
+        <li><a href="#company-sponsored-learning">Company-Sponsored Learning</a></li>
+        <li><a href="#daily-grind">Daily Grind</a></li>
+      </ul>
+    </li>
+    <li><a href="#fun-summer-activities">Fun Summer Activities</a></li>
+    <li><a href="#future">Future</a>
+      <ul>
+        <li><a href="#grad-school">Grad School</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Update April 2021<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Silicon Labs has <a href="https://news.silabs.com/2021-04-22-Silicon-Labs-Announces-Agreement-to-Divest-Infrastructure-and-Automotive-Business" target="_blank" rel="noopener noreffer">sold their I&amp;A Business</a>.</p>
+<p>My entire expereince at Silicon Labs, as discussed below, was in the I&amp;A division. Therefore, everything I say below is outdated, since the business/products no longer exist from Silicon Labs.
+Most links in this article to <code>silabs.com</code> are now invalid, but I will keep them intact for posterity.</p>
+</div>
+        </div>
+    </div>
+<p>NOTE: Make sure you read this post <em>after</em> reading about my <a href="/2017/09/02/interning-at-silicon-labs/" rel="">previous internship experience at Silicon Labs</a>.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-silabs-sign.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-silabs-sign.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-silabs-sign.jpg" data-sub-html="<h2>Me standing outside of Silicon Labs HQ in Austin, TX</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-silabs-sign.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-silabs-sign.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-silabs-sign.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-silabs-sign.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-silabs-sign.jpg" width="2000" height="1333" />
+    </a><figcaption class="image-caption">Me standing outside of Silicon Labs HQ in Austin, TX</figcaption>
+    </figure>
+<p><strong>&hellip;And that wraps up my <em>second</em> summer at Silicon Labs!</strong> I was there one year ago, during the Summer of 2017, and decided to return for another internship experience.</p>
+<p>Having already spent a summer interning at Silicon Labs, this summer felt like coming back to a welcoming home; I already knew most of the people, I already knew the work environment, I was already familiar with the projects being developed, etc&hellip;</p>
+<p>Once again, I learned a lot about many things:</p>
+<ul>
+<li>New digital radio standards and implementation</li>
+<li>Professional PCB design and project flow</li>
+<li>Internal &ldquo;productization&rdquo; of tools for team usage</li>
+<li>Various business units within Silicon Labs</li>
+<li>Other intern projects and activities</li>
+<li>Chain of command within team structure</li>
+</ul>
+<p>Read on to learn more about these exciting topics!</p>
+<p><strong>WARNING:</strong> These are <em>my thoughts and opinions</em>! I do not speak for Silicon Labs as a company. Take what I say with a grain of salt and a pinch of pepper.</p>
+<h2 id="about-silicon-labs">About Silicon Labs</h2>
+<p>Before diving into my summer projects and experiences, I should give a vague notion of what the company, Silicon Labs (<a href="https://www.silabs.com/" target="_blank" rel="noopener noreffer">www.silabs.com</a>), actually does&hellip; According to the marketing people at Silicon Labs:</p>
+<blockquote>
+<p>Silicon Labs is the leading provider of silicon, software and solutions for a smarter, more connected world.</p>
+</blockquote>
+<p>or</p>
+<blockquote>
+<p>Silicon Labs is a family of hardware and software engineers and innovators dedicated to solving customers’ toughest embedded design challenges with breakthrough energy-friendly, connected solutions.</p>
+</blockquote>
+<p>Basically, this means that they are both a semiconductor company (i.e. they design integrated circuits), and a software company (i.e. they write code for these ICs). Silicon Labs makes a wide variety of products targeted at various markets ranging from IoT end-node devices to datacenter timing solutions.</p>
+<h3 id="personal-interest">Personal Interest</h3>
+<p>One of their popular products, the <a href="https://www.silabs.com/products/mcu/32-bit" target="_blank" rel="noopener noreffer">EFM32 series of microcontrollers</a> (MCUs), is of special interest to me. I am actively designing new personal projects incorporating Silicon Labs&rsquo; MCUs as the main brains.</p>
+<p>After researching their product line and comparing it to the MCU family I currently use, I discovered that Silicon Labs&rsquo; devices:</p>
+<ul>
+<li>Cost less for low volume</li>
+<li>Consume less power</li>
+<li><strong>Have better documentation and examples directly from the OEM</strong></li>
+</ul>
+<p>Also, not many hobbyists are actively using Silicon Labs&rsquo; devices, meaning that my projects could provide example implementations for other people to follow. <strong>Because of all these reasons, Silicon Labs got the design win for my future projects.</strong> Plus, it&rsquo;s nice to support them; I spent two summers there after all!</p>
+<h3 id="more-on-silicon-labs">More on Silicon Labs</h3>
+<p>If you&rsquo;re interested in learning more about Silicon Labs, I suggest giving their <a href="https://www.silabs.com/documents/public/presentations/corporate_presentation_q3_2018.pdf" target="_blank" rel="noopener noreffer">2018 Q3 corporate presentation</a> a gander. It&rsquo;s a beautifully designed PowerPoint and provides a great overview of the company.</p>
+<h2 id="whyd-you-go-back">Why&rsquo;d You Go Back?</h2>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-welcome.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-welcome.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-welcome.jpg" data-sub-html="<h2>Summer intern welcoming signage</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-welcome.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-welcome.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-welcome.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-welcome.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-welcome.jpg" width="2000" height="1367" />
+    </a><figcaption class="image-caption">Summer intern welcoming signage</figcaption>
+    </figure>
+<p>I decided to return to Silicon Labs for several reasons. My internship experience last summer went well and was rewarding, so I didn&rsquo;t have anything <em>against</em> returning to the company. During the fall semester after last summer, I actively looked for other internship opportunities to broaden my horizon and gain more experience. I got a few offers from places to which I had applied, but they weren&rsquo;t as relevant to my desired field. In the end, I picked Silicon Labs.</p>
+<p>Also, during the fall semester, I got more excited about electronic hardware design (PCBs); as a personal project, I designed my own board (read about it <a href="/2018/05/15/razzler-pov-led-top/" rel="">here</a>). This was a new and intriguing area for me! I knew that Silicon Labs did PCB design, so I asked them if I could do a hardware project during my next internship. They said yes, which helped persuade me to come back. I was excited about the project, but also pleased to see that they were willing to let me have a bit of control over my tasks for the summer.</p>
+<p>Furthermore, I really enjoyed the embedded firmware development from last summer. It was intriguing to see the innerworkings of a professional, complex, real-time system. I learned many &ldquo;best-practices,&rdquo; as well as had the opportunity to study the project source code. This included the source code for a very high quality commercial RTOS that powered the different applications. With my new-found knowledge, I developed a moderately complex system to run my <a href="/2018/05/15/razzler-pov-led-top/" rel="">Razzler project</a>; I implemented a basic scheduler with many real-time tasks, created a motion processing stack, and created real-time animation libraries.</p>
+<p>The cherry on top for returning to Silicon Labs was the location; the office building is close to my parents house in Texas, so I could stay at home for cheap. This made coming to Austin an easy choice.</p>
+<h2 id="differences-from-previous-internship">Differences from Previous Internship</h2>
+<p>Last summer, basically all I did was write code. I spent a lot of time inside the C firmware running the embedded radio applications. This summer, I hardly wrote any code. I spent a good portion of time working on a hardware project, and the rest of the time researching information about a new product being developed. This &ldquo;codeless&rdquo; internship experience was very different for me, but I am glad I got to see that <strong>not everything is just writing code</strong>. Many steps of planning and research are necessary to enable embedded code development.</p>
+<p>Smack dab in the middle of my internship, the team began transitioning resources to a new product development cycle. In my opinion, this was probably the coolest thing to experience. Last summer, I was thrust into my project with almost no training or knowledge of how anything worked. All the full-time developers knew basically everything about the system because they made it; me, I knew nothing. I was constantly playing a game of reading source code and trying to piece together the overall picture. Many design decisions were implemented in the code, but they weren&rsquo;t clearly documented. Because of this, there was a very steep learning curve to the code base.</p>
+<p>This new product was a DRM receiver application to run on existing hardware, basically expanding Silicon Labs&rsquo; radio portfolio to cover more global markets. I attended most of the planning meetings for this new application, so I got to see the division of roles relating to the chain of command. For example, for a three-tier management structure with directors, managers, and engineers:</p>
+<ul>
+<li>The directors are mainly interested in dates and overall planning: <em>What is our solution going to offer to beat the competitive solution? When can we release this product? Do we need to bring more people on board to meet deadlines?</em></li>
+<li>The managers are mainly interested in clarifying project requirements, making sure tasks are doable, and assigning work to engineers: <em>Do we need to support xyz feature? You do realize this will take 6 months to do?</em></li>
+<li>The engineers are the people actually building the product, but don&rsquo;t have a huge say about project scope; they are assigned tasks by managers and they do the tasks. It&rsquo;s up to the managers to make sure they are getting the work done. <em>I don&rsquo;t have anything to work on; what should I do!?</em></li>
+</ul>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/org-chart.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/org-chart.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/org-chart.jpg" data-sub-html="<h2>Three-tier management structure</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/org-chart.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/org-chart.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/org-chart.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/org-chart.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/org-chart.jpg" width="500" height="442" />
+    </a><figcaption class="image-caption">Three-tier management structure</figcaption>
+    </figure>
+<p>This split of responsibility was very interesting to me; the different levels of people roughly correlated to their experience and level of education (Ph.D. vs. B.S). Therefore, I could see that if I want to be the director, I need to get lots of education (Ph.D.) and lots of experience. For an engineer, it seems that less education / experience is needed.</p>
+<h2 id="summer-projects">Summer Projects</h2>
+<p>At the start of the summer, I was assigned three project areas to chip away at:</p>
+<ol>
+<li>DRM Radio Research</li>
+<li>Wrapping up Monitoring Module from previous summer</li>
+<li>Designing PCB for customer</li>
+</ol>
+<p>These projects were all orthogonal to each other in terms of knowledge and scope; they all required different software tools and skills. Having this diversity was nice because it enabled breaks from each project area; I simply switched topics for an afternoon!</p>
+<h3 id="drm-radio-research">DRM Radio Research</h3>
+<p>To understand the motivation for the DRM radio standard, it helps to understand the current broadcasting landscape across the globe, as well as radio technology in general.</p>
+<p>Many different areas of the world use many different radio standards:</p>
+<ul>
+<li>FM, AM, HD Radio: North America</li>
+<li>DAB: Europe, Australia, China, South Africa, many others</li>
+<li>DRM: India</li>
+<li>DMB: Norway, South Korea and Thailand</li>
+</ul>
+<p>Silicon Labs offers a <a href="https://www.silabs.com/products/audio-and-radio/automotive-tuners" target="_blank" rel="noopener noreffer">portfolio of products</a> that enable designers to tackle this diverse group of radio standards, all within one product family. This shortens time-to-market and makes modular solutions possible.</p>
+<h4 id="aside-on-radio-technology">Aside on Radio Technology</h4>
+<p>The term &ldquo;radio&rdquo; simply defines the usage of electromagnetic (EM) waves to transmit or receive information across space. Radio itself does NOT define the <em>protocols and standards</em> that enable people to use this technology.</p>
+<p>Many different protocols and radio standards exist and are in use around the world. These typically change depending on location (government bodies tend to regulate radio frequency (RF) spectrum usage). For example, in the United States, analog AM and FM radio transmissions are very prevalent. Within the last 10 years or so, HD Radio has taken hold of the United States, with nearly all modern cars equipped with HD Radio receivers.</p>
+<h4 id="hd-radio">HD Radio</h4>
+<blockquote>
+<p>HD Radio is a trademarked term for iBiquity&rsquo;s in-band on-channel (IBOC) <strong>digital radio technology</strong> used by AM and FM radio stations to transmit audio and data by using a <strong>digital signal</strong> embedded &ldquo;on-frequency&rdquo; immediately above and below a station&rsquo;s standard analog signal, providing the means to listen to the same program in either HD (digital radio with less noise) or as a standard broadcast (analog radio with standard sound quality).</p>
+<p>— <a href="https://en.wikipedia.org/wiki/HD_Radio" target="_blank" rel="noopener noreffer">HD Radio on Wikipedia</a></p>
+</blockquote>
+<p><em>There&rsquo;s a lot in that definition, so let&rsquo;s unpack it a bit.</em></p>
+<p>First of all, it&rsquo;s important to notice the difference between analog and digital radio. Analog radio, like legacy Amplitude Modulation (AM) or Frequency Modulation (FM), encodes audio information directly onto the EM waves. The simplest case, AM, varies the <strong>amplitude</strong> of the carrier wave (e.g. 1440kHz), but keeps a constant frequency. This is easiest to demodulate on a receiver and get back the original data. FM, by contrast, varies the <strong>frequency</strong> of the carrier wave, but keeps the amplitude the same. See the animation below for a graphical example.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/am-vs-fm.gif" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/am-vs-fm.gif" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/am-vs-fm.gif" data-sub-html="<h2>Graphical representation of Amplitude and Frequency Modulation (AM / FM) schemes</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/am-vs-fm.gif"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/am-vs-fm.gif, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/am-vs-fm.gif 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/am-vs-fm.gif 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/am-vs-fm.gif" width="256" height="200" />
+    </a><figcaption class="image-caption">Graphical representation of Amplitude and Frequency Modulation (AM / FM) schemes</figcaption>
+    </figure>
+<p><em>Now back to HD Radio:</em> FM HD Radio defines an extension to simple analog transmission (specifically an <a href="https://en.wikipedia.org/wiki/In-band_on-channel" target="_blank" rel="noopener noreffer">IBOC</a> extension), augmenting the signal with digital data. The standard is defined to be backwards compatible, meaning analog-only receivers still work. See the plot below which illustrates the added frequency content for HD Radio digital streams.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hd-radio-spectrum.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hd-radio-spectrum.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hd-radio-spectrum.jpg" data-sub-html="<h2>HD Radio spectrum plot showing frequency bands for both analog and digital content</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hd-radio-spectrum.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hd-radio-spectrum.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hd-radio-spectrum.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hd-radio-spectrum.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hd-radio-spectrum.jpg" width="572" height="303" />
+    </a><figcaption class="image-caption">HD Radio spectrum plot showing frequency bands for both analog and digital content</figcaption>
+    </figure>
+<p>Car radios are a common place to receive HD Radio. The radio might initially receive the analog FM stream (because it has the fastest time-to-audio), but then later acquire the digital stream (meaning it locks onto it and starts decoding it). At this point, the receiver can transition the playing analog stream to the digital stream, resulting in improved audio quality.</p>
+<h4 id="drm">DRM</h4>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-logo.png" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-logo.png" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-logo.png" data-sub-html="<h2>DRM radio logo</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-logo.png"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-logo.png, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-logo.png 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-logo.png 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-logo.png" width="2000" height="900" />
+    </a><figcaption class="image-caption">DRM radio logo</figcaption>
+    </figure>
+<p><a href="http://www.drm.org/" target="_blank" rel="noopener noreffer">Digital Radio Mondiale</a>, or DRM, is a &ldquo;new&rdquo; digital radio standard, popular in India. It was developed to replace existing AM broadcasting with a digital alternative. AM broadcasts occupy the medium wave (MW) part of the medium frequency radio band (525 kHz to 1705 kHz); since the wavelengths are so long, buildings and hills do not block signal propagation, nor does the Earth&rsquo;s curvature. Because of this, broadcasts can be received over large distances.</p>
+<p>DRM is designed to be very configurable so that broadcasters can tailor their transmission to adapt to constraints within their target reception area. For example, physical channel impairments like <a href="https://en.wikipedia.org/wiki/Doppler_effect" target="_blank" rel="noopener noreffer">Doppler effect</a> and <a href="https://en.wikipedia.org/wiki/Multipath_interference" target="_blank" rel="noopener noreffer">multipath interference</a> can vary from region to region. DRM broadcasters can increase data robustness to account for these impairments. Some geographical regions also have very crowded spectral bands. DRM can transmit in as little as 4.5kHz bandwidth, but can also be configured to use larger bandwidth for more data throughput.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-a.png" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-a.png" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-a.png" data-sub-html="<h2>Diagram showing Robustness Mode A (not very robust)</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-a.png"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-a.png, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-a.png 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-a.png 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-a.png" width="1181" height="427" />
+    </a><figcaption class="image-caption">Diagram showing Robustness Mode A (not very robust)</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-d.png" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-d.png" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-d.png" data-sub-html="<h2>Diagram showing Robustness Mode D (much more &lsquo;metadata&rsquo;)</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-d.png"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-d.png, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-d.png 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-d.png 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-mode-d.png" width="1128" height="593" />
+    </a><figcaption class="image-caption">Diagram showing Robustness Mode D (much more &lsquo;metadata&rsquo;)</figcaption>
+    </figure>
+<p>For comparison, another digital radio standard popular in Europe among many other areas, <a href="https://en.wikipedia.org/wiki/Digital_audio_broadcasting" target="_blank" rel="noopener noreffer">Digital Audio Broadcast (DAB)</a>, has a spectral occupancy of about 1.5 MHz, over 300x the spectral occupancy of DRM! While this isn&rsquo;t necessarily a fair comparison to DRM (DAB supports many more streams per slot than DRM), it does show that DRM has a very small spectral footprint!</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-vs-am-signal.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-vs-am-signal.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-vs-am-signal.jpg" data-sub-html="<h2>DRM vs AM signal frequency plot showing very different spectral footprints</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-vs-am-signal.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-vs-am-signal.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-vs-am-signal.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-vs-am-signal.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-vs-am-signal.jpg" width="690" height="492" />
+    </a><figcaption class="image-caption">DRM vs AM signal frequency plot showing very different spectral footprints</figcaption>
+    </figure>
+<p>Another intern was also working on DRM; he gave an overview presentation about DRM early in the summer which was very helpful. I worked with him a bit: he used my end-to-end PC DRM receiver for verifying his DRM receiver test-suite (see next project area).</p>
+<h4 id="end-to-end-drm-signal-path">End-to-End DRM Signal Path</h4>
+<p>My internship happened to occur when Silicon Labs was starting work on a new DRM receiver. The team needed a PC-based platform to start developing algorithms and building blocks for the new firmware. Ideally, the PC-based platform would allow transmitting DRM broadcasts, adding channel impairments, demodulating the signal, and decoding it. If such a platform existed, it would enable developers to evaluate algorithm performance on an easy-to-use platform (i.e. not embedded hardware).</p>
+<p>I cobbled together different components to build such a system:</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-end-to-end.png" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-end-to-end.png" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-end-to-end.png" data-sub-html="<h2>Block diagram of DRM signal path for PC-based development</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-end-to-end.png"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-end-to-end.png, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-end-to-end.png 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-end-to-end.png 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/drm-end-to-end.png" width="1236" height="400" />
+    </a><figcaption class="image-caption">Block diagram of DRM signal path for PC-based development</figcaption>
+    </figure>
+<p>As seen in the diagram above, the signal path starts at a PC, goes out and gets modulated to RF, loops back into the PC, gets demodulated, and finally decoded via the open-source DRM receiver, <a href="https://sourceforge.net/projects/drm/" target="_blank" rel="noopener noreffer">DReaM</a>.</p>
+<p>For development and testing purposes, naturally the team preferred low-cost hardware so that everyone could have a system at their desk. I used the popular <a href="https://www.rtl-sdr.com/" target="_blank" rel="noopener noreffer">RTL-SDR dongle</a>, which is a software defined radio (SDR) USB dongle for open-source SDR development and use.</p>
+<p>There was little documentation online about getting this dongle to work with DRM, and the team wanted internal documentation that anyone could follow for getting this set up. I created the documentation and assembled the software tools with little trouble; the scarce online tutorials I could find seemed to work well.</p>
+<p>Overall, this was an interesting look into DRM. I learned a lot about this new radio standard and provided a real value add to the team.</p>
+<h4 id="dream-software-analysis">DReaM Software Analysis</h4>
+<p><a href="https://sourceforge.net/projects/drm/" target="_blank" rel="noopener noreffer">DReaM software repository website&hellip;</a></p>
+<p>After I finished the end-to-end DRM platform, I began studying DReaM, an open-source DRM receiver. This is a C++ application with full Tx -&gt; Channel -&gt; Rx modeling. The team can use this model as a reference implementation, comparing their firmware outputs to &ldquo;golden&rdquo; outputs from this model.</p>
+<p>Because of the nature of C++, the DReaM software was full of class inheritance and abstractions for encoders/decoders, making it a pain to extract pieces for unit testing. Ideally, blocks of firmware could be unit tested and compared to blocks from the DReaM software.</p>
+<p>To aid in rapid development, I looked through the DReaM source code and put together a presentation outlining its design and structure, which I presented to the team.</p>
+<h3 id="monitoring-module">Monitoring Module</h3>
+<p>My second project area involved the Monitoring Module, which I started last summer and got a working implementation for team use. Unfortunately, the tracing part was difficult to use, so it sat untouched by the team. This summer, my job was to <em>&ldquo;productize&rdquo;</em> the module and give a presentation about using it to teach the team.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/mm-trace.png" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/mm-trace.png" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/mm-trace.png" data-sub-html="<h2>Plot showing thread context switches during ~400ms of device operation</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/mm-trace.png"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/mm-trace.png, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/mm-trace.png 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/mm-trace.png 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/mm-trace.png" width="1852" height="975" />
+    </a><figcaption class="image-caption">Plot showing thread context switches during ~400ms of device operation</figcaption>
+    </figure>
+<p>There are numerous applications that can run on the Si46xx hardware, so I needed to verify the framework worked correctly on all products in the family. This involved extensive testing as well as updating scripts and the firmware itself.</p>
+<p>For example, when operating on &ldquo;satellite&rdquo; devices on the Si469x multi-chip module (MCM), all the SPI traffic goes through the master chip, which then forwards the messages to the correct satellite. To run the Monitoring Module on the satellites, I needed to update the scripts to fully support the nature of the communication between chips.</p>
+<p>Also, some of the applications do not have the instruction memory available to compile the tracing part of the Monitoring Module. To fix this, I disabled some unused internal RTOS code related to tracing which reduced memory footprint, allowing the binary to fit!</p>
+<p>At the end of my testing and improvements, the MM was ready for use. During a team Lunch &amp; Learn, I gave a tutorial presentation about how to use the module.</p>
+<h3 id="automotive-spi-bridge-pcb">Automotive SPI Bridge PCB</h3>
+<p>For this project, I was tasked to design a minimally-sized PCB to be used as a SPI bridge between a host PC and SPI devices (namely Silicon Labs&rsquo; automotive audio portfolio). I used the Silicon Labs CP2130 device for the brains of the operation. This board design was basically a shrink of the CP2130 evaluation kit; it did much of the same things.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/cp2130-diagram.png" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/cp2130-diagram.png" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/cp2130-diagram.png" data-sub-html="<h2>CP2130 SPI-USB bridge typical system diagram</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/cp2130-diagram.png"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/cp2130-diagram.png, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/cp2130-diagram.png 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/cp2130-diagram.png 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/cp2130-diagram.png" width="1571" height="742" />
+    </a><figcaption class="image-caption">CP2130 SPI-USB bridge typical system diagram</figcaption>
+    </figure>
+<p>This board was to serve multiple purposes: be mounted on an evaluation board for SPI interface, or mounted in customer car radio head-unit for testing new hardware. Because of this, a few constraints were placed upon its design:</p>
+<ul>
+<li>Small as possible</li>
+<li>Very low RF interference (used to evaluate new radio hardware RF performance; installed right next to device under test)</li>
+<li>Support various I/O voltages</li>
+<li>Very robust physical design (to be used in field)</li>
+</ul>
+<p>Throughout the project, I had quite a few design reviews for both the schematic and board layout. These helped me improve the design to arrive at a robust final implementation.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-assembled.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-assembled.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-assembled.jpg" data-sub-html="<h2>Final board after PCB manufacturing and assembly</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-assembled.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-assembled.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-assembled.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-assembled.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-assembled.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Final board after PCB manufacturing and assembly</figcaption>
+    </figure>
+<h4 id="project-motivation">Project Motivation</h4>
+<p>This project was very different from firmware (i.e. it&rsquo;s not firmware, it&rsquo;s hardware). I really wanted to do something like this when I returned this summer for the internship.</p>
+<p>Before this, I had designed a few boards on my own, but never to a &ldquo;standard&rdquo;; they were all just for personal hobby use. I wanted to see industry standards, have design reviews, see corporate part libraries, use different software tools, etc. During the design process, I made sure to have multiple design reviews and many different opinions to build my knowledge of what to look for in good designs.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-front.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-front.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-front.jpg" data-sub-html="<h2>Blank PCB needing my approval for assembly</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-front.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-front.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-front.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-front.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/spi-bridge-front.jpg" width="1193" height="1193" />
+    </a><figcaption class="image-caption">Blank PCB needing my approval for assembly</figcaption>
+    </figure>
+<p>Some of my learned skills include:</p>
+<ul>
+<li>Minimizing RF interference</li>
+<li>Optimum component placement for shortest traces</li>
+<li>High speed routing concerns for USB data</li>
+<li>Ground plane stitching on top / bottom</li>
+<li>Designing in silkscreen areas (e.g. company logos)</li>
+</ul>
+<p>Overall, I am very pleased with my experience on this project. Even though it was very small and simple, I still learned a lot; the resulting PCB was the most thought-through board I have ever designed.</p>
+<h2 id="thoughts">Thoughts</h2>
+<p>After returning and interning at Silicon Labs for my second summer, I can safely say that I still love the company. As I said in my previous article, the company values are great, and it feels small enough that each individual employee has a real impact.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-ceo-party.JPG" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-ceo-party.JPG" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-ceo-party.JPG" data-sub-html="<h2>Hanging out at the CEOs house for the intern party</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-ceo-party.JPG"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-ceo-party.JPG, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-ceo-party.JPG 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-ceo-party.JPG 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-ceo-party.JPG" width="480" height="640" />
+    </a><figcaption class="image-caption">Hanging out at the CEOs house for the intern party</figcaption>
+    </figure>
+<h3 id="company-sponsored-learning">Company-Sponsored Learning</h3>
+<p>As a company, Silicon Labs really seems to care about their employees getting smarter. They periodically hold technical talks and presentations that anyone can sign up for and attend. I view this as an awesome perk of working there.</p>
+<p>As a college student and future new employee in the workforce, having a system that enables continued learning is very important to me. Silicon Labs provides that by helping their employees grow along with their careers.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-vp-tech.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-vp-tech.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-vp-tech.jpg" data-sub-html="<h2>Me chatting with the VP of Technology at Silicon Labs after a technical presentation</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-vp-tech.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-vp-tech.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-vp-tech.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-vp-tech.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-vp-tech.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Me chatting with the VP of Technology at Silicon Labs after a technical presentation</figcaption>
+    </figure>
+<h4 id="lunch-and-learns">Lunch and Learns</h4>
+<p>Each team has periodic &ldquo;Lunch and Learns&rdquo; where one member of the team presents a topic to the rest of the team. These are a great way to soak up material, plus get free lunch!</p>
+<p>I did a presentation on my Monitoring Module towards the beginning of the summer, where I taught everyone what my system was and how to use it. They seemed to find the presentation helpful.</p>
+<h4 id="technical-symposium">Technical Symposium</h4>
+<p>Silicon Labs holds an annual internal technical symposium for full-time employees to share their work with other colleagues. This is basically like a research conference, but internal to the company.</p>
+<p>All these presentations and talks are recorded and put online for future reference. I found this treasure chest of knowledge and spent some of my spare time soaking up information.</p>
+<h4 id="intern-symposium">Intern Symposium</h4>
+<p>Like the main Technical Symposium, the company holds an &ldquo;Intern Symposium&rdquo; at the end of the summer for interns to partake in the company-wide knowledge sharing. This is very similar to the &ldquo;real&rdquo; technical symposium; interns make posters and present about their summer projects.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-poster.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-poster.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-poster.jpg" data-sub-html="<h2>Me presenting at the intern symposium</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-poster.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-poster.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-poster.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-poster.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-poster.jpg" width="2000" height="2667" />
+    </a><figcaption class="image-caption">Me presenting at the intern symposium</figcaption>
+    </figure>
+<h4 id="online-recorded-trainings">Online Recorded Trainings</h4>
+<p>Along with the Technical Symposium recorded talks, other videos are available online from various trainings and meetings. These include topics related to finance, tech, leadership, etc. I really enjoyed the finance and business talks because of the insights provided about Silicon Labs as a whole.</p>
+<h3 id="daily-grind">Daily Grind</h3>
+<p>Silicon Labs&rsquo; &ldquo;daily grind&rdquo; seems normal; there are regular meetings to keep people on target, as well as ample time to get individual work done.</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hallway.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hallway.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hallway.jpg" data-sub-html="<h2>Typical hallway of offices in Silicon Labs</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hallway.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hallway.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hallway.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hallway.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/hallway.jpg" width="2000" height="1778" />
+    </a><figcaption class="image-caption">Typical hallway of offices in Silicon Labs</figcaption>
+    </figure>
+<h4 id="meetings">Meetings</h4>
+<p>Each morning, a team &ldquo;stand-up&rdquo; was held to discuss daily tasks. At first, these seemed annoying because they interrupted work time, but I soon realized that they helped keep people on track. Everyone went around and shared what they were doing as well as any blockers hindering them.</p>
+<p>Each week, a firmware / apps update meeting was held. This was to make sure that the firmware team was doing the things that were important for customers (i.e. fixing <em>show-stopper</em> bugs).</p>
+<p>Biweekly was a &ldquo;sprint&rdquo; planning meeting. This was to allocate tasks to team members for the next two weeks.</p>
+<h4 id="gym">Gym</h4>
+<p>Silicon Labs has an employee gym located in the office building which anyone can sign up and use at any time. I needed to stay in shape over the summer, so I used it many times&hellip;</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/gym.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/gym.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/gym.jpg" data-sub-html="<h2>Me after working out in the company gym</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/gym.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/gym.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/gym.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/gym.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/gym.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">Me after working out in the company gym</figcaption>
+    </figure>
+<h4 id="customer-interactions">Customer Interactions</h4>
+<p>Throughout the summer, there were many times when development was put on hold to service an <em>urgent</em> customer request. With customers trying to go into production using Silicon Labs&rsquo; devices, these issues were of the highest priority.</p>
+<p>Big customers bring big revenue, which need specialized support for their individual use cases. Interestingly, for large enough customers, the firmware team actually adds new features just for specific requests! What a pain to maintain&hellip;</p>
+<h2 id="fun-summer-activities">Fun Summer Activities</h2>
+<p>Not everything this summer was work! I got the chance to explore Austin, and ate at many great places like Terry Blacks and Chuy&rsquo;s.</p>
+<p>One of the lesser known things about Austin relates to the bats that live there. <strong>Millions</strong> of bats live under the Congress Ave bridge downtown and each night at sunset, they come out and go hunting for food. Because there are so many, the whole ordeal has become quite an attraction for people to come and see:</p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/bat-watching.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/bat-watching.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/bat-watching.jpg" data-sub-html="<h2>People gathered on the bridge and water to watch the bats</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/bat-watching.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/bat-watching.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/bat-watching.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/bat-watching.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/bat-watching.jpg" width="2000" height="1333" />
+    </a><figcaption class="image-caption">People gathered on the bridge and water to watch the bats</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-bat-watching.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-bat-watching.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-bat-watching.jpg" data-sub-html="<h2>Me after watching the bats one night during the summer</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-bat-watching.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-bat-watching.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-bat-watching.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-bat-watching.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/nathan-bat-watching.jpg" width="2000" height="1333" />
+    </a><figcaption class="image-caption">Me after watching the bats one night during the summer</figcaption>
+    </figure>
+<h2 id="future">Future</h2>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/silabs-hq.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/silabs-hq.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/silabs-hq.jpg" data-sub-html="<h2>Silicon Labs&rsquo; office building located in downtown Austin, TX</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/silabs-hq.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/silabs-hq.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/silabs-hq.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/silabs-hq.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/silabs-hq.jpg" width="979" height="479" />
+    </a><figcaption class="image-caption">Silicon Labs&rsquo; office building located in downtown Austin, TX</figcaption>
+    </figure>
+<p><em>So, after two summers at Silicon Labs, do I want to work there? Am I going to return?</em></p>
+<p>Yes, I would love to work for the company! They are one of the most respected semiconductor companies in their class and from working for them, I can see why.</p>
+<h3 id="grad-school">Grad School</h3>
+<p>These past two internships have happened during the summers after my sophomore and junior years of undergrad. I&rsquo;m planning on applying for grad school, so I probably can&rsquo;t start a job very soon. Hopefully later, Silicon Labs could still be a good option!</p>
+<p>With the provoking of a professor at UW-Madison, I am starting to get interested in power electronics, with emphasis on motor control. If I continue with that, Silicon Labs might not be the best option for employment.</p>
+<p>Alternatively, I am broadly interested in embedded systems, with emphasis on the Internet of Things (IoT). IoT seems like a train that&rsquo;s not stopping, so it makes sense to become an expert in one aspect of it. Silicon Labs has a large IoT division, so if I pursue this option, employment could work.</p>
+<h2 id="summary">Summary</h2>
+<p>Overall, yes, this was a great summer. I enjoyed the work, enjoyed the environment, enjoyed the location, enjoyed the coworkers, enjoyed the other interns, etc, etc, etc.</p>
+<p><strong>I&rsquo;m excited to see what the future holds!</strong></p>
+<figure><a class="lightgallery" href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-meal.jpg" title="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-meal.jpg" data-thumbnail="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-meal.jpg" data-sub-html="<h2>Interns eating BBQ at end of internship</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-meal.jpg"
+            data-srcset="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-meal.jpg, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-meal.jpg 1.5x, /2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-meal.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/images/lg/intern-meal.jpg" width="2000" height="2073" />
+    </a><figcaption class="image-caption">Interns eating BBQ at end of internship</figcaption>
+    </figure>
+<hr>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" data-title="Interning at Silicon Labs, the Sequel - Summer 2018" data-hashtags="electronics,internship,silabs,summer,digradio,austin-tx,job,pcb,drm-radio"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" data-hashtag="electronics"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" data-title="Interning at Silicon Labs, the Sequel - Summer 2018"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" data-title="Interning at Silicon Labs, the Sequel - Summer 2018"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" data-title="Interning at Silicon Labs, the Sequel - Summer 2018"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/electronics/">electronics</a>, <a href="/tags/internship/">internship</a>, <a href="/tags/silabs/">silabs</a>, <a href="/tags/summer/">summer</a>, <a href="/tags/digradio/">digradio</a>, <a href="/tags/austin-tx/">austin-tx</a>, <a href="/tags/job/">job</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/drm-radio/">drm-radio</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2018/09/05/amdc-advanced-motor-drive-controller/" class="prev" rel="prev" title="AMDC: Advanced Motor Drive Controller"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>AMDC: Advanced Motor Drive Controller</a>
+            <a href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" class="next" rel="next" title="Gradled Mini: Prototype Modular Discrete LED Display">Gradled Mini: Prototype Modular Discrete LED Display<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

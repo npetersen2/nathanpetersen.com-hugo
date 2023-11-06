@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Picasa Photo Gallery in PHP - Nathan Petersen</title><meta name="Description" content="Project archives from Nathan Petersen over the years as he experiments and prototypes various tech-related projects."><meta property="og:title" content="Picasa Photo Gallery in PHP" />
+<meta property="og:description" content="Background My earliest memories involve taking and cherishing family photos. Most of the photos I have and remember are stored in physical picture albums around my house. Since I was young, I can remember the process of my parents taking lots of pictures, developing the film, and organizing them into a multitude of albums and scrapbooks to save for memories. This system worked great for them and their parents, but I immediately saw flaws." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/" />
+<meta property="article:published_time" content="2014-07-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-07-16T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Picasa Photo Gallery in PHP"/>
+<meta name="twitter:description" content="Background My earliest memories involve taking and cherishing family photos. Most of the photos I have and remember are stored in physical picture albums around my house. Since I was young, I can remember the process of my parents taking lots of pictures, developing the film, and organizing them into a multitude of albums and scrapbooks to save for memories. This system worked great for them and their parents, but I immediately saw flaws."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/" /><link rel="prev" href="https://nathanpetersen.com/2011/07/12/4-h-electronics-project-2011/" /><link rel="next" href="https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Picasa Photo Gallery in PHP",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2014\/07\/16\/picasa-photo-gallery-in-php\/"
+        },"genre": "posts","keywords": "picasa, php, web, design, photography, html, 4-h","wordcount":  1603 ,
+        "url": "https:\/\/nathanpetersen.com\/2014\/07\/16\/picasa-photo-gallery-in-php\/","datePublished": "2014-07-16T00:00:00+00:00","dateModified": "2014-07-16T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Picasa Photo Gallery in PHP</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="July 16, 2014">July 16, 2014</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1603 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/picasa/">picasa</a>, <a href="/tags/php/">php</a>, <a href="/tags/web/">web</a>, <a href="/tags/design/">design</a>, <a href="/tags/photography/">photography</a>, <a href="/tags/html/">html</a>, <a href="/tags/4-h/">4-h</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#what-is-picasa">What is Picasa</a></li>
+    <li><a href="#user-experience">User Experience</a></li>
+    <li><a href="#technical-details">Technical Details</a>
+      <ul>
+        <li><a href="#caching-system">Caching System</a></li>
+        <li><a href="#indexphp">index.php</a></li>
+        <li><a href="#other-pages">Other Pages</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a>
+      <ul>
+        <li><a href="#future">Future</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="background">Background</h2>
+<p>My earliest memories involve taking and cherishing family photos. Most of the photos I have and remember are stored in physical picture albums around my house. Since I was young, I can remember the process of my parents taking lots of pictures, developing the film, and organizing them into a multitude of albums and scrapbooks to save for memories. This system worked great for them and their parents, but I immediately saw flaws.</p>
+<p><em>What if I wanted to view the pictures when I wasn&rsquo;t home? What if the albums were stolen? What if the house caught fire and the albums were destroyed?</em></p>
+<p>There are a lot of alternatives to physical albums, with the most prominent being digital albums. Google offers a service called <a href="https://picasaweb.google.com" target="_blank" rel="noopener noreffer">Picasa Web Albums</a> which is essentially a digital version of the physical photo album. Users can upload and store images on the Picasa website, sort images into albums, and organize each album into a custom order. Picasa offers all of the functionality to maintain photo albums, but it lacks a good user interface to view them.</p>
+<p><strong>For my 2013-2014 4-H computer programming project, I wrote a custom front-end viewer for Picasa using PHP.</strong></p>
+<h2 id="what-is-picasa">What is Picasa</h2>
+<p>Picasa is a cloud-based image storage service. The &ldquo;<a href="https://en.wikipedia.org/wiki/Cloud_computing" target="_blank" rel="noopener noreffer">cloud</a>&rdquo; is the idea of a centralized system that is accessible from anywhere with internet on a multitude of devices. It facilitates the technical part of a system (i.e., uses hard drives to store files, serves files to clients when they are requested, etc).</p>
+<p>After creating a Google account, users can log into Picasa Web Albums, create albums, and upload images. Once uploaded, the images can be edited, sorted, and transferred between albums. Every album can be set to either private or public, with the latter being available to the internet at large. Picasa also offers a viewer to browse through public albums, but the interface is not good; it doesn&rsquo;t work on tablets and phones, it&rsquo;s very cluttered, and it doesn&rsquo;t emphasize the actual photos.</p>
+<p>Perhaps the more interesting part of Picasa is it&rsquo;s API services. Besides the web manager, Picasa offers developers the opportunity to programmatically upload and manage photos through its rich API available via a RESTful interface. Simply perform a <code>GET</code> request to a specific Picasa URL and Picasa will return an XML file full of information relating to your query. To modify the information you get back, simply change your query URL. For example, developers can use a simple <code>GET</code> request to the API to get a list of public albums published by a specific user. After getting the data into a PHP script, it is trivial to iterate over the list and generate the HTML to view the images. Picasa&rsquo;s APIs are well documented on their <a href="https://developers.google.com/picasa-web" target="_blank" rel="noopener noreffer">website</a>.</p>
+<h2 id="user-experience">User Experience</h2>
+<p>I designed the Picasa Photo Gallery to be very neat and simple to use. There are only two main pages available to the user: the index page and the category viewer page. The website highlights its generic handling of any Picasa account by boldly displaying the user&rsquo;s name and profile picture in the upper right of every page, as well as in the footer. This creates a very personalized experience. A custom &ldquo;about blurb&rdquo; can also be configured from within the web interface of Picasa Web Albums that displays on the index page, explaining more about the account owner.</p>
+<figure><a class="lightgallery" href="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-9_framed.png" title="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-9_framed.png" data-thumbnail="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-9_framed.png" data-sub-html="<h2>Home page of a site that uses the 21st Century Photo Album, nppictures.net, on a Nexus 9 tablet.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-9_framed.png"
+            data-srcset="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-9_framed.png, /2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-9_framed.png 1.5x, /2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-9_framed.png 2x"
+            data-sizes="auto"
+            alt="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-9_framed.png" width="3075" height="2233" />
+    </a><figcaption class="image-caption">Home page of a site that uses the 21st Century Photo Album, nppictures.net, on a Nexus 9 tablet.</figcaption>
+    </figure>
+<p>On the main page, a grid of &ldquo;categories&rdquo; is the main focus. These are the public albums stored in the user&rsquo;s account. Overlayed on the cover photo of each category is the category name, along with the number of images in the respective category. By overlaying the details, the interface is kept cleaner because of the simple square layout.</p>
+<p>Upon clicking a category, the category viewer page is brought up. At the top of each viewer page is the category name. Below that are arrows that take you to the previous or next album in the list. Next, the main images appear. These take up 100% of the screen (at all screen widths) to provide a cleaner experience; no side whitespace means no distractions. After clicking on an image, a popup is generated with a larger version of the image for viewing.</p>
+<h2 id="technical-details">Technical Details</h2>
+<p>All source code can be found on GitHub. <a href="https://github.com/nathanpetersenn/nppictures.net" target="_blank" rel="noopener noreffer">Go to GitHub &gt;</a></p>
+<h3 id="caching-system">Caching System</h3>
+<p>When a browser requests the <code>index.php</code> page, a long chain of events commence. At a high level, the server basically tries to send the client a pre-rendered version of <code>index.php</code>. If the server can send this file, it sends it and the process stops. If it can&rsquo;t send the pre-rendered file, it is forced to generate it. After generating the file, it sends it and stores the contents of the file for the next request. Then, on subsequent requests for <code>index.php</code>, the server sends the pre-rendered file.</p>
+<p>This is a technique known as caching. The pre-rendered file is known as a cache file. The reason for using a caching system is simple: it eliminates the need to run any code to generate a file, thus making the website quicker for the user. Since the 21st Century Photo Album stores all of it&rsquo;s photos on Picasa, it has to communicate with Picasa&rsquo;s APIs to know what content to display. Since the communication happens over the internet, it can be very slow. For example, the time it takes for the server to send <em>index.php</em> with caching off is about 10 seconds. With caching on, it is instantaneous! All the caching code can be seen in <a href="https://github.com/nathanpetersenn/nppictures.net/blob/master/util/_cache_start.php" target="_blank" rel="noopener noreffer"><code>util/_cache_start.php</code></a> and <a href="https://github.com/nathanpetersenn/nppictures.net/blob/master/util/_cache_end.php" target="_blank" rel="noopener noreffer"><code>util/_cache_end.php</code></a>.</p>
+<h3 id="indexphp">index.php</h3>
+<p>The main page for the site is <code>index.php</code>. This page uses the caching system to speed up load time by requiring the <code>_cache_start.php</code> file. The <code>_functions.php</code> file contains functions related to obtaining information from Picasa&rsquo;s APIs. These are used throughout the page. The <code>_header.php</code> file is included on every page. It renders the title bar, user profile name, profile picture, and the about text. Since not all pages want everything shown on them, there are configurable settings available by setting variables before requiring the file. Used on <code>index.php</code> are <code>$title</code> and <code>$show_about</code>.</p>
+<p>In <code>_header.php</code>, the first part of page is the normal HTML used in webpages. Metadata is set and external JavaScript and CSS files are included. Inside the <code>&lt;header&gt;</code> tag is where the Picasa data are first used. The URL to the profile picture is the first thing constructed. The function <code>get_profile_pic()</code> uses Picasa&rsquo;s API to return the URL of the profile picture for the account configured. Since the user may want a different picture displayed on their website than displayed in Picasa, the function first tries to return the cover image of the &lsquo;Profile Data&rsquo; album. If it can&rsquo;t find that custom album, it returns the default profile picture. The function <code>get_name()</code> returns an array of the user&rsquo;s name from Picasa. The <code>get_about_blurb()</code> function returns the description of the &lsquo;Profile Data&rsquo; album. Finally, to close the header, a timestamp is generated using PHP. Because of caching, the web pages can become out-of-sync from Picasa. The date allows the user to know how old the page is.</p>
+<p>Back in <code>index.php</code>, the categories grid of images is generated. The data for this come from the  <code>get_categories_array()</code> function. This returns an array of arrays, with the latter containing the name, number of photos, timestamp, thumbnail URL, and ID for each album. This information is used in the <code>foreach</code> loop to output the HTML. Lastly, the page is closed by requiring <code>_footer.php</code> and <code>_cache_end.php</code>.</p>
+<h3 id="other-pages">Other Pages</h3>
+<p>The same setup is used in <code>recent.php</code> and <code>category.php</code>, except instead of using <code>get_categories_array()</code>, these pages use <code>get_photos_from_album($id)</code>. That function requires the ID of the specific album to be used.</p>
+<h2 id="summary">Summary</h2>
+<p>In making the 21st Century Photo Album, I learned a lot about web developing. The most prominent skill would be the ability to interface with APIs to get 3rd-party information. This enables me to make more front-ends for different services, like Facebook or Twitter. Since those companies offer APIs to access their data, it would be trivial for me to make a Twitter viewer, for example.</p>
+<p><strong>I love simple, easy-to-use user interfaces, so it always thrills me when I can make one.</strong></p>
+<p>I enjoyed designing the look and feel of the site the most. Currently, I am using the 21st Century Photo Album to host my own personal photos on <a href="http://nppictures.net" target="_blank" rel="noopener noreffer">nppictures.net</a>. When I went to France during spring break, I uploaded images straight to Picasa from an app on my phone so that people at home could view my experiences &ldquo;live&rdquo;!</p>
+<h3 id="future">Future</h3>
+<p>I am a believer that software and code is never &ldquo;done&rdquo;, so naturally there are more improvements that can be made on my project. On the index page, I would like to add the functionality to show live previews of the categories when the user hovers over the category cover image. The page would start a little slideshow inside the category square that fades between some of the images inside the category. Also, I would like to transition away from using stand-alone functions and global variables, and work toward a more object-oriented approach. If this method is used, then multiple users&rsquo; images could be rendered at the same time on the same page. I think this would make for cleaner code.</p>
+<figure><a class="lightgallery" href="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-6p_framed.png" title="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-6p_framed.png" data-thumbnail="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-6p_framed.png" data-sub-html="<h2>NPPictures on a Nexus 6P.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-6p_framed.png"
+            data-srcset="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-6p_framed.png, /2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-6p_framed.png 1.5x, /2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-6p_framed.png 2x"
+            data-sizes="auto"
+            alt="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-nexus-6p_framed.png" width="2073" height="3701" />
+    </a><figcaption class="image-caption">NPPictures on a Nexus 6P.</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-wear_framed.png" title="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-wear_framed.png" data-thumbnail="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-wear_framed.png" data-sub-html="<h2>NPPictures also works on Android Wear!</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-wear_framed.png"
+            data-srcset="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-wear_framed.png, /2014/07/16/picasa-photo-gallery-in-php/images/nppictures-wear_framed.png 1.5x, /2014/07/16/picasa-photo-gallery-in-php/images/nppictures-wear_framed.png 2x"
+            data-sizes="auto"
+            alt="/2014/07/16/picasa-photo-gallery-in-php/images/nppictures-wear_framed.png" width="720" height="749" />
+    </a><figcaption class="image-caption">NPPictures also works on Android Wear!</figcaption>
+    </figure>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/" data-title="Picasa Photo Gallery in PHP" data-hashtags="picasa,php,web,design,photography,html,4-h"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/" data-hashtag="picasa"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/" data-title="Picasa Photo Gallery in PHP"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/" data-title="Picasa Photo Gallery in PHP"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/" data-title="Picasa Photo Gallery in PHP"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/picasa/">picasa</a>, <a href="/tags/php/">php</a>, <a href="/tags/web/">web</a>, <a href="/tags/design/">design</a>, <a href="/tags/photography/">photography</a>, <a href="/tags/html/">html</a>, <a href="/tags/4-h/">4-h</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2011/07/12/4-h-electronics-project-2011/" class="prev" rel="prev" title="4-H Electronics Project 2011"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>4-H Electronics Project 2011</a>
+            <a href="/2015/07/05/bluetooth-controlled-led-display/" class="next" rel="next" title="Bluetooth Controlled LED Display">Bluetooth Controlled LED Display<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

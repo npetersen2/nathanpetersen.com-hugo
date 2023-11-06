@@ -1,0 +1,97 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>design - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/design/</link>
+        <description>design - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 25 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/design/" rel="self" type="application/rss+xml" /><item>
+    <title>Website Update: Hugo</title>
+    <link>https://nathanpetersen.com/2022/05/25/website-update-hugo/</link>
+    <pubDate>Wed, 25 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2022/05/25/website-update-hugo/</guid>
+    <description><![CDATA[Welcome back to my blog, now completely overhauled and rewritten using the fabulously fast Hugo static site generator framework!
+After a nearly 18 month hiatus from this blog, I finally dusted off the cobwebs. Or, more accurately, I threw away the old dusty blog and resurrected it using modern technologies. This post outlines what I did, why I did it, and what&rsquo;s next.
+  Hugo static site generator logo]]></description>
+</item>
+<item>
+    <title>OpenThermo: Customizable Thermostat for Furnace Control</title>
+    <link>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</link>
+    <pubDate>Thu, 31 Dec 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</guid>
+    <description><![CDATA[Replace the old thermostat in your living space with a new fully customizable version that allows you to tweak the control algorithms used to keep the temperature comfortable.
+This article details the design of a custom thermostat device for use in simple on/off furnace systems. It is called &ldquo;OpenThermo&rdquo; since it has been released as an open-source project (see the official GitHub project).
+OpenThermo fully assembled circuit board." OpenThermo fully assembled circuit board.]]></description>
+</item>
+<item>
+    <title>Designing a Firmware Driver for Serially-Addressable LEDs for Xilinx Zynq-7000</title>
+    <link>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</link>
+    <pubDate>Fri, 17 Jul 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</guid>
+    <description><![CDATA[Tutorial covering embedded system layers and firmware design (FPGA + DSP) for driving LEDs.]]></description>
+</item>
+<item>
+    <title>AMDC REV D Hardware</title>
+    <link>https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/</link>
+    <pubDate>Sat, 11 Apr 2020 14:25:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/</guid>
+    <description><![CDATA[Advanced Motor Drive Controller, Revision D fully assembled" Advanced Motor Drive Controller, Revision D fully assembled  The fourth hardware design revision (REV D) of the Advanced Motor Drive Controller (AMDC) from the Severson Research Group marks a huge step improvement in quality of design, physical size reduction, and functionality compared to previous designs.
+Background About 2.5 years ago, I begin work on the Advanced Motor Drive Controller (AMDC), an open-source project designed for academic research in motor drives.]]></description>
+</item>
+<item>
+    <title>Crafting with Cricut: Vinyl Meets Laptop</title>
+    <link>https://nathanpetersen.com/2020/01/03/crafting-with-cricut-vinyl-meets-laptop/</link>
+    <pubDate>Fri, 03 Jan 2020 10:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/01/03/crafting-with-cricut-vinyl-meets-laptop/</guid>
+    <description><![CDATA[Cricut makes advanced crafting easy for everyone.
+Background I recently started grad school at UW-Madison and realized I needed a more powerful computer for running CAD software, circuit design, and FEA simulations. I decided to buy a new laptop that could fulfill these requirements. The new laptop runs fast, but looked rather bland&hellip;
+While I was home for the winter holidays, my father received the Cricut Maker. This is an extremely easy-to-use crafting tool which enables hobbyists to make almost anything they want.]]></description>
+</item>
+<item>
+    <title>CirArrow: Circular Arrow Tool</title>
+    <link>https://nathanpetersen.com/2019/01/31/cirarrow-circular-arrow-tool/</link>
+    <pubDate>Thu, 31 Jan 2019 14:18:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2019/01/31/cirarrow-circular-arrow-tool/</guid>
+    <description><![CDATA[img.diagram {width: 30em;height: auto;}canvas {border: 1px solid #000;max-width: 100%;margin: 1em auto;display: block;}Use this tool to calculate shape end-points when modeling circular arrows using CAD software. The output of this tool is a simple set of points which define the requested parametrized circular arrows. Therefore, this tool should be useful for nearly every CAD program that supports elementary objects and shapes, such as lines and polygons.]]></description>
+</item>
+<item>
+    <title>Gradled Mini: Prototype Modular Discrete LED Display</title>
+    <link>https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/</link>
+    <pubDate>Sun, 11 Nov 2018 11:11:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/</guid>
+    <description><![CDATA[Gradled Mini after design, manufacturing, and assembly" Gradled Mini after design, manufacturing, and assembly  Background This project came into being during my senior year of college at UW-Madison as a personal side venture. In May 2019, I complete my undergraduate schooling. It is not uncommon for students to decorate their graduation &ldquo;hats&rdquo; to personalize them and make them stand out in the crowd of graduates during the commencement ceremony. Typically, people create artwork related to the university they attended (i.]]></description>
+</item>
+<item>
+    <title>AMDC: Advanced Motor Drive Controller</title>
+    <link>https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/</link>
+    <pubDate>Wed, 05 Sep 2018 09:45:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/</guid>
+    <description><![CDATA[Background My involvement in this project, the Advanced Motor Drive Controller (AMDC), happened because of my undergraduate Independent Study project done at UW-Madison during Spring 2018, advised by Prof. Eric Severson and affiliated with WEMPEC.
+How did I get this opportunity? Eric, a relatively new professor, was looking for interested students to work on his projects. My name was recommended to him by other professors, so he reached out to me and I accepted the offer.]]></description>
+</item>
+<item>
+    <title>Razzler: POV LED Top</title>
+    <link>https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/</link>
+    <pubDate>Tue, 15 May 2018 15:29:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/</guid>
+    <description><![CDATA[Background Razzler: the Persistence of Vision LED Top" Razzler: the Persistence of Vision LED Top  During the summer of 2017, I started working on my first real electronics project. This project marks the first time I have ever seen an electronics project all the way through, from start to finish: initial idea, schematic design, PCB layout, manufacturing, board assembly, testing, device driver development, and full firmware creation.
+I love LEDs and interactive toys, so I decided that I wanted to build a top that people could spin to entertain themselves.]]></description>
+</item>
+<item>
+    <title>4-H Electronics Projects Archive</title>
+    <link>https://nathanpetersen.com/2018/04/28/4-h-electronics-projects-archive/</link>
+    <pubDate>Sat, 28 Apr 2018 15:09:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/04/28/4-h-electronics-projects-archive/</guid>
+    <description><![CDATA[History Growing up, I was a member of the All-School 4-H Club. While a member, I didn&rsquo;t really appreciate the experience; it seemed like a waste of time but looking back, a few aspects come to mind as helpful.
+I took electronics projects for many years, from 2006 through 2011, and learned a lot. Each year, I created a display board to show at the county project exposition. The display board showcased a simple circuit that demonstrated a specific electronics principle.]]></description>
+</item>
+</channel>
+</rss>

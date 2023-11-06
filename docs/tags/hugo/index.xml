@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>hugo - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/hugo/</link>
+        <description>hugo - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 25 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/hugo/" rel="self" type="application/rss+xml" /><item>
+    <title>Website Update: Hugo</title>
+    <link>https://nathanpetersen.com/2022/05/25/website-update-hugo/</link>
+    <pubDate>Wed, 25 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2022/05/25/website-update-hugo/</guid>
+    <description><![CDATA[Welcome back to my blog, now completely overhauled and rewritten using the fabulously fast Hugo static site generator framework!
+After a nearly 18 month hiatus from this blog, I finally dusted off the cobwebs. Or, more accurately, I threw away the old dusty blog and resurrected it using modern technologies. This post outlines what I did, why I did it, and what&rsquo;s next.
+  Hugo static site generator logo]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591 - Nathan Petersen</title><meta name="Description" content="Custom light sensor to monitor the outdoor illuminance over time."><meta property="og:title" content="Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591" />
+<meta property="og:description" content="Custom light sensor to monitor the outdoor illuminance over time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/" />
+<meta property="article:published_time" content="2022-12-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-15T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591"/>
+<meta name="twitter:description" content="Custom light sensor to monitor the outdoor illuminance over time."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/" /><link rel="prev" href="https://nathanpetersen.com/2022/11/29/tesla-internship-experience-phd-student-edition-summer-2022/" /><link rel="next" href="https://nathanpetersen.com/2023/04/01/souffle-pancakes-hanabusa-cafe-chicago-il/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Custom Window Light Sensor: Home Assistant + ESPHome + Adafruit TSL2591",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2022\/12\/15\/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591\/"
+        },"genre": "posts","keywords": "home-assistant, esphome, esp32, sensor, IoT, smart-home, electronics, hardware, pcb","wordcount":  1655 ,
+        "url": "https:\/\/nathanpetersen.com\/2022\/12\/15\/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591\/","datePublished": "2022-12-15T00:00:00+00:00","dateModified": "2022-12-15T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Custom light sensor to monitor the outdoor illuminance over time."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="December 15, 2022">December 15, 2022</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1655 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/home-assistant/">home-assistant</a>, <a href="/tags/esphome/">esphome</a>, <a href="/tags/esp32/">esp32</a>, <a href="/tags/sensor/">sensor</a>, <a href="/tags/iot/">IoT</a>, <a href="/tags/smart-home/">smart-home</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/pcb/">pcb</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#esphome">ESPHome</a></li>
+        <li><a href="#home-assistant">Home Assistant</a></li>
+      </ul>
+    </li>
+    <li><a href="#electronics">Electronics</a>
+      <ul>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#wiring">Wiring</a></li>
+      </ul>
+    </li>
+    <li><a href="#enclosure">Enclosure</a></li>
+    <li><a href="#software-configuration">Software Configuration</a></li>
+    <li><a href="#home-assistant-integration">Home Assistant Integration</a>
+      <ul>
+        <li><a href="#lux-calibration">Lux Calibration</a></li>
+      </ul>
+    </li>
+    <li><a href="#results">Results</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><figure><a class="lightgallery" href="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-01-logos.jpg" title="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-01-logos.jpg" data-thumbnail="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-01-logos.jpg" data-sub-html="<h2>My custom light sensor installed in its window to read outdoor light levels</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-01-logos.jpg"
+            data-srcset="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-01-logos.jpg, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-01-logos.jpg 1.5x, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-01-logos.jpg 2x"
+            data-sizes="auto"
+            alt="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-01-logos.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">My custom light sensor installed in its window to read outdoor light levels</figcaption>
+    </figure>
+<p><strong>In a few quick evenings, I built a custom light sensor for my smart home to measure outdoor light levels through my window.</strong>
+In this post, I&rsquo;ll explain how I did it.
+We&rsquo;ll go over the electronic components and wiring, enclosure, software configuration, Home Assistant integration, and a few example plots of the illuminance levels.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Over the past many years, I have built numerous embedded systems projects. Some have made it onto this blog, for example, check out these project articles:
+<a href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" rel="">thermostat</a>,
+<a href="/2020/04/11/amdc-rev-d-hardware/" rel="">motor controller</a>,
+<a href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" rel="">LED driver</a>,
+<a href="/2018/05/15/razzler-pov-led-top/" rel="">POV top</a>, and
+<a href="/2015/07/05/bluetooth-controlled-led-display/" rel="">LED display</a>.
+One major theme emerges from all these embedded systems projects: I love to design my own custom circuit boards and architect the firmware/software which runs on them.
+There is such beauty in a minimal embedded system that has only the required hardware to do its dedicated task. No more, no less.</p>
+<p>With the introduction of the <a href="https://www.arduino.cc/" target="_blank" rel="noopener noreffer">Arduino platform</a> in 2005, and many similar projects afterwards, e.g., <a href="https://platform.io/" target="_blank" rel="noopener noreffer">platform.io</a> and <a href="https://www.particle.io/" target="_blank" rel="noopener noreffer">particle.io</a>, the barrier of entry to embedded systems has reduced to nearly the likes of web development.
+Simply download the correct code development environment&mdash;nowadays, it might even be all in your browser on the cloud. Buy the development board and install the right open-source libraries for your project.
+Less than one hour later, you have a working prototype system!</p>
+<p>This democratization of embedded systems over the past 20 years has hugely changed the aura of the craft.
+Now, almost anyone can build custom hardware systems designed for a specific application.
+Along with the rise of embedded systems engineers has been the &ldquo;Internet of Things&rdquo; (IoT), the concept of converting &ldquo;dumb&rdquo; devices into &ldquo;smart&rdquo; devices which can connect to the broader Internet.
+Whole companies exist which target building electronic chips and modules for the IoT world.
+For example, <a href="https://www.silabs.com/" target="_blank" rel="noopener noreffer">Silicon Labs</a> has morphed in a pure-play IoT company over the past few years, recently completing the <a href="https://news.silabs.com/2021-07-26-Silicon-Labs-Completes-Divestiture-of-Infrastructure-Automotive-Business" target="_blank" rel="noopener noreffer">sell off</a> of their legacy products to focus on IoT.</p>
+<p>For me, these worlds of IoT and my passion for building custom embedded systems have collided.
+Enter the <strong>ESPHome</strong> open-source project.</p>
+<h3 id="esphome">ESPHome</h3>
+<p><a href="https://esphome.io/" target="_blank" rel="noopener noreffer">ESPHome</a> is an open-source project <a href="https://github.com/esphome/esphome/commit/982e9c10515ace8d63da9cc1114e14c94bb07665" target="_blank" rel="noopener noreffer">started back in 2018</a> which allows users to easily configure and build custom firmware to deploy onto ESP8266 and ESP32 devices.
+The <a href="https://www.espressif.com/en/products/socs/esp8266" target="_blank" rel="noopener noreffer">ESP8266</a> and <a href="https://www.espressif.com/en/products/socs/esp32" target="_blank" rel="noopener noreffer">ESP32</a> devices come from a Chinese company called <a href="https://www.espressif.com/" target="_blank" rel="noopener noreffer">Espressif Systems</a>,
+which was really the first company to introduce ultra-low-cost Wi-Fi module solutions.
+If you take apart almost any &ldquo;smart&rdquo; device you can buy today, you will probably find an ESP8266 module inside&mdash;they are ubiquitous in the IoT world.</p>
+<p>The real power of ESPHome is the simplicity it offers.
+Imagine trying to build a simple system with a remote temperature sensor to record the climate inside your home, and an online dashboard to plot the data over time.
+I know first hard how hard this would be to do from scratch:</p>
+<ul>
+<li>Electronic component selection</li>
+<li>Circuit design</li>
+<li>PCB layout</li>
+<li>Fab house assembly of the PCB (or hand assembly)</li>
+<li>Low-level firmware driver development</li>
+<li>Application-level firmware design</li>
+<li>Embedded Internet Wi-Fi stack</li>
+<li>Local web server back-end</li>
+<li>Browser-based GUI for data visualization</li>
+</ul>
+<p>As you progress through this list, you go from low-level engineers to high-level developers. The skill sets range from electrical engineering to computer engineering to computer science.
+It would take months if not years for a single hobbyist to create our hypothetical temperature monitoring system.</p>
+<p>That is why I am so impressed with ESPHome.
+In literally a few hours, I went from nothing to a full working light sensor with local Wi-Fi integration and a data plotting dashboard via Home Assistant (all open-source projects).
+Incredible!</p>
+<p>ESPHome is used to configure and build firmware for ESP-based processors without writing any code. Simply configure a <code>.yaml</code> file which describes the functionality of the widget. Then, ESPHome will auto-magically build the firmware binary and flash over-the-air (OTA) to the ESP device.</p>
+<h3 id="home-assistant">Home Assistant</h3>
+<p><a href="https://www.home-assistant.io/" target="_blank" rel="noopener noreffer">Home Assistant</a> is another open-source project from the same people who made ESPHome.
+It allows you to create home automation privately on your local network. There are no requirements for full Internet connection.
+Home Assistant allows all smart home devices to integrate together, regardless of the vendor. It is a vendor agnostic smart home solution.
+You can purchase commercial smart devices (e.g., <a href="https://a.co/d/2b305Zo" target="_blank" rel="noopener noreffer">smart light bulbs</a>, <a href="https://a.co/d/c3dPCQM" target="_blank" rel="noopener noreffer">sensors</a>, etc) and they can join your Home Assistant ecosystem.</p>
+<p>ESPHome is for those who want to build their own sensors and smart devices.
+You do not need to use ESPHome with Home Assistant or vice-versa; both can work as stand-alone projects.
+However, since the same people have built both projects, the integration between ESPHome and Home Assistant is amazing.</p>
+<p>In the list above, the local web server back-end and browser-based GUI front-end are owned by Home Assistant, and the entire embedded systems part is owned by ESPHome.</p>
+<h2 id="electronics">Electronics</h2>
+<p>To make use of ESPHome, you need a supported processor: either the classic <code>ESP8266</code> or the more powerful <code>ESP32</code>.
+These are only a system-on-chip (SoC), so you will typically buy them on development boards that allow easy break-out of the pins and a USB interface.
+There are numerous boards available, ranging in price from a few dollars to 10 dollars.</p>
+<p>Next, you&rsquo;ll need the actual application-specific device.
+Most sensors/widgets are available on small break-out boards from companies like <a href="https://www.adafruit.com/" target="_blank" rel="noopener noreffer">Adafruit</a> or <a href="https://www.sparkfun.com/" target="_blank" rel="noopener noreffer">Sparkfun</a>.
+These break-out boards can be easily wired to the break-out pins on the ESP dev boards.</p>
+<h3 id="components">Components</h3>
+<figure><a class="lightgallery" href="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/boards-esp32-tsl2591.jpg" title="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/boards-esp32-tsl2591.jpg" data-thumbnail="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/boards-esp32-tsl2591.jpg" data-sub-html="<h2>The brains of the operation: ESP32 and TSL2591</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/boards-esp32-tsl2591.jpg"
+            data-srcset="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/boards-esp32-tsl2591.jpg, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/boards-esp32-tsl2591.jpg 1.5x, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/boards-esp32-tsl2591.jpg 2x"
+            data-sizes="auto"
+            alt="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/boards-esp32-tsl2591.jpg" width="2000" height="1000" />
+    </a><figcaption class="image-caption">The brains of the operation: ESP32 and TSL2591</figcaption>
+    </figure>
+<p>In this project, two boards were used (see picture above):</p>
+<ol>
+<li>ESP-WROOM-32 development board</li>
+<li>Adafruit TSL2591 break-out board</li>
+</ol>
+<h4 id="esp-wroom-32">ESP-WROOM-32</h4>
+<p>The <code>ESP-WROOM-32</code> module was selected for its low price in small quantities, and its broad support.
+Its datasheet can be found <a href="https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf" target="_blank" rel="noopener noreffer">here</a>.
+While I did not obtain mine from Adafruit, you can buy the bare module from Adafruit <a href="https://www.adafruit.com/product/3320" target="_blank" rel="noopener noreffer">here</a>. If you go this route, you&rsquo;ll need to design a carrier board.
+I did not do this; instead, I bought a breakout board from Amazon, see <a href="https://a.co/d/h9ZgY6u" target="_blank" rel="noopener noreffer">here</a>.</p>
+<h4 id="adafruit-tsl2591-sensor">Adafruit TSL2591 Sensor</h4>
+<p>This specific light sensor <code>TSL2591</code> was selected since ESPHome already supported it: see the <a href="https://esphome.io/components/sensor/tsl2591.html" target="_blank" rel="noopener noreffer">docs page</a>.
+ESPHome also supports a wide range of other light sensors: see <a href="https://esphome.io/#light" target="_blank" rel="noopener noreffer">list of supported light sensors</a>.
+However, even if it was not supported, the ESPHome code base is designed for easily adding custom sensors and the required low-level code to interface with them.
+Plus, since it is open source, anyone can contribute more sensors!
+For example, checkout these GitHub PRs where support for this specific sensor was added:</p>
+<ul>
+<li><a href="https://github.com/esphome/esphome/pull/2131" target="_blank" rel="noopener noreffer">ESPHome code PR for TSL2591</a></li>
+<li><a href="https://github.com/esphome/esphome-docs/pull/1370" target="_blank" rel="noopener noreffer">ESPHome docs PR for TSL2591</a></li>
+</ul>
+<p>Thank you, <a href="https://github.com/wjcarpenter" target="_blank" rel="noopener noreffer"><code>@wjcarpenter</code></a>. 😄</p>
+<h3 id="wiring">Wiring</h3>
+<p>The wiring between the ESP32 board and the TSL2591 board is quite simple since only power and the <code>I2C</code> interface is needed.</p>
+<p>Four wires are required:</p>
+<table>
+<thead>
+<tr>
+<th>Signal Name</th>
+<th>ESP32 Pin</th>
+<th>TSL2591 Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>5V</code></td>
+<td><code>VCC</code></td>
+<td><code>VIN</code></td>
+</tr>
+<tr>
+<td><code>GND</code></td>
+<td><code>GND</code></td>
+<td><code>GND</code></td>
+</tr>
+<tr>
+<td><code>I2C_SCL</code></td>
+<td><code>IO22</code></td>
+<td><code>SCL</code></td>
+</tr>
+<tr>
+<td><code>I2C_SDA</code></td>
+<td><code>IO21</code></td>
+<td><code>SDA</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="enclosure">Enclosure</h2>
+<p>After soldering the four jumper wires to connect the two boards, I designed a 3-D printed enclosure to hold the light sensor against my window.
+For easy printing, I designed it into three distinct pieces which are attached together with small M2 screws.</p>
+<figure><a class="lightgallery" href="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/enclosure-solidworks.png" title="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/enclosure-solidworks.png" data-thumbnail="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/enclosure-solidworks.png" data-sub-html="<h2>3-D model of the light sensor and processor electronics installed in the enclosure</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/enclosure-solidworks.png"
+            data-srcset="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/enclosure-solidworks.png, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/enclosure-solidworks.png 1.5x, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/enclosure-solidworks.png 2x"
+            data-sizes="auto"
+            alt="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/enclosure-solidworks.png" width="2066" height="1598" />
+    </a><figcaption class="image-caption">3-D model of the light sensor and processor electronics installed in the enclosure</figcaption>
+    </figure>
+<p>Next, I used a 3-D printer to turn my vision of the enclosure into reality.</p>
+<figure><a class="lightgallery" href="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-03.jpg" title="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-03.jpg" data-thumbnail="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-03.jpg" data-sub-html="<h2>The three parts of the enclosure ready for assembly with the electronics</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-03.jpg"
+            data-srcset="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-03.jpg, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-03.jpg 1.5x, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-03.jpg 2x"
+            data-sizes="auto"
+            alt="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/img-03.jpg" width="2000" height="1500" />
+    </a><figcaption class="image-caption">The three parts of the enclosure ready for assembly with the electronics</figcaption>
+    </figure>
+<p>Luckily, it fit together the first try!</p>
+<h2 id="software-configuration">Software Configuration</h2>
+<p>To configure the ESP32 processor, I used ESPHome to build and flash (OTA) the firmware binary based on my application-specific config <code>.yaml</code> file.
+To write this config file, I started with ESPHome&rsquo;s <a href="https://esphome.io/guides/getting_started_command_line.html" target="_blank" rel="noopener noreffer">getting started</a> documentation, followed by the ESPHome documentation for the <a href="https://esphome.io/components/sensor/tsl2591.html" target="_blank" rel="noopener noreffer">TSL2591 sensor</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">esphome</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>light-sensor<span class="m">-1</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">esp32</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">board</span><span class="p">:</span><span class="w"> </span>wemos_d1_mini32<span class="w">
+</span><span class="w">  </span><span class="k">framework</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">type</span><span class="p">:</span><span class="w"> </span>arduino<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">i2c</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">sda</span><span class="p">:</span><span class="w"> </span><span class="m">21</span><span class="w">
+</span><span class="w">  </span><span class="k">scl</span><span class="p">:</span><span class="w"> </span><span class="m">22</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">sensor</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="k">platform</span><span class="p">:</span><span class="w"> </span>tsl2591<span class="w">
+</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;TSL2591 Light Sensor&#34;</span><span class="w">
+</span><span class="w">    </span><span class="k">id</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;light_sensor&#34;</span><span class="w">
+</span><span class="w">    </span><span class="k">address</span><span class="p">:</span><span class="w"> </span><span class="m">0x29</span><span class="w">
+</span><span class="w">    </span><span class="k">integration_time</span><span class="p">:</span><span class="w"> </span>600ms<span class="w">
+</span><span class="w">    </span><span class="k">update_interval</span><span class="p">:</span><span class="w"> </span>60s<span class="w">
+</span><span class="w">    </span><span class="k">device_factor</span><span class="p">:</span><span class="w"> </span><span class="m">477</span><span class="w">
+</span><span class="w">    </span><span class="k">glass_attenuation_factor</span><span class="p">:</span><span class="w"> </span><span class="m">7.7</span><span class="w">
+</span><span class="w">    </span><span class="k">visible</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;TSL2591 visible light&#34;</span><span class="w">
+</span><span class="w">    </span><span class="k">infrared</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;TSL2591 infrared light&#34;</span><span class="w">
+</span><span class="w">    </span><span class="k">full_spectrum</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;TSL2591 full spectrum light&#34;</span><span class="w">
+</span><span class="w">    </span><span class="k">calculated_lux</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;TSL2591 lux&#34;</span><span class="w">
+</span></code></pre></div><h2 id="home-assistant-integration">Home Assistant Integration</h2>
+<p>Due to the powerful integration between ESPHome and Home Assistant, my custom device was immediately discovered by my Home Assistant server.
+Adding the light sensor to Home Assistant was a one-click one-minute ordeal. Awesome! 😄</p>
+<h3 id="lux-calibration">Lux Calibration</h3>
+<p>The config file allows for user calibration of the computed lux value based on the <code>device_factor</code> and <code>glass_attenuation_factor</code> values, see the <a href="https://github.com/esphome/esphome/blob/dev/esphome/components/tsl2591/tsl2591.cpp#L381-L393" target="_blank" rel="noopener noreffer">code for computing lux</a>.
+It appears that either value can be adjusted to calibrate the lux sensor output, but I figured the <code>glass_attenuation_factor</code> ought to remain the same per the same hardware sensor.
+Instead, I changed <code>device_factor</code> parameter to tune the lux calculations.
+Since I do not own a precise light meter to measure the &ldquo;true&rdquo; lux value, I used an iPhone app to calibrate the sensor.
+This gets it in the right ballpark, which is all I need for my application.</p>
+<h2 id="results">Results</h2>
+<p>I let the sensor collect data and Home Assistant log it for a full day in Wisconsin, USA during the winter month of December. It was highly overcast with no visible sun.</p>
+<figure><a class="lightgallery" href="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/lux-graph-white.png" title="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/lux-graph-white.png" data-thumbnail="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/lux-graph-white.png" data-sub-html="<h2>One day of light measurements on a very overcast day</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/lux-graph-white.png"
+            data-srcset="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/lux-graph-white.png, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/lux-graph-white.png 1.5x, /2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/lux-graph-white.png 2x"
+            data-sizes="auto"
+            alt="/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/images/lux-graph-white.png" width="997" height="449" />
+    </a><figcaption class="image-caption">One day of light measurements on a very overcast day</figcaption>
+    </figure>
+<p>Just as I expected, the lux values match the expected values, peaking around noon.</p>
+<p>I plan on letting this light sensor collect data over the winter.
+Then, in the spring, I will pull all the data off of Home Assistant and post process it into a new blog post which aims to model my home&rsquo;s heating efficiency.
+Stay tuned for more blog posts!</p>
+<hr>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/" data-title="Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591" data-hashtags="home-assistant,esphome,esp32,sensor,IoT,smart-home,electronics,hardware,pcb"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/" data-hashtag="home-assistant"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/" data-title="Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/" data-title="Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/" data-title="Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/home-assistant/">home-assistant</a>, <a href="/tags/esphome/">esphome</a>, <a href="/tags/esp32/">esp32</a>, <a href="/tags/sensor/">sensor</a>, <a href="/tags/iot/">IoT</a>, <a href="/tags/smart-home/">smart-home</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/pcb/">pcb</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/11/29/tesla-internship-experience-phd-student-edition-summer-2022/" class="prev" rel="prev" title="Tesla Internship Experience, PhD Student Edition, Summer 2022"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Tesla Internship Experience, PhD Student Edition, Summer 2022</a>
+            <a href="/2023/04/01/souffle-pancakes-hanabusa-cafe-chicago-il/" class="next" rel="next" title="Soufflé Pancakes - Hanabusa Café - Chicago, IL">Soufflé Pancakes - Hanabusa Café - Chicago, IL<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

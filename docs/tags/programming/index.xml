@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>programming - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/programming/</link>
+        <description>programming - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 31 Dec 2020 15:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/programming/" rel="self" type="application/rss+xml" /><item>
+    <title>OpenThermo: Customizable Thermostat for Furnace Control</title>
+    <link>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</link>
+    <pubDate>Thu, 31 Dec 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</guid>
+    <description><![CDATA[Replace the old thermostat in your living space with a new fully customizable version that allows you to tweak the control algorithms used to keep the temperature comfortable.
+This article details the design of a custom thermostat device for use in simple on/off furnace systems. It is called &ldquo;OpenThermo&rdquo; since it has been released as an open-source project (see the official GitHub project).
+OpenThermo fully assembled circuit board." OpenThermo fully assembled circuit board.]]></description>
+</item>
+<item>
+    <title>Designing a Firmware Driver for Serially-Addressable LEDs for Xilinx Zynq-7000</title>
+    <link>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</link>
+    <pubDate>Fri, 17 Jul 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</guid>
+    <description><![CDATA[Tutorial covering embedded system layers and firmware design (FPGA + DSP) for driving LEDs.]]></description>
+</item>
+<item>
+    <title>Optimizing for Workloads: Linux Spinlocks vs Mutexes</title>
+    <link>https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/</link>
+    <pubDate>Sun, 17 Feb 2019 11:45:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/</guid>
+    <description><![CDATA[Introduction Operating systems form the backbone of modern processing environments. Millions of lines of code are responsible for enabling programs to easily execute on a given machine. These programs must share the machine&rsquo;s resources, such as processor cores, volatile memory, peripheral devices, and persistent media. Virtualization and resource management is accomplished by the underlying operating system, which ensures the system operates correctly and in an efficient manner. Machine resources should be largely devoted to the user applications which mandates careful system design and implementation.]]></description>
+</item>
+<item>
+    <title>My Experience Interning at Silicon Labs - Summer 2017</title>
+    <link>https://nathanpetersen.com/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/</link>
+    <pubDate>Sat, 02 Sep 2017 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/</guid>
+    <description><![CDATA[Update April 2021  Silicon Labs has sold their I&amp;A Business.
+My entire expereince at Silicon Labs, as discussed below, was in the I&amp;A division. Therefore, everything I say below is outdated, since the business/products no longer exist from Silicon Labs. Most links in this article to silabs.com are now invalid, but I will keep them intact for posterity.
+   Well, thus concludes my summer at Silicon Labs, and boy was it great.]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>mpu-6050 - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/mpu-6050/</link>
+        <description>mpu-6050 - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 15 May 2018 15:29:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/mpu-6050/" rel="self" type="application/rss+xml" /><item>
+    <title>Razzler: POV LED Top</title>
+    <link>https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/</link>
+    <pubDate>Tue, 15 May 2018 15:29:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/</guid>
+    <description><![CDATA[Background Razzler: the Persistence of Vision LED Top" Razzler: the Persistence of Vision LED Top  During the summer of 2017, I started working on my first real electronics project. This project marks the first time I have ever seen an electronics project all the way through, from start to finish: initial idea, schematic design, PCB layout, manufacturing, board assembly, testing, device driver development, and full firmware creation.
+I love LEDs and interactive toys, so I decided that I wanted to build a top that people could spin to entertain themselves.]]></description>
+</item>
+</channel>
+</rss>

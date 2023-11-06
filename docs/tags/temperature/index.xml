@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>temperature - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/temperature/</link>
+        <description>temperature - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 31 Dec 2020 15:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/temperature/" rel="self" type="application/rss+xml" /><item>
+    <title>OpenThermo: Customizable Thermostat for Furnace Control</title>
+    <link>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</link>
+    <pubDate>Thu, 31 Dec 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</guid>
+    <description><![CDATA[Replace the old thermostat in your living space with a new fully customizable version that allows you to tweak the control algorithms used to keep the temperature comfortable.
+This article details the design of a custom thermostat device for use in simple on/off furnace systems. It is called &ldquo;OpenThermo&rdquo; since it has been released as an open-source project (see the official GitHub project).
+OpenThermo fully assembled circuit board." OpenThermo fully assembled circuit board.]]></description>
+</item>
+<item>
+    <title>Live Madison Weather</title>
+    <link>https://nathanpetersen.com/2016/06/07/live-madison-weather/</link>
+    <pubDate>Tue, 07 Jun 2016 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2016/06/07/live-madison-weather/</guid>
+    <description><![CDATA[Check out the live weather in Madison! Go to App &gt;
+Check out the source code behind the app! Go to GitHub &gt;
+ Background I started college at the University of Wisconsin - Madison during the fall of 2015. After nearly completing a successful year of school, I started working in the Computer Sciences Department in the Computer Sciences Lab (CSL).
+The CSL is located in an internal room, thus there are no windows to see the outside.]]></description>
+</item>
+</channel>
+</rss>

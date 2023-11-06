@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Website Update: Hugo - Nathan Petersen</title><meta name="Description" content="Complete rewrite of my blog using Hugo for the static site generator back-end."><meta property="og:title" content="Website Update: Hugo" />
+<meta property="og:description" content="Complete rewrite of my blog using Hugo for the static site generator back-end." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2022/05/25/website-update-hugo/" />
+<meta property="article:published_time" content="2022-05-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-25T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Website Update: Hugo"/>
+<meta name="twitter:description" content="Complete rewrite of my blog using Hugo for the static site generator back-end."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2022/05/25/website-update-hugo/" /><link rel="prev" href="https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" /><link rel="next" href="https://nathanpetersen.com/2022/06/08/discovering-truth-a-conceptual-picture/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Website Update: Hugo",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2022\/05\/25\/website-update-hugo\/"
+        },"genre": "posts","keywords": "design, web, html, static-site, hugo, github","wordcount":  1743 ,
+        "url": "https:\/\/nathanpetersen.com\/2022\/05\/25\/website-update-hugo\/","datePublished": "2022-05-25T00:00:00+00:00","dateModified": "2022-05-25T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Complete rewrite of my blog using Hugo for the static site generator back-end."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Website Update: Hugo</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="May 25, 2022">May 25, 2022</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1743 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/experiences/"></i>Experiences</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/design/">design</a>, <a href="/tags/web/">web</a>, <a href="/tags/html/">html</a>, <a href="/tags/static-site/">static-site</a>, <a href="/tags/hugo/">hugo</a>, <a href="/tags/github/">github</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-have-i-been-doing">What Have I Been Doing?</a></li>
+    <li><a href="#blog-technology-progression">Blog Technology Progression</a>
+      <ul>
+        <li><a href="#jekyll">Jekyll</a></li>
+        <li><a href="#hexo">Hexo</a></li>
+      </ul>
+    </li>
+    <li><a href="#goals-for-blog-rewrite">Goals for Blog Rewrite</a></li>
+    <li><a href="#hugo">Hugo</a></li>
+    <li><a href="#results">Results</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><strong>Welcome back to my blog, now completely overhauled and rewritten using the fabulously fast <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer">Hugo</a> static site generator framework!</strong></p>
+<p>After a nearly 18 month hiatus from this blog, I finally dusted off the cobwebs. Or, more accurately, I threw away the old dusty blog and resurrected it using modern technologies. This post outlines what I did, why I did it, and what&rsquo;s next.</p>
+<p>
+<div style="margin-top:2em;">
+<figure class="image">
+    <img src="images/hugo-logo-wide.svg"
+         alt="Hugo static site generator logo"/> <figcaption>
+            <p>Hugo static site generator logo</p>
+        </figcaption>
+</figure>
+
+
+</div></p>
+<h2 id="what-have-i-been-doing">What Have I Been Doing?</h2>
+<p>From the total silence on this blog, it looks like I haven&rsquo;t been doing anything lately&hellip; However, that is far from reality.</p>
+<p>It turns out that being a PhD grad student simply <em>eats</em> your time, sucking away days, nights, and weekends. If you&rsquo;re not careful to carve out chunks of time for personal projects, there is simply no room to do anything outside of school and research.</p>
+<p>For the past 2.5 years, I have been a full-time grad student at the <a href="https://wisc.edu/" target="_blank" rel="noopener noreffer">University of Wisconsin–Madison</a> pursuing my MS and now PhD degrees in Electrical and Computer Engineering. The amount of knowledge I have gained in grad school is crazy; simply reflecting on my progression over just one year is incredible. For my M.S. research project, I created the Advanced Motor Drive Controller (AMDC) which is a collection of open-source hardware and software for controlling advanced motor drives. Check it out at <a href="https://amdc.dev/" target="_blank" rel="noopener noreffer">amdc.dev</a> or read the docs at <a href="https://docs.amdc.dev/" target="_blank" rel="noopener noreffer">docs.amdc.dev</a>. Also, check out my research <a href="https://scholar.google.com/citations?oan5hE4AAAAJ" target="_blank" rel="noopener noreffer">publications</a>.</p>
+<p>Perhaps equally important to the knowledge gained are the numerous relationships forged with other grad students. UW-Madison has a very diverse grad student population, and I have genuinely enjoyed learning about international cultures. Overall, I&rsquo;d say I have been enjoying grad school! 😄</p>
+<figure><a class="lightgallery" href="/2022/05/25/website-update-hugo/images/nathan-lab.jpg" title="/2022/05/25/website-update-hugo/images/nathan-lab.jpg" data-thumbnail="/2022/05/25/website-update-hugo/images/nathan-lab.jpg" data-sub-html="<h2>Me in the lab working on my research projects.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2022/05/25/website-update-hugo/images/nathan-lab.jpg"
+            data-srcset="/2022/05/25/website-update-hugo/images/nathan-lab.jpg, /2022/05/25/website-update-hugo/images/nathan-lab.jpg 1.5x, /2022/05/25/website-update-hugo/images/nathan-lab.jpg 2x"
+            data-sizes="auto"
+            alt="/2022/05/25/website-update-hugo/images/nathan-lab.jpg" width="1000" height="750" />
+    </a><figcaption class="image-caption">Me in the lab working on my research projects.</figcaption>
+    </figure>
+<h2 id="blog-technology-progression">Blog Technology Progression</h2>
+<p>Back to the blog upgrade&hellip;</p>
+<div class="mermaid" id="id-1"></div>
+<p>I created this blog around the time I started college, back in 2015. Back then, <a href="https://staticsitegenerators.net/" target="_blank" rel="noopener noreffer">static site generators</a> were still somewhat &ldquo;new&rdquo; (or at least new to me) and most popular websites still ran using a CMS on a dynamic server. Of course, the web is based on serving quasi-static HTML pages, but with the advent of CMS technologies like <a href="https://wordpress.com/" target="_blank" rel="noopener noreffer">Wordpress</a> and <a href="https://www.drupal.org/" target="_blank" rel="noopener noreffer">Drupal</a>, the ability to easily publish content on the web became more accessible.</p>
+<p>I came to building my blog after building numerous <a href="https://www.php.net/" target="_blank" rel="noopener noreffer">PHP</a>-based websites during high-school. The &ldquo;better&rdquo; of these sites used <a href="https://processwire.com/" target="_blank" rel="noopener noreffer">ProcessWire</a> for their CMS which allows for very flexible front-end development. Check out my best one, which I built about a decade ago for my robotics team: <a href="http://team4096.org/" target="_blank" rel="noopener noreffer">team4096.org</a>.</p>
+<p>My first draft of this blog was built in the technology I knew at the time: PHP-based ProcessWire. I developed the general theme which lives on today, and wrote my first posts. However, I was very intrigued by these &ldquo;static site generator&rdquo; things&hellip;</p>
+<p>GitHub was one of the first to really push easy-to-use static sites via their <a href="https://pages.github.com/" target="_blank" rel="noopener noreffer">GitHub Pages</a> system. This framework allows people to write content using the simple <a href="https://github.github.com/gfm/" target="_blank" rel="noopener noreffer">markdown</a> syntax, which is similar to HTML, but without the bloat. Then, on <code>git push</code> to GitHub, an automated back-end task builds and publishes the new content to the web. Easy, simple, and minimal configuration needed.</p>
+<h3 id="jekyll">Jekyll</h3>
+<p>GitHub&rsquo;s static site generator is called <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreffer">Jekyll</a>, is built using the <a href="https://www.ruby-lang.org/" target="_blank" rel="noopener noreffer">Ruby</a> programming language, and was released around 2008.</p>
+<p>When I started with Jekyll, I wanted the same front-end flexibility as ProcessWire, but using a static site generator. The default GitHub-provided theming and build system simply did not cut it, so I forged my own theme and built the site locally to control the entire process. Then, I pushed the fully compiled HTML to the GitHub repo and configured the repo to serve onto my custom domain, nathanpetersen.com.</p>
+<p>It worked well, see my <a href="/2016/07/26/website-update-jekyll/" rel="">post</a>. Most importantly, it was <strong>free</strong> 💰💸: I did not have to pay to keep a server online. Also, I did not have to manage the server, installing updates and security patches.</p>
+<p>However, I had never used Ruby and did not want to learn it&hellip; It felt rather &ldquo;old&rdquo; and weird, and more modern languages were calling my name.</p>
+<h3 id="hexo">Hexo</h3>
+<p><a href="https://hexo.io/" target="_blank" rel="noopener noreffer">Hexo</a> was released around 2012 and provides the same functionality as Jeykll, but, it is built on top of <a href="https://nodejs.org/" target="_blank" rel="noopener noreffer">Node.js</a>. This means it is built using JavaScript, a more modern and widely used programming language.</p>
+<p>After about a year of using Jekyll, I took the plunge and rewrote the entire blog using Hexo. This mostly involved recreating my theme and customizations. I never made a post about this rewrite on the blog, but as of 2017, this blog has been powered by Hexo and JavaScript.</p>
+<p>In my opinion, the coolest feature of the Hexo-based blog was the form on the <a href="/contact/" rel="">contact</a> page. I wanted readers to be able to send me emails, but did not want to give away my personal email due to spam. However, since the blog was just a collection of static HTML pages, there was no way to have a back-end server process send emails to me dynamically. To solve this, I rigged up a custom <a href="https://aws.amazon.com/lambda/" target="_blank" rel="noopener noreffer">AWS Lambda</a> function which accepts form submissions and then sends me an email. This so-called &ldquo;<a href="https://aws.amazon.com/serverless/" target="_blank" rel="noopener noreffer">serverless computing</a>&rdquo; approach is ideal for small static sites since you pay pennies per lambda function execution, as opposed to hourly for a full server. Plus, you do not have to manage server package upgrades and security patches. Awesome!</p>
+<p>The blog worked wonderfully for many years. I wrote post after post to document project after project. Multiple of my articles (<a href="https://hackaday.com/2018/12/29/pov-tops-hobbyist-abilities/" target="_blank" rel="noopener noreffer">1</a>,<a href="https://hackaday.com/2019/03/24/grabbing-the-thread-spinlocks-vs-mutexes/" target="_blank" rel="noopener noreffer">2</a>,<a href="https://hackaday.com/2021/02/06/open-source-thermostat-wont-anger-your-landlord/" target="_blank" rel="noopener noreffer">3</a>) have been picked up by <a href="https://hackaday.com/" target="_blank" rel="noopener noreffer">Hackaday</a> drawing thousands of people to my corner of the internet.</p>
+<p>However, as it aged, things started breaking. Some Hexo package upgrades were not backwards compatible, so features starting to break. But, most detrimental to the blog&rsquo;s livelihood was my gradual decline in interest for JavaScript. During undergrad, I discovered my true love for embedded systems, hardware, and control theory. Gone were the days of wanting to be a web developer, and gone were the days of wanting to support a blog built using a JavaScript-based static site generator.</p>
+<h2 id="goals-for-blog-rewrite">Goals for Blog Rewrite</h2>
+<p>This brings us to present day, 2022. My journey in life continues, my skills evolve, and so do my ambitions for this blog.</p>
+<p>In the past year, I have spent <strong>considerable</strong> time building out a comprehensive <a href="https://docs.amdc.dev/" target="_blank" rel="noopener noreffer">documentation website</a> for the <a href="https://amdc.dev" target="_blank" rel="noopener noreffer">AMDC</a> platform. I built this using <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener noreffer">Sphinx</a>, which is a &ldquo;Python documentation generator&rdquo; that has evolved into a generic docs website creator. Most notably, it is the tech behind the <a href="https://docs.python.org/" target="_blank" rel="noopener noreffer">Python docs</a> and even the <a href="https://docs.kernel.org/" target="_blank" rel="noopener noreffer">Linux kernel docs</a>. Sphinx is a static site generator aimed towards technical documentation.</p>
+<p>I loved using Sphinx to build the AMDC docs website. Reflecting back, I think it was so great because I did not have to worry about the web development piece of the pie&mdash;no longer do I want to spend countless hours tinkering with web development tools to build websites. When I want to publish things online, I want to solely focus on content creation. Let the framework and theme do the web dev stuff, and let me do the content stuff.</p>
+<p>I wanted the same content writing experience for my blog. I wanted to use all the cool <a href="https://docutils.sourceforge.io/rst.html" target="_blank" rel="noopener noreffer">reStructuredText</a> features and extensions, like native $\LaTeX$ math support and <a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html#admonitions" target="_blank" rel="noopener noreffer">admonitions</a>. And, I wanted the flexibility to easily build my own theme, widgets, and features to aid in content writing (I still have a sweet spot for web dev 😉). Finally, I wanted the content writing experience to be <a href="https://en.wikipedia.org/wiki/WYSIWYG" target="_blank" rel="noopener noreffer">WYSIWYG</a>, but still in markdown.</p>
+<p>Enter <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer">Hugo</a>.</p>
+<h2 id="hugo">Hugo</h2>
+<p><a href="https://gohugo.io/" target="_blank" rel="noopener noreffer">Hugo</a> is a static site generator framework, was released around 2013, and is built using the &ldquo;new&rdquo; and modern <a href="https://go.dev/" target="_blank" rel="noopener noreffer">Go</a> programming language. Its claim to fame is being <em>fast</em>, e.g., renders a page of the site in a few milliseconds. It has a built-in powerful theming framework which allows for very flexible page designs, and is easy-to-use.</p>
+<p>Users do not need to know Go to create a theme or write content. In contrast, Hexo custom widgets are written in JavaScript, which tightly couples the theming to the builders native language.</p>
+<p>The insanely fast build times and live reload local development server create an effectively WYSIWYG content creation experience: simply write markdown content in a text editor, save the file, and within half a second, the browser refreshes to show the changes. It&rsquo;s awesome.</p>
+<p>Over the course of a few days, I spent 20 hours to do a complete rewrite of my blog using Hugo. I rewrote my blog&rsquo;s theme based off the popular <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreffer">LoveIt</a> theme, and painstaking went through each and every post to update the markdown syntax for images and media. Overall, it went well and I love the results. It even has a dark mode now!</p>
+<p>I also spent some time to rig up a <a href="https://github.com/features/actions" target="_blank" rel="noopener noreffer">GitHub Actions</a>-based website build script. Now, when I <code>git push</code> to the <code>main</code> branch, GitHub runs my action which builds the site with <code>hugo</code> and publishes the HTML files onto to web. All for free! Gone are the days of building locally and pushing the final HTML files up to GitHub. Frictionless content creation.</p>
+<h2 id="results">Results</h2>
+<div class="mermaid" id="id-2"></div>
+<div class="star-ranking">
+
+
+
+
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+
+<span class="text">(5/5)</span>
+
+</div>
+<p>After years of inspirational drought, I am truly thrilled to have my blog back in a state where I look forward to writing articles and creating content. The new extensions and features of the LoveIt theme along with my custom additions make writing content exciting again. Be on the lookout for more articles soon!</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>(Pseudo) Warning<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">This is only the beginning of what&rsquo;s to come!</div>
+        </div>
+    </div>
+<div class="expand">
+    <div class="expand-label" style="cursor: pointer;" onclick="
+        var hIcon = this.children[0].children[0];
+        var hInstructionExpand = this.children[0].children[1];
+        var hInstructionHide = this.children[0].children[2];
+        var hIcon = this.children[0].children[0];
+        var hContent = this.nextElementSibling;
+
+        if (hContent.style.display === 'none') {
+            hContent.style.display = 'block';
+            hInstructionExpand.style.display = 'none';
+            hInstructionHide.style.display = 'inline';
+            hIcon.classList.add('fa-chevron-down');
+            hIcon.classList.remove('fa-chevron-right');
+        } else {
+            hContent.style.display = 'none';
+            hInstructionExpand.style.display = 'inline';
+            hInstructionHide.style.display = 'none';
+            hIcon.classList.remove('fa-chevron-down');
+            hIcon.classList.add('fa-chevron-right');
+        }
+        ">
+
+        
+
+        
+
+        
+
+        
+            <h4>
+                <i class="fas fa-chevron-right" style="padding-right:0.5em;"></i>
+                Do you dare expand me?
+                <span class="instructions" style="display:inline;">(click to expand section)</span>
+                <span class="instructions" style="display:none;">(click to hide section)</span>
+            </h4>
+        
+
+        
+
+        
+
+    </div>
+
+    
+    <div class="expand-content" style="display: none;">
+    
+            
+
+You found me, 😉.
+
+Aren't these new widgets great!
+
+
+    </div>
+</div>
+
+
+
+
+
+<p><strong>&hellip;and, $\LaTeX$ math</strong> where $y = mx + b$ and $1+1 \ne 2$</p>
+<p>❤💓❤</p>
+<p>$$
+\sum_{k=1}^{\infty} \frac{1}{k^2} = \frac{\pi^2}{6}
+$$</p>
+<p>and you can copy the $\LaTeX$ commands straight from the browser by simply highlighting the equations and copying. Try it!</p>
+<p>Or, what about code highlighting:</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Hello World</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This new blog framework is definitely not:</p>
+<div class="star-ranking">
+
+
+
+
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+    
+        <i class="fa-regular fa-star"></i>
+    
+
+    
+        <i class="fa-regular fa-star"></i>
+    
+
+    
+        <i class="fa-regular fa-star"></i>
+    
+
+    
+        <i class="fa-regular fa-star"></i>
+    
+
+
+<span class="text">(1/5)</span>
+
+</div>
+<p>At least:</p>
+<div class="star-ranking">
+
+
+
+
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+    
+        
+            <i class="fa-solid fa-star"></i>
+        
+    
+
+    
+        
+            <i class="fa-regular fa-star-half-stroke"></i>
+        
+    
+
+
+<span class="text">(4.5/5)</span>
+
+</div>
+<p>Thanks for reading!</p>
+<p>&mdash;Nathan from Palo Alto, CA, USA</p>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2022/05/25/website-update-hugo/" data-title="Website Update: Hugo" data-hashtags="design,web,html,static-site,hugo,github"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2022/05/25/website-update-hugo/" data-hashtag="design"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2022/05/25/website-update-hugo/" data-title="Website Update: Hugo"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2022/05/25/website-update-hugo/" data-title="Website Update: Hugo"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2022/05/25/website-update-hugo/" data-title="Website Update: Hugo"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/design/">design</a>, <a href="/tags/web/">web</a>, <a href="/tags/html/">html</a>, <a href="/tags/static-site/">static-site</a>, <a href="/tags/hugo/">hugo</a>, <a href="/tags/github/">github</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" class="prev" rel="prev" title="OpenThermo: Customizable Thermostat for Furnace Control"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>OpenThermo: Customizable Thermostat for Furnace Control</a>
+            <a href="/2022/06/08/discovering-truth-a-conceptual-picture/" class="next" rel="next" title="Discovering Truth: A Conceptual Picture">Discovering Truth: A Conceptual Picture<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@9.1.0/dist/mermaid.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"flowchart LR\n    id1[Blog, 2015] --\u003e id2\n    id2[Blog, 2016] --\u003e id3\n    id3[Blog, 2017] --\u003e id4[fa:fa-star Blog, 2022]\n\n    subgraph \"PHP: ProcessWire\"\n    id1\n    end\n\n    subgraph \"Ruby: Jekyll\"\n    id2\n    end\n\n    subgraph \"JavaScript: Hexo\"\n    id3\n    end\n\n    subgraph \"Go: Hugo\"\n    id4\n    end\n\n    click id1 href \"https://processwire.com/\" _blank\n    click id2 href \"https://jekyllrb.com/\" _blank\n    click id3 href \"https://hexo.io/\" _blank\n    click id4 href \"https://gohugo.io/\" _blank\n\n    style id1 fill:grey,stroke:#333,stroke-width:3px,color:white\n    style id2 fill:grey,stroke:#333,stroke-width:3px,color:white\n    style id3 fill:grey,stroke:#333,stroke-width:3px,color:white\n    style id4 fill:red,stroke:#333,stroke-width:3px,color:white","id-2":"flowchart TD\n    id1(\"fa:fa-face-frown Uninspired\") ==\u003e|Hugo Static Site Generator| id2(\"fa:fa-face-smile Inspired\")\n    id2 --\u003e id2\n\n    style id1 fill:red,stroke:#333,stroke-width:3px,color:white\n    style id2 fill:green,stroke:#333,stroke-width:3px,color:white"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>thermostat - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/thermostat/</link>
+        <description>thermostat - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 31 Dec 2020 15:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/thermostat/" rel="self" type="application/rss+xml" /><item>
+    <title>OpenThermo: Customizable Thermostat for Furnace Control</title>
+    <link>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</link>
+    <pubDate>Thu, 31 Dec 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</guid>
+    <description><![CDATA[Replace the old thermostat in your living space with a new fully customizable version that allows you to tweak the control algorithms used to keep the temperature comfortable.
+This article details the design of a custom thermostat device for use in simple on/off furnace systems. It is called &ldquo;OpenThermo&rdquo; since it has been released as an open-source project (see the official GitHub project).
+OpenThermo fully assembled circuit board." OpenThermo fully assembled circuit board.]]></description>
+</item>
+</channel>
+</rss>

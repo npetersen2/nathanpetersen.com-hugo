@@ -1,0 +1,33 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>zynq-7000 - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/zynq-7000/</link>
+        <description>zynq-7000 - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 17 Jul 2020 15:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/zynq-7000/" rel="self" type="application/rss+xml" /><item>
+    <title>Designing a Firmware Driver for Serially-Addressable LEDs for Xilinx Zynq-7000</title>
+    <link>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</link>
+    <pubDate>Fri, 17 Jul 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</guid>
+    <description><![CDATA[Tutorial covering embedded system layers and firmware design (FPGA + DSP) for driving LEDs.]]></description>
+</item>
+<item>
+    <title>AMDC REV D Hardware</title>
+    <link>https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/</link>
+    <pubDate>Sat, 11 Apr 2020 14:25:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/</guid>
+    <description><![CDATA[Advanced Motor Drive Controller, Revision D fully assembled" Advanced Motor Drive Controller, Revision D fully assembled  The fourth hardware design revision (REV D) of the Advanced Motor Drive Controller (AMDC) from the Severson Research Group marks a huge step improvement in quality of design, physical size reduction, and functionality compared to previous designs.
+Background About 2.5 years ago, I begin work on the Advanced Motor Drive Controller (AMDC), an open-source project designed for academic research in motor drives.]]></description>
+</item>
+<item>
+    <title>AMDC: Advanced Motor Drive Controller</title>
+    <link>https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/</link>
+    <pubDate>Wed, 05 Sep 2018 09:45:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/</guid>
+    <description><![CDATA[Background My involvement in this project, the Advanced Motor Drive Controller (AMDC), happened because of my undergraduate Independent Study project done at UW-Madison during Spring 2018, advised by Prof. Eric Severson and affiliated with WEMPEC.
+How did I get this opportunity? Eric, a relatively new professor, was looking for interested students to work on his projects. My name was recommended to him by other professors, so he reached out to me and I accepted the offer.]]></description>
+</item>
+</channel>
+</rss>

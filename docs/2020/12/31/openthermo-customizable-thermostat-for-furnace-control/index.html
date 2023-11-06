@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>OpenThermo: Customizable Thermostat for Furnace Control - Nathan Petersen</title><meta name="Description" content="Custom electronics and firmware for controlling bang-bang furnaces."><meta property="og:title" content="OpenThermo: Customizable Thermostat for Furnace Control" />
+<meta property="og:description" content="Custom electronics and firmware for controlling bang-bang furnaces." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" />
+<meta property="article:published_time" content="2020-12-31T15:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-31T15:00:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenThermo: Customizable Thermostat for Furnace Control"/>
+<meta name="twitter:description" content="Custom electronics and firmware for controlling bang-bang furnaces."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" /><link rel="prev" href="https://nathanpetersen.com/2020/07/19/vanilla-challah-french-toast-la-brioche-bistro-madison-wi/" /><link rel="next" href="https://nathanpetersen.com/2022/05/25/website-update-hugo/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "OpenThermo: Customizable Thermostat for Furnace Control",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2020\/12\/31\/openthermo-customizable-thermostat-for-furnace-control\/"
+        },"genre": "posts","keywords": "thermostat, hardware, electronics, design, temperature, firmware, pcb, mcu, altium, programming, stm32, control","wordcount":  3914 ,
+        "url": "https:\/\/nathanpetersen.com\/2020\/12\/31\/openthermo-customizable-thermostat-for-furnace-control\/","datePublished": "2020-12-31T15:00:00+00:00","dateModified": "2020-12-31T15:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Custom electronics and firmware for controlling bang-bang furnaces."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">OpenThermo: Customizable Thermostat for Furnace Control</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="December 31, 2020">December 31, 2020</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3914 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;19 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/thermostat/">thermostat</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/design/">design</a>, <a href="/tags/temperature/">temperature</a>, <a href="/tags/firmware/">firmware</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/mcu/">mcu</a>, <a href="/tags/altium/">altium</a>, <a href="/tags/programming/">programming</a>, <a href="/tags/stm32/">stm32</a>, <a href="/tags/control/">control</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#mechanical-thermostats">Mechanical Thermostats</a></li>
+    <li><a href="#digital-thermostats">Digital Thermostats</a></li>
+    <li><a href="#openthermo-vision">OpenThermo Vision</a></li>
+    <li><a href="#hardware">Hardware</a>
+      <ul>
+        <li><a href="#circuit-design">Circuit Design</a></li>
+        <li><a href="#pcb-design">PCB Design</a></li>
+      </ul>
+    </li>
+    <li><a href="#firmware">Firmware</a>
+      <ul>
+        <li><a href="#general-structure">General Structure</a></li>
+        <li><a href="#temperature-control">Temperature Control</a></li>
+        <li><a href="#ui-management">UI Management</a></li>
+        <li><a href="#low-pass-filter">Low-Pass Filter</a></li>
+      </ul>
+    </li>
+    <li><a href="#results">Results</a>
+      <ul>
+        <li><a href="#updates-after-winter">Updates After Winter</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a>
+      <ul>
+        <li><a href="#future-plans">Future Plans</a></li>
+      </ul>
+    </li>
+    <li><a href="#pictures">Pictures</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><strong>Replace the old thermostat in your living space with a new fully customizable version that allows you to tweak the control algorithms used to keep the temperature comfortable.</strong></p>
+<p>This article details the design of a custom thermostat device for use in simple on/off furnace systems. It is called &ldquo;OpenThermo&rdquo; since it has been released as an open-source project (see the <a href="https://github.com/npetersen2/OpenThermo" target="_blank" rel="noopener noreffer">official GitHub project</a>).</p>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-01.jpg" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-01.jpg" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-01.jpg" data-sub-html="<h2>OpenThermo fully assembled circuit board.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-01.jpg"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-01.jpg, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-01.jpg 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-01.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-01.jpg" width="1000" height="750" />
+    </a><figcaption class="image-caption">OpenThermo fully assembled circuit board.</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-08.jpg" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-08.jpg" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-08.jpg" data-sub-html="<h2>OpenThermo installed on wall in home.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-08.jpg"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-08.jpg, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-08.jpg 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-08.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-08.jpg" width="1000" height="750" />
+    </a><figcaption class="image-caption">OpenThermo installed on wall in home.</figcaption>
+    </figure>
+<h2 id="introduction">Introduction</h2>
+<p>Each year of school at <a href="https://www.wisc.edu/" target="_blank" rel="noopener noreffer">UW-Madison</a> (after freshman year), I lived in an apartment near campus. I have managed to move <em>every single year</em> for five years straight! This year was no different. A small house became my new home this past August, into which I moved with a friend from the UW-Madison Men&rsquo;s rowing team. We are sharing a cozy two bedroom flat in the two story house.</p>
+<p>When the Wisconsin weather started getting chilly, we turned on the house&rsquo;s heat. As the outdoor temperature fell day by day, we became increasingly aware of the lack of accurate indoor temperature control the wall thermostat provided. The heat definitely worked, but the wild hot/cold swings annoyed us. Eventually, we hit the breaking point. We took apart the built-in thermostat to figure out what was going on.</p>
+<p>What we found inside surprised us: the thermostat was completely mechanical&ndash;no batteries or electronics at all. After some research, the unit is a <code>Lux T10-1141SA Heating Only Thermostat</code>, see <a href="https://www.luxproducts.com/wp-content/uploads/2017/07/t10-1141sa_manual_en.pdf" target="_blank" rel="noopener noreffer">datasheet</a>. Reviews online indicate the thermostat is a reliable mechanical device with the main benefit of being battery-free. The device even has an &ldquo;anticipator&rdquo; (described later). Total cost of the unit from Amazon? $18.61.</p>
+<h2 id="mechanical-thermostats">Mechanical Thermostats</h2>
+<p>The core technology of the mechanical thermostat was invented in the 18th century and is based on the <a href="https://en.wikipedia.org/wiki/Bimetallic_strip" target="_blank" rel="noopener noreffer">bimetallic strip</a>. The bimetallic strip is actually two strips of different metals which are sandwiched together. Each metal has a different <a href="https://en.wikipedia.org/wiki/Thermal_expansion#Coefficient_of_thermal_expansion" target="_blank" rel="noopener noreffer">coefficient of thermal expansion</a> which causes warping of the strip as the metal temperatures fluctuate. Commonly, the strip is formed into a coil so that temperature variation is transformed into rotary motion.</p>
+<p>In the case of mechanical thermostats, this rotary motion is used to connect and disconnect a switch for the furnace. When the temperature falls, the coil contracts which causes the outer edge to make contact with the switch terminal, starting the furnace. As the ambient air temperature rises, the coil expands. Eventually, the spring action pulls it off the switch terminal, thus turning off the heat.</p>
+<p>It should be noted that bimetallic strips form the backbone of many thermal control systems, not just home thermostats. For example, low-cost ovens rely on this technology to keep the temperature just right for the perfect bake.</p>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/mechanical-thermostat.jpg" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/mechanical-thermostat.jpg" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/mechanical-thermostat.jpg" data-sub-html="<h2>Example mechanical thermostat using the bimetallic strip coil.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/mechanical-thermostat.jpg"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/mechanical-thermostat.jpg, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/mechanical-thermostat.jpg 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/mechanical-thermostat.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/mechanical-thermostat.jpg" width="900" height="675" />
+    </a><figcaption class="image-caption">Example mechanical thermostat using the bimetallic strip coil.</figcaption>
+    </figure>
+<p>These mechanical thermostats work well (and use no batteries!), but have several drawbacks:</p>
+<ol>
+<li>The temperature regulation band (i.e. +/- 1°F) depends on physical material properties and is hard to change.</li>
+<li>The set-point of the thermostat is not digital; there is no actual sensor which ensures the ambient temperature is at the desired level.</li>
+<li>Calibration is required to achieve acceptable operation.</li>
+</ol>
+<p>How to fix these issues? Switch to a <em>digital</em> thermostat!</p>
+<h2 id="digital-thermostats">Digital Thermostats</h2>
+<p>To overcome the drawbacks of the venerable mechanical thermostat, a digital version can be used. These devices run on electricity and offer more customizable control of temperature. They typically have a temperature sensor, a display, and buttons or slider to set the desired temperature. For additional cost, more features can be added including programmability (i.e. change the temperature set-point at a certain time) and internet connectivity.</p>
+<p>In the case of my house&rsquo;s mechanical thermostat, the following commercially available alternatives offer equivalent <em>functionality</em>: single stage, heat only, non-programmable, digital display thermostats.</p>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/alternatives.png" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/alternatives.png" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/alternatives.png" data-sub-html="<h2>Alternative thermostats which can be purchased.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/alternatives.png"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/alternatives.png, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/alternatives.png 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/alternatives.png 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/alternatives.png" width="2508" height="802" />
+    </a><figcaption class="image-caption">Alternative thermostats which can be purchased.</figcaption>
+    </figure>
+<ul>
+<li>$17.25 &ndash; <a href="https://www.amazon.com/Emerson-NP110-Non-Programmable-Single-Thermostat/dp/B016KKDSSE/" target="_blank" rel="noopener noreffer">Emerson NP110 Thermostat</a></li>
+<li>$17.50 &ndash; <a href="https://www.globalindustrial.com/p/hvac/controls/thermostats/non-programmable-thermostat-24v-heat-or-cool-only" target="_blank" rel="noopener noreffer">Global Industrial Thermostat</a></li>
+<li>$24.42 &ndash; <a href="https://www.amazon.com/Emerson-1E78-140-Non-Prorammable-Thermostat-Single-Stage/dp/B00204WWGE/" target="_blank" rel="noopener noreffer">Emerson 1E78-140 Thermostat</a></li>
+<li>$34.91 &ndash; <a href="https://www.amazon.com/Honeywell-TH1100DV1000-Pro-Digital-2-Wire-Heat/dp/B00H6ARNXO/" target="_blank" rel="noopener noreffer">Honeywell TH1100DV1000 Thermostat</a></li>
+</ul>
+<p>These options are relatively cheap and generally perform well. They have thousands of five star reviews which indicate their satisfactory operation. However, the firmware cannot be updated and tailored to the unique application (e.g. temperature hysteresis band). Furthermore, without upgrading to an internet-connected device (which costs much more), data collection and heat usage statistics cannot be readily collected.</p>
+<p>Enter the OpenThermo project.</p>
+<h2 id="openthermo-vision">OpenThermo Vision</h2>
+<p>The OpenThermo vision is to be a low-cost, customizable, digital thermostat. In principle, it directly replaces the above commercially available options. However, all source code and hardware is open-source and thus can be freely modified to better suit the target application. For example, compensation can be used to account for lag in the physical furnace. Additional statistics can be computed and displayed which are not usually offered by commercial variants (e.g. percent of time heat is on).</p>
+<p>The remainder of this article details the design of the initial OpenThermo hardware platform and firmware.</p>
+<h2 id="hardware">Hardware</h2>
+<p>The OpenThermo hardware circuit board design is composed of a collection of subsystems: microcontroller, temperature sensor, LED display, thermostat interface (optocoupler), slider. These systems work together to form the complete embedded system.</p>
+<p>All the circuitry was custom designed in Altium Designer on a Saturday afternoon and ordered the next day.</p>
+<p><a href="https://github.com/npetersen2/OpenThermo/blob/main/hardware/REV20201004A/Schematics.pdf" target="_blank" rel="noopener noreffer">See the full PDF of the schematics and PCB&hellip;</a></p>
+<h3 id="circuit-design">Circuit Design</h3>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch01.png" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch01.png" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch01.png" data-sub-html="<h2>Core of the schematic diagram for OpenThermo showing the core MCU and I/O.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch01.png"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch01.png, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch01.png 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch01.png 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch01.png" width="2136" height="1309" />
+    </a><figcaption class="image-caption">Core of the schematic diagram for OpenThermo showing the core MCU and I/O.</figcaption>
+    </figure>
+<h4 id="microcontroller">Microcontroller</h4>
+<p>The core of the circuit design is the microcontroller which orchestrates the device functionality. Since I have previous experience with the STM32 product line, the <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32g030f6.html" target="_blank" rel="noopener noreffer">STM32G030F6P6</a> was picked, see device <code>U3</code> in the schematics. This is the cheapest 32-bit MCU available from ST, coming in at only $0.59 in quantity 5000 <a href="https://www.digikey.com/en/products/detail/stmicroelectronics/STM32G030F6P6/10326686" target="_blank" rel="noopener noreffer">from Digi-Key</a>. It features a Cortex-M0+ core operating up to 64 MHz. For this project, the minimal 20-pin TSSOP package variant was used. The device has minimal resources: 32KB of flash and 8KB of RAM. Furthermore, there is no floating point unit (FPU). This was deemed acceptable since the firmware required to control an on/off furnace is simple in nature.</p>
+<h4 id="temperature-sensor">Temperature Sensor</h4>
+<p>To sense the ambient temperature, a discrete temperature sensing device is needed. For this project, the <a href="https://www.ti.com/lit/ds/symlink/tmp117.pdf" target="_blank" rel="noopener noreffer">TMP117</a> was selected for its very high accuracy: factory calibrated to +/- 0.1°C. This was one of the key benefits of designing custom hardware: accuracy and cost could be spent in the right places. I wanted to know the temperature very accurately, so using a multiple dollar sensor was worthwhile. The TMP117 sends updated temperature readings back to the MCU over I2C once every second. These are used as feedback for the closed-loop control algorithm. See device <code>U4</code> in the schematics.</p>
+<h4 id="furnace-interface">Furnace Interface</h4>
+<p>After a little tinkering with my house&rsquo;s built-in mechanical thermostat, I found that the furnace could be controlled by simply connecting two wires together. Connecting the wires turned on the heat while disconnecting the wires stopped the heat.</p>
+<p>The circuitry to do this is simple: an <a href="https://en.wikipedia.org/wiki/Opto-isolator" target="_blank" rel="noopener noreffer">optoisolator (or optocoupler)</a> is used as the switch to ensure no potential high-voltage spikes from the house furnace system can harm the circuitry. To the MCU, this switch appears as an LED, so it can be driven straight from one of the GPIO pins. The <a href="https://www.ixysic.com/home/pdfs.nsf/www/CPC1002N.pdf/$file/CPC1002N.pdf" target="_blank" rel="noopener noreffer">CPC1002N</a> device is used in the design, see device <code>U2</code> in the schematics.</p>
+<h4 id="user-interface-display--slider">User Interface (Display + Slider)</h4>
+<p>The user interface was kept minimal. Three <a href="https://www.vishay.com/docs/84196/vdmx10x0.pdf" target="_blank" rel="noopener noreffer">7-segment LED modules</a> are used to show the current temperature, as well as the set-point and the percentage time the heat has been on. A potentiometer slider is used as the main interface for setting the temperature set-point. Finally, a single LED illuminates when the heat is on to visually show the device functionality.</p>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch02.png" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch02.png" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch02.png" data-sub-html="<h2>7-segment LED modules with daisy-chain constant-current drivers.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch02.png"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch02.png, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch02.png 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch02.png 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch02.png" width="2196" height="1210" />
+    </a><figcaption class="image-caption">7-segment LED modules with daisy-chain constant-current drivers.</figcaption>
+    </figure>
+<p>Each 7-segment LED module is operated using the <a href="https://www.st.com/resource/en/datasheet/stp08dp05.pdf" target="_blank" rel="noopener noreffer">STP08DP05</a>, an eight-channel constant-current LED driver. These devices appear as a SPI-like device and can be daisy-chained to work like one big shift register. The 24 bits of output LED state are loaded into the devices using a serial interface composed of one clock and one data signal. Then, the latch signal is asserted so that the output mirrors the internal data. The LED drivers have an output enable pin which is used to control the brightness of the 7-segment modules using pulse-width modulation (PWM). Using this approach, all 24 LED segments (plus brightness) are controlled using four MCU pins.</p>
+<p>The user adjusts the input slider to set the desired temperature. Fundamentally, when the user adjusts the input slider, the resistance of the potentiometer changes. This is used as a voltage divider to get a voltage output proportional to slider position. The internal ADC on the MCU is used to read this voltage and convert it to the desired temperature set-point for the control algorithm.</p>
+<h4 id="power-supply">Power Supply</h4>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch03.png" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch03.png" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch03.png" data-sub-html="<h2>AA batteries connected in series with LDO to form 3.3V voltage rail.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch03.png"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch03.png, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch03.png 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch03.png 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/sch03.png" width="2100" height="967" />
+    </a><figcaption class="image-caption">AA batteries connected in series with LDO to form 3.3V voltage rail.</figcaption>
+    </figure>
+<p>The device is powered via four AA batteries to form a 6V DC supply. The direct sum battery voltage is used by the LED drivers to power the 7-segment LED modules. A 3.3V low-dropout (LDO) regulator is used to power the MCU and temperature sensor. A scaled version of the battery voltage is provided to the MCU ADC for monitoring the batteries&rsquo; state of charge.</p>
+<h3 id="pcb-design">PCB Design</h3>
+<p>The OpenThermo PCB design was made to be the same footprint as the built-in mechanical thermostat in my house: 3&rdquo; x 3.5&rdquo;. The slider and LED display is on the front side, while the AA batteries take up the bulk of the back. All components are on the front for easy assembly. The temperature sensor is mounted away from other components so as to isolate it from heat sources. Finally, four mounting holes are provided in the corners for easy attachment.</p>
+<p><a href="https://github.com/npetersen2/OpenThermo/blob/main/hardware/REV20201004A/BOM.csv" target="_blank" rel="noopener noreffer">See the complete Bill of Materials (BOM) for the OpenThermo&hellip;</a></p>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_top.png" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_top.png" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_top.png" data-sub-html="<h2>CAD rendering of front side of OpenThermo PCB.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_top.png"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_top.png, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_top.png 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_top.png 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_top.png" width="1004" height="1009" />
+    </a><figcaption class="image-caption">CAD rendering of front side of OpenThermo PCB.</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_bottom.png" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_bottom.png" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_bottom.png" data-sub-html="<h2>CAD rendering of back side of OpenThermo PCB.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_bottom.png"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_bottom.png, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_bottom.png 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_bottom.png 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/PCB_3D_bottom.png" width="943" height="958" />
+    </a><figcaption class="image-caption">CAD rendering of back side of OpenThermo PCB.</figcaption>
+    </figure>
+<h4 id="pcb-assembly">PCB Assembly</h4>
+<p>After completing the hardware design, I ordered the board blanks from <a href="https://www.pcbway.com/" target="_blank" rel="noopener noreffer">PCBWay.com</a> and waited for them to arrive. I also ordered the BOM for quantity 1 assembly from Digi-Key. In quantity 10, the BOM costs just under $21 per board from Digi-Key.</p>
+<p>After everything arrived, I used my hot air rework station to put together the surface mount components and soldering iron to add the through hole devices. This went without issue as all footprints were the correct size.</p>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-06.jpg" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-06.jpg" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-06.jpg" data-sub-html="<h2>Assembled top side of board.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-06.jpg"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-06.jpg, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-06.jpg 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-06.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-06.jpg" width="1000" height="750" />
+    </a><figcaption class="image-caption">Assembled top side of board.</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-04.jpg" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-04.jpg" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-04.jpg" data-sub-html="<h2>AA batteries mounted on rear of board.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-04.jpg"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-04.jpg, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-04.jpg 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-04.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-04.jpg" width="750" height="1000" />
+    </a><figcaption class="image-caption">AA batteries mounted on rear of board.</figcaption>
+    </figure>
+<h2 id="firmware">Firmware</h2>
+<p>To bring the OpenThermo to life, embedded firmware is needed. For this project, custom bare-metal C code is used totaling just a few hundred lines. The complete firmware project can be found <a href="https://github.com/npetersen2/OpenThermo/tree/main/firmware/openThermo" target="_blank" rel="noopener noreffer">on GitHub</a>. See the <code>Src/</code> <a href="https://github.com/npetersen2/OpenThermo/tree/main/firmware/openThermo/Core/Src" target="_blank" rel="noopener noreffer">folder</a> and the <code>Inc/</code> <a href="https://github.com/npetersen2/OpenThermo/tree/main/firmware/openThermo/Core/Inc" target="_blank" rel="noopener noreffer">folder</a> for the main files.</p>
+<h3 id="general-structure">General Structure</h3>
+<p>Since the firmware is fairly simple, a bare-metal approach is used (i.e. <a href="https://en.wikipedia.org/wiki/Cooperative_multitasking" target="_blank" rel="noopener noreffer">cooperative scheduling</a> as opposed to a full blown preemptive RTOS). Nominally, the device is in sleep mode to save power. However, one peripheral timer is configured to run its interrupt service routine (ISR) every 100Hz. All device functionality executes within this ISR context.</p>
+<p>The code is split into three main ideas:</p>
+<ol>
+<li>Drivers &ndash; low-level code which interface with hardware peripherals</li>
+<li>UI &ndash; responsible for maintaining the user interface</li>
+<li>Controller &ndash; handles the algorithm for when to turn on/off the furnace</li>
+</ol>
+<p>The user interface updates at 100Hz (see the <code>Src/ui.c</code> <a href="https://github.com/npetersen2/OpenThermo/blob/main/firmware/openThermo/Core/Src/ui.c" target="_blank" rel="noopener noreffer">file</a>) and the controller runs at 1Hz (see the <code>Src/controller.c</code> <a href="https://github.com/npetersen2/OpenThermo/blob/main/firmware/openThermo/Core/Src/controller.c" target="_blank" rel="noopener noreffer">file</a>).</p>
+<h3 id="temperature-control">Temperature Control</h3>
+<p>The main point of a thermostat is to control the temperature. Since the output is a discrete binary state (i.e. furnace on or off), simple <a href="https://en.wikipedia.org/wiki/Bang%E2%80%93bang_control" target="_blank" rel="noopener noreffer">bang-bang control</a> is all that can be used (as opposed to e.g. <a href="https://en.wikipedia.org/wiki/PID_controller" target="_blank" rel="noopener noreffer">PID control</a>).</p>
+<p>Bang-bang control refers to the idea of the control output &ldquo;banging&rdquo; against the limits of output. In this case, that means <em>furnace on</em> or <em>furnace off</em>. To prevent damage to the furnace, hysteresis is typically added to limit the minimum cycle time. This requires that the output state (i.e. temperature) fluctuates within some band of the desired set-point.</p>
+<p>To tune the performance of the hysteresis bang-bang controller, the upper and lower limits must be set in relation to the set-point value. This is typically defined as:</p>
+<ul>
+<li>The minimum output state value allowed before changing states</li>
+<li>The maximum output state value allowed before changing states</li>
+</ul>
+<p>In the case of the thermostat, this is typically defined as a hysteresis band: e.g. +0.1°F / -0.5°F. This results in a trade-off between furnace cycle time and temperature fluctuations. The tighter the tolerance in fluctuation (e.g. +/- 0.1°F), the more rapid the furnace turns on and off.</p>
+<h3 id="ui-management">UI Management</h3>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-07.jpg" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-07.jpg" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-07.jpg" data-sub-html="<h2>OpenThermo in action showing ambient temperature of 70.4 degrees.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-07.jpg"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-07.jpg, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-07.jpg 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-07.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-07.jpg" width="1000" height="750" />
+    </a><figcaption class="image-caption">OpenThermo in action showing ambient temperature of 70.4 degrees.</figcaption>
+    </figure>
+<p>The UI has three states:</p>
+<ol>
+<li>Boot &ndash; Displays the welcome screen while the system initializes</li>
+<li>Set-Point &ndash; Displays the set-point from the slider input</li>
+<li>Control &ndash; Displays the temperature and the percentage of heat on time</li>
+</ol>
+<p>When the slider is moved, the UI state is updated to display the set-point temperature value. After five seconds of idle slider movement, the set-point is locked in and the device moves to its nominal UI mode. In this nominal mode, the display alternates every 10 seconds between the current ambient temperature and the percentage of heat on time.</p>
+<p>The goal of the UI management code is to provide a dynamic and fluid user experience. This requires that the 7-segment LED display changes right away when the slider is moved, and that small ambient temperature changes are reflected on the display right away. This is achieved via careful firmware design using quantization and low-pass filters.</p>
+<p>Since the temperature state itself is discrete, some clever firmware is needed to make the device appear responsive. The TMP117 temperature sensor device is configured on boot to sample the temperature asynchronously at its maximum rate of 1Hz. This means that the OpenThermo display could only update with new data at 1Hz&ndash;not fast enough! To solve this, a discrete-time low pass filter (LPF) is used to trick the user into thinking that the temperature estimate updates at 100Hz. The bandwidth of the filter is set to 0.1Hz.</p>
+<p>The output of the slider (from the internal MCU ADC) is also filtered with a 2Hz bandwidth. This provides a satisfying smoothing effect when the set-point is changed. On top of this, the output from the slider is quantized to integer values before the LPF. Even though the slider itself is a continuous input, the displayed set-point &ldquo;locks&rdquo; into the integer values (e.g. 70°F, 71°F, etc).</p>
+<p>The combination of all this results in a satisfying user experience.</p>
+<h3 id="low-pass-filter">Low-Pass Filter</h3>
+<p>The firmware uses low-pass filters (LPF) on nearly all signals, all of which are tuned to different bandwidths. Some operate at the UI update rate of 100Hz and others at the control rate of 1Hz. This merits some discussion on how they work and how to design them.</p>
+<p>All filters in the code implement simple, first-order <a href="https://en.wikipedia.org/wiki/Infinite_impulse_response" target="_blank" rel="noopener noreffer">infinite impulse response (IIR)</a> low-pass filters (LPF). The difference equation for the filter is given by</p>
+<p>$$
+y[k] = A y[k-1] + x[k] (1-A)
+$$</p>
+<p>where $ A = \exp(-2 \pi f_b T) $, $T$ is the sample rate, and $f_b$ is the desired bandwidth in Hz. Intuition tells us that this difference equation makes sense: for each output time step, this takes a portion of the previous output and (1-portion) of the current input. Thus, the closer to 1.0 the constant $A$ becomes, the slower the response.</p>
+<p>Converting the difference equation to the z-domain results in the following transfer function</p>
+<p>$$
+\frac{Y(z)}{X(z)} = \frac{1-A}{1-Az^{-1}}.
+$$</p>
+<p>When the sample time $T = 1$ second and $1/f_b = 4$ hours, then $A = 0.9996$ and the following is the filter step response to unit step input.</p>
+<figure class="image">
+    <img src="images/plot2.svg"
+         alt="Filter step response to unit step input."/> <figcaption>
+            <p>Filter step response to unit step input.</p>
+        </figcaption>
+</figure>
+
+<p>This same filter is used to convert the pulse-width modulated furnace on signal into the percent of heat on time. In the firmware, the on signal is a simple step function between 0 and 100. This is filtered using the above difference equation and tuning. The resulting waveforms are shown below when the furnace cycle time is 15 minutes and the duty ratio is 35%.</p>
+<figure class="image">
+    <img src="images/plot3.svg"
+         alt="Filtered percent heat on resulting from low-pass filter."/> <figcaption>
+            <p>Filtered percent heat on resulting from low-pass filter.</p>
+        </figcaption>
+</figure>
+
+<p>Notice that in steady-state, the output fluctuation is about +/- 5%. Furthermore, it takes the filter about 2 hours to stabilize the output to the given input.</p>
+<h2 id="results">Results</h2>
+<p>This project took the fairly simple idea of a thermostat and did the engineering work required to create a useable tool for my home. This is the first electronics project I have done that resulted in real value for me and others (my roommate)&ndash;something that I actually use daily and improves my life. Neither my <a href="/2018/05/15/razzler-pov-led-top/" rel="">Razzler project</a> nor the <a href="/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/" rel="">Gradled project</a> did this&hellip; :)</p>
+<p>It is very satisfying to hear the heat turn on knowing that my pile of hardware and firmware is at work! Tuning the control algorithm (i.e. setting the temperature hysteresis band limits) took a few code iterations, but this was minor.</p>
+<p><strong>In the end, OpenThermo achieves +0.1°F / -0.5°F temperature regulation with furnace cycles lasting about 10-15 minutes (i.e. 4-6 cycles per hour).</strong> This isn&rsquo;t really a direct result of the project, but more reflects the furnace and insulation quality of my home.</p>
+<p>After using OpenThermo for a while, I found that the percentage of heat on time is about 20% to 40%, depending on:</p>
+<ul>
+<li>outdoor temperature</li>
+<li>thermostat set-point</li>
+<li>home influences (e.g. oven, door open, etc).</li>
+</ul>
+<p>Obviously, the percentage of heat on time is related to the insulation efficiency of the home. I noticed that small changes in set-point resulted in large changes in percent heat on. This prompted me to run an experiment to try and characterize the home insulation effectiveness. In this experiment, I initially cooled off the house. Then, the heat turned on full blast and I recorded the temperature for 45 minutes. The resulting plot is shown below. Interestingly, saturation occurred around 70°F. This helps inform smart thermostat usage by putting the set-point in an efficient zone: at or below 70°F.</p>
+<figure class="image">
+    <img src="images/plot1.svg"
+         alt="45 minutes of continuous heat on. Outdoor weather: 31°F, 3 mph winds."/> <figcaption>
+            <p>45 minutes of continuous heat on. Outdoor weather: 31°F, 3 mph winds.</p>
+        </figcaption>
+</figure>
+
+<h3 id="updates-after-winter">Updates After Winter</h3>
+<p><em>Updated May 18, 2021</em></p>
+<p>After designing and building OpenThermo last Fall 2020 and installing into my home, I have been observing its operation daily for the past six months during the winter season. Here in Madison, WI, it gets pretty cold &ndash; typically down to around -20F (-30C) on the coldest mornings. Since OpenThermo displays the percent of time the heat has been on, it has been very interesting to compare the percent to the outdoor temperature, as well as other events happening in the house.</p>
+<p>My key findings (fairly obvious):</p>
+<ul>
+<li>The outdoor temperature significantly impacts the percent heat on</li>
+<li>The temperature set point (e.g. 70F vs 68F) hardly impacts percent heat on</li>
+<li>Due to the relatively small size of my house (i.e., less than 1000 ft²), the thermostat is greatly influenced by things in the house (e.g., open windows, doors, oven, space heaters)</li>
+<li>Using the oven significantly affects the percent heat on &ndash; it can cause the thermostat to stay off for hours, depending on the outdoor temperature</li>
+</ul>
+<p>Note that the above findings are outside the scope of OpenThermo; any responsive thermostat would behave like this. The key advantage of OpenThermo is that it displays the heat on percentage in real-time.</p>
+<h4 id="outdoor-temperature-vs-heat-on-percentage">Outdoor Temperature vs. Heat On Percentage</h4>
+<p>Since the outdoor temperature seemed to have the most significant impact on the heat on percentage, I decided to collect data to observe the trend in more detail. For many months throughout the winter, each morning, I wrote down the outdoor temperature and the heat on percentage. The set-point was always at 70F. I only recorded data on the &ldquo;normal&rdquo; days when the oven hadn&rsquo;t been on and the sun hadn&rsquo;t been up for too long. Ideally, I recorded the data at 7am to 8am after just waking up. Since the heat on percentage bounces around due to the low-pass filtering (see above section), I always recorded the <strong>maximum</strong> value, right after the heat turned off. Below is the final plot of the data:</p>
+<figure class="image">
+    <img src="images/plot_temp_vs_heat_on.svg"
+         alt="Daily data relating outdoor temperature to heat on percentage. Linear curve fit and 95% prediction interval are shown."/> <figcaption>
+            <p>Daily data relating outdoor temperature to heat on percentage. Linear curve fit and 95% prediction interval are shown.</p>
+        </figcaption>
+</figure>
+
+<p>An interesting trends emerges! The data effectively trends linearly (R² value is close to 1), meaning that there is a direct relation between outdoor temperature and heat on percent. At 0% heat on, the expected outdoor temperature is between 55F and 70F &ndash; this agrees fairly well to the set-point of 70F. At 100% heat on, the outdoor temperature is between -20F and -40F &ndash; this means that the furnace would not be able to heat the house if it got colder than this range. Overall, it is clear that the percent heat on acts as a fairly good proxy for the outdoor temperature: for example, when it reads 50%, we can expect temperatures between 10F and 30F.</p>
+<p>The plot can also be used to predict furnace failures near the 100% mark. Not surprisingly, the house furnace broke in the middle of winter one morning when the outdoor temperature was -25F. Based on the plot, this would map to a heat on percent of nearly 100%! The furnace simply could not survive running constantly.</p>
+<h2 id="summary">Summary</h2>
+<p>Well, in summary, it works. This project was fun but not terribly challenging. I ended up fully designing and ordering the hardware in less than 24 hours and finishing the firmware in an afternoon. However, I am pleased with the results!</p>
+<p>After using and thinking about the OpenThermo project for a while, I conclude that <em>any sane person would have just purchased a cheap commercial version</em> from the previous list in this article, rather than design and build a thermostat from scratch.</p>
+<p>However, I do believe that the OpenThermo project has a place in this world: customizable thermostat <strong>for data collection</strong>. I am very interested in collecting data and making plots to evaluate the heating capabilities of my house. Specifically, I want to experimentally find the ideal temperature set-point as a function of the outdoor temperature. To do this, I need data. Lots of data.</p>
+<p>This gives the OpenThermo project a reason to live on! The next version will focus on data collection and customizability.</p>
+<h3 id="future-plans">Future Plans</h3>
+<p>I plan on designing v2 of the OpenThermo hardware and firmware. Here&rsquo;s the potential list of changes:</p>
+<ul>
+<li>8 character (14-segment per character) LCD display</li>
+<li>Non-volatile memory stores configuration data</li>
+<li>SD card to log temperature data</li>
+<li>Extra buttons for changing modes, etc</li>
+<li>Real-time clock for time-based programable temperature set-point</li>
+</ul>
+<h2 id="pictures">Pictures</h2>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-02.jpg" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-02.jpg" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-02.jpg" data-sub-html="<h2>Assembled front view of OpenThermo</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-02.jpg"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-02.jpg, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-02.jpg 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-02.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-02.jpg" width="750" height="1000" />
+    </a><figcaption class="image-caption">Assembled front view of OpenThermo</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-03.jpg" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-03.jpg" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-03.jpg" data-sub-html="<h2>PCB after assembly.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-03.jpg"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-03.jpg, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-03.jpg 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-03.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-03.jpg" width="886" height="1000" />
+    </a><figcaption class="image-caption">PCB after assembly.</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-05.jpg" title="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-05.jpg" data-thumbnail="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-05.jpg" data-sub-html="<h2>OpenThermo v1 assembled PCB.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-05.jpg"
+            data-srcset="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-05.jpg, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-05.jpg 1.5x, /2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-05.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/images/img-05.jpg" width="1000" height="750" />
+    </a><figcaption class="image-caption">OpenThermo v1 assembled PCB.</figcaption>
+    </figure>
+<hr>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" data-title="OpenThermo: Customizable Thermostat for Furnace Control" data-hashtags="thermostat,hardware,electronics,design,temperature,firmware,pcb,mcu,altium,programming,stm32,control"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" data-hashtag="thermostat"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" data-title="OpenThermo: Customizable Thermostat for Furnace Control"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" data-title="OpenThermo: Customizable Thermostat for Furnace Control"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/" data-title="OpenThermo: Customizable Thermostat for Furnace Control"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/thermostat/">thermostat</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/design/">design</a>, <a href="/tags/temperature/">temperature</a>, <a href="/tags/firmware/">firmware</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/mcu/">mcu</a>, <a href="/tags/altium/">altium</a>, <a href="/tags/programming/">programming</a>, <a href="/tags/stm32/">stm32</a>, <a href="/tags/control/">control</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2020/07/19/vanilla-challah-french-toast-la-brioche-bistro-madison-wi/" class="prev" rel="prev" title="Vanilla Challah French Toast - La Brioche Bistro - Madison, WI"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Vanilla Challah French Toast - La Brioche Bistro - Madison, WI</a>
+            <a href="/2022/05/25/website-update-hugo/" class="next" rel="next" title="Website Update: Hugo">Website Update: Hugo<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

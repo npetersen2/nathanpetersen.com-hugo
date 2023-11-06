@@ -1,0 +1,95 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>electronics - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/electronics/</link>
+        <description>electronics - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 15 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/electronics/" rel="self" type="application/rss+xml" /><item>
+    <title>Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591</title>
+    <link>https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/</link>
+    <pubDate>Thu, 15 Dec 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/</guid>
+    <description><![CDATA[My custom light sensor installed in its window to read outdoor light levels" My custom light sensor installed in its window to read outdoor light levels  In a few quick evenings, I built a custom light sensor for my smart home to measure outdoor light levels through my window. In this post, I&rsquo;ll explain how I did it. We&rsquo;ll go over the electronic components and wiring, enclosure, software configuration, Home Assistant integration, and a few example plots of the illuminance levels.]]></description>
+</item>
+<item>
+    <title>OpenThermo: Customizable Thermostat for Furnace Control</title>
+    <link>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</link>
+    <pubDate>Thu, 31 Dec 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</guid>
+    <description><![CDATA[Replace the old thermostat in your living space with a new fully customizable version that allows you to tweak the control algorithms used to keep the temperature comfortable.
+This article details the design of a custom thermostat device for use in simple on/off furnace systems. It is called &ldquo;OpenThermo&rdquo; since it has been released as an open-source project (see the official GitHub project).
+OpenThermo fully assembled circuit board." OpenThermo fully assembled circuit board.]]></description>
+</item>
+<item>
+    <title>Designing a Firmware Driver for Serially-Addressable LEDs for Xilinx Zynq-7000</title>
+    <link>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</link>
+    <pubDate>Fri, 17 Jul 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</guid>
+    <description><![CDATA[Tutorial covering embedded system layers and firmware design (FPGA + DSP) for driving LEDs.]]></description>
+</item>
+<item>
+    <title>AMDC REV D Hardware</title>
+    <link>https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/</link>
+    <pubDate>Sat, 11 Apr 2020 14:25:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/</guid>
+    <description><![CDATA[Advanced Motor Drive Controller, Revision D fully assembled" Advanced Motor Drive Controller, Revision D fully assembled  The fourth hardware design revision (REV D) of the Advanced Motor Drive Controller (AMDC) from the Severson Research Group marks a huge step improvement in quality of design, physical size reduction, and functionality compared to previous designs.
+Background About 2.5 years ago, I begin work on the Advanced Motor Drive Controller (AMDC), an open-source project designed for academic research in motor drives.]]></description>
+</item>
+<item>
+    <title>Gradled Mini: Prototype Modular Discrete LED Display</title>
+    <link>https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/</link>
+    <pubDate>Sun, 11 Nov 2018 11:11:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/11/11/gradled-mini-prototype-modular-discrete-led-display/</guid>
+    <description><![CDATA[Gradled Mini after design, manufacturing, and assembly" Gradled Mini after design, manufacturing, and assembly  Background This project came into being during my senior year of college at UW-Madison as a personal side venture. In May 2019, I complete my undergraduate schooling. It is not uncommon for students to decorate their graduation &ldquo;hats&rdquo; to personalize them and make them stand out in the crowd of graduates during the commencement ceremony. Typically, people create artwork related to the university they attended (i.]]></description>
+</item>
+<item>
+    <title>Interning at Silicon Labs, the Sequel - Summer 2018</title>
+    <link>https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/</link>
+    <pubDate>Sun, 09 Sep 2018 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/</guid>
+    <description><![CDATA[Update April 2021  Silicon Labs has sold their I&amp;A Business.
+My entire expereince at Silicon Labs, as discussed below, was in the I&amp;A division. Therefore, everything I say below is outdated, since the business/products no longer exist from Silicon Labs. Most links in this article to silabs.com are now invalid, but I will keep them intact for posterity.
+   NOTE: Make sure you read this post after reading about my previous internship experience at Silicon Labs.]]></description>
+</item>
+<item>
+    <title>AMDC: Advanced Motor Drive Controller</title>
+    <link>https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/</link>
+    <pubDate>Wed, 05 Sep 2018 09:45:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/</guid>
+    <description><![CDATA[Background My involvement in this project, the Advanced Motor Drive Controller (AMDC), happened because of my undergraduate Independent Study project done at UW-Madison during Spring 2018, advised by Prof. Eric Severson and affiliated with WEMPEC.
+How did I get this opportunity? Eric, a relatively new professor, was looking for interested students to work on his projects. My name was recommended to him by other professors, so he reached out to me and I accepted the offer.]]></description>
+</item>
+<item>
+    <title>Razzler: POV LED Top</title>
+    <link>https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/</link>
+    <pubDate>Tue, 15 May 2018 15:29:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/05/15/razzler-pov-led-top/</guid>
+    <description><![CDATA[Background Razzler: the Persistence of Vision LED Top" Razzler: the Persistence of Vision LED Top  During the summer of 2017, I started working on my first real electronics project. This project marks the first time I have ever seen an electronics project all the way through, from start to finish: initial idea, schematic design, PCB layout, manufacturing, board assembly, testing, device driver development, and full firmware creation.
+I love LEDs and interactive toys, so I decided that I wanted to build a top that people could spin to entertain themselves.]]></description>
+</item>
+<item>
+    <title>4-H Electronics Projects Archive</title>
+    <link>https://nathanpetersen.com/2018/04/28/4-h-electronics-projects-archive/</link>
+    <pubDate>Sat, 28 Apr 2018 15:09:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/04/28/4-h-electronics-projects-archive/</guid>
+    <description><![CDATA[History Growing up, I was a member of the All-School 4-H Club. While a member, I didn&rsquo;t really appreciate the experience; it seemed like a waste of time but looking back, a few aspects come to mind as helpful.
+I took electronics projects for many years, from 2006 through 2011, and learned a lot. Each year, I created a display board to show at the county project exposition. The display board showcased a simple circuit that demonstrated a specific electronics principle.]]></description>
+</item>
+<item>
+    <title>Bluetooth Controlled LED Display</title>
+    <link>https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/</link>
+    <pubDate>Sun, 05 Jul 2015 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/</guid>
+    <description><![CDATA[Colorful display made from serially addressable LEDs for 4-H project.]]></description>
+</item>
+</channel>
+</rss>

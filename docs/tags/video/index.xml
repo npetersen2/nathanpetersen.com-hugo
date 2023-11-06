@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>video - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/video/</link>
+        <description>video - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 10 Jun 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/video/" rel="self" type="application/rss+xml" /><item>
+    <title>YouTube Window</title>
+    <link>https://nathanpetersen.com/2016/06/10/youtube-window/</link>
+    <pubDate>Fri, 10 Jun 2016 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2016/06/10/youtube-window/</guid>
+    <description><![CDATA[Want to create a window into YouTube? Go to App &gt;
+Check out the project on GitHub. Go to GitHub &gt;
+ What Is This? One afternoon, I was sitting in the office and I had an urge. To watch a YouTube video. But everyone knows that one shouldn&rsquo;t just open a big YouTube video on their screen at work! The simple answer was to just resize the window so it wasn&rsquo;t so visable.]]></description>
+</item>
+</channel>
+</rss>

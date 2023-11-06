@@ -1,0 +1,95 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/posts/</link>
+        <description>All Posts | Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 06 Nov 2023 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Door Country Cherry Stuffed French Toast - White Gull Inn - Fish Creek, WI</title>
+    <link>https://nathanpetersen.com/2023/11/06/door-country-cherry-stuffed-french-toast-white-gull-inn-fish-creek-wi/</link>
+    <pubDate>Mon, 06 Nov 2023 09:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2023/11/06/door-country-cherry-stuffed-french-toast-white-gull-inn-fish-creek-wi/</guid>
+    <description><![CDATA[Door County cherries top layers of soft browned bread, stuffed with cherry cream cheese and topped with powdered sugar." Door County cherries top layers of soft browned bread, stuffed with cherry cream cheese and topped with powdered sugar.  An absolute required stop during your trip to Door County, WI. Where? The White Gull Inn (whitegullinn.com) is a historic Bed and Breakfast located in the bayside village of Fish Creek, WI.]]></description>
+</item>
+<item>
+    <title>Sweet and Salty Sandwich - North Street Grille - Boston, MA</title>
+    <link>https://nathanpetersen.com/2023/07/05/sweet-and-salty-sandwich-north-street-grille-boston-ma/</link>
+    <pubDate>Wed, 05 Jul 2023 09:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2023/07/05/sweet-and-salty-sandwich-north-street-grille-boston-ma/</guid>
+    <description><![CDATA[Sweet and Salty Sandwich from the North Street Grille in Boston, MA." Sweet and Salty Sandwich from the North Street Grille in Boston, MA.  Simple but perhaps the most satisfying of breakfast dishes. Where? North Street Grille (bestbrunchboston.com), located on the charming downtown streets of Boston, MA, is an inconspicuous establishment which has gained significant popularity with the locals. Opened in 2004, it features brunch delights all day, every day, in a cheerful neighborhood spot.]]></description>
+</item>
+<item>
+    <title>Soufflé Pancakes - Hanabusa Café - Chicago, IL</title>
+    <link>https://nathanpetersen.com/2023/04/01/souffle-pancakes-hanabusa-cafe-chicago-il/</link>
+    <pubDate>Sat, 01 Apr 2023 09:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2023/04/01/souffle-pancakes-hanabusa-cafe-chicago-il/</guid>
+    <description><![CDATA[Custard soufflé pancakes with crème brûlée topping from Hanabusa Cafe in downtown Chicago, IL." Custard soufflé pancakes with crème brûlée topping from Hanabusa Cafe in downtown Chicago, IL.  Fluffy like a cloud, tastes like heaven. Where? Hanabusa Cafe (hanabusacafechicago.com), located in downtown Chicago, IL, is a modern cafe which specializes in authentic Japanese soufflé pancakes.
+  Soufflé Pancakes Hanabusa Cafe serves both traditional lunch food (e.g., rice bowl, ramen, etc) and brunch items.]]></description>
+</item>
+<item>
+    <title>Custom Window Light Sensor: Home Assistant &#43; ESPHome &#43; Adafruit TSL2591</title>
+    <link>https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/</link>
+    <pubDate>Thu, 15 Dec 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2022/12/15/custom-window-light-sensor-home-assistant-esphome-adafruit-tsl2591/</guid>
+    <description><![CDATA[My custom light sensor installed in its window to read outdoor light levels" My custom light sensor installed in its window to read outdoor light levels  In a few quick evenings, I built a custom light sensor for my smart home to measure outdoor light levels through my window. In this post, I&rsquo;ll explain how I did it. We&rsquo;ll go over the electronic components and wiring, enclosure, software configuration, Home Assistant integration, and a few example plots of the illuminance levels.]]></description>
+</item>
+<item>
+    <title>Tesla Internship Experience, PhD Student Edition, Summer 2022</title>
+    <link>https://nathanpetersen.com/2022/11/29/tesla-internship-experience-phd-student-edition-summer-2022/</link>
+    <pubDate>Tue, 29 Nov 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2022/11/29/tesla-internship-experience-phd-student-edition-summer-2022/</guid>
+    <description><![CDATA[Me in front of the Tesla HQ in sunny California, USA" Me in front of the Tesla HQ in sunny California, USA  I was an electric motor control summer intern at Tesla&rsquo;s engineering headquarters in Palo Alto, California. It was an awesome adventure! In this article, I describe the key parts of the Tesla internship experience and my thoughts on the whole ordeal.
+Disclaimer  These are my opinions only.]]></description>
+</item>
+<item>
+    <title>Discovering Truth: A Conceptual Picture</title>
+    <link>https://nathanpetersen.com/2022/06/08/discovering-truth-a-conceptual-picture/</link>
+    <pubDate>Wed, 08 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2022/06/08/discovering-truth-a-conceptual-picture/</guid>
+    <description><![CDATA[Why do people disagree about things that seem to obviously have a single answer? Is one side correct while the other is wrong? Is there a single truth?
+I believe that grad school has helped me understand the meaning of truth. By trying to understand one thing, the general process of understanding something has become clear.
+Many years of sitting and thinking and reflecting; reading countless articles, papers, and textbooks; attending years of university courses taught by brilliant professors—finally, an image of truth has emerged.]]></description>
+</item>
+<item>
+    <title>Website Update: Hugo</title>
+    <link>https://nathanpetersen.com/2022/05/25/website-update-hugo/</link>
+    <pubDate>Wed, 25 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2022/05/25/website-update-hugo/</guid>
+    <description><![CDATA[Welcome back to my blog, now completely overhauled and rewritten using the fabulously fast Hugo static site generator framework!
+After a nearly 18 month hiatus from this blog, I finally dusted off the cobwebs. Or, more accurately, I threw away the old dusty blog and resurrected it using modern technologies. This post outlines what I did, why I did it, and what&rsquo;s next.
+  Hugo static site generator logo]]></description>
+</item>
+<item>
+    <title>OpenThermo: Customizable Thermostat for Furnace Control</title>
+    <link>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</link>
+    <pubDate>Thu, 31 Dec 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/12/31/openthermo-customizable-thermostat-for-furnace-control/</guid>
+    <description><![CDATA[Replace the old thermostat in your living space with a new fully customizable version that allows you to tweak the control algorithms used to keep the temperature comfortable.
+This article details the design of a custom thermostat device for use in simple on/off furnace systems. It is called &ldquo;OpenThermo&rdquo; since it has been released as an open-source project (see the official GitHub project).
+OpenThermo fully assembled circuit board." OpenThermo fully assembled circuit board.]]></description>
+</item>
+<item>
+    <title>Vanilla Challah French Toast - La Brioche Bistro - Madison, WI</title>
+    <link>https://nathanpetersen.com/2020/07/19/vanilla-challah-french-toast-la-brioche-bistro-madison-wi/</link>
+    <pubDate>Sun, 19 Jul 2020 09:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/07/19/vanilla-challah-french-toast-la-brioche-bistro-madison-wi/</guid>
+    <description><![CDATA[Vanilla Challah French Toast from La Brioche Bistro in Madison, WI" Vanilla Challah French Toast from La Brioche Bistro in Madison, WI  Wonderful french toast with a mountain of toppings. Where? La Brioche True Foods (labriochetruefood.com), located off of University Avenue west of downtown Madison, WI, is a classic bistro serving the local people delicious food. It blends exquisite food with a beautiful ambiance for a one-of-a-kind dining experience. According to their website,]]></description>
+</item>
+<item>
+    <title>Designing a Firmware Driver for Serially-Addressable LEDs for Xilinx Zynq-7000</title>
+    <link>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</link>
+    <pubDate>Fri, 17 Jul 2020 15:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/</guid>
+    <description><![CDATA[Tutorial covering embedded system layers and firmware design (FPGA + DSP) for driving LEDs.]]></description>
+</item>
+</channel>
+</rss>

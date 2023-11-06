@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>ZMR250 Quadcopter - Nathan Petersen</title><meta name="Description" content="Built a mini quadcopter for practicing stunts and FPV."><meta property="og:title" content="ZMR250 Quadcopter" />
+<meta property="og:description" content="Built a mini quadcopter for practicing stunts and FPV." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2016/06/20/zmr250-quadcopter/" />
+<meta property="article:published_time" content="2016-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-06-20T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ZMR250 Quadcopter"/>
+<meta name="twitter:description" content="Built a mini quadcopter for practicing stunts and FPV."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2016/06/20/zmr250-quadcopter/" /><link rel="prev" href="https://nathanpetersen.com/2016/06/10/youtube-window/" /><link rel="next" href="https://nathanpetersen.com/2016/07/26/website-update-jekyll/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "ZMR250 Quadcopter",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2016\/06\/20\/zmr250-quadcopter\/"
+        },"genre": "posts","keywords": "drone, summer, rc, flying","wordcount":  540 ,
+        "url": "https:\/\/nathanpetersen.com\/2016\/06\/20\/zmr250-quadcopter\/","datePublished": "2016-06-20T00:00:00+00:00","dateModified": "2016-06-20T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Built a mini quadcopter for practicing stunts and FPV."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">ZMR250 Quadcopter</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="June 20, 2016">June 20, 2016</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;540 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/drone/">drone</a>, <a href="/tags/summer/">summer</a>, <a href="/tags/rc/">rc</a>, <a href="/tags/flying/">flying</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#previous-experience">Previous Experience</a></li>
+    <li><a href="#3-d-printed-parts">3-D Printed Parts</a></li>
+    <li><a href="#parts">Parts</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="background">Background</h2>
+<p>I got into the R/C hobby at a very young age, mainly with R/C cars. They weren&rsquo;t that nice, since I was so young, but boy were they fun. I remember I got a truck one year for Christmas and immediately started driving (and crashing) it. Since we were having Christmas at my grandparents, they didn&rsquo;t really like me hitting their walls with it, so they hid it from me for a while. Boy was I mad&hellip; I loved that thing!</p>
+<p>After a few years of R/C cars, I lost interest. Sure they were fun, but I didn&rsquo;t want to invest in a nitro-powered car and the electric ones I had were too slow. Thus, I moved onto newer and more exciting things - that is until May of 2015, when I placed my first order for R/C plane/drone parts from <a href="http://hobbyking.com" target="_blank" rel="noopener noreffer">HobbyKing.com</a>. Ever since then, I&rsquo;ve been hooked.</p>
+<figure><a class="lightgallery" href="/2016/06/20/zmr250-quadcopter/images/horz-flying.jpg" title="/2016/06/20/zmr250-quadcopter/images/horz-flying.jpg" data-thumbnail="/2016/06/20/zmr250-quadcopter/images/horz-flying.jpg" data-sub-html="<h2>Horizontal flying</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2016/06/20/zmr250-quadcopter/images/horz-flying.jpg"
+            data-srcset="/2016/06/20/zmr250-quadcopter/images/horz-flying.jpg, /2016/06/20/zmr250-quadcopter/images/horz-flying.jpg 1.5x, /2016/06/20/zmr250-quadcopter/images/horz-flying.jpg 2x"
+            data-sizes="auto"
+            alt="/2016/06/20/zmr250-quadcopter/images/horz-flying.jpg" width="4773" height="3182" />
+    </a><figcaption class="image-caption">Horizontal flying</figcaption>
+    </figure>
+<h2 id="previous-experience">Previous Experience</h2>
+<p>My first project was a cheap clone of the DJI 450 sized quadcopter.</p>
+<h2 id="3-d-printed-parts">3-D Printed Parts</h2>
+<p>While there is no absolute need for 3D printing parts for drones, sometimes it can be very helpful. For example, during a crash, dirt and mud can easily get into the motors. By 3D printing a motor shield and attaching it, debris can be kept out of the motor. This is just one example of a practically unlimited number of help parts one can print.</p>
+<p>My ZMR250 build uses a number of 3D printed parts. Since this was my first foray into 3D printing and the ZMR250 frame is fairly popular, I opted to just use other people&rsquo;s designs for my quadcopter. I&rsquo;ve attached the files below that I printed as well provided links to the original files from Thingiverse.</p>
+<ul>
+<li>Part 1</li>
+<li>Part 2</li>
+<li>Part 3</li>
+<li>Part 4</li>
+</ul>
+<h2 id="parts">Parts</h2>
+<table>
+<thead>
+<tr>
+<th>Part Description</th>
+<th>Part</th>
+<th>Quanity</th>
+<th>Unit cost</th>
+<th>Total Cost</th>
+<th>Seller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motors</td>
+<td>Scorpion M-2204-2300KV Brushless Outrunner Motor Pair (CW &amp; CCW)</td>
+<td>2</td>
+<td>$34.78</td>
+<td>$69.56</td>
+<td>HobbyKing</td>
+</tr>
+<tr>
+<td>ESCs</td>
+<td>DYS XM20A 20A (3-4s) mini ESC</td>
+<td>4</td>
+<td>$11.64</td>
+<td>$46.56</td>
+<td>HobbyKing</td>
+</tr>
+<tr>
+<td>Receiver</td>
+<td>FrSky D4R-II 4ch 2.4Ghz ACCST Receiver (w/telemetry)</td>
+<td>1</td>
+<td>$24.99</td>
+<td>$24.99</td>
+<td>GetFPV</td>
+</tr>
+<tr>
+<td>FC</td>
+<td>Naze32 FC Full</td>
+<td>1</td>
+<td>$20.79</td>
+<td>$20.79</td>
+<td>AliExpress</td>
+</tr>
+<tr>
+<td>Frame</td>
+<td>LHM149 Blackout QAV250 Carbon Fiber Mini 250 FPV Quadcopter Frame (Unassembled)</td>
+<td>1</td>
+<td>$17.79</td>
+<td>$17.79</td>
+<td>AliExpress</td>
+</tr>
+<tr>
+<td>Battery</td>
+<td>Turnigy nano-tech 1300mAh 3S 45~90C Lipo</td>
+<td>1</td>
+<td>$14.49</td>
+<td>$14.49</td>
+<td>HobbyKing</td>
+</tr>
+<tr>
+<td>Power Dist. Board</td>
+<td>Matek Mini Power Hub Power Distribution Board PDB with BEC 5V &amp; 12V for FPV QAV250 ZMR250 Multicopter Quadcopter</td>
+<td>1</td>
+<td>$5.99</td>
+<td>$5.99</td>
+<td>AliExpress</td>
+</tr>
+<tr>
+<td>Props</td>
+<td>Gemfan Propeller 6045</td>
+<td>2</td>
+<td>$1.67</td>
+<td>$3.34</td>
+<td>HobbyKing</td>
+</tr>
+<tr>
+<td>Receiver antenna holder</td>
+<td>Turnigy 2.4G Antenna Mount for Racing Drones (Grey)</td>
+<td>1</td>
+<td>$1.70</td>
+<td>$1.70</td>
+<td>HobbyKing</td>
+</tr>
+<tr>
+<td>Battery holder</td>
+<td>Turnigy Battery Strap 330mm</td>
+<td>1</td>
+<td>$1.69</td>
+<td>$1.69</td>
+<td>HobbyKing</td>
+</tr>
+<tr>
+<td>FPV VTX</td>
+<td>ImmersionRC 5.8Ghz Audio/Video Transmitter - FatShark compatible (600mw)</td>
+<td>1</td>
+<td>$59.95</td>
+<td>$59.95</td>
+<td>HobbyKing</td>
+</tr>
+<tr>
+<td>FPV camera</td>
+<td>New 700TVL 2.8mm Lens FPV Camera CCD For QAV250 Quadcopter RC Plane UAV Accessories 66*O</td>
+<td>1</td>
+<td>$7.93</td>
+<td>$7.93</td>
+<td>AliExpress</td>
+</tr>
+<tr>
+<td>FPV antenna</td>
+<td>1 Pair/2PCS Aomway 5.8GHz FPV 4 Leaf Clover AV Transmission RHCP Antenna For Camera Drone dji phantom 3</td>
+<td>1</td>
+<td>$15.99</td>
+<td>$15.99</td>
+<td>AliExpress</td>
+</tr>
+<tr>
+<td>FPV OSD</td>
+<td>MICRO MINIMOSD Minim OSD Mini OSD W/ KV TEAM MOD For APM PIXHAWK Naze32</td>
+<td>1</td>
+<td>$9.49</td>
+<td>$9.49</td>
+<td>AliExpress</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>19</td>
+<td></td>
+<td>$300.26</td>
+<td>Total</td>
+</tr>
+</tbody>
+</table>
+<figure><a class="lightgallery" href="/2016/06/20/zmr250-quadcopter/images/vert-flying.jpg" title="/2016/06/20/zmr250-quadcopter/images/vert-flying.jpg" data-thumbnail="/2016/06/20/zmr250-quadcopter/images/vert-flying.jpg" data-sub-html="<h2>Fun with the ZMR250</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2016/06/20/zmr250-quadcopter/images/vert-flying.jpg"
+            data-srcset="/2016/06/20/zmr250-quadcopter/images/vert-flying.jpg, /2016/06/20/zmr250-quadcopter/images/vert-flying.jpg 1.5x, /2016/06/20/zmr250-quadcopter/images/vert-flying.jpg 2x"
+            data-sizes="auto"
+            alt="/2016/06/20/zmr250-quadcopter/images/vert-flying.jpg" width="2180" height="3270" />
+    </a><figcaption class="image-caption">Fun with the ZMR250</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2016/06/20/zmr250-quadcopter/images/flying1.jpg" title="/2016/06/20/zmr250-quadcopter/images/flying1.jpg" data-thumbnail="/2016/06/20/zmr250-quadcopter/images/flying1.jpg" data-sub-html="<h2>What a beauty</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2016/06/20/zmr250-quadcopter/images/flying1.jpg"
+            data-srcset="/2016/06/20/zmr250-quadcopter/images/flying1.jpg, /2016/06/20/zmr250-quadcopter/images/flying1.jpg 1.5x, /2016/06/20/zmr250-quadcopter/images/flying1.jpg 2x"
+            data-sizes="auto"
+            alt="/2016/06/20/zmr250-quadcopter/images/flying1.jpg" width="3134" height="2089" />
+    </a><figcaption class="image-caption">What a beauty</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2016/06/20/zmr250-quadcopter/images/flying2.jpg" title="/2016/06/20/zmr250-quadcopter/images/flying2.jpg" data-thumbnail="/2016/06/20/zmr250-quadcopter/images/flying2.jpg" data-sub-html="<h2>So graceful</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2016/06/20/zmr250-quadcopter/images/flying2.jpg"
+            data-srcset="/2016/06/20/zmr250-quadcopter/images/flying2.jpg, /2016/06/20/zmr250-quadcopter/images/flying2.jpg 1.5x, /2016/06/20/zmr250-quadcopter/images/flying2.jpg 2x"
+            data-sizes="auto"
+            alt="/2016/06/20/zmr250-quadcopter/images/flying2.jpg" width="3134" height="2089" />
+    </a><figcaption class="image-caption">So graceful</figcaption>
+    </figure>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2016/06/20/zmr250-quadcopter/" data-title="ZMR250 Quadcopter" data-hashtags="drone,summer,rc,flying"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2016/06/20/zmr250-quadcopter/" data-hashtag="drone"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2016/06/20/zmr250-quadcopter/" data-title="ZMR250 Quadcopter"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2016/06/20/zmr250-quadcopter/" data-title="ZMR250 Quadcopter"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2016/06/20/zmr250-quadcopter/" data-title="ZMR250 Quadcopter"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/drone/">drone</a>, <a href="/tags/summer/">summer</a>, <a href="/tags/rc/">rc</a>, <a href="/tags/flying/">flying</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2016/06/10/youtube-window/" class="prev" rel="prev" title="YouTube Window"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>YouTube Window</a>
+            <a href="/2016/07/26/website-update-jekyll/" class="next" rel="next" title="Website Update: Jekyll">Website Update: Jekyll<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

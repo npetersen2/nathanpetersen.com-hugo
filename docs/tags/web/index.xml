@@ -1,0 +1,63 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>web - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/web/</link>
+        <description>web - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 25 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/web/" rel="self" type="application/rss+xml" /><item>
+    <title>Website Update: Hugo</title>
+    <link>https://nathanpetersen.com/2022/05/25/website-update-hugo/</link>
+    <pubDate>Wed, 25 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2022/05/25/website-update-hugo/</guid>
+    <description><![CDATA[Welcome back to my blog, now completely overhauled and rewritten using the fabulously fast Hugo static site generator framework!
+After a nearly 18 month hiatus from this blog, I finally dusted off the cobwebs. Or, more accurately, I threw away the old dusty blog and resurrected it using modern technologies. This post outlines what I did, why I did it, and what&rsquo;s next.
+  Hugo static site generator logo]]></description>
+</item>
+<item>
+    <title>CirArrow: Circular Arrow Tool</title>
+    <link>https://nathanpetersen.com/2019/01/31/cirarrow-circular-arrow-tool/</link>
+    <pubDate>Thu, 31 Jan 2019 14:18:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2019/01/31/cirarrow-circular-arrow-tool/</guid>
+    <description><![CDATA[img.diagram {width: 30em;height: auto;}canvas {border: 1px solid #000;max-width: 100%;margin: 1em auto;display: block;}Use this tool to calculate shape end-points when modeling circular arrows using CAD software. The output of this tool is a simple set of points which define the requested parametrized circular arrows. Therefore, this tool should be useful for nearly every CAD program that supports elementary objects and shapes, such as lines and polygons.]]></description>
+</item>
+<item>
+    <title>Website Update: Jekyll</title>
+    <link>https://nathanpetersen.com/2016/07/26/website-update-jekyll/</link>
+    <pubDate>Tue, 26 Jul 2016 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2016/07/26/website-update-jekyll/</guid>
+    <description><![CDATA[Background I get bored, but I really love learning. This combination leads me to regularly experiment with new technology and tools to see how they stack up with what I am currently using. My personal website, nathanpetersen.com tends to be the guinea pig for such experiments.
+When I first obtained the nathanpetersen.com domain, I wasn&rsquo;t sure what I wanted to do with it, so I resisted the temptation to install a CMS (i.]]></description>
+</item>
+<item>
+    <title>YouTube Window</title>
+    <link>https://nathanpetersen.com/2016/06/10/youtube-window/</link>
+    <pubDate>Fri, 10 Jun 2016 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2016/06/10/youtube-window/</guid>
+    <description><![CDATA[Want to create a window into YouTube? Go to App &gt;
+Check out the project on GitHub. Go to GitHub &gt;
+ What Is This? One afternoon, I was sitting in the office and I had an urge. To watch a YouTube video. But everyone knows that one shouldn&rsquo;t just open a big YouTube video on their screen at work! The simple answer was to just resize the window so it wasn&rsquo;t so visable.]]></description>
+</item>
+<item>
+    <title>Live Madison Weather</title>
+    <link>https://nathanpetersen.com/2016/06/07/live-madison-weather/</link>
+    <pubDate>Tue, 07 Jun 2016 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2016/06/07/live-madison-weather/</guid>
+    <description><![CDATA[Check out the live weather in Madison! Go to App &gt;
+Check out the source code behind the app! Go to GitHub &gt;
+ Background I started college at the University of Wisconsin - Madison during the fall of 2015. After nearly completing a successful year of school, I started working in the Computer Sciences Department in the Computer Sciences Lab (CSL).
+The CSL is located in an internal room, thus there are no windows to see the outside.]]></description>
+</item>
+<item>
+    <title>Picasa Photo Gallery in PHP</title>
+    <link>https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/</link>
+    <pubDate>Wed, 16 Jul 2014 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/</guid>
+    <description><![CDATA[Background My earliest memories involve taking and cherishing family photos. Most of the photos I have and remember are stored in physical picture albums around my house. Since I was young, I can remember the process of my parents taking lots of pictures, developing the film, and organizing them into a multitude of albums and scrapbooks to save for memories. This system worked great for them and their parents, but I immediately saw flaws.]]></description>
+</item>
+</channel>
+</rss>

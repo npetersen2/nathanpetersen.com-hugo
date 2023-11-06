@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>php - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/php/</link>
+        <description>php - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 16 Jul 2014 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/php/" rel="self" type="application/rss+xml" /><item>
+    <title>Picasa Photo Gallery in PHP</title>
+    <link>https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/</link>
+    <pubDate>Wed, 16 Jul 2014 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/</guid>
+    <description><![CDATA[Background My earliest memories involve taking and cherishing family photos. Most of the photos I have and remember are stored in physical picture albums around my house. Since I was young, I can remember the process of my parents taking lots of pictures, developing the film, and organizing them into a multitude of albums and scrapbooks to save for memories. This system worked great for them and their parents, but I immediately saw flaws.]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>weather - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/weather/</link>
+        <description>weather - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 07 Jun 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/weather/" rel="self" type="application/rss+xml" /><item>
+    <title>Live Madison Weather</title>
+    <link>https://nathanpetersen.com/2016/06/07/live-madison-weather/</link>
+    <pubDate>Tue, 07 Jun 2016 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2016/06/07/live-madison-weather/</guid>
+    <description><![CDATA[Check out the live weather in Madison! Go to App &gt;
+Check out the source code behind the app! Go to GitHub &gt;
+ Background I started college at the University of Wisconsin - Madison during the fall of 2015. After nearly completing a successful year of school, I started working in the Computer Sciences Department in the Computer Sciences Lab (CSL).
+The CSL is located in an internal room, thus there are no windows to see the outside.]]></description>
+</item>
+</channel>
+</rss>

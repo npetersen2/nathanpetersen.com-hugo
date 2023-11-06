@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>My Experience Interning at Silicon Labs - Summer 2017 - Nathan Petersen</title><meta name="Description" content="Summary of time spent in ATX interning."><meta property="og:title" content="My Experience Interning at Silicon Labs - Summer 2017" />
+<meta property="og:description" content="Summary of time spent in ATX interning." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/" />
+<meta property="article:published_time" content="2017-09-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-09-02T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="My Experience Interning at Silicon Labs - Summer 2017"/>
+<meta name="twitter:description" content="Summary of time spent in ATX interning."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/" /><link rel="prev" href="https://nathanpetersen.com/2017/05/07/layered-strawberry-crepe-cake/" /><link rel="next" href="https://nathanpetersen.com/2018/02/14/pcbs-from-seeed-studio/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "My Experience Interning at Silicon Labs - Summer 2017",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2017\/09\/02\/my-experience-interning-at-silicon-labs-summer-2017\/"
+        },"genre": "posts","keywords": "internship, silabs, summer, firmware, digradio, radio, austin-tx, programming, job","wordcount":  3141 ,
+        "url": "https:\/\/nathanpetersen.com\/2017\/09\/02\/my-experience-interning-at-silicon-labs-summer-2017\/","datePublished": "2017-09-02T00:00:00+00:00","dateModified": "2017-09-02T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Summary of time spent in ATX interning."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">My Experience Interning at Silicon Labs - Summer 2017</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="September 2, 2017">September 2, 2017</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3141 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;15 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/experiences/"></i>Experiences</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/internship/">internship</a>, <a href="/tags/silabs/">silabs</a>, <a href="/tags/summer/">summer</a>, <a href="/tags/firmware/">firmware</a>, <a href="/tags/digradio/">digradio</a>, <a href="/tags/radio/">radio</a>, <a href="/tags/austin-tx/">austin-tx</a>, <a href="/tags/programming/">programming</a>, <a href="/tags/job/">job</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#but-first-silicon-who">But first, Silicon WHO?</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#whatd-ya-do">What&rsquo;d Ya Do?</a>
+      <ul>
+        <li><a href="#task-one-getting-familiar-with-the-project-code">Task One: Getting Familiar With The Project Code</a></li>
+        <li><a href="#task-two-monitoring-system-behavior">Task Two: Monitoring System Behavior</a></li>
+        <li><a href="#task-three-adding-error-detection-to-internal-data-path">Task Three: Adding Error Detection to Internal Data Path</a></li>
+        <li><a href="#micro-task-four-implementing-an-api-feature">(Micro) Task Four: Implementing an API Feature</a></li>
+        <li><a href="#task-five-optimizing-seamless-linkers-delay-subsystem-memory-allocation-si4692httpswwwsilabscomdocumentspublicdata-shortssi4692-shortpdf">Task Five: Optimizing Seamless Linker&rsquo;s Delay Subsystem Memory Allocation (<a href="https://www.silabs.com/documents/public/data-shorts/Si4692-short.pdf">Si4692</a>)</a></li>
+        <li><a href="#task-six-debugging-why-firmware-failed-testcase">Task Six: Debugging Why Firmware Failed Testcase</a></li>
+        <li><a href="#task-seven-fixing-design-flaw-in-code">Task Seven: Fixing Design Flaw in Code</a></li>
+      </ul>
+    </li>
+    <li><a href="#whyd-ya-take-the-internship">Why&rsquo;d Ya Take the Internship?</a></li>
+    <li><a href="#whats-it-like-there">What&rsquo;s It Like There?</a></li>
+    <li><a href="#fun-statistics">Fun Statistics</a></li>
+    <li><a href="#fun-office-perks">Fun Office Perks</a></li>
+    <li><a href="#summary">Summary</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Update April 2021<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Silicon Labs has <a href="https://news.silabs.com/2021-04-22-Silicon-Labs-Announces-Agreement-to-Divest-Infrastructure-and-Automotive-Business" target="_blank" rel="noopener noreffer">sold their I&amp;A Business</a>.</p>
+<p>My entire expereince at Silicon Labs, as discussed below, was in the I&amp;A division. Therefore, everything I say below is outdated, since the business/products no longer exist from Silicon Labs.
+Most links in this article to <code>silabs.com</code> are now invalid, but I will keep them intact for posterity.</p>
+</div>
+        </div>
+    </div>
+<p>Well, thus concludes my summer at Silicon Labs, and boy was it great. From learning about digital radio technology, to learning about bootloaders and embedded system design, to working with a dynamic group of developers, to going to the CEO&rsquo;s house for dinner, to multiple company dinners at fabulous restaurants in downtown Austin, I really enjoyed the experience and learned a lot. I am writing this post to document my memories, plus to shed some light on interning at Silicon Labs for future college students that might be applying there.</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-gives-back-04.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-gives-back-04.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-gives-back-04.jpg" data-sub-html="<h2>Austin interns giving back to the community</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-gives-back-04.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-gives-back-04.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-gives-back-04.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-gives-back-04.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-gives-back-04.jpg" width="5312" height="2988" />
+    </a><figcaption class="image-caption">Austin interns giving back to the community</figcaption>
+    </figure>
+<p><em>All the words and their interpreted meaning in this post are my personal ideas, thoughts and experiences, so don&rsquo;t think that I speak for Silicon Labs as a company. These are just MY opinions.</em></p>
+<h2 id="but-first-silicon-who">But first, Silicon WHO?</h2>
+<p><strong>Getting to know Silicon Labs&hellip;</strong></p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silicon-labs-logo.png" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silicon-labs-logo.png" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silicon-labs-logo.png" data-sub-html="<h2>Silicon Labs Logo</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silicon-labs-logo.png"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silicon-labs-logo.png, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silicon-labs-logo.png 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silicon-labs-logo.png 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silicon-labs-logo.png" width="1538" height="769" />
+    </a><figcaption class="image-caption">Silicon Labs Logo</figcaption>
+    </figure>
+<p>For those of you that don&rsquo;t know (don&rsquo;t worry, I didn&rsquo;t know either before applying), Silicon Labs is a company of about 1,300 employees based in Austin, TX, but with offices all around the globe. In their own words, they are &ldquo;<em>a leading provider of silicon, software and solutions for a smarter, more connected world.&quot;</em> Basically, that means they are an electrical engineering company that makes little chips that go into devices all around the world. Chances are you own a device that has a Silicon Labs chip in it (more on that later). They also offer software to go along with these chips to help developers shorten their time to market.</p>
+<p>Great! So what kind of chips are we talkin&rsquo;? Salt and vinegar? &hellip;No no no, silly, these chips are highly integrated circuits made out of silicon. To understand Silicon Labs&rsquo; spot in the market, it helps to understand the multiple divisions within the company and the different types of products in each division:</p>
+<ul>
+<li><a href="https://www.silabs.com/solutions/iot" target="_blank" rel="noopener noreffer">IoT</a> - <a href="https://www.silabs.com/products/mcu" target="_blank" rel="noopener noreffer">MCUs</a>, <a href="https://www.silabs.com/products/development-tools/software/simplicity-studio" target="_blank" rel="noopener noreffer">Software</a> and <a href="https://www.silabs.com/products/sensors" target="_blank" rel="noopener noreffer">Sensors</a>, and <a href="https://www.silabs.com/products/wireless" target="_blank" rel="noopener noreffer">Wireless Connectivity</a></li>
+<li>Broadcast - <a href="https://www.silabs.com/products/audio-and-radio" target="_blank" rel="noopener noreffer">Radio</a> / <a href="https://www.silabs.com/products/tv-and-video" target="_blank" rel="noopener noreffer">TV tuners</a> and <a href="https://www.silabs.com/solutions/automotive" target="_blank" rel="noopener noreffer">Automotive</a></li>
+<li>Infrastructure - <a href="https://www.silabs.com/products/timing" target="_blank" rel="noopener noreffer">Timing</a> and <a href="https://www.silabs.com/products/isolation" target="_blank" rel="noopener noreffer">Isolation</a></li>
+<li>Access - <a href="https://www.silabs.com/products/power-over-ethernet" target="_blank" rel="noopener noreffer">Power of Ethernet (PoE)</a>, <a href="https://www.silabs.com/products/voice" target="_blank" rel="noopener noreffer">SLIC</a> and <a href="https://www.silabs.com/products/modems-and-daas" target="_blank" rel="noopener noreffer">Modem</a></li>
+</ul>
+<p>As you can see, Silicon Labs has a very diverse product portfolio that targets many different market sectors. The end customers of these products are usually not average consumers because Silicon Labs&rsquo; products go <em>inside</em> the things consumers buy. Silicon Labs&rsquo; solutions are in products from the market leaders in home automation, electric vehicles, green technology, smart TVs and home voice control automation.</p>
+<h4 id="applications-of-silicon-labs-products">Applications of Silicon Labs&rsquo; products</h4>
+<p>Inside the Austin headquarters, Silicon Labs has many different display cases that showcase end products using their products.</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-customers-02.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-customers-02.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-customers-02.jpg" data-sub-html="<h2>Products made from industrial solutions</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-customers-02.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-customers-02.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-customers-02.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-customers-02.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/silabs-customers-02.jpg" width="3024" height="4032" />
+    </a><figcaption class="image-caption">Products made from industrial solutions</figcaption>
+    </figure>
+<p>For more information about the company, check out their recent <a href="https://www.silabs.com/documents/public/presentations/Silicon-Labs-Corporate-Presentation-April-2017.pdf" target="_blank" rel="noopener noreffer">corporate presentation</a>!</p>
+<h2 id="whatd-ya-do">What&rsquo;d Ya Do?</h2>
+<p><strong>Looking into my summer projects&hellip;</strong></p>
+<p>I worked under the Infrastructure and Automotive (I&amp;A) group on the Digital Radio team, with my official title being &ldquo;Firmware Engineer Intern&rdquo;. Basically, this group develops the firmware for the <a href="https://www.silabs.com/products/audio-and-radio/automotive-digital-radios" target="_blank" rel="noopener noreffer">Automotive Digital Radio product line</a>. While radio has existed for quite some time, radio technology and standards are still progressing, enabling &ldquo;smarter&rdquo; and more complex radios. Silicon Labs has a comprehensive product line for many different radio applications with varying feature sets.</p>
+<p>For those interested, all the embedded firmware I wrote this summer was in C or C++, scripting was done in <a href="https://www.tcl.tk/" target="_blank" rel="noopener noreffer">Tcl</a>, and visualization was written in Java as an Eclipse plugin.</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/evb-board.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/evb-board.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/evb-board.jpg" data-sub-html="<h2>An evaluation board like the one I used to develop and test firmware modifications and additions</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/evb-board.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/evb-board.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/evb-board.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/evb-board.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/evb-board.jpg" width="1292" height="885" />
+    </a><figcaption class="image-caption">An evaluation board like the one I used to develop and test firmware modifications and additions</figcaption>
+    </figure>
+<h3 id="task-one-getting-familiar-with-the-project-code">Task One: Getting Familiar With The Project Code</h3>
+<p>My very first task was to implement a simple customer request: the ability to independently mute different audio paths within Si468x demodulator devices. This relatively trivial task involved understanding the basic architecture of the system (namely the integration of the DSP co-processor for audio processing), thus it forced me to explore the project code base. I implemented the feature quicker than expected, and moved onto my next task.</p>
+<h3 id="task-two-monitoring-system-behavior">Task Two: Monitoring System Behavior</h3>
+<p>Embedded devices can be challenging to debug, and the family of devices in the Automotive Digital Radio are no exception. The team told me that some firmware crashes take weeks to debug, consuming valuable time. They needed a better way to monitor the system.</p>
+<p>I was tasked with creating a Monitoring Module, a conditionally-compiled module that could track system resources and events. They envisioned two major use cases for such a module:</p>
+<ul>
+<li>Monitoring thread stack sizes to conserve precious memory by shrinking static buffers</li>
+<li>Recording system events (system tracing) for post-mortem analysis of firmware crashes as well as inspection of system performance</li>
+</ul>
+<p>I created a monitoring framework that included thread monitoring and system [tracing](<a href="https://en.wikipedia.org/wiki/Tracing_(software)">https://en.wikipedia.org/wiki/Tracing_(software)</a> functionality. Thread monitoring is used for stack utilization analysis and other thread related data, while the tracing framework can enable tracing, filter event types, pull event logs off devices, format events into a nice CSV file, and view them with a custom viewer to graphically see how the system was behaving during the trace. Basically, the tracing module is just like <a href="https://lttng.org/" target="_blank" rel="noopener noreffer">LTTng</a>, except designed for embedded digital radio firmware, not Linux.</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tracecompass_ui.PNG" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tracecompass_ui.PNG" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tracecompass_ui.PNG" data-sub-html="<h2>Sample view from the GUI I made to visualize system events</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tracecompass_ui.PNG"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tracecompass_ui.PNG, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tracecompass_ui.PNG 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tracecompass_ui.PNG 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tracecompass_ui.PNG" width="1919" height="969" />
+    </a><figcaption class="image-caption">Sample view from the GUI I made to visualize system events</figcaption>
+    </figure>
+<p>Overall, the team was very happy with my Monitoring Module, since it worked well and enabled debugging capabilities previously not available.</p>
+<h3 id="task-three-adding-error-detection-to-internal-data-path">Task Three: Adding Error Detection to Internal Data Path</h3>
+<p>Silicon Labs offers a device they call the Digital Falcon:</p>
+<blockquote>
+<p>The Digital Falcon (Si469x) family of digital radio coprocessors provides channel demodulation and source decoding of HD Radio and DAB/DAB+ digital signals delivering audio and data.  Digital Falcon coprocessors simplify system design and minimize the bill of materials (BOM) by eliminating the need for an external RAM memory module for channel decoding typically required by third-party digital radio processors. The Digital Falcon family enables designs to scale from low- to high-end systems with its seamless blending capabilities for DAB/DAB+, as well as its support for Automatic Level and Time Alignment (ALTA) for HD systems.</p>
+</blockquote>
+<p>Internally, this device reuses existing silicon from other less complex devices (like the Si4680) to create a <a href="https://en.wikipedia.org/wiki/Multi-chip_module" target="_blank" rel="noopener noreffer">multi-chip module</a>. This packaged device is then treated as if it were any other chip, with normal communication and interfacing.</p>
+<p>The multiple chips internally need to communicate with each other to share the processing workload, so interconnects exist that the firmware can utilize to send data internally. Since the interconnects go between dies, there is a possibility of transmission error. If the data being sent is critical (like a pointer to memory), an invalid bit flip in transmission could be detrimental to the system. Therefore, error detection is used to help detect if such a condition happens so that the receiving application can decide what further action is needed (throw away packet, process as usual, etc).</p>
+<p>I implemented <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check" target="_blank" rel="noopener noreffer">CRC</a> onto the transmitter and receiver modules to provide valid / invalid signals to the application.</p>
+<h3 id="micro-task-four-implementing-an-api-feature">(Micro) Task Four: Implementing an API Feature</h3>
+<p>My fourth task was to complete an API feature to allow manual override of the gain applied to audio from a HD source on the AM/FM HD devices. This was trivial to implement, so it was a quick and easy check off the list.</p>
+<h3 id="task-five-optimizing-seamless-linkers-delay-subsystem-memory-allocation-si4692httpswwwsilabscomdocumentspublicdata-shortssi4692-shortpdf">Task Five: Optimizing Seamless Linker&rsquo;s Delay Subsystem Memory Allocation (<a href="https://www.silabs.com/documents/public/data-shorts/Si4692-short.pdf" target="_blank" rel="noopener noreffer">Si4692</a>)</h3>
+<p>First off, let me just say that this was definitely the most fun and challenging of the my summer tasks. Of the diverse products in the Automotive Digital Radio product line, this task involves the Si469x devices. Silicon Labs describes the Si4692 as a &ldquo;High-Performance Digital Radio Baseband Processor with Seamless Blending.&rdquo;</p>
+<p>To understand how my work fits into the system, I will first explain the point of the device. Modern radio standards enable radio stations to broadcast the same content on multiple different frequencies and channels to enable better reception. A car radio with an Si4692 chip is normally tuned to these multiple different frequencies and channels and is constantly correlating the different audio sources to align them in time and level (loudness). This enables the radio to seamlessly switch between audio sources when signal quality reduces. <strong>Basically, this means that when you drive behind a building in a crowded downtown, the music playing on your car radio stays crisp and clear because the radio is seamlessly switching between sources, all without you even knowing!</strong> Pretty cool, if you ask me!</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/si4692-block-diagram.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/si4692-block-diagram.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/si4692-block-diagram.jpg" data-sub-html="<h2>Block diagram for the Si4692, from www.silabs.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/si4692-block-diagram.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/si4692-block-diagram.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/si4692-block-diagram.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/si4692-block-diagram.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/si4692-block-diagram.jpg" width="1300" height="867" />
+    </a><figcaption class="image-caption">Block diagram for the Si4692, from <a href="http://www.silabs.com">www.silabs.com</a></figcaption>
+    </figure>
+<p>Aligning audio signals requires the ability to buffer an audio stream until the desired time offset is achieved. This is fairly straight-forward to implement: a queue data structure can be used to hold audio data chunks until they are needed; simply append the new audio chunks to the end and pull delayed audio chunks off the front. The more interesting part is dynamically allocating memory when audio chunks come in, as the module doesn&rsquo;t know the desired delay (i.e. the total amount of memory needed). To complicate matters, audio data chunks vary in size between channels, and channels can dynamically change their audio block size. These facts impose a few constraints on allocator design:</p>
+<ul>
+<li>Needs to be deterministic, as this is running in a real-time system with hard timing constraints</li>
+<li>Cannot have fragmentation (due to deterministic nature above)</li>
+<li>Must support a max of ~10 different block sizes at one time</li>
+<li>Maximize memory utilization, thus maximizing total possible correlation offset between channels</li>
+</ul>
+<p>Typical memory allocation schemes aren&rsquo;t well suited for these unique constraints, so I decided to implement a pool-based allocation scheme. This would handle the fragmentation issues, as well as maximize memory utilization since pools can be setup to minimize overhead per block size.</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/memory-diagram.png" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/memory-diagram.png" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/memory-diagram.png" data-sub-html="<h2>Diagram of improved memory layout for pool-based allocation</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/memory-diagram.png"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/memory-diagram.png, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/memory-diagram.png 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/memory-diagram.png 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/memory-diagram.png" width="1110" height="478" />
+    </a><figcaption class="image-caption">Diagram of improved memory layout for pool-based allocation</figcaption>
+    </figure>
+<p>I coded up the allocator, subdividing the total memory region into &ldquo;pages,&rdquo; with each page divided into unique block-sized chunks. Requests for memory blocks are then fulfilled from existing pages. If an appropriate page doesn&rsquo;t exist to satisfy the request, the block is allocated in the &ldquo;scratch&rdquo; memory area, and a thread is kicked off to go and divide up more memory to make a new page.</p>
+<p><strong>Looking at performance improvements, my allocation scheme improved the total delay limit by over 2x, enabling the device to meet the promised specifications.</strong></p>
+<h3 id="task-six-debugging-why-firmware-failed-testcase">Task Six: Debugging Why Firmware Failed Testcase</h3>
+<p>Next, I was tasked to debug the bug de jour, an automated testcase failing on an HD audio device. The FM audio baseband layout is fairly complex, with different frequencies being used for analog mono audio, analog stereo audio, digital HD audio, and various data streams. To learn about Frequency Modulation (FM) and Silicon Labs&rsquo; devices, read this <a href="https://www.silabs.com/Marcom%20Documents/Resources/FMTutorial.pdf" target="_blank" rel="noopener noreffer">paper</a>.</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/FM-spectrum.png" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/FM-spectrum.png" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/FM-spectrum.png" data-sub-html="<h2>FM baseband spectrum division</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/FM-spectrum.png"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/FM-spectrum.png, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/FM-spectrum.png 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/FM-spectrum.png 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/FM-spectrum.png" width="600" height="290" />
+    </a><figcaption class="image-caption">FM baseband spectrum division</figcaption>
+    </figure>
+<p>In areas of poor reception, usually the radio switches to analog mono audio as the most power is dedicated to it. When reception improves and digital audio is available, the part seamlessly switches back to digital. For the transition to be as seamless as possible, the digital audio has to be massaged to sound like the (mono) analog audio. One aspect of this is stereo separation, which can be set to anything between full stereo and mono which helps make the digital audio sound similar to the analog audio.</p>
+<p>The test case simply reported that setting the separation to full mono didn&rsquo;t work; it was still fairly stereo. I reviewed the relevant code and proved that the firmware was implementing the model correctly by looking at the internal variable values. To add to my detective work, when I listened to OTA radio at my desk, I couldn&rsquo;t replicate the issue. Seemed fishy.</p>
+<p>In the end, I determined that the test simply wasn&rsquo;t waiting long enough after setting the stereo separation value for the audio outputs to settle to the desired separation. The bug was in the test code, not the firmware. I provided some solutions for the test code to implement and marked the bug as solved. Easy peasy. :)</p>
+<h3 id="task-seven-fixing-design-flaw-in-code">Task Seven: Fixing Design Flaw in Code</h3>
+<p>One aspect that is needed to enable Automatic Level and Time Alignment (ALTA) in HD radio devices is the ability to make a measurement of the &ldquo;loudness&rdquo; of various audio signals. This is implemented using a standard loudness measuring technique, <a href="https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-BS.2054-4-2014-PDF-E.pdf" target="_blank" rel="noopener noreffer">ITU-R BS.1770</a>. For this to work, it needs to know the &ldquo;power&rdquo; of the audio sample. The system has a mean-squared measurement module to do just that, but there was an obscure design flaw in the code that resulted in the wrong output for certain corner-case inputs.</p>
+<p>I implemented a simple solution to fix this problem that only increased cycle usage by 20% for this calculation.</p>
+<h2 id="whyd-ya-take-the-internship">Why&rsquo;d Ya Take the Internship?</h2>
+<p><strong>Diving into how I ended up at Silicon Labs</strong></p>
+<p>First, it might help to know a little background on me. When I accepted this internship, it was the middle of the spring semester of my sophomore year of college, at the University of Wisconsin - Madison. I was studying computer science, but was in some EE classes that spring, just for fun. They really interested me, so I was considering pursuing a major in EE as well as CS, but I wasn&rsquo;t really sure.</p>
+<p>I applied for a couple summer internships and got offers for two: one in Silicon Valley (option to work remote in Madison) at a stealth startup doing web security type things, and one in Austin, TX at Silicon Labs. I was working at the computer science department on campus at the time doing web development for them, so working for the startup would have basically furthered my knowledge of web development. Accepting the Silicon Labs internship would expose me to low-level embedded development, something that I didn&rsquo;t have as much experience in, but was very interested in (I had played with Arduinos for quite some time before this, see my <a href="http://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/" target="_blank" rel="noopener noreffer">BCLD project</a>).</p>
+<p>Basically, if I took the stealth startup position, it would be relatively same old same old, but if I took the Silicon Labs position, it would be off into the unknown to discover if furthering my education into EE type things was want I wanted to do. Obviously, I chose the latter.</p>
+<p>Am I happy with my choice? Absolutely.</p>
+<h2 id="whats-it-like-there">What&rsquo;s It Like There?</h2>
+<p><strong>Describing Silicon Labs&rsquo; culture and living in Austin, TX in general</strong></p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-views-03.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-views-03.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-views-03.jpg" data-sub-html="<h2>View from my office window</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-views-03.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-views-03.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-views-03.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-views-03.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-views-03.jpg" width="4032" height="3024" />
+    </a><figcaption class="image-caption">View from my office window</figcaption>
+    </figure>
+<p>First of all, Silicon Labs is an awesome company and working for them is amazing. Plastered on every conference room wall and practically required memorization for all new employees are Silicon Labs&rsquo; values:</p>
+<ul>
+<li>We hire, foster and empower great talent.</li>
+<li>We create customer value and commercial success through innovation and simplicity.</li>
+<li>We meet our commitments and hold ourselves accountable.</li>
+<li>We do the right thing.</li>
+</ul>
+<p>When I first saw these company values, I thought &ldquo;bleh, corporate bullshit,&rdquo; and while that may be true, my internship experience didn&rsquo;t feel like that. I think there is something to be said for having values and advertising them like Silicon Labs does. It really does create a culture that follows them, simply because corporate makes such a big deal out of them and each and every employee knows them and can probably recite them by heart. Just from my perspective as an intern for a summer, I can attest that all of them are followed: their employees are the best of the best, their products are cutting edge and make building end-user products much simpler, people do what they say they&rsquo;ll do, and they don&rsquo;t take shortcuts. Everything they do is high quality and very customer friendly, from the parts themselves to the datasheets to the customer support. It&rsquo;s all top notch. I can&rsquo;t give them enough compliments.</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-01.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-01.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-01.jpg" data-sub-html="<h2>Company social at the CEO&rsquo;s house</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-01.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-01.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-01.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-01.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-01.jpg" width="5312" height="2988" />
+    </a><figcaption class="image-caption">Company social at the CEO&rsquo;s house</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-02.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-02.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-02.jpg" data-sub-html="<h2>Interns chatting</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-02.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-02.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-02.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-02.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/tyson-party-02.jpg" width="5312" height="2988" />
+    </a><figcaption class="image-caption">Interns chatting</figcaption>
+    </figure>
+<p>The perks are also great:</p>
+<ul>
+<li>Offices in the middle of downtown Austin</li>
+<li>Great views right over Lady Bird Lake</li>
+<li>Relaxed work environment</li>
+<li>Free snacks and drinks (including free beer!)</li>
+<li>  Wonderful coffee/espresso machine for making fancy pick-me-ups</li>
+<li>Employee training and talks about cutting edge research</li>
+</ul>
+<p>As far as living in Austin goes, I can&rsquo;t really complain. The weather is definitely hot during the summer, but 75 on Christmas or Thanksgiving?! How can you beat that? Traffic is a nuisance, but my commute was usually less than 30 minutes each way (max of 55 minutes). The food is absolutely outstanding, with places like Terry Black&rsquo;s and Rudy&rsquo;s for BBQ and Chuy&rsquo;s for Tex-Mex. Overall, I would recommend living in Austin. Great city.</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-sunrise-01.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-sunrise-01.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-sunrise-01.jpg" data-sub-html="<h2>Early morning sunrise view of downtown Austin from my commute to work</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-sunrise-01.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-sunrise-01.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-sunrise-01.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-sunrise-01.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-sunrise-01.jpg" width="4032" height="3024" />
+    </a><figcaption class="image-caption">Early morning sunrise view of downtown Austin from my commute to work</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/atx-traffic-04.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/atx-traffic-04.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/atx-traffic-04.jpg" data-sub-html="<h2>Sitting in traffic&hellip; 60 minute commutes are a little too much</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/atx-traffic-04.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/atx-traffic-04.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/atx-traffic-04.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/atx-traffic-04.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/atx-traffic-04.jpg" width="4032" height="3024" />
+    </a><figcaption class="image-caption">Sitting in traffic&hellip; 60 minute commutes are a little too much</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-cloudy.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-cloudy.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-cloudy.jpg" data-sub-html="<h2>Another early morning view of downtown Austin from my commute to work, on a less than sunny morning</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-cloudy.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-cloudy.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-cloudy.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-cloudy.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/downtown-cloudy.jpg" width="7992" height="2664" />
+    </a><figcaption class="image-caption">Another early morning view of downtown Austin from my commute to work, on a less than sunny morning</figcaption>
+    </figure>
+<h2 id="fun-statistics">Fun Statistics</h2>
+<p><strong>For people like me who like numbers too much&hellip;</strong></p>
+<p>I&rsquo;m addicted to numbers and stats, so during the summer:</p>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lines of code written</td>
+<td>~10k</td>
+</tr>
+<tr>
+<td>Lines of code in project</td>
+<td>~800k</td>
+</tr>
+<tr>
+<td>Miles driven</td>
+<td>~3050 miles</td>
+</tr>
+<tr>
+<td>Miles driven per day</td>
+<td>~45 miles</td>
+</tr>
+<tr>
+<td>Working days</td>
+<td>55</td>
+</tr>
+<tr>
+<td>Time spent commuting</td>
+<td>~55 hours</td>
+</tr>
+<tr>
+<td>Workouts</td>
+<td>45</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fun-office-perks">Fun Office Perks</h2>
+<p><strong>Snacks and beer&hellip; mmm&hellip;</strong></p>
+<p>Couldn&rsquo;t not put in some pictures of the great office perks. Great place to work! :)</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-01.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-01.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-01.jpg" data-sub-html="<h2>Daily fresh fruit</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-01.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-01.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-01.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-01.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-01.jpg" width="3024" height="4032" />
+    </a><figcaption class="image-caption">Daily fresh fruit</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-02.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-02.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-02.jpg" data-sub-html="<h2>Array of healthy snack bars</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-02.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-02.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-02.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-02.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-02.jpg" width="4032" height="3024" />
+    </a><figcaption class="image-caption">Array of healthy snack bars</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-03.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-03.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-03.jpg" data-sub-html="<h2>Nice cold drinks</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-03.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-03.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-03.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-03.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-03.jpg" width="3024" height="4032" />
+    </a><figcaption class="image-caption">Nice cold drinks</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-05.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-05.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-05.jpg" data-sub-html="<h2>Free beer all the time!</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-05.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-05.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-05.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-05.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/office-perks-05.jpg" width="4032" height="3024" />
+    </a><figcaption class="image-caption">Free beer all the time!</figcaption>
+    </figure>
+<h2 id="summary">Summary</h2>
+<p>Overall, I&rsquo;m <strong>extremely</strong> happy I took this internship. It was definitely career directing and I can&rsquo;t wait for possibly returning next summer for a repeat internship, or after school for a job. Highly recommend the experience!!! :)</p>
+<figure><a class="lightgallery" href="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/nathan.jpg" title="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/nathan.jpg" data-thumbnail="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/nathan.jpg" data-sub-html="<h2>Me presenting at the intern symposium</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/nathan.jpg"
+            data-srcset="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/nathan.jpg, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/nathan.jpg 1.5x, /2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/nathan.jpg 2x"
+            data-sizes="auto"
+            alt="/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/images/nathan.jpg" width="4032" height="3024" />
+    </a><figcaption class="image-caption">Me presenting at the intern symposium</figcaption>
+    </figure>
+<hr>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/" data-title="My Experience Interning at Silicon Labs - Summer 2017" data-hashtags="internship,silabs,summer,firmware,digradio,radio,austin-tx,programming,job"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/" data-hashtag="internship"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/" data-title="My Experience Interning at Silicon Labs - Summer 2017"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/" data-title="My Experience Interning at Silicon Labs - Summer 2017"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2017/09/02/my-experience-interning-at-silicon-labs-summer-2017/" data-title="My Experience Interning at Silicon Labs - Summer 2017"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/internship/">internship</a>, <a href="/tags/silabs/">silabs</a>, <a href="/tags/summer/">summer</a>, <a href="/tags/firmware/">firmware</a>, <a href="/tags/digradio/">digradio</a>, <a href="/tags/radio/">radio</a>, <a href="/tags/austin-tx/">austin-tx</a>, <a href="/tags/programming/">programming</a>, <a href="/tags/job/">job</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2017/05/07/layered-strawberry-crepe-cake/" class="prev" rel="prev" title="Layered Strawberry Crepe Cake"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Layered Strawberry Crepe Cake</a>
+            <a href="/2018/02/14/pcbs-from-seeed-studio/" class="next" rel="next" title="PCBs from Seeed Studio">PCBs from Seeed Studio<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

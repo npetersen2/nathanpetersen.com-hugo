@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>locks - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/locks/</link>
+        <description>locks - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 17 Feb 2019 11:45:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/locks/" rel="self" type="application/rss+xml" /><item>
+    <title>Optimizing for Workloads: Linux Spinlocks vs Mutexes</title>
+    <link>https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/</link>
+    <pubDate>Sun, 17 Feb 2019 11:45:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2019/02/17/optimizing-for-workloads-linux-spinlocks-vs-mutexes/</guid>
+    <description><![CDATA[Introduction Operating systems form the backbone of modern processing environments. Millions of lines of code are responsible for enabling programs to easily execute on a given machine. These programs must share the machine&rsquo;s resources, such as processor cores, volatile memory, peripheral devices, and persistent media. Virtualization and resource management is accomplished by the underlying operating system, which ensures the system operates correctly and in an efficient manner. Machine resources should be largely devoted to the user applications which mandates careful system design and implementation.]]></description>
+</item>
+</channel>
+</rss>

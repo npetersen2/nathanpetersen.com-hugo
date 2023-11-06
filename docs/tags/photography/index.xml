@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>photography - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/photography/</link>
+        <description>photography - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 16 Jul 2014 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/photography/" rel="self" type="application/rss+xml" /><item>
+    <title>Picasa Photo Gallery in PHP</title>
+    <link>https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/</link>
+    <pubDate>Wed, 16 Jul 2014 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/</guid>
+    <description><![CDATA[Background My earliest memories involve taking and cherishing family photos. Most of the photos I have and remember are stored in physical picture albums around my house. Since I was young, I can remember the process of my parents taking lots of pictures, developing the film, and organizing them into a multitude of albums and scrapbooks to save for memories. This system worked great for them and their parents, but I immediately saw flaws.]]></description>
+</item>
+<item>
+    <title>4-H Electronics Project 2010</title>
+    <link>https://nathanpetersen.com/2010/07/06/4-h-electronics-project-2010/</link>
+    <pubDate>Tue, 06 Jul 2010 00:00:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2010/07/06/4-h-electronics-project-2010/</guid>
+    <description><![CDATA[A high speed sound trigger for firing photography flashes following loud noises" A high speed sound trigger for firing photography flashes following loud noises   This post is one of a six part series documenting and archiving Nathan&rsquo;s electronic projects created during his years participating in 4-H. To be clear, this project was done many years ago. During the winter months of 2017-2018, Nathan decided to archive his past projects as a way to remember and share them, hoping to inspire other beginning electronic hobbyists.]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Bluetooth Controlled LED Display - Nathan Petersen</title><meta name="Description" content="Project archives from Nathan Petersen over the years as he experiments and prototypes various tech-related projects."><meta property="og:title" content="Bluetooth Controlled LED Display" />
+<meta property="og:description" content="Colorful display made from serially addressable LEDs for 4-H project." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/" />
+<meta property="article:published_time" content="2015-07-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-07-05T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bluetooth Controlled LED Display"/>
+<meta name="twitter:description" content="Colorful display made from serially addressable LEDs for 4-H project."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/" /><link rel="prev" href="https://nathanpetersen.com/2014/07/16/picasa-photo-gallery-in-php/" /><link rel="next" href="https://nathanpetersen.com/2016/06/07/live-madison-weather/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Bluetooth Controlled LED Display",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2015\/07\/05\/bluetooth-controlled-led-display\/"
+        },"genre": "posts","keywords": "firmware, leds, display, 4-h, hardware, bluetooth, matrix, arduino, neopixel, ws2812, electronics, laser-cutter, rgb, animations","wordcount":  1779 ,
+        "url": "https:\/\/nathanpetersen.com\/2015\/07\/05\/bluetooth-controlled-led-display\/","datePublished": "2015-07-05T00:00:00+00:00","dateModified": "2015-07-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Bluetooth Controlled LED Display</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="July 5, 2015">July 5, 2015</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1779 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/firmware/">firmware</a>, <a href="/tags/leds/">leds</a>, <a href="/tags/display/">display</a>, <a href="/tags/4-h/">4-h</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/bluetooth/">bluetooth</a>, <a href="/tags/matrix/">matrix</a>, <a href="/tags/arduino/">arduino</a>, <a href="/tags/neopixel/">neopixel</a>, <a href="/tags/ws2812/">ws2812</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/laser-cutter/">laser-cutter</a>, <a href="/tags/rgb/">rgb</a>, <a href="/tags/animations/">animations</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#hardware">Hardware</a></li>
+    <li><a href="#software">Software</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#future">Future</a></li>
+    <li><a href="#examples">Examples</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Check out the project on Github! <a href="https://github.com/nathanpetersenn/BCLD" target="_blank" rel="noopener noreffer">Go to GitHub &gt;</a></p>
+<h2 id="background">Background</h2>
+<p><strong>I love red-green-blue light-emitting diodes (RGB LEDs). These little electronic components produce light ranging from red to green to blue to any other color in between. There is something about the vast amount of things that can be done with such a simple component that makes RGB LEDs so intriguing to me.</strong></p>
+<p>My first real encounter with RGB LEDs was in 2014 during my junior year, while participating on the local robotics team that I helped start as a freshman, Ctrl-Z (<a href="http://team4096.org/" target="_blank" rel="noopener noreffer">team4096.org</a>). In the previous year, Ctrl-Z started putting LEDs on its robot to help draw attention to it during competitions. There were two colors of LED strips on the robot to match the team&rsquo;s colors: orange and blue. Operation was simple enough for the inexperienced team - while the robot&rsquo;s Frisbee thrower was on, the blue LED strip was lit, and while it was off, the orange strip was lit. Many people enjoyed these super bright LEDs, but they lacked creativity. The team decided that the next year, more advanced LEDs would be used.</p>
+<p>As a junior, I realized that my other extracurricular activities were filling my time, thus pushing me away from Ctrl-Z. I felt that continuing with the team I helped start was critical, so I tasked myself with solely helping the team make the LEDs on the robot better. This is when I discovered NeoPixels. NeoPixels are individually addressable, super bright, RGB LEDs. This means that each &ldquo;pixel,&rdquo; or RGB LED, in a strip of NeoPixels can be controlled independently of the other LEDs to produce bright colorful light (see picture on right). Since Ctrl-Z started using NeoPixels two years ago, each robot has been covered in them to light up the competition field and draw attention to the team. After graduating from high school, I wanted to build one final LED project that would combine all my knowledge I learned from participating on Ctrl-Z. Looking online for LEDs to buy for my final project, I discovered that NeoPixels not only are sold in strips, but also in panels. I ended up purchasing a 16x16 NeoPixel panel to use for my project. Coincidentally, just after ordering the panel, I discovered a project online that used the same panel I ordered. I then knew what I wanted to make: an LED display. The goal of the project was to store patterns and images on a SD card and then transfer the data from the SD card to the LED display.</p>
+<figure><a class="lightgallery" href="/2015/07/05/bluetooth-controlled-led-display/images/prototype.jpg" title="/2015/07/05/bluetooth-controlled-led-display/images/prototype.jpg" data-thumbnail="/2015/07/05/bluetooth-controlled-led-display/images/prototype.jpg" data-sub-html="<h2>Prototype BCLD before final electronics assembly.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2015/07/05/bluetooth-controlled-led-display/images/prototype.jpg"
+            data-srcset="/2015/07/05/bluetooth-controlled-led-display/images/prototype.jpg, /2015/07/05/bluetooth-controlled-led-display/images/prototype.jpg 1.5x, /2015/07/05/bluetooth-controlled-led-display/images/prototype.jpg 2x"
+            data-sizes="auto"
+            alt="/2015/07/05/bluetooth-controlled-led-display/images/prototype.jpg" width="1000" height="667" />
+    </a><figcaption class="image-caption">Prototype BCLD before final electronics assembly.</figcaption>
+    </figure>
+<h2 id="hardware">Hardware</h2>
+<p>The part of the LED display that shows patterns and images is made of 256 NeoPixels arranged in a square grid. A NeoPixel is actually an Adafruit branded name for the WS2812B 5050 RGB LED. Each &ldquo;pixel&rdquo; has a controller chip in the LED housing that controls the output. The advantage of using the WS2812B chip is that only one signal wire is required for programmatic control of any reasonable number of LEDs, leaving other I/O pins available for different things. Adafruit provides a very easy-to-use library to interface with NeoPixels.</p>
+<figure><a class="lightgallery" href="/2015/07/05/bluetooth-controlled-led-display/images/neopixels.jpg" title="/2015/07/05/bluetooth-controlled-led-display/images/neopixels.jpg" data-thumbnail="/2015/07/05/bluetooth-controlled-led-display/images/neopixels.jpg" data-sub-html="<h2>Section of NeoPixels from Adafruit.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2015/07/05/bluetooth-controlled-led-display/images/neopixels.jpg"
+            data-srcset="/2015/07/05/bluetooth-controlled-led-display/images/neopixels.jpg, /2015/07/05/bluetooth-controlled-led-display/images/neopixels.jpg 1.5x, /2015/07/05/bluetooth-controlled-led-display/images/neopixels.jpg 2x"
+            data-sizes="auto"
+            alt="/2015/07/05/bluetooth-controlled-led-display/images/neopixels.jpg" width="1200" height="900" />
+    </a><figcaption class="image-caption">Section of NeoPixels from Adafruit.</figcaption>
+    </figure>
+<p>There are two major drawbacks of the seemingly magical NeoPixel: the memory consumption for a microcontroller scales directly with the number of pixels controlled and while pushing data to the controller chips, software interrupts must be turned off. Each pixel actually contained a red, green, and blue LED, causing the software to store each of the three LED values separately. The Adafruit library packs these color values into one 32-bit unsigned integer. This means that the buffer for 256 NeoPixels is 1024 bytes, or 1 kilobyte, or half of the available 2 kilobytes microcontroller RAM. If there are other memory intensive parts to the program running the NeoPixels, the microcontroller might run out of memory and crash. The other drawback involves the precise timing needed for pushing data to a NeoPixel. An interrupt is a signal emitted to a processor by hardware or software indicating an event that needs immediate attention. These interrupts break the flow of a program, so if an interrupt happened to go off while the NeoPixels were receiving data, it would cause the NeoPixels to receive corrupted data. To prevent this, the Adafruit library turns off interrupts while pushing data to the NeoPixels.</p>
+<p>The microcontroller does not have enough memory to store more than one or two full frames needed to update the NeoPixel matrix. Because the LED display needed the ability to be fully functional with many images, an external memory system was needed. A SD card was chosen for data storage because of its large storage size and ease of use with microcontrollers. The frame data are stored as bytes on a SD card, which is then read into software and pushed to the LED panel.</p>
+<p>All of these individual components require software that takes memory. As noted earlier, the buffer for 256 NeoPixels alone is half of the available RAM on an Arduino Uno. Moreover, the default Arduino library for SD cards is also large; when compiled, it&rsquo;s 13,690 bytes, which is over half of the Uno&rsquo;s RAM. For all of these systems to function properly, more RAM was needed. This led to a significant hardware design for this project: two Arduino microcontrollers communicating with each other via an eight-bit parallel bus. One Arduino controls the SD card reader/writer and the other Arduino controls the actual NeoPixel panel. This keeps the memory requirements within the limits of each Arduino microcontroller.</p>
+<h2 id="software">Software</h2>
+<p><a href="https://github.com/nathanpetersenn/BCLD/tree/master/arduino/BCLD" target="_blank" rel="noopener noreffer">View source code on GitHub &gt;</a></p>
+<p><strong>The crux of the LED display&rsquo;s existence is the parallel bus that links the two Arduinos together. Without fast, error-free communication, the display would be unusable.</strong></p>
+<p>To achieve this type of communication, a unidirectional eight-bit parallel bus is used. This means that there are eight signal wires going between the two Arduinos to pass complete bytes across in one operation. Two more wires are required for relaying the status if the data are received or sent.</p>
+<p>To send one byte, or eight bits, from the SD card Arduino to the LED Arduino, many steps are required. First, the software must understand what a byte actually is. A byte contains eight bits which can either be true or false, like a boolean data type. A byte has a range of 0 to 255. For example, the decimal number 255 can be written in binary as 11111111. The software running on the Arduino takes the binary bits and writes them to the signal wires.</p>
+<p>Using the previous example, if 255 is transmitted, all the signal wires would be set to HIGH by the SD card Arduino. The SD card Arduino then sets the <code>BYTE_READY</code> signal wire to <code>HIGH</code> to signify that the LED Arduino can now read the data. When the LED Arduino detects that the <code>BYTE_READY</code> wire is <code>HIGH</code>, it reads the bits off of the signal wires and constructs the binary number. After it finishes reading the bits, it sets the <code>BYTE_RECEIVED</code> wire <code>HIGH</code>. The SD card Arduino detects this and resets the <code>BYTE_READY</code> bit to <code>LOW</code>. The LED Controller then detects the <code>LOW</code> <code>BYTE_READY</code> and sets the <code>BYTE_RECEIVED</code> back to low. The transmission process is now ready to begin again. The use of the <code>BYTE_RECEIVED</code> and <code>BYTE_READY</code> signal wires allows the Arduinos the ability to perform &ldquo;handshaking&rdquo; to successfully transfer a byte very fast and without errors.</p>
+<p>The first attempt at storing colors involved using 8-bit color. This means that all color data can be packed into one byte, or eight bits. The red values use three bits, the blue values use three bits, and the green values use just two bits. There are both pros and cons to this method: a pro is that only one byte is needed per NeoPixel, leading to faster update rates, while some cons include a color palette that is limited to 256 colors, and the inability to represent gray scale in software. This was not going to satisfy the needs of the project, so a different data storage method was needed.</p>
+<p>The final method for transmitting data from Arduino to Arduino uses four-byte chunks for each NeoPixel. The first byte contains command data about what to do with the following three bytes. The final three bytes store values for each color channel. This allows for 224 different color combinations, or 16.8 million different colors. The use of a separate command byte enables the SD card Arduino to easily instruct the LED Arduino to perform actions like clearing its buffer, pushing data out to the NeoPixel panel, and filling the panel with one color.</p>
+<p>There are several drawbacks that come from the current software architecture. Data for each of the 256 NeoPixels must sent between Arduinos every time the screen updates, so on average it takes approximately 1024 bytes to update the screen. This is rather inefficient, leading to a maximum refresh rate of about seven frames per second.</p>
+<h2 id="summary">Summary</h2>
+<p>The LED display taught me many things, even though it was intended to combine my previous knowledge to form something exciting. I learned about parallel buses and the handshaking methods for successfully transferring data between processors at high speeds. I also learned about color management and the different ways color can be represented in memory.</p>
+<p><strong>If anything, this project has made me much more appreciative of high resolution displays that many people take for granted daily, like televisions and computer monitors.</strong></p>
+<h2 id="future">Future</h2>
+<p>In the future, I plan to continue to work on the LED display. There are many modifications and improvements that would make the LED display even better. I plan on adding bluetooth support and writing a custom Android app so that the SD card can be easily updated from a mobile device. The NeoPixel panel gets very hot at full brightness, so for safety, I plan on adding a fan and temperature sensor so the LED Arduino can constantly monitor the panel temperature and regulate it as needed.</p>
+<p>The communication between Arduinos will also be improved. I plan on modifying the protocol so that the SD card Arduino can tell the LED Arduino which NeoPixels to update. Animations such as a waving hand would benefit greatly from this optimization because only a few pixels update between frames; playback would be much smoother. In the end, I really want the communication to be fast enough so that I can stream a camera feed from the mobile app and have it update in real time on the LED display.</p>
+<h2 id="examples">Examples</h2>
+<figure><a class="lightgallery" href="/2015/07/05/bluetooth-controlled-led-display/images/spongebob.jpg" title="/2015/07/05/bluetooth-controlled-led-display/images/spongebob.jpg" data-thumbnail="/2015/07/05/bluetooth-controlled-led-display/images/spongebob.jpg" data-sub-html="<h2>Spongebob!</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2015/07/05/bluetooth-controlled-led-display/images/spongebob.jpg"
+            data-srcset="/2015/07/05/bluetooth-controlled-led-display/images/spongebob.jpg, /2015/07/05/bluetooth-controlled-led-display/images/spongebob.jpg 1.5x, /2015/07/05/bluetooth-controlled-led-display/images/spongebob.jpg 2x"
+            data-sizes="auto"
+            alt="/2015/07/05/bluetooth-controlled-led-display/images/spongebob.jpg" width="540" height="540" />
+    </a><figcaption class="image-caption">Spongebob!</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2015/07/05/bluetooth-controlled-led-display/images/minion.jpg" title="/2015/07/05/bluetooth-controlled-led-display/images/minion.jpg" data-thumbnail="/2015/07/05/bluetooth-controlled-led-display/images/minion.jpg" data-sub-html="<h2>Minion!</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2015/07/05/bluetooth-controlled-led-display/images/minion.jpg"
+            data-srcset="/2015/07/05/bluetooth-controlled-led-display/images/minion.jpg, /2015/07/05/bluetooth-controlled-led-display/images/minion.jpg 1.5x, /2015/07/05/bluetooth-controlled-led-display/images/minion.jpg 2x"
+            data-sizes="auto"
+            alt="/2015/07/05/bluetooth-controlled-led-display/images/minion.jpg" width="540" height="540" />
+    </a><figcaption class="image-caption">Minion!</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2015/07/05/bluetooth-controlled-led-display/images/design.jpg" title="/2015/07/05/bluetooth-controlled-led-display/images/design.jpg" data-thumbnail="/2015/07/05/bluetooth-controlled-led-display/images/design.jpg" data-sub-html="<h2>Color testing</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2015/07/05/bluetooth-controlled-led-display/images/design.jpg"
+            data-srcset="/2015/07/05/bluetooth-controlled-led-display/images/design.jpg, /2015/07/05/bluetooth-controlled-led-display/images/design.jpg 1.5x, /2015/07/05/bluetooth-controlled-led-display/images/design.jpg 2x"
+            data-sizes="auto"
+            alt="/2015/07/05/bluetooth-controlled-led-display/images/design.jpg" width="540" height="540" />
+    </a><figcaption class="image-caption">Color testing</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2015/07/05/bluetooth-controlled-led-display/images/sunset.jpg" title="/2015/07/05/bluetooth-controlled-led-display/images/sunset.jpg" data-thumbnail="/2015/07/05/bluetooth-controlled-led-display/images/sunset.jpg" data-sub-html="<h2>Sunset!</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2015/07/05/bluetooth-controlled-led-display/images/sunset.jpg"
+            data-srcset="/2015/07/05/bluetooth-controlled-led-display/images/sunset.jpg, /2015/07/05/bluetooth-controlled-led-display/images/sunset.jpg 1.5x, /2015/07/05/bluetooth-controlled-led-display/images/sunset.jpg 2x"
+            data-sizes="auto"
+            alt="/2015/07/05/bluetooth-controlled-led-display/images/sunset.jpg" width="540" height="540" />
+    </a><figcaption class="image-caption">Sunset!</figcaption>
+    </figure>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/" data-title="Bluetooth Controlled LED Display" data-hashtags="firmware,leds,display,4-h,hardware,bluetooth,matrix,arduino,neopixel,ws2812,electronics,laser-cutter,rgb,animations"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/" data-hashtag="firmware"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/" data-title="Bluetooth Controlled LED Display"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/" data-title="Bluetooth Controlled LED Display"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2015/07/05/bluetooth-controlled-led-display/" data-title="Bluetooth Controlled LED Display"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/firmware/">firmware</a>, <a href="/tags/leds/">leds</a>, <a href="/tags/display/">display</a>, <a href="/tags/4-h/">4-h</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/bluetooth/">bluetooth</a>, <a href="/tags/matrix/">matrix</a>, <a href="/tags/arduino/">arduino</a>, <a href="/tags/neopixel/">neopixel</a>, <a href="/tags/ws2812/">ws2812</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/laser-cutter/">laser-cutter</a>, <a href="/tags/rgb/">rgb</a>, <a href="/tags/animations/">animations</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2014/07/16/picasa-photo-gallery-in-php/" class="prev" rel="prev" title="Picasa Photo Gallery in PHP"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Picasa Photo Gallery in PHP</a>
+            <a href="/2016/06/07/live-madison-weather/" class="next" rel="next" title="Live Madison Weather">Live Madison Weather<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

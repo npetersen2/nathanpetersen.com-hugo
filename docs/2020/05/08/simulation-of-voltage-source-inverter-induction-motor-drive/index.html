@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Simulation of Voltage Source Inverter Induction Motor Drive - Nathan Petersen</title><meta name="Description" content="Simulations of the voltage source inverter driving the induction motor using several modulation schemes."><meta property="og:title" content="Simulation of Voltage Source Inverter Induction Motor Drive" />
+<meta property="og:description" content="Simulations of the voltage source inverter driving the induction motor using several modulation schemes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/" />
+<meta property="article:published_time" content="2020-05-08T08:52:00+00:00" />
+<meta property="article:modified_time" content="2020-05-08T08:52:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Simulation of Voltage Source Inverter Induction Motor Drive"/>
+<meta name="twitter:description" content="Simulations of the voltage source inverter driving the induction motor using several modulation schemes."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/" /><link rel="prev" href="https://nathanpetersen.com/2020/04/11/amdc-rev-d-hardware/" /><link rel="next" href="https://nathanpetersen.com/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Simulation of Voltage Source Inverter Induction Motor Drive",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2020\/05\/08\/simulation-of-voltage-source-inverter-induction-motor-drive\/"
+        },"genre": "posts","keywords": "inverter, pwm, motor, school, analysis, simulation","wordcount":  3604 ,
+        "url": "https:\/\/nathanpetersen.com\/2020\/05\/08\/simulation-of-voltage-source-inverter-induction-motor-drive\/","datePublished": "2020-05-08T08:52:00+00:00","dateModified": "2020-05-08T08:52:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Simulations of the voltage source inverter driving the induction motor using several modulation schemes."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">Simulation of Voltage Source Inverter Induction Motor Drive</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="May 8, 2020">May 8, 2020</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3604 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/inverter/">inverter</a>, <a href="/tags/pwm/">pwm</a>, <a href="/tags/motor/">motor</a>, <a href="/tags/school/">school</a>, <a href="/tags/analysis/">analysis</a>, <a href="/tags/simulation/">simulation</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a>
+      <ul>
+        <li><a href="#voltage-source-inverter-vsi">Voltage Source Inverter (VSI)</a></li>
+        <li><a href="#recent-technology-advancements">Recent Technology Advancements</a></li>
+      </ul>
+    </li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#modulation-techniques">Modulation Techniques</a>
+      <ul>
+        <li><a href="#six-step-excitation">Six-Step Excitation</a></li>
+        <li><a href="#sine-triangle-modulation">Sine-Triangle Modulation</a></li>
+        <li><a href="#space-vector-modulation">Space Vector Modulation</a></li>
+      </ul>
+    </li>
+    <li><a href="#simulation">Simulation</a>
+      <ul>
+        <li><a href="#baseline-steady-state-operation">Baseline: Steady-State Operation</a></li>
+        <li><a href="#effects-of-vsi-switching-frequency">Effects of VSI Switching Frequency</a></li>
+        <li><a href="#steady-state-operation-with-various-constant-ko">Steady-State Operation With Various Constant Ko</a></li>
+        <li><a href="#steady-state-operation-with-changing-ko">Steady-State Operation With Changing Ko</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="background">Background</h2>
+<p>The induction machine is one of the oldest AC electro-mechanical power conversion devices <a href="#references" rel="">[1]</a>. In the late 19th century, engineers pioneered the first single-phase induction motor, followed soon by the three-phase variant. Compared with other popular motor types (e.g. DC or synchronous), the induction motor is typically lower cost and has higher reliability. This has pushed the technology to become the dominant player in industrial applications. See Fig. 1a for an example induction motor.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/induction-motor.jpg" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/induction-motor.jpg" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/induction-motor.jpg" data-sub-html="<h2>Fig. 1a: Cutaway view of an induction motor showing the stator windings and rotor iron.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/induction-motor.jpg"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/induction-motor.jpg, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/induction-motor.jpg 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/induction-motor.jpg 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/induction-motor.jpg" width="1000" height="756" />
+    </a><figcaption class="image-caption">Fig. 1a: Cutaway view of an induction motor showing the stator windings and rotor iron.</figcaption>
+    </figure>
+<p>To fully realize the potential of the induction motor at various torque / speed operating points, it must be driven from a variable frequency power source. In the mid to late 20th century, a breakthrough in power electronics was made with the introduction of the transistor. This device enabled efficient, robust, high-frequency power converters to be created. The voltage source inverter (VSI) became the most prevalent foundation for today&rsquo;s variable frequency drives used to control modern induction motors.</p>
+<h3 id="voltage-source-inverter-vsi">Voltage Source Inverter (VSI)</h3>
+<p>The voltage source inverter (VSI) is used to convert between DC and AC power. Fig. 1b shows a VSI connected to an induction machine. For normal motoring operation, power is drawn from the DC input power supply ($ V_{dc} $) and is modulated to AC power on the output phases ($v_{as}$, $v_{bs}$, and $v_{cs}$).</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-im-diagram.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-im-diagram.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-im-diagram.png" data-sub-html="<h2>Fig. 1b: Voltage source inverter (VSI) driving induction motor (IM).</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-im-diagram.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-im-diagram.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-im-diagram.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-im-diagram.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-im-diagram.png" width="1813" height="484" />
+    </a><figcaption class="image-caption">Fig. 1b: Voltage source inverter (VSI) driving induction motor (IM).</figcaption>
+    </figure>
+<p>Internally, the VSI is composed of several components. To provide a stiff voltage source, a DC link capacitor is connected across the DC input. Three half-bridges are connected across the DC link capacitor. Each half-bridge is composed of two power electronic switches. The mid-point of each half-bridge becomes the phase connection for the induction motor. See Fig. 1c for a schematic representation.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-schematic.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-schematic.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-schematic.png" data-sub-html="<h2>Fig. 1c: Schematic diagram of VSI showing DC link capacitor and three half-bridges. The mid-point of the half-bridges connects to the phases of the induction motor.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-schematic.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-schematic.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-schematic.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-schematic.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/vsi-schematic.png" width="1841" height="802" />
+    </a><figcaption class="image-caption">Fig. 1c: Schematic diagram of VSI showing DC link capacitor and three half-bridges. The mid-point of the half-bridges connects to the phases of the induction motor.</figcaption>
+    </figure>
+<h3 id="recent-technology-advancements">Recent Technology Advancements</h3>
+<p>The typical power electronic switch that is used in the VSI is either the insulated gate bipolar transistor (IGBT) or the metal-oxide semiconductor field effect transistor (MOSFET). MOSFETs are usually used for high frequency applications with lower voltage requirements, while IGBTs tend to be used for lower frequency, higher power applications. In recent years, two new promising switch technologies have been introduced: gallium-nitride (GaN) and silicon-carbide (SiC) <a href="#references" rel="">[2]</a>. These devices enable power converters to switch at higher frequencies while maintaining lower switching losses. When the VSI drives the induction motor using higher switching frequencies, the output voltage better approximates the reference and leads to lower current ripple due to the machine inductance acting as a filter. This reduces the losses in the induction motor and reduces torque ripple.</p>
+<h2 id="motivation">Motivation</h2>
+<p>To create steady-state torque which rotates an induction motor, it can be shown that a three-phase balanced set of sinusoidal voltages must be applied to the motor phases, as shown in Fig. 2. These voltages can be expressed as the following, where $V_o$ is the amplitude of the voltage and $\omega_e$ is the electrical frequency.</p>
+<data id="id-1" data-raw></data>
+<p>Alternatively, these voltages can be represented in the complex $dq$ plane where the signals are given as: <data id="id-2" data-raw></data>.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig2.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig2.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig2.png" data-sub-html="<h2>Fig. 2: Ideal sinusoidal voltage excitation for three-phase induction machine.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig2.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig2.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig2.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig2.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig2.png" width="1321" height="620" />
+    </a><figcaption class="image-caption">Fig. 2: Ideal sinusoidal voltage excitation for three-phase induction machine.</figcaption>
+    </figure>
+<h2 id="modulation-techniques">Modulation Techniques</h2>
+<p>The goal of the VSI is to reproduce the waveforms shown in Fig. 2 as accurately as possible. However, because the inverter uses switched-mode operation, only eight discrete voltage states are available at the phase terminals. Typically, duty cycle techniques are employed to create a time averaging effect. On average, the VSI replicates the desired reference waveforms, but at any instance in time, the waveforms are comprised of the eight discrete voltage states.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3a.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3a.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3a.png" data-sub-html="<h2>Fig. 3a: Complex dq plane representation of the eight discrete VSI voltage vectors.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3a.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3a.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3a.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3a.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3a.png" width="1137" height="679" />
+    </a><figcaption class="image-caption">Fig. 3a: Complex dq plane representation of the eight discrete VSI voltage vectors.</figcaption>
+    </figure>
+<h3 id="six-step-excitation">Six-Step Excitation</h3>
+<p>The most simple technique for driving an induction motor using the VSI involves direct use of the six active voltage vectors (1-6) to approximate the reference waveforms. Fig. 3a shows all possible VSI voltage vectors on the complex $dq$ plane. The six-step modulation technique applies each of the active voltage vectors for a portion of time. If each is applied for a $60^\circ$ segment, the fundamental component of the voltage waveform will equal the desired reference waveforms. Fig. 3b shows both the actual phase voltages and the fundamental component for six-step excitation. While simple, six-step operation creates large harmonics in the induction motor current, thus creating torque ripple. Alternative modulation techniques are preferred due to better harmonic properties.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3b.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3b.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3b.png" data-sub-html="<h2>Fig. 3b: Six-step excitation phase voltages and resulting fundamental component.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3b.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3b.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3b.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3b.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig3b.png" width="1317" height="608" />
+    </a><figcaption class="image-caption">Fig. 3b: Six-step excitation phase voltages and resulting fundamental component.</figcaption>
+    </figure>
+<h3 id="sine-triangle-modulation">Sine-Triangle Modulation</h3>
+<p>The sine-triangle modulation approach is shown in Fig. 4 for a single desired reference voltage (e.g. $v_{as}$). To implement this modulation, a high frequency triangle wave, referred to as the carrier wave, is required. The desired voltage reference is scaled by the DC bus voltage and compared to the triangle carrier. The output of this comparison is used for the gating signals to each half-bridge in the VSI.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig4.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig4.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig4.png" data-sub-html="<h2>Fig. 4: The sine-triangle modulation waveforms with voltage reference v(t) = 100 cos(ωt) and Vdc = 240V. The resulting gating signal is shown.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig4.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig4.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig4.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig4.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig4.png" width="1260" height="942" />
+    </a><figcaption class="image-caption">Fig. 4: The sine-triangle modulation waveforms with voltage reference v(t) = 100 cos(ωt) and Vdc = 240V. The resulting gating signal is shown.</figcaption>
+    </figure>
+<p>The advantages of the sine-triangle modulation technique include the ability to generate arbitrary reference waveforms using pulse-width modulation (PWM) and operating with a fixed switching frequency, but limit the induction motor phase voltage magnitude to $\frac{1}{2} V_{dc}$. This limitation occurs because the common-mode voltage on all three phases is fixed at half of $V_{dc}$.</p>
+<h3 id="space-vector-modulation">Space Vector Modulation</h3>
+<p>The space vector modulation (SVM) algorithm can be related to both the six-step and sine-triangle modulation techniques. As extension to six-step operation, SVM adds the concept of duty cycle averaging to achieve average phase voltages which can arbitrarily lie on the complex $dq$ plane within the hexagon (see Fig. 3a), as opposed to the six fixed active voltage vectors <a href="#references" rel="">[3]</a>. SVM achieves this by mixing parts of the active voltage vectors (1-6) along with the zero states (0,7) within each switching interval.</p>
+<p>Alternatively, SVM can be thought of as an extension to the standard sine-triangle modulation <a href="#references" rel="">[4]</a>. For this, a zero-sequence portion is added to each voltage command which depends on the instantaneous voltage references. To control the ratio of time spent in the two zero states (0,7), a parameter $0 \leq k_o \leq 1$ is defined. The final voltage reference is defined as $ v_{abc}^{**} = v_{abc}^* + v_{zs}^* $ where</p>
+<p>
+<section class="narrow-eq">
+$$
+v_{zs}^* = -[(1 - 2 k_o) + k_o v^*_{max} +
+$$</p>
+<p>$$
+(1 - k_o) v^*_{min}]
+$$
+
+</section></p>
+<p>
+<section class="wide-eq">
+$$
+v_{zs}^* = -[(1 - 2 k_o) + k_o v^*_{max} + (1 - k_o) v^*_{min}]
+$$
+
+</section></p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig5.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig5.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig5.png" data-sub-html="<h2>Fig. 5: Space vector modulation implemented as zero-sequence injection.Plot shown for Ko = 0.5.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig5.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig5.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig5.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig5.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig5.png" width="1263" height="950" />
+    </a><figcaption class="image-caption">Fig. 5: Space vector modulation implemented as zero-sequence injection.<!-- raw HTML omitted -->Plot shown for Ko = 0.5.</figcaption>
+    </figure>
+<p>Fig. 5 shows the voltage references for the VSI when using SVM and generating the same voltage references as in Fig. 2. The zero-sequence component is shown in black. By adding this component to each phase voltage, the common-mode voltage does not appear on the induction motor, but acts to extend the usable DC bus voltage to about 15% more than with no zero-sequence injection.</p>
+<h2 id="simulation">Simulation</h2>
+<p>The induction machine can be modeled as a coupled set of non-linear differential equations. Typically, complex variables are used to represent the electrical quantities (encapsulating vector magnitude and phase information). When the mechanical system is included, the induction motor becomes a non-linear fifth order system.</p>
+<p>The electrical quantities can be viewed from various reference frames, with common choices representing the stationary, rotor, or synchronous reference frames. The following equations model the stator and the rotor of the induction machine in the arbitrary reference frame, as well as the dynamics of the mechanical system. The coupling between the electrical and mechanical systems occurs due to the developed torque, which can be represented as the right hand side of the last equation. Together, these three equations model the entire induction machine dynamics.</p>
+
+<section class="narrow-eq">
+<data id="id-3" data-raw></data>
+<p>$$
+\frac{3}{2} \frac{P}{2} L_m \mathbb{I}m{ \bar{i}<em>{qds}^s  \bar{i}</em>{qdr}^{s*}}
+$$</p>
+
+</section>
+
+<section class="wide-eq">
+<data id="id-4" data-raw></data>
+
+</section>
+<p>In the above equations, $r_s$ and $r_r$ are the stator and rotor resistances, $L_s = L_m + L_{ls}$ is the total stator inductance, $L_r = L_m + L_{lr}$ is the total rotor inductance,  $L_m$ is the magnetizing inductance, $p = \frac{d}{dt}$ denotes the differentiation operator, $\omega$ is the arbitrary reference frame, $\omega_r$ is the rotor electrical speed, $\omega_m$ is the rotor mechanical speed, $P$ is the number of machine poles, and $J$ is the mechanical rotary inertia.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig6.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig6.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig6.png" data-sub-html="<h2>Fig. 6: Open-loop simulation diagram of the induction motor driven by the space vector modulated VSI, connected to a mechanical load.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig6.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig6.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig6.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig6.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig6.png" width="1488" height="672" />
+    </a><figcaption class="image-caption">Fig. 6: Open-loop simulation diagram of the induction motor driven by the space vector modulated VSI, connected to a mechanical load.</figcaption>
+    </figure>
+<p>The choice of $\omega$ determines the reference frame; in this analysis, the synchronous frame is used such that $\omega = \omega_e$. For the simulation results that will be presented and discussed below, the following table summarizes the induction motor parameters. Fig. 6 shows the simulation block diagram that will be used. The inverter switching frequency $f_{sw}$ and zero state allocation scheme $k_o$ will be investigated.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$V_{rated}$</td>
+<td>460</td>
+<td>$V_{rms,l-l}$</td>
+</tr>
+<tr>
+<td>$P_{rated}$</td>
+<td>20</td>
+<td>hp</td>
+</tr>
+<tr>
+<td>$f_{rated}$</td>
+<td>60</td>
+<td>Hz</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>4</td>
+<td>poles</td>
+</tr>
+<tr>
+<td>$Z_B$</td>
+<td>14.20</td>
+<td>$\Omega$</td>
+</tr>
+<tr>
+<td>$V_B$</td>
+<td>376</td>
+<td>$V_{pk}$</td>
+</tr>
+<tr>
+<td>$I_B$</td>
+<td>26.5</td>
+<td>$A_{pk}$</td>
+</tr>
+<tr>
+<td>$T_B$</td>
+<td>79.16</td>
+<td>N-m</td>
+</tr>
+<tr>
+<td>$r_s = r_r$</td>
+<td>0.355</td>
+<td>$\Omega$</td>
+</tr>
+<tr>
+<td>$x_{ls} = x_{lr}$</td>
+<td>1.42</td>
+<td>$\Omega$</td>
+</tr>
+<tr>
+<td>$x_m$</td>
+<td>34.1</td>
+<td>$\Omega$</td>
+</tr>
+<tr>
+<td>$M$</td>
+<td>1.4</td>
+<td>sec</td>
+</tr>
+<tr>
+<td>$s_{rated}$</td>
+<td>0.03135</td>
+<td>&ndash;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="baseline-steady-state-operation">Baseline: Steady-State Operation</h3>
+<p>The first condition of interest is the baseline steady-state operation, where the induction machine falls into a stable operating point depending on the values of the resulting speed and torque. A constant load of 50% rated torque is applied. For this simulation, the inverter is operating at a fixed switching frequency of $f_{sw}$ = 3kHz at a DC voltage of 650V. Space vector modulation is used with the modulation index $M_i = 0.9$ and $k_o = 0.5$. Note that the ratio of the switching frequency to the fundamental is 50.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7a.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7a.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7a.png" data-sub-html="<h2>Fig. 7a: Simulated steady-state time domain waveforms for Fsw = 3kHz, Ko = 0.5.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7a.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7a.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7a.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7a.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7a.png" width="1009" height="821" />
+    </a><figcaption class="image-caption">Fig. 7a: Simulated steady-state time domain waveforms for Fsw = 3kHz, Ko = 0.5.</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7b.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7b.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7b.png" data-sub-html="<h2>Fig. 7b: Frequency content of waveforms from Fig. 7a.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7b.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7b.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7b.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7b.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig7b.png" width="1004" height="824" />
+    </a><figcaption class="image-caption">Fig. 7b: Frequency content of waveforms from Fig. 7a.</figcaption>
+    </figure>
+<p>Fig. 7 shows the resulting waveforms from the simulation, with Fig. 7a showing the time domain waveforms and Fig. 7b showing the frequency content of the waveforms. In the time domain, the PWM nature of the applied phase voltage is obvious, but the resulting phase current is very smooth and sinusoidal due to the filtering effects of the motor inductance. The resulting torque has a DC component, but nearly 10% ripple. The resulting speed is approximately constant at 1755 RPM. To verify the steady-state simulation results, we can analyze the induction machine as its Thévenin equivalent circuit, where the equivalent  complex impedance is given by</p>
+<p>
+<section class="narrow-eq">
+$$
+Z_{th} = r_s + x_{ls} +
+$$</p>
+<p>$$
+\frac{x_m (x_{lr} + r_r/s)}{x_m + x_{lr} + r_r/s}
+$$
+
+</section></p>
+
+<section class="wide-eq">
+<p>$$
+Z_{th} = r_s + x_{ls} + \frac{x_m (x_{lr} + r_r/s)}{x_m + x_{lr} + r_r/s}
+$$</p>
+
+</section>
+<p>The critical or break frequency of an RL circuit is given by $f_c = R / (2 \pi L)$. Using $Z_{th}$ for the simulated induction machine, this results in $f_c$ = 101Hz. Because the phase voltage excitation PWM is at 3kHz, this is nearly 30x greater than the break frequency of the machine, so the nearly smooth current is reasonable.</p>
+<h3 id="effects-of-vsi-switching-frequency">Effects of VSI Switching Frequency</h3>
+<p>The switching frequency of the VSI plays a major role in the resulting ripple on the current and torque waveforms. Fig. 8 shows the simulated waveforms for different VSI switching frequencies. Fig. 8a and Fig. 8b show the resulting waveforms when $f_{sw}$ = 2kHz (20x machine break frequency) and $f_{sw}$ = 10kHz (100x machine break frequency), respectively. Notice that at large $f_{sw}$, the harmonic content of the waveforms is shifted to higher frequencies such that the signal energy near the fundamental is reduced. This results in cleaner current and torque time domain waveforms with less ripple. By increasing $f_{sw}$, harmonic losses in the induction motor are reduced, while inverter switching losses are increased. Full system applications must make an engineering trade-off between the machine and inverter losses.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig8.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig8.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig8.png" data-sub-html="<h2>Fig. 8: (a) Simulated VSI operation at various Fsw. (a) Fsw = 2kHz (b) Fsw = 10kHz.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig8.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig8.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig8.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig8.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig8.png" width="1523" height="898" />
+    </a><figcaption class="image-caption">Fig. 8: (a) Simulated VSI operation at various Fsw. (a) Fsw = 2kHz (b) Fsw = 10kHz.</figcaption>
+    </figure>
+<p>To characterize the improvement from increasing the switching frequency, various metrics can be analyzed. In this analysis, the phase current ripple is analyzed. The expected phase current is ideally sinusoidal, but due to the PWM VSI, current ripple increases as $f_{sw}$ decreases. The _total harmonic distortion_ (THD) of a sinusoidal waveform can be calculated as the following, where $x_1$ denotes the magnitude of the fundamental component, $x_2$ is the magnitude of the second harmonic, etc. This provides a metric for the amount of energy present in the waveform not at the fundamental frequency.</p>
+<p>$$
+\mathrm{THD} = \frac{\sqrt{x_2^2 + x_3^2 + x_4^2 + &hellip;}}{x_1}
+$$</p>
+<p>To relate the VSI switching frequency to the THD of the phase voltage and current, multiple simulations were run for various $f_{sw}$. Fig. 9 shows the simulation results: when $f_{sw}$ = 1kHz (10x break frequency) and $f_{sw}$ = 10kHz (100x break frequency), the THD of the current waveform is 13% and 1.2%, respectively, showing an inverse logarithmic relationship between $f_{sw}$ and current THD. However, the voltage kept its high THD across $f_{sw}$.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig9.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig9.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig9.png" data-sub-html="<h2>Fig. 9: Simulated voltage and current total harmonic distortion (first 800 harmonics) for various VSI switching frequencies.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig9.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig9.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig9.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig9.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig9.png" width="749" height="586" />
+    </a><figcaption class="image-caption">Fig. 9: Simulated voltage and current total harmonic distortion (first 800 harmonics) for various VSI switching frequencies.</figcaption>
+    </figure>
+<h3 id="steady-state-operation-with-various-constant-ko">Steady-State Operation With Various Constant Ko</h3>
+<p>The previous simulation results used a fixed value of $k_o = 0.5$. This partitions the zero voltage vector states evenly between vector 0 and 7 (see Fig. 3a for voltage vector definitions). By changing $k_o$, the ratio of the zero states is adjusted. This section of the analysis investigates the effects of setting $k_o$ to a constant value not equal to 0.5. A range of 0.2 to 0.8 is investigated. For example, when $k_o$ = 0.2, voltage vector 7 is used for 80% of the zero state, and the remaining 20% is spent in voltage vector 0. The theoretical time-averaged voltage in a single PWM cycle is the same, but it is achieved using different VSI switch combinations.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig10.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig10.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig10.png" data-sub-html="<h2>Fig. 10: Simulated VSI operation at Fsw = 2kHz and various Ko. (b) Ko = 0.2 (a) Ko = 0.35.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig10.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig10.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig10.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig10.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig10.png" width="1496" height="894" />
+    </a><figcaption class="image-caption">Fig. 10: Simulated VSI operation at Fsw = 2kHz and various Ko. (b) Ko = 0.2 (a) Ko = 0.35.</figcaption>
+    </figure>
+<p>Fig. 10 shows simulation results for two values of $k_o$ = 0.2 and 0.35 ($f_{sw}$ = 2kHz). The current waveforms roughly match Fig. 8a, the equivalent scenario but with $k_o$ = 0.5. However, the torque waveform has much more ripple and harmonics than previously. When $k_o$ = 0.35, the torque waveform reduces its harmonics, but adds other high frequency content. The effects on the torque waveform occur due to the interactions between the three phase currents in the synchronous reference frame.</p>
+<p>Furthermore, by setting $k_o \neq 0.5$, the frequency content of the waveforms is spread and shifted. In Fig. 10a, the frequencies between the fundamental and PWM carrier has significantly more energy than in Fig. 8a. By setting $k_o$ = 0.5, this spread of energy is reduced.</p>
+<p>To further investigate the effects of $k_o$ on the induction motor drive, the full range of $k_o$ = 0.2 to 0.8 is simulated. The total harmonic distortion (THD) of the resulting voltage and current waveforms is calculated and presented in Fig. 11. At $k_o$ = 0.5, both the phase voltage and current have a minimum in THD. As $k_o$ is brought away from its nominal value of 0.5, the THD of both the voltage and current increases. This leads to the conclusion that, for fixed $k_o$, the least THD in voltage and current is achieved at $k_o$ = 0.5.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig11.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig11.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig11.png" data-sub-html="<h2>Fig. 11: Simulated voltage and current total harmonic distortion (first 800 harmonics) for various VSI zero state ratios.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig11.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig11.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig11.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig11.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig11.png" width="719" height="576" />
+    </a><figcaption class="image-caption">Fig. 11: Simulated voltage and current total harmonic distortion (first 800 harmonics) for various VSI zero state ratios.</figcaption>
+    </figure>
+<h3 id="steady-state-operation-with-changing-ko">Steady-State Operation With Changing Ko</h3>
+<p>Per the previous section, the optimal constant $k_o$ value is 0.5; this reduces THD in both voltage and current waveforms to the minimum value. However, by dynamically changing $k_o$, a further reduction in THD is possible.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig12.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig12.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig12.png" data-sub-html="<h2>Fig. 12: Simulated waveforms when Ko jumps between 0.2 and 0.8 per PWM cycle.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig12.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig12.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig12.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig12.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig12.png" width="785" height="717" />
+    </a><figcaption class="image-caption">Fig. 12: Simulated waveforms when Ko jumps between 0.2 and 0.8 per PWM cycle.</figcaption>
+    </figure>
+<p>Fig. 12 presents the flow of signals inside the SVM VSI. The input voltage reference $v_{as}^*$ is summed with the zero-sequence voltage $v_{zs}^*$ (based off of the present $k_o$ value) to form the final voltage command $v_{as}^{**}$. This voltage reference is then modulated with the PWM triangle carrier to form the voltage applied to the induction motor $v_{as}$. Notice that the waveform for $k_o$ is not constant; each PWM cycle, it jumps between a minimum and maximum value for 50% of the time. If the minimum and maximum values for $k_o$ are both 0.5, this approach simplifies to the results from the previous section. However, by changing the min and max $k_o$ values, the harmonic performance is changed.</p>
+<figure><a class="lightgallery" href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig13.png" title="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig13.png" data-thumbnail="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig13.png" data-sub-html="<h2>Fig. 13: THD map of both phase voltage and current (Fsw = 3kHz) when Ko is dynamically changed half-way between PWM cycles. Ko values are swept across a range of 0.5 ± 0.3.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig13.png"
+            data-srcset="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig13.png, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig13.png 1.5x, /2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig13.png 2x"
+            data-sizes="auto"
+            alt="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/images/fig13.png" width="701" height="549" />
+    </a><figcaption class="image-caption">Fig. 13: THD map of both phase voltage and current (Fsw = 3kHz) when Ko is dynamically changed half-way between PWM cycles. Ko values are swept across a range of 0.5 ± 0.3.</figcaption>
+    </figure>
+<p>Fig. 13 shows the results of 169 simulations, one for each box in the map. In each simulation, $f_{sw}$ is held constant at 3kHz, but the min and max values for $k_o$ are changed. The THD is calculated for both the phase voltage and current, and expressed as a percent corresponding to a color. The previous section results for $k_o$ = 0.5 is found in the lower right-hand box, resulting in a current THD of about 7%. Following a line diagonal from the bottom right to the top left results in the THD values for when the min and max $k_o$ is symmetrical around the nominal 0.5 value, while off-diagonal boxes are asymmetrical. By alternating between symmetrical values of $k_o$, the THD of both the voltage and current waveforms is reduced. At $k_o$ = 0.2 and 0.8, the current THD is 61% of the nominal baseline ($k_o$ = 0.5).</p>
+<h2 id="summary">Summary</h2>
+<p>This study analyzed the induction motor when driven by the voltage source inverter. Several modulation techniques were presented and related to each other. The space vector modulation technique was shown to have superior performance by extending the phase voltage range to 15% more than the sine-triangle modulation technique.</p>
+<p>The induction motor was simulated using several configurations of the SVM VSI. Analysis of PWM switching frequency and zero voltage vector placement was performed. Results were compared in the time and frequency domain. Total harmonic distortion was used as the metric for evaluating the performance of the inverter configuration. It was found that higher switching frequencies result in less THD, along with dynamically changing zero voltage vector placements.</p>
+<p>Future work may investigate changing the load of the induction motor and the dynamic effects of the modulation techniques. For example, using real-world drive sequences can help the application engineer determine optimal values for $f_{sw}$ and $k_o$ depending on system level requirements.</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Course Project<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>This analysis was performed during Spring 2020 for University of Wisconsin-Madison course ECE 711: Dynamics and Control of AC Drives.</p>
+<p><a href="/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/pdfs/ECE711ProjectNathanPetersen.pdf" rel="">Read the full paper&hellip;</a>.</p>
+</div>
+        </div>
+    </div>
+<h2 id="references">References</h2>
+<ol>
+<li>
+<p>B. G. Lamme, &ldquo;The story of the induction motor,&rdquo; Journal of the American Institute of Electrical Engineers, vol. 40, no. 3, pp. 203–223, March 1921.</p>
+</li>
+<li>
+<p>J. Millan, P. Godignon, X. Perpina, A. Perez-Tomas, and J. Rebollo, &ldquo;A survey of wide bandgap power semiconductor devices,&rdquo; IEEE Transactions on Power Electronics, vol. 29, no. 5, pp. 2155–2163, 2014.</p>
+</li>
+<li>
+<p>H. W. van der Broeck, H. . Skudelny, and G. V. Stanke, &ldquo;Analysis and realization of a pulsewidth modulator based on voltage space vectors,&rdquo; IEEE Transactions on Industry Applications, vol. 24, no. 1, pp. 142–150, 1988.</p>
+</li>
+<li>
+<p>V. Blasko, &ldquo;A hybrid pwm strategy combining modified space vector and triangle comparison methods,&rdquo; in PESC Record. 27th Annual IEEE Power Electronics Specialists Conference, vol. 2, June 1996, pp. 1872–1878 vol.2.</p>
+</li>
+</ol>
+<hr>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+<style>
+
+section.narrow-eq br,
+section.wide-eq br {
+  display: none;
+}
+
+@media all and (max-width:767px) {
+  section.wide-eq {
+    display: none;
+  }
+}
+
+@media all and (min-width:768px) {
+  section.narrow-eq {
+    display: none;
+  }
+}
+  
+</style>
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/" data-title="Simulation of Voltage Source Inverter Induction Motor Drive" data-hashtags="inverter,pwm,motor,school,analysis,simulation"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/" data-hashtag="inverter"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/" data-title="Simulation of Voltage Source Inverter Induction Motor Drive"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/" data-title="Simulation of Voltage Source Inverter Induction Motor Drive"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2020/05/08/simulation-of-voltage-source-inverter-induction-motor-drive/" data-title="Simulation of Voltage Source Inverter Induction Motor Drive"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/inverter/">inverter</a>, <a href="/tags/pwm/">pwm</a>, <a href="/tags/motor/">motor</a>, <a href="/tags/school/">school</a>, <a href="/tags/analysis/">analysis</a>, <a href="/tags/simulation/">simulation</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2020/04/11/amdc-rev-d-hardware/" class="prev" rel="prev" title="AMDC REV D Hardware"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>AMDC REV D Hardware</a>
+            <a href="/2020/07/17/designing-a-firmware-driver-for-serially-addressable-leds-for-xilinx-zynq-7000/" class="next" rel="next" title="Designing a Firmware Driver for Serially-Addressable LEDs for Xilinx Zynq-7000">Designing a Firmware Driver for Serially-Addressable LEDs for Xilinx Zynq-7000<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"\r\n$$\r\n\\begin{bmatrix}\r\nv_{as} \\\\\r\nv_{bs} \\\\\r\nv_{cs} \\\\\r\n\\end{bmatrix} = V_o \\begin{bmatrix}\r\n\\cos(\\omega_e t + \\frac{0\\pi}{3}) \\\\\r\n\\cos(\\omega_e t + \\frac{2\\pi}{3}) \\\\\r\n\\cos(\\omega_e t + \\frac{4\\pi}{3}) \\\\\r\n\\end{bmatrix}\r\n$$\r\n","id-2":"$\\bar{v}_{qd}^s = v_q^s - j v_d^s$ and $\\bar{v}_{qd}^s = V_o e^{j \\omega_e t}$","id-3":"\r\n$$\r\n\\bar{v}_{qds} = r_s \\bar{i}_{qds}\r\n$$\r\n\r\n$$\r\n+ L_s (p + j \\omega) \\bar{i}_{qds}\r\n$$\r\n\r\n$$\r\n+ L_m (p + j \\omega) \\bar{i}_{qdr}\r\n$$\r\n\r\n$$\r\n\\bar{v}_{qdr} = r_r \\bar{i}_{qdr}\r\n$$\r\n\r\n$$\r\n+ L_r [p + j (\\omega - \\omega_r)] \\bar{i}_{qdr}\r\n$$\r\n\r\n$$\r\n+ L_m [p + j (\\omega - \\omega_r)] \\bar{i}_{qds}\r\n$$\r\n\r\n$$\r\nJ \\frac{d\\omega_m}{dt} + T_L =\r\n$$\r\n","id-4":"\r\n$$\r\n\\bar{v}_{qds} = r_s \\bar{i}_{qds} + L_s (p + j \\omega) \\bar{i}_{qds} +L_m (p + j \\omega) \\bar{i}_{qdr}\r\n$$\r\n\r\n$$\r\n\\bar{v}_{qdr} = r_r \\bar{i}_{qdr} + L_r [p + j (\\omega - \\omega_r)] \\bar{i}_{qdr} + L_m [p + j (\\omega - \\omega_r)] \\bar{i}_{qds}\r\n$$\r\n\r\n$$\r\nJ \\frac{d\\omega_m}{dt} + T_L = \\frac{3}{2} \\frac{P}{2} L_m \\mathbb{I}m\\{ \\bar{i}_{qds}^s  \\bar{i}_{qdr}^{s*}\\}\r\n$$\r\n"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>AMDC: Advanced Motor Drive Controller - Nathan Petersen</title><meta name="Description" content="Complex schematic and PCB design for college Independent Study."><meta property="og:title" content="AMDC: Advanced Motor Drive Controller" />
+<meta property="og:description" content="Complex schematic and PCB design for college Independent Study." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/" />
+<meta property="article:published_time" content="2018-09-05T09:45:00+00:00" />
+<meta property="article:modified_time" content="2018-09-05T09:45:00+00:00" /><meta property="og:site_name" content="Nathan Petersen&#39;s Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AMDC: Advanced Motor Drive Controller"/>
+<meta name="twitter:description" content="Complex schematic and PCB design for college Independent Study."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
+<link rel="manifest" href="/site.webmanifest?v=1">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=1">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="canonical" href="https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/" /><link rel="prev" href="https://nathanpetersen.com/2018/09/05/1-pcbs-from-seeed-studio/" /><link rel="next" href="https://nathanpetersen.com/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8888Z2VZN"></script>
+<script>
+
+
+if (document.location.hostname.search("nathanpetersen.com") !== -1) {
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    
+    
+    
+    gtag('config', 'G-R8888Z2VZN', { 'anonymize_ip': true });
+}
+
+</script><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "AMDC: Advanced Motor Drive Controller",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nathanpetersen.com\/2018\/09\/05\/amdc-advanced-motor-drive-controller\/"
+        },"genre": "posts","keywords": "analog, fpga, xilinx, zynq-7000, amdc, design, electronics, hardware, pcb, usb, mcu, altium, inverter, pwm, motor, school, encoder","wordcount":  2786 ,
+        "url": "https:\/\/nathanpetersen.com\/2018\/09\/05\/amdc-advanced-motor-drive-controller\/","datePublished": "2018-09-05T09:45:00+00:00","dateModified": "2018-09-05T09:45:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nathan Petersen"
+            },"description": "Complex schematic and PCB design for college Independent Study."
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span><span>Nathan Petersen</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/photography/"> Photography </a><a class="menu-item" href="/contact/"> Contact </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nathan Petersen"><span class="logo-light" style="display:inline;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n.svg"
+        data-srcset="/images/n.svg, /images/n.svg 1.5x, /images/n.svg 2x"
+        data-sizes="auto"
+        alt="/images/n.svg"
+        title="/images/n.svg" /></span><span class="logo-dark" style="display:none;"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/n-dark.svg"
+        data-srcset="/images/n-dark.svg, /images/n-dark.svg 1.5x, /images/n-dark.svg 2x"
+        data-sizes="auto"
+        alt="/images/n-dark.svg"
+        title="/images/n-dark.svg" /></span>Nathan Petersen</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/photography/" title="">Photography</a><a class="menu-item" href="/contact/" title="">Contact</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title">AMDC: Advanced Motor Drive Controller</h1><div class="post-meta">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="September 5, 2018">September 5, 2018</time><span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2786 words<span>&nbsp;&nbsp;&middot;&nbsp;</span>
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes</div>
+            <div class="post-meta-line"><span class="post-category">
+                        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                        <a href="/categories/projects/"></i>Projects</a></span><span>&nbsp;&nbsp;&middot;&nbsp;</span><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/analog/">analog</a>, <a href="/tags/fpga/">fpga</a>, <a href="/tags/xilinx/">xilinx</a>, <a href="/tags/zynq-7000/">zynq-7000</a>, <a href="/tags/amdc/">amdc</a>, <a href="/tags/design/">design</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/usb/">usb</a>, <a href="/tags/mcu/">mcu</a>, <a href="/tags/altium/">altium</a>, <a href="/tags/inverter/">inverter</a>, <a href="/tags/pwm/">pwm</a>, <a href="/tags/motor/">motor</a>, <a href="/tags/school/">school</a>, <a href="/tags/encoder/">encoder</a></div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#project-development">Project Development</a>
+      <ul>
+        <li><a href="#circuit-schematic">Circuit Schematic</a></li>
+        <li><a href="#board-layout">Board Layout</a></li>
+      </ul>
+    </li>
+    <li><a href="#schematic-analysis">Schematic Analysis</a>
+      <ul>
+        <li><a href="#picozed-som">PicoZed SoM</a></li>
+        <li><a href="#picozed-interface">PicoZed Interface</a></li>
+        <li><a href="#board-io">Board I/O</a></li>
+        <li><a href="#jtag">JTAG</a></li>
+        <li><a href="#ethernet">Ethernet</a></li>
+        <li><a href="#usb-otg">USB OTG</a></li>
+        <li><a href="#usb-uart">USB UART</a></li>
+        <li><a href="#gpio">GPIO</a></li>
+        <li><a href="#analog-inputs">Analog Inputs</a></li>
+        <li><a href="#drive-outputs">Drive Outputs</a></li>
+        <li><a href="#encoder">Encoder</a></li>
+        <li><a href="#power">Power</a></li>
+      </ul>
+    </li>
+    <li><a href="#pcb-analysis">PCB Analysis</a>
+      <ul>
+        <li><a href="#fun-altium-features">Fun Altium Features</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="background">Background</h2>
+<p>My involvement in this project, the <em>Advanced Motor Drive Controller (AMDC)</em>, happened because of my undergraduate Independent Study project done at <a href="https://www.wisc.edu" target="_blank" rel="noopener noreffer">UW-Madison</a> during Spring 2018, advised by <a href="https://severson.wempec.wisc.edu/" target="_blank" rel="noopener noreffer">Prof. Eric Severson</a> and affiliated with <a href="https://wempec.wisc.edu" target="_blank" rel="noopener noreffer">WEMPEC</a>.</p>
+<p><em>How did I get this opportunity?</em> Eric, a relatively new professor, was looking for interested students to work on his projects. My name was recommended to him by other professors, so he reached out to me and I accepted the offer.</p>
+<p>Eric Severson is a professor at UW-Madison and leads the <a href="https://severson.wempec.wisc.edu/" target="_blank" rel="noopener noreffer">Severson Research Group</a>. His research group is a part of the Wisconsin Electric Machines &amp; Power Electronics Consortium (<a href="https://wempec.wisc.edu" target="_blank" rel="noopener noreffer">WEMPEC</a>).</p>
+
+
+<div style="width:200px;">
+
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/WEMPEC-logo-LG-red.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/WEMPEC-logo-LG-red.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/WEMPEC-logo-LG-red.jpg" data-sub-html="<h2>WEMPEC logo</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/WEMPEC-logo-LG-red.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/WEMPEC-logo-LG-red.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/WEMPEC-logo-LG-red.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/WEMPEC-logo-LG-red.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/WEMPEC-logo-LG-red.jpg" width="200" height="358" />
+    </a><figcaption class="image-caption">WEMPEC logo</figcaption>
+    </figure>
+
+
+</div>
+
+<p>When I started the semester-long project, I had very little previous experience doing what was required of me; I had only done one previous <a href="/2018/05/15/razzler-pov-led-top/" rel="">related project</a>. While this previous project taught me a lot, I still had very little experience. Eric informed me that he expected a few iterations of the board design before arriving at the final product.</p>
+<p><strong>I viewed the project as a challenge and felt blessed that Eric took a chance on me to do the design work.</strong></p>
+<h2 id="description">Description</h2>
+<p>AMDC is a platform which provides relevant interfaces that can be used to control power electronics. Physically, the AMDC hardware is a PCB that serves as a carrier card for a <a href="http://zedboard.org/product/picozed" target="_blank" rel="noopener noreffer">PicoZed SoM</a>.</p>
+<p>The provided interfaces include:</p>
+<ul>
+<li>48 digital output channels (able to provide PWM signals for 8 three phase, two level inverters)</li>
+<li>32 digital status lines for monitoring the inverters</li>
+<li>16 analog input channels (+/- 10V differential input)</li>
+<li>24 general purpose I/O</li>
+<li>Quadrature encoder input</li>
+</ul>
+<p>The hardware design for AMDC is completely open-source, with all design files and analysis available on GitHub: <a href="https://github.com/Severson-Group/AMDC-Hardware" target="_blank" rel="noopener noreffer">Checkout the repository&hellip;</a></p>
+<p>I created a PDF report about the project as well: <a href="/2018/09/05/amdc-advanced-motor-drive-controller/pdfs/AMDC_Report.pdf" rel="">Read the report&hellip;</a></p>
+<h2 id="project-development">Project Development</h2>
+<p>Prior to this Independent Study, I had no experience designing analog systems, no experience with Altium Designer, had never done a big board layout, and in general, had never done such a complex project. In order to make this project work, I needed a way to quickly get up-to-speed on the essentials.</p>
+<p>Throughout the semester, I worked with Eric and others to create the schematics that would become AMDC. After finalizing the schematic design, I designed the first PCB version for manufacturing. Outlined below are the general steps to the design process that I followed.</p>
+<p><a href="https://github.com/Severson-Group/AMDC-Hardware/raw/develop/REV20180525A/AMDC_sch.pdf" target="_blank" rel="noopener noreffer">Download PDF of entire AMDC schematics&hellip;</a></p>
+<h3 id="circuit-schematic">Circuit Schematic</h3>
+<p>I used a four-step plan to design the circuit schematic:</p>
+<h4 id="1-high-level-description-of-board-functionality">1. High-Level Description of Board Functionality</h4>
+<p>To start the project, Eric provided a set of requirements that the board needed to satisfy. A previous board existed with similar functionality, so he pointed me to the schematics for comparison. The board I was designing was basically an upgrade to the previous board (built upon a newer architecture, more functionality, etc).</p>
+<h4 id="2-generic-schematic-design">2. Generic Schematic Design</h4>
+<p>At this point, I generically knew the different systems that needed to be included in the design. I started to model everything via schematics in Altium. I didn&rsquo;t pick precise part numbers for everything and didn&rsquo;t model footprints or 3-D packages.</p>
+<p>The output of this phase was intended to be semi-accurate schematics to discuss and verify correct design direction.</p>
+<h4 id="3-part-search">3. Part Search</h4>
+<p>After drawing up generic schematics, I transitioned to modeling real components that I could purchase and use. I modeled footprints, checked availability, and started doing cost comparisons.</p>
+<h4 id="4-schematic-approval">4. Schematic Approval</h4>
+<p>Now, I had a full schematic that was ready to approve. This was the nitty-gritty part of the design; we needed to make sure every aspect of the schematic checked out before starting PCB layout. I didn&rsquo;t want to do the layout just to realize the schematic was wrong and have to start over!</p>
+<p>In the <a href="#schematic-analysis" rel="">Schematic Analysis</a> portion of this article, I discuss the final schematic in detail.</p>
+<h3 id="board-layout">Board Layout</h3>
+<p>For me, designing the schematic was much harder than laying out the board because I actually needed to understand the electrical properties of all the system modules. Once I had the schematic, though, doing the layout wasn&rsquo;t as challenging; I just needed a reasonable layout that satisfied the Design Rule Check and made sense.</p>
+<p>With over 25 pages of schematics and hundreds of components to place and route, I needed a step-by-step plan on how to do the layout:</p>
+<ol>
+<li>Define board size, layer stackup, design rules</li>
+<li>Define board regions for the different modules</li>
+<li>Place connectors/interface components</li>
+<li>Place rest of parts</li>
+<li>Route high speed signals (Ethernet, USB, etc)</li>
+<li>Route delicate analog signals</li>
+<li>Route the rest of signals</li>
+<li>Create power plane for solid power delivery to all regions of board</li>
+<li>Position silkscreen text for labeling jumpers, connectors, etc</li>
+<li>Clean up board, optimize copper pours, etc</li>
+</ol>
+<p>All in all, I designed the whole PCB in just 14 days, spending about 6 hours a day on it for a total of around ~60 hours. I don&rsquo;t recommend doing it in such a short time frame. :(</p>
+<p><a href="https://github.com/Severson-Group/AMDC-Hardware/raw/develop/REV20180525A/AMDC_brd.pdf" target="_blank" rel="noopener noreffer">Download PDF of board layout&hellip;</a></p>
+<h2 id="schematic-analysis">Schematic Analysis</h2>
+<p>The AMDC schematics can be a bit daunting to understand at first because of the sheer number of pages and systems. I will explain each module in the following section.</p>
+<p>As I drew up the schematics, I kept adding more and more sheets for many different modules. The design was naturally hierarchical in organization, so I utilized that structural ability within Altium.</p>
+<p>Because of this, designing everything was very modular and much easier to understand; there were no global signal lines spanning across 28 sheets of schematics to track. I really wish my personal EDA tool, Eagle, supported this hierarchical schematic ordering&hellip;</p>
+<h3 id="picozed-som">PicoZed SoM</h3>
+<p>The PicoZed System-on-Module (SoM) is a SoM developed around Xilinx&rsquo;s Zynq-7000 System-on-Chip (SoC).</p>
+<blockquote>
+<p>The Zynq-7000 SoC family integrates the software programmability of an ARM-based processor with the hardware programmability of an FPGA &hellip; on a single device.</p>
+<p><strong>— <a href="https://www.xilinx.com/products/silicon-devices/soc/zynq-7000.html" target="_blank" rel="noopener noreffer">Xilinx website</a></strong></p>
+</blockquote>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/zynq-7000-block-diagram.png" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/zynq-7000-block-diagram.png" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/zynq-7000-block-diagram.png" data-sub-html="<h2>Zynq-7000 internal block diagram</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/zynq-7000-block-diagram.png"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/zynq-7000-block-diagram.png, /2018/09/05/amdc-advanced-motor-drive-controller/images/zynq-7000-block-diagram.png 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/zynq-7000-block-diagram.png 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/zynq-7000-block-diagram.png" width="800" height="900" />
+    </a><figcaption class="image-caption">Zynq-7000 internal block diagram</figcaption>
+    </figure>
+<p>While this SoC is very powerful and capable, it is not easy to integrate into &ldquo;consumer&rdquo; projects. It uses a BGA package, which makes soldering difficult, and it requires high-speed routing for memory interfaces. For these and other reasons, the PicoZed exists!</p>
+<blockquote>
+<p>The PicoZed module contains the common functions required to support the core of most SoC designs, including memory, configuration, Ethernet, USB, and clocks. It provides easy access to over 100 user I/O pins through three I/O connectors on the backside of the module.</p>
+<p><strong>— <a href="http://zedboard.org/product/picozed" target="_blank" rel="noopener noreffer">PicoZed website</a></strong></p>
+</blockquote>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/picozed-block-diagram.png" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/picozed-block-diagram.png" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/picozed-block-diagram.png" data-sub-html="<h2>PicoZed block diagram</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/picozed-block-diagram.png"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/picozed-block-diagram.png, /2018/09/05/amdc-advanced-motor-drive-controller/images/picozed-block-diagram.png 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/picozed-block-diagram.png 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/picozed-block-diagram.png" width="1501" height="713" />
+    </a><figcaption class="image-caption">PicoZed block diagram</figcaption>
+    </figure>
+<p>To use the PicoZed, one must design a carrier card to interface with the SoM. PicoZed has great documentation about carrier card design, schematics for reference carrier cards, etc.</p>
+<h3 id="picozed-interface">PicoZed Interface</h3>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-001.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-001.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-001.jpg" data-sub-html="<h2>AMDC block diagram showing different modules</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-001.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-001.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-001.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-001.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-001.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">AMDC block diagram showing different modules</figcaption>
+    </figure>
+<p>Since this is a carrier card, there are many signals needing to flow in to and out of the PicoZed SoM. This makes for a lot of signal connections (~300!):</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-002.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-002.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-002.jpg" data-sub-html="<h2>Actual signal connections going into PicoZed from system blocks</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-002.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-002.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-002.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-002.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-002.jpg" width="3300" height="1912" />
+    </a><figcaption class="image-caption">Actual signal connections going into PicoZed from system blocks</figcaption>
+    </figure>
+<h3 id="board-io">Board I/O</h3>
+<p>Almost every processing system needs a few things to function:</p>
+<ul>
+<li>Standard reset button for Xilinx Zync-7030 SoC</li>
+<li>Status LEDs to indicate board state</li>
+<li>RGB LED controllable via processor</li>
+<li>3 DIP switches</li>
+<li>1 general push button</li>
+<li>ESTOP button for disabling drive output</li>
+</ul>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-003.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-003.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-003.jpg" data-sub-html="<h2>Generic board I/O circuitry related to buttons, plugs, connectors, etc</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-003.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-003.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-003.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-003.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-003.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Generic board I/O circuitry related to buttons, plugs, connectors, etc</figcaption>
+    </figure>
+<h3 id="jtag">JTAG</h3>
+<p>To support easy programming and debugging, a Digilent JTAG-SMT2 module is used. This converts micro USB into JTAG signals for the processor. The board also includes standard 2x7 headers for using an external JTAG programmer.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-007.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-007.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-007.jpg" data-sub-html="<h2>JTAG programming interface enables either regular pin header connections or micro USB connection using JTAG-SMT2</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-007.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-007.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-007.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-007.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-007.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">JTAG programming interface enables either regular pin header connections or micro USB connection using JTAG-SMT2</figcaption>
+    </figure>
+<h3 id="ethernet">Ethernet</h3>
+<p>PicoZed has an Ethernet PHY onboard the SoM, so it exposes data signals that go directly to a connector. All that&rsquo;s required on the carrier card is routing them to a RJ45 receptacle.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-004.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-004.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-004.jpg" data-sub-html="<h2>Gigabit Ethernet support circuitry; i.e. just an isolated RJ45 receptacle</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-004.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-004.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-004.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-004.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-004.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Gigabit Ethernet support circuitry; i.e. just an isolated RJ45 receptacle</figcaption>
+    </figure>
+<h3 id="usb-otg">USB OTG</h3>
+<p>PicoZed also has a USB On-The-Go (OTG) PHY on the SoM, so again, the carrier card just needs to route out signals to a connector.</p>
+<p>AMDC includes extra circuitry for USB protection. This prevents external devices from drawing too much current, adds ESD protection, and adds the ability to select between Device / Host modes.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-005.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-005.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-005.jpg" data-sub-html="<h2>USB OTG support circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-005.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-005.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-005.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-005.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-005.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">USB OTG support circuitry</figcaption>
+    </figure>
+<h3 id="usb-uart">USB UART</h3>
+<p>For serial communication with the ARM core onboard (i.e. communicating with terminal running on embedded Linux OS), a micro USB port is provided which interfaces directly with a UART port. This uses a Silicon Labs UART to USB device for simplicity.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-006.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-006.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-006.jpg" data-sub-html="<h2>USB UART support circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-006.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-006.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-006.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-006.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-006.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">USB UART support circuitry</figcaption>
+    </figure>
+<h3 id="gpio">GPIO</h3>
+<p>While the main bulk of AMDC&rsquo;s design is for its drive outputs and analog inputs, not all applications strictly use these interfaces; some need general purpose I/Os for various other modules.</p>
+<p>AMDC provides two banks of GPIO, with each settable at either 5V or 3.3V logic levels.</p>
+<p>Each bank has 12 channels:</p>
+<ul>
+<li>8 channels have a hardware pin selectable direction</li>
+<li>2 x 2 channels have a software selectable direction</li>
+</ul>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-009.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-009.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-009.jpg" data-sub-html="<h2>GPIO support circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-009.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-009.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-009.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-009.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-009.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">GPIO support circuitry</figcaption>
+    </figure>
+<h3 id="analog-inputs">Analog Inputs</h3>
+<p>AMDC has unique constraints for analog signal inputs (+/- 10V fully differential). To support this wide range of voltage, analog conditioning circuitry must be used.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-016.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-016.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-016.jpg" data-sub-html="<h2>Schematic showing overall flow of analog signals from inputs to ADCs</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-016.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-016.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-016.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-016.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-016.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Schematic showing overall flow of analog signals from inputs to ADCs</figcaption>
+    </figure>
+<h4 id="analog-connectors">Analog Connectors</h4>
+<p>Starting at the analog input connectors, there are 16 channels which appear as a stacked 2x4 RJ45 receptacle box.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-017.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-017.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-017.jpg" data-sub-html="<h2>Stacked 2x4 RJ45 connectors for analog signal input</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-017.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-017.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-017.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-017.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-017.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Stacked 2x4 RJ45 connectors for analog signal input</figcaption>
+    </figure>
+<h4 id="analog-signal-conditioning">Analog Signal Conditioning</h4>
+<p>The analog signal inputs from the connectors then go through a signal conditioning block which converts the +/- 10V fully differential signals into 0V..5V pseudo-differential signals for the ADC to process.</p>
+<p>Two different signal conditioning blocks are used to evaluate different conditioning topologies.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-018.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-018.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-018.jpg" data-sub-html="<h2>Schematic shows split for different conditioning approaches</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-018.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-018.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-018.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-018.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-018.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Schematic shows split for different conditioning approaches</figcaption>
+    </figure>
+<h5 id="signal-conditioning-approach-1">Signal Conditioning Approach #1:</h5>
+<p>This approach is used for channels 1 to 8. It uses discrete quad op-amp packages used to create an in-amp topology. Because of the custom in-amp construction, AMDC can exactly condition +/- 10V signals into the 0V..5V range required by the ADCs.</p>
+<p>Unfortunately, the performance of this topology depends on the tolerance of the resistors used. We must precisely match resistor values otherwise there is poor common-mode voltage rejection.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-019.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-019.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-019.jpg" data-sub-html="<h2>Analog signal conditioning approach #1 circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-019.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-019.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-019.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-019.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-019.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Analog signal conditioning approach #1 circuitry</figcaption>
+    </figure>
+<h5 id="signal-conditioning-approach-2">Signal Conditioning Approach #2:</h5>
+<p>This approach is used for channels 9 to 16. It uses integrated in-amp devices which have laser-trimmed resistors. Because of this, there is <em>very</em> high common mode voltage rejection, but at a fixed 0.1x gain, this is not ideal for +/- 10V signals.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-020.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-020.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-020.jpg" data-sub-html="<h2>Analog signal conditioning approach #2 circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-020.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-020.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-020.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-020.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-020.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Analog signal conditioning approach #2 circuitry</figcaption>
+    </figure>
+<h4 id="analog-adcs">Analog ADCs</h4>
+<p>After signal conditioning, two 1.5 MSPS 8-channel ADCs are used. These provide a partially parallel digital interface to the PicoZed for sample data.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-021.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-021.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-021.jpg" data-sub-html="<h2>Support circuitry for ADCs</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-021.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-021.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-021.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-021.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-021.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Support circuitry for ADCs</figcaption>
+    </figure>
+<h3 id="drive-outputs">Drive Outputs</h3>
+<p>AMDC can control eight full inverters at one time via eight DB15 connectors. The design targets controlling Wolfspeed modules (each 15 pin connector controls one module). There are six PWM gate signals, and four status lines.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-010.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-010.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-010.jpg" data-sub-html="<h2>Drive output interface showing low-voltage data from PicoZed to high-voltage outputs</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-010.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-010.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-010.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-010.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-010.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Drive output interface showing low-voltage data from PicoZed to high-voltage outputs</figcaption>
+    </figure>
+<h4 id="drive-voltage-translation">Drive Voltage Translation</h4>
+<p>For the PWM gate signals, PicoZed outputs digital signals at 1.8V. Voltage translation blocks then boost this signal up to a user supplied output voltage to go off the board (~15V).</p>
+<p>There are hardware selectable status voltages to/from inverter modules to allow interfacing with a broader range of modules.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-011.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-011.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-011.jpg" data-sub-html="<h2>Voltage translation blocks for various aspects of inverter control</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-011.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-011.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-011.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-011.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-011.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Voltage translation blocks for various aspects of inverter control</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-012.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-012.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-012.jpg" data-sub-html="<h2>8-channel low-voltage to high-voltage auto-direction translation</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-012.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-012.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-012.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-012.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-012.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">8-channel low-voltage to high-voltage auto-direction translation</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-013.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-013.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-013.jpg" data-sub-html="<h2>2-channel directional voltage translation</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-013.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-013.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-013.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-013.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-013.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">2-channel directional voltage translation</figcaption>
+    </figure>
+<h4 id="drive-output-connectors">Drive Output Connectors</h4>
+<p>Each inverter uses one DB15 connector. To save board space, these are stacked to form four stacks of two DB15 connections each.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-014.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-014.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-014.jpg" data-sub-html="<h2>Four stacked dual inverter connectors</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-014.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-014.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-014.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-014.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-014.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Four stacked dual inverter connectors</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-015.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-015.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-015.jpg" data-sub-html="<h2>DB15 dual stacked connector</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-015.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-015.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-015.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-015.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-015.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">DB15 dual stacked connector</figcaption>
+    </figure>
+<h3 id="encoder">Encoder</h3>
+<p>AMDC supports connecting one RS-422 standard quadrature encoder through a DB9 connector.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-008.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-008.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-008.jpg" data-sub-html="<h2>Encoder support circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-008.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-008.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-008.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-008.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-008.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Encoder support circuitry</figcaption>
+    </figure>
+<h3 id="power">Power</h3>
+<p>AMDC has two main power inputs: the main board power (~24V) and the PWM drive output voltage (~15V).</p>
+<p>The main board power goes into two DC/DC converter modules which efficiently convert the 24V to 5.5V main power and +/- 16V for the analog systems. These secondary stage voltages are considered &ldquo;dirty&rdquo; due to the switching converter design, so many local LDOs provide &ldquo;clean&rdquo; device power throughout the board (5V, 3.3V, 1.8V, 2.5V, +15V, and -15V).</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-022.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-022.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-022.jpg" data-sub-html="<h2>Power distribution and regulation circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-022.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-022.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-022.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-022.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-022.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">Power distribution and regulation circuitry</figcaption>
+    </figure>
+<h4 id="ldos">LDOs</h4>
+<p>Because of the large number of subsystems, six different LDOs are used to target various voltage levels.</p>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-023.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-023.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-023.jpg" data-sub-html="<h2>15V LDO circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-023.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-023.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-023.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-023.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-023.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">15V LDO circuitry</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-024.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-024.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-024.jpg" data-sub-html="<h2>5V LDO circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-024.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-024.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-024.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-024.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-024.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">5V LDO circuitry</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-025.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-025.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-025.jpg" data-sub-html="<h2>3.3V LDO circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-025.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-025.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-025.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-025.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-025.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">3.3V LDO circuitry</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-026.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-026.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-026.jpg" data-sub-html="<h2>2.5V LDO circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-026.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-026.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-026.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-026.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-026.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">2.5V LDO circuitry</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-027.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-027.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-027.jpg" data-sub-html="<h2>1.8V LDO circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-027.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-027.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-027.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-027.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-027.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">1.8V LDO circuitry</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-028.jpg" title="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-028.jpg" data-thumbnail="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-028.jpg" data-sub-html="<h2>2.5V reference circuitry</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-028.jpg"
+            data-srcset="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-028.jpg, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-028.jpg 1.5x, /2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-028.jpg 2x"
+            data-sizes="auto"
+            alt="/2018/09/05/amdc-advanced-motor-drive-controller/images/AMDC-028.jpg" width="3300" height="2550" />
+    </a><figcaption class="image-caption">2.5V reference circuitry</figcaption>
+    </figure>
+<h2 id="pcb-analysis">PCB Analysis</h2>
+<p>The AMDC system is designed to be used in a research setting, mounted in a server rack along with other power electronic PCBs. This constraint defined the size of the board, as well as the interface connector locations. The PCB fits in a 1U server rack, meaning it measures about 5&rdquo; by 17&rdquo;. All the connectors are accessible at the front of the board.</p>
+<p>For Design Rules, I targeted widely available processes that basically all fab houses can do: 6/6 mil clearances, 0.3mm minimum drill, and four layers with 1oz copper. This means the board can be manufactured for <em>cheap</em> by many PCB fabricators. We ended up ordering the board from an American company because of higher reliability and shorter turnaround times.</p>
+<p>To protect the integrity of the analog system, all analog parts and traces were placed on one half of the board.</p>
+<h3 id="fun-altium-features">Fun Altium Features</h3>
+<p>I played around with length matching traces for high speed signals in Altium. After reading tutorials online, it was very easy to set up and use! I length matched the Ethernet differential pairs coming from the PicoZed connector to the RJ45 receptacle.</p>
+<p>After some research, I learned that putting bends in traces to do length matching is actually not always a good idea. If the traces carry high-speed content, the corners of these bends emit RF spurs related to the frequency of the content. In a low-noise environment, this can be very bad. The power electronics research environment for which this board is targeted is inherently noisy, so the added PCB emissions have minimal effect.</p>
+<h2 id="summary">Summary</h2>
+<p>Wow. This was a huge undertaking for me as an inexperienced undergrad. I remember multiple times at design meetings when Eric and others would ask me questions, thinking that I was the expert on the design and would know the answers. It took me a while to realize that, yes, I was the design expert and it felt good to be able to answer their questions about things that, just weeks before, I knew nothing about.</p>
+<p>I&rsquo;m very happy with all the skills I&rsquo;ve acquired throughout the process and greatly indebted to Eric for letting me learn via his project.</p>
+<p>You may be wondering if this design actually worked&hellip; Well, I ended up designing the PCB after the Spring semester ended and then left for my summer internship before the board was fully assembled and tested. Another grad student took over the project for the summer and ended up creating revision 2. I had used some incorrect footprints that didn&rsquo;t fit the desired parts, as well as using too powerful of DC/DC converters, thus adding unnecessary cost to the BOM. He addressed these problems and started work on the next iteration of the design. <em>All that said, my original design was never fully tested; it was assembled, and the aforementioned physical bugs were found and addressed.</em></p>
+<p>I look forward to returning to Eric&rsquo;s research group this fall to work on the embedded firmware to run AMDC. Stay tuned for more articles about my adventures!</p>
+<hr>
+<h4 id="new-post-notifications">New Post Notifications</h4>
+<p>If you read this far into this article, you might be interested in subscribing for email notifications about future new posts I write. I will never spam you! Every few months, I write a new article for this website, and will send you email about it. You can unsubscribe at any time. Thank you.</p>
+
+
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:transparent;clear:left;font:14px Helvetica,Arial,sans-serif}
+#mc_embed_signup form{padding:0}
+</style>
+
+<div id="mc_embed_signup">
+    <form action="https://nathanpetersen.us19.list-manage.com/subscribe/post?u=0683969232247313b7dd19933&amp;id=6ae23be408" method="post" id="mc-embedded-subscribe-form">
+        <div id="mc_embed_signup_scroll">
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+            
+            <div style="position: absolute; left: -5000px;"aria-hidden="true"><input type="text"name="b_0683969232247313b7dd19933_6ae23be408"tabindex="-1"value=""></div>
+        
+            <div class="clear">
+                <input type="submit"value="Subscribe"name="subscribe"id="mc-embedded-subscribe"class="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/" data-title="AMDC: Advanced Motor Drive Controller" data-hashtags="analog,fpga,xilinx,zynq-7000,amdc,design,electronics,hardware,pcb,usb,mcu,altium,inverter,pwm,motor,school,encoder"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/" data-hashtag="analog"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/" data-title="AMDC: Advanced Motor Drive Controller"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/" data-title="AMDC: Advanced Motor Drive Controller"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://nathanpetersen.com/2018/09/05/amdc-advanced-motor-drive-controller/" data-title="AMDC: Advanced Motor Drive Controller"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/analog/">analog</a>, <a href="/tags/fpga/">fpga</a>, <a href="/tags/xilinx/">xilinx</a>, <a href="/tags/zynq-7000/">zynq-7000</a>, <a href="/tags/amdc/">amdc</a>, <a href="/tags/design/">design</a>, <a href="/tags/electronics/">electronics</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/pcb/">pcb</a>, <a href="/tags/usb/">usb</a>, <a href="/tags/mcu/">mcu</a>, <a href="/tags/altium/">altium</a>, <a href="/tags/inverter/">inverter</a>, <a href="/tags/pwm/">pwm</a>, <a href="/tags/motor/">motor</a>, <a href="/tags/school/">school</a>, <a href="/tags/encoder/">encoder</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2018/09/05/1-pcbs-from-seeed-studio/" class="prev" rel="prev" title="$1 PCBs from Seeed Studio!"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>$1 PCBs from Seeed Studio!</a>
+            <a href="/2018/09/09/interning-at-silicon-labs-the-sequel-summer-2018/" class="next" rel="next" title="Interning at Silicon Labs, the Sequel - Summer 2018">Interning at Silicon Labs, the Sequel - Summer 2018<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2016 &ndash; 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://nathanpetersen.com/" target="_blank">Nathan Petersen</a></span></div>
+            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="license">Content is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> unless indicated.</span><span class="google-analytics-tracking-info">
+                    This page uses <a href="https://analytics.google.com/">Google Analytics</a> to collect <b>anonymous</b> statistics.
+                </span>
+                <small>Read the <a href="/privacy/">Privacy Policy</a></small>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

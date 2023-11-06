@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>seeedstudio - Tag - Nathan Petersen</title>
+        <link>https://nathanpetersen.com/tags/seeedstudio/</link>
+        <description>seeedstudio - Tag - Nathan Petersen</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 05 Sep 2018 06:30:00 &#43;0000</lastBuildDate><atom:link href="https://nathanpetersen.com/tags/seeedstudio/" rel="self" type="application/rss+xml" /><item>
+    <title>$1 PCBs from Seeed Studio!</title>
+    <link>https://nathanpetersen.com/2018/09/05/1-pcbs-from-seeed-studio/</link>
+    <pubDate>Wed, 05 Sep 2018 06:30:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/09/05/1-pcbs-from-seeed-studio/</guid>
+    <description><![CDATA[Did you see!? Seeed Studio (seeedstudio.com) is offering for a limited time three (3) copies of a PCB design (up to 10cm x 10cm) for only $1!
+Great deal from Seeed Studio! $1 for three copies of PCB!!!" Great deal from Seeed Studio! $1 for three copies of PCB!!!  New Project, New PCBs! I recently was about to order some PCBs for a new project (stay tuned for an article about it), and was looking around online for good deals.]]></description>
+</item>
+<item>
+    <title>PCBs from Seeed Studio</title>
+    <link>https://nathanpetersen.com/2018/02/14/pcbs-from-seeed-studio/</link>
+    <pubDate>Wed, 14 Feb 2018 21:20:00 &#43;0000</pubDate>
+    <author>Nathan Petersen</author>
+    <guid>https://nathanpetersen.com/2018/02/14/pcbs-from-seeed-studio/</guid>
+    <description><![CDATA[Background During the past couple of months, I have been working on a new project that I call Razzler: POV LED Top. The final product is a toy top that one can spin, like the old-time toys. This top detects spinning and plays little animation patterns on it&rsquo;s line of LEDs, creating a persistence-of-vision (POV) display.
+Since I wanted the Razzler to be small and compact, I needed to design a PCB on which to mount all my SMD components.]]></description>
+</item>
+</channel>
+</rss>
